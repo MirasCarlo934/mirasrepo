@@ -1,0 +1,1 @@
+Before running BM, populate the bm_default.properties file. Then, rename the file 'bm_default.properties' to 'bm.properties'. To reduce the chances of losing the properties file due to overwriting, corruption, etc, save a copy of 'bm_default.properties' first before renaming it.

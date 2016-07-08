@@ -1,0 +1,3 @@
+IF IU7M:DigitalOutput-1 = 1 THEN LMGS:DigitalOutput-1 = 1
+IF IU7M:DigitalOutput-1 = 0 THEN LMGS:DigitalOutput-1 = 0
+

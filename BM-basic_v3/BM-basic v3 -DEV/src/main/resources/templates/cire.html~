@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1" />
+	<title>XenHome Controller</title>
+	<link rel="stylesheet" href="/css/texts.css"/>
+	<link rel="stylesheet" href="/css/divs.css"/>
+<script th:inline="javascript">
+/*<![CDATA[*/
+var rooms = /*[[${rooms}]]*/ null;
+var coms = /*[[${coms}]]*/ null;
+var props_list = /*[[${props_list}]]*/;
+
+function getCom1ByRoom() {
+	var sel = document.getElementById("rooms1");
+	var room = "";
+	
+	//gets selected option value
+	for (var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+        	room += opt.value;
+            break;
+        }
+    }
+
+	//gets components belonging to the specified room
+	var txt = "";
+	for(var i = 0; i < coms.length; i++) {
+		var c = coms[i];
+		if(c.room == room) {
+			txt += "<option label='" + c.name + "' value='" + c.id + "'/>";
+		}
+	}
+	
+	if(txt == "") { //true if there are no components in the given room
+		document.getElementById("com1").innerHTML = "<option label='none'>";
+	} else {
+		document.getElementById("com1").innerHTML = txt;
+	}
+}
+
+function getCom2ByRoom() {
+	var sel = document.getElementById("rooms2");
+	var room = "";
+	
+	//gets selected option value
+	for (var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+        	room += opt.value;
+            break;
+        }
+    }
+
+	//gets components belonging to the specified room
+	var txt = "";
+	for(var i = 0; i < coms.length; i++) {
+		var c = coms[i];
+		if(c.room == room) {
+			txt += "<option label='" + c.name + "' value='" + c.id + "'/>";
+		}
+	}
+	
+	if(txt == "") { //true if there are no components in the given room
+		document.getElementById("com2").innerHTML = "<option label='none'>";
+	} else {
+		document.getElementById("com2").innerHTML = txt;
+	}
+}
+
+function getCom1Properties() {
+	var sel = document.getElementById("com1");
+	var com_id;
+	
+	//gets selected option value
+	for (var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+        	com_id = opt.value;
+            break;
+        }
+    }
+
+	//gets properties of component
+	for(var i = 0; i < coms.length; i++) {
+		var c = coms[i];
+		if(c.id == com_id) {
+			var props = "";
+			for(var j = 0; j < c.properties.keys.length; j++) {
+				var prop = c.properties.keys[j];
+				//props += "<option label='" + prop + "' value='" + prop + "'/>";
+				props += c.cireArgHtml;
+			}
+			document.getElementById("com1_props").innerHTML = props;
+			break;
+		}
+	}
+}
+
+function getCom2Properties() {
+	var sel = document.getElementById("com2");
+	var com_id;
+	
+	//gets selected option value
+	for (var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+        	com_id = opt.value;
+            break;
+        }
+    }
+
+	//gets properties of component
+	for(var i = 0; i < coms.length; i++) {
+		var c = coms[i];
+		if(c.id == com_id) {
+			var props = "";
+			for(var j = 0; j < c.properties.keys.length; j++) {
+				var prop = c.properties.keys[j];
+				//props += "<option label='" + prop + "' value='" + prop + "'/>";
+				props += c.cireExecBlockHtml;	
+			}
+			document.getElementById("com2_props").innerHTML = props;
+			break;
+		}
+	}
+}
+
+/*function getCom1PropVals() {
+	var sel = document.getElementById("com1_props");
+	var prop;
+	
+	//gets selected option value
+	for (var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+        	prop = opt.value;
+            break;
+        }
+    }
+	
+	//gets prop vals from props_list
+	var txt = "";
+	var pvals = props_list[prop];
+	for(var i = 0; i < pvals.length; i++) {
+		txt += "<option label='" + pvals[i] + "' value='" + pvals[i] + "'/>";
+	}
+	document.getElementById("com1_prop_vals").innerHTML = txt;
+}
+
+function getCom2PropVals() {
+	var sel = document.getElementById("com2_props");
+	var prop;
+	
+	//gets selected option value
+	for (var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+        	prop = opt.value;
+            break;
+        }
+    }
+	
+	//gets prop vals from props_list
+	var txt = "";
+	var pvals = props_list[prop];
+	for(var i = 0; i < pvals.length; i++) {
+		txt += "<option label='" + pvals[i] + "' value='" + pvals[i] + "'/>";
+	}
+	document.getElementById("com2_prop_vals").innerHTML = txt;
+}*/
+/*]]>*/
+</script>
+</head>
+<!-- <body onload="getCom1ByRoom(), getCom1Properties(), getCom2ByRoom(), getCom2Properties()"> -->
+<body>
+<div class="fullrounded">
+	<h1 class="header">Existing rules:</h1>
+	<ul>
+		<li th:each="cir : ${existing_cir}" th:text="${cir}"/>
+	</ul>
+</div>
+
+<div class="rounded">
+	<h1 class="header">CIR Editor</h1>
+	<form action="addCIR">
+		<input name="condition" type="hidden" value="IF" /> 
+		<span>IF</span> 
+		<select id="rooms1" name="room" onchange="getCom1ByRoom(), getCom1Properties()">
+			<option label="(room)" value="none"></option>
+			<option th:each="room : ${rooms}" th:label="${room.getName()}" th:value="${room.getId()}">
+			</option></select> <select id="com1" name="com1" onchange="getCom1Properties()">
+			<option label="(component)" value="none"></option>
+		</select>
+		<span id="com1_props"></span><br/>
+		
+		<span>THEN</span> 
+		<select id="rooms2" name="room" onchange="getCom2ByRoom(), getCom2Properties()">
+			<option label="(room)" value="none">
+			</option><option th:each="room : ${rooms}" th:label="${room.getName()}" th:value="${room.getId()}">
+			</option></select> <select id="com2" name="com2" onchange="getCom2Properties()">
+			<option label="(component)" value="none"></option>
+		</select> <br/>
+		<span id="com2_props"> <input type="submit" value="Submit" /> </span>
+	</form>
+</div>
+</body>
+</html>

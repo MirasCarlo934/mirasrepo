@@ -1,0 +1,20 @@
+<!-- 
+	This html is for the building part of the CIR editor. The components shown here are changed depending on the room that
+	is selected in cire.html. This is called exclusively through AJAX in cire.html.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<span th:if="${coms=='none'}">There are no components in this room!</span>
+	
+	<div th:unless="${coms=='none'}">
+		<select name="com">
+			<option th:each="com : ${coms}" th:label="${com.getName()}" th:value="${com.getId()}"/>
+		</select>
+	</div>
+</body>
+</html>

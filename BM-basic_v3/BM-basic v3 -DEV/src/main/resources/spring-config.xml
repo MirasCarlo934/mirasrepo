@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+		<context:annotation-config/>
+		<context:component-scan base-package="web"/>
+		       
+		<!-- <import resource="system-config.xml"/> -->
+		
+		<bean id="properties" class="main.configuration.UserConfig">
+		</bean>
+		
+		<bean id="sysconfig" class="main.configuration.Configuration">
+		<constructor-arg name="systemConfiguration">
+			<!-- <bean class="main.configuration.SystemConfiguration"></bean> -->
+			<bean class="main.configuration.SystemConfiguration">
+				<constructor-arg name="userConfig" ref="properties"/>
+				<property name="systemCommands">
+					<array>
+						<value>exit_system</value>
+					</array>
+				</property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="connectionConfiguration">
+			<bean class="main.configuration.ConnectionConfiguration">
+				<constructor-arg name="userConfig" ref="properties"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="databaseConfiguration">
+			<bean class="main.configuration.DatabaseConfiguration">
+				<property name="ssidColName" value="SSID"/>
+				<property name="ssidLength" value="4"/>
+				<property name="dbTableConfigs">
+				<map>
+					<entry key="component">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="component"/>
+							<constructor-arg name="tableName" value="components"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="com_prop">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="com_prop"/>
+							<constructor-arg name="tableName" value="comp_properties"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="function">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="function"/>
+							<constructor-arg name="tableName" value="comcat"/>
+							<constructor-arg name="ssidType" value="INT"/>
+						</bean>
+					</entry>
+					<entry key="room">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="room"/>
+							<constructor-arg name="tableName" value="rooms"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="pval">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="pval"/>
+							<constructor-arg name="tableName" value="pvalcat"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="cplist">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="cplist"/>
+							<constructor-arg name="tableName" value="comproplist"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="property">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="property"/>
+							<constructor-arg name="tableName" value="propcat"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+				</map>
+				</property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="mqttTopicConfiguration">
+			<bean class="main.configuration.MqttTopicConfiguration">
+				<property name="BMTopic" value="BM"/>
+				<property name="adminTopic" value="admin"/>
+				<property name="WSTopic" value="WS"/>
+				<property name="defaultTopic" value="default_topic"/>
+				<property name="httpLayerTopic" value="HL"/>
+				<property name="errorTopic" value="error_topic"/>
+				<property name="openhabTopic" value="openhab"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="requestParameterConfiguration">
+			<bean class="main.configuration.RequestParameterConfiguration">
+				<property name="requestIdKey" value="RID"/>
+				<property name="requestTypeKey" value="RTY"/>
+				<property name="componentIdKey" value="CID"/>
+				<property name="errorKey" value="errorcode"/>
+				<property name="errorMsgKey" value="errormsg"/>
+				<property name="commandKey" value="com_str"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="instructionPropsConfig">
+			<bean class="main.configuration.InstructionPropsConfiguration">
+				<constructor-arg name="uconf" ref="properties"/>
+				<!-- <property name="componentPropertyList" ref="ComponentPropertyList"/> -->
+			</bean>
+		</constructor-arg>
+		</bean>
+		
+		<!-- <bean id="ComponentPropertyList" class="main.configuration.ComponentPropertyList">
+			<constructor-arg name="list">
+				<map>
+					<entry key="state">
+						<array>
+							<value>1</value>
+							<value>0</value>
+						</array>
+					</entry>
+				</map>
+			</constructor-arg>
+		</bean> -->
+		
+		
+		<!-- BusinessMachine config -->
+        <bean id="BM-Controller" class="bm.BM_Controller">
+        	<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+        	<constructor-arg name="requestHandler">
+        		<bean id="RequestHandler" class="bm.RequestGate">
+            		<constructor-arg index="0" ref="DerbyTrafficController"/>
+            		<constructor-arg index="1" ref="BM-MQTTHandler"/>
+            		<constructor-arg name="componentRepository" ref="ComponentRepository"/>
+       			</bean>
+        	</constructor-arg>
+        	<constructor-arg name="shutdownModule">
+        		<bean id="ShutdownModule" class="bm.modules.ShutdownModule"/>
+        	</constructor-arg>
+        	<constructor-arg name="modules">
+        		<list>
+		        	<bean id="ComponentRegistrationModule" class="bm.modules.CRModule">
+		            	<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+		            	<constructor-arg name="transactionEngine" ref="TransactionEngine"/>
+		            	<constructor-arg name="repository" ref="ComponentRepository"/>
+		            	<constructor-arg name="idGenerator" ref="IDGenerator"/>
+		            	<constructor-arg name="openhabHandlingEngine" ref="OpenhabEngine"/>
+		        	</bean>
+		        	<bean id="InstructionModule" class="bm.modules.POOPModule">
+		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+		        		<constructor-arg name="componentRepository" ref="ComponentRepository"/>
+		        		<constructor-arg name="cirInterpreter" ref="CIRInterpreter"/>
+		        		<constructor-arg name="transactionEngine" ref="TransactionEngine"/>
+		        		<constructor-arg name="openhabHandlingEngine" ref="OpenhabEngine"/>
+		        	</bean>
+		        	<bean id="DetachmentModule" class="bm.modules.DetachmentModule">
+		        		<constructor-arg name="componentRepository" ref="ComponentRepository"/>
+		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+		        		<constructor-arg name="transactionEngine" ref="TransactionEngine"/>
+		        		<constructor-arg name="openhabHandlingEngine" ref="OpenhabEngine"/>
+		        	</bean>
+		        	<bean id="TestModule" class="bm.modules.TestModule">
+		        		<constructor-arg name="cr" ref="ComponentRepository"/>
+		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+		        	</bean>
+		        	<!-- <bean id="MessagingModule" class="bm.modules.DMPModule">
+		        		<constructor-arg name="componentRepository" ref="ComponentRepository"/>
+		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+		        		<constructor-arg name="transactionEngine" ref="TransactionEngine"/>
+		        		<constructor-arg name="tttiEngine" ref="TTTIEngine"/>
+		        	</bean> -->
+        		</list>
+        	</constructor-arg>
+        </bean>
+        <bean id="TransactionEngine" class="bm.TransactionEngine">
+        	<constructor-arg name="trafficController" ref="DerbyTrafficController"/>
+        	<constructor-arg name="idGenerator" ref="IDGenerator"/>
+        	<constructor-arg name="transactionConditions">
+        		<list>
+        			<bean id="EventRequestTransactionCondition" class="bm.modules.submodules.EventRequestTransactionCondition">
+        				<constructor-arg name="trafficController" ref="DerbyTrafficController"/>
+        			</bean>
+        		</list>
+        	</constructor-arg>
+        </bean>
+        <bean id="OpenhabEngine" class="bm.OpenhabHandlingEngine">
+        	<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+        </bean>
+        <bean id="BM-MQTTHandler" class="mqtt.MQTTHandler">
+        	<constructor-arg index="0" value="BM"/>
+        	<property name="callback" ref="BM-Controller"/>
+        </bean>
+        <bean id="ComponentRepository" class="bm.ComponentRepository">
+        	<constructor-arg name="trafficController" ref="DerbyTrafficController"/>
+        	<constructor-arg name="transactionEngine" ref="TransactionEngine"/>
+        	<constructor-arg name="idgenerator" ref="IDGenerator"/>
+        </bean>
+        
+        <bean id="RequestGenerator" class="tools.RequestGenerator">
+        	<constructor-arg index="0" ref="IDGenerator"/>
+        </bean>
+        <bean id="IDGenerator" class="tools.IDGenerator">
+        </bean>
+        
+        <bean id="CIRInterpreter" class="bm.CIREngine">
+        	<constructor-arg name="componentRepository" ref="ComponentRepository"/>
+        </bean>
+        
+        <bean id="DerbyTrafficController" class="tools.TrafficController">
+        	<constructor-arg index="0" value="BM/TrafficController"/>
+        </bean>
+</beans>

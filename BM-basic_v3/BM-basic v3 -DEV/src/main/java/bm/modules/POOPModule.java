@@ -62,6 +62,7 @@ public class POOPModule extends Module {
 	private OpenhabHandlingEngine ohe;
 	
 	private Request request; //changes with each request to this Module
+	private int index = 0; //counter for all the requests processed by this module
 	
 	public POOPModule(MQTTHandler mqttHandler, TransactionEngine transactionEngine, ComponentRepository componentRepository, 
 			CIREngine cirInterpreter, OpenhabHandlingEngine openhabHandlingEngine) {
@@ -74,7 +75,7 @@ public class POOPModule extends Module {
 
 	@Override
 	protected void process(Request request) throws Exception {
-		logger.info("Processing instruction...");
+		logger.info("Processing instruction... " + index);
 		this.request = request;
 		String com_id = request.getComponentID();
 		String prop_name = request.getString(prop_req_param);
@@ -110,9 +111,6 @@ public class POOPModule extends Module {
 					//Updates all components in CR
 					cr.update();
 					
-					//Updates all items properties in openhab
-					//ohe.updateItemProperties(cr.getAllComponents());
-					
 					logger.trace("Property update successful!");
 				}
 				else {
@@ -120,8 +118,9 @@ public class POOPModule extends Module {
 					//instruct(cr.getComponent(com_id), request.getRequestType(), prop_name, (String)prop_val);
 				}
 			}			
-			logger.info("Instruction processing complete!");
+			logger.info("Instruction processing complete! " + index);
 		}
+		index++;
 	}
 	
 	/**
@@ -218,7 +217,7 @@ public class POOPModule extends Module {
 	 * @param pval the value of the property that changed
 	 */
 	private void applyRules(String pooper, String pname, String pval) {
-		logger.info("Checking for rules that may apply...");
+		logger.info("Checking for rules that may apply... " + index);
 		Vector<Statement> rules = cir.getCirStatements();
 		for(int i = 0; i < rules.size(); i++) {
 			Statement rule = rules.get(i);

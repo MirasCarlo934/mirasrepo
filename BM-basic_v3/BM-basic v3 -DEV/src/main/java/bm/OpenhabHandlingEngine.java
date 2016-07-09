@@ -87,8 +87,6 @@ public class OpenhabHandlingEngine {
 		
 		OH_props.load(new FileInputStream(openhab_config));
 		OH_mqtt_broker = OH_props.get("mqtt").toString().split("\\.")[0];
-		
-		//new OHERefresher(this).start();
 	}
 	
 	/** 
@@ -142,9 +140,7 @@ public class OpenhabHandlingEngine {
 	public void updateOpenhabRecords(Room[] rooms, Component[] components) throws SQLException, MqttException {
 		logger.trace("Updating OpenHab .items and .sitemap files...");
 		
-		/*
-		 * Updates .items, .rules, and .sitemap
-		 */
+		//Updates .items, .rules, and .sitemap
 		updateItems(rooms, components);
 		updateRules(components);
 		updateSitemap(rooms);
@@ -171,7 +167,6 @@ public class OpenhabHandlingEngine {
 		
 		for(int i = 0; i < coms.length; i++) {
 			Component com = coms[i];
-			//str += com.getOHRules() + "\n";]
 			Property[] com_props = com.getProperties();
 			for(int j = 0; j < com_props.length; j++) {
 				Property prop = com_props[j];
@@ -204,6 +199,16 @@ public class OpenhabHandlingEngine {
 			Room room = rooms[i];
 			groups += room.toOHGroup() + "\n";
 		}
+		//groups += "\n";
+		//if com props > 1, add com to groups
+		for(int i = 0; i < coms.length; i++) {
+			Component com = coms[i];
+			if(com.getProperties().length > 1) {
+				groups += com.toOHGroup() + "\n";
+			}
+		}
+		//
+		
 		str += groups + "\n";
 		
 		//Sets mqtt_pub to handle all mqtt outbound traffic
@@ -215,9 +220,16 @@ public class OpenhabHandlingEngine {
 		String items = "";
 		for(int i = 0; i < coms.length; i++) {
 			Component com = coms[i];
-			String[] com_items = com.getOHItemScripts(com.getRoom(), OH_mqtt_broker, openhab_mqtt_topic);
-			for(int j = 0; j < com_items.length; j++) {
-				items += com_items[j];
+			if(com.getProperties().length > 1) {
+				String[] com_items = com.getOHItemScripts(com.getId(), OH_mqtt_broker, openhab_mqtt_topic);
+				for(int j = 0; j < com_items.length; j++) {
+					items += com_items[j];
+					items += "\n";
+				}
+			}
+			else {
+				String[] com_items = com.getOHItemScripts(com.getRoom(), OH_mqtt_broker, openhab_mqtt_topic);
+				items += com_items[0];
 				items += "\n";
 			}
 		}

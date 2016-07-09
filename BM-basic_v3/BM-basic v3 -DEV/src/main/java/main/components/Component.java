@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import bm.objects.cir.CodeBlock;
 import main.components.properties.Property;
 import main.objects.DB.DBObject;
+import tools.StringTools;
 
 public class Component {
 	
@@ -89,6 +90,18 @@ public class Component {
 		
 		return str.toArray(new String[str.size()]);
 	}
+	
+	/**
+	 * Creates a .items script for a representation of this Component as a group. This method is only usually called
+	 * when the Component has more than one property. The generated .items group script will contain these properties.
+	 * 
+	 * @return
+	 */
+	public String toOHGroup() {
+		return StringTools.injectStrings("Group %s \"%s\" <_0> (%s)", 
+				new String[]{getId(), getName(), getRoom()}, 
+				"%s");
+	}
 
 	public String getId() {
 		return id;
@@ -160,16 +173,6 @@ public class Component {
 	 */
 	public void setRoom(String room) {
 		this.room = room;
-	}
-	
-	/**
-	 * Returns the specified string enclosed in double quotes. This saves the hassle of doing the enclosure manually.
-	 * 
-	 * @param str the string needed to be enclosed
-	 * @return
-	 */
-	private String encloseInQuotes(String str) {
-		return '"' + str + '"';
 	}
 
 	/**

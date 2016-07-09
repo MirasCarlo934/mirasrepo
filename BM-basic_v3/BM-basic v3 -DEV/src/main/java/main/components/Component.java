@@ -31,6 +31,7 @@ public class Component {
 	private String name;
 	private String room; //SSID of the room where this component belongs to
 	private Property[] properties;
+	private boolean active = true;
 	
 	/**
 	 * Creates a raw component. To set properties, use the setProperties() method.
@@ -43,7 +44,7 @@ public class Component {
 	 * @param macAddress
 	 */
 	public Component(String id, String name, String function, String room, String mqttTopic, 
-			String macAddress, Property[] properties) {
+			String macAddress, Property[] properties, boolean active) {
 		this.setId(id);
 		this.setMqttTopic(mqttTopic);
 		this.setMacAddress(macAddress);
@@ -51,6 +52,7 @@ public class Component {
 		setName(name);
 		setRoom(room);
 		setProperties(properties);
+		setActive(active);
 	}
 	
 	/**
@@ -72,6 +74,7 @@ public class Component {
 		setFunction((String) com_object.get(funct_col));
 		setName((String) com_object.get(desc_col));
 		setRoom((String) com_object.get(room_col));
+		setActive((Boolean) com_object.get("active"));
 	}
 	
 	/**
@@ -219,5 +222,19 @@ public class Component {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * @return the active
+	 */
+	public boolean isActive() {
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 }

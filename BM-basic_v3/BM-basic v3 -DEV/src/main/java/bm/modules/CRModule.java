@@ -166,11 +166,13 @@ public class CRModule extends TransactionModule {
 			} else { //error 2: Component already registered in system!
 				logger.warn("MAC:" + request_id + " already registered in system! Discontinuing registration process...");
 				logger.info("Returning existing component credentials for MAC:" + request_id);
-				//ErrorResponse r = new ErrorResponse(request_id, response_topic, "Component already registered in system");
+				
 				DBObject dbo = tres.getObjects().get(0);
 				String cid = (String) dbo.get(SSID_col_name);
 				String t = (String) dbo.get(comMqttTopic_col_name);
 				Component com = repository.getComponent(cid);
+				
+				repository.activateComponent(cid);
 				
 				Response r = new Response(request_id, request.getRequestType(), TransTechSystem.config.getMqttTopicConfig().getDefaultTopic());
 				r.put(newCID_param_name, cid); 						//issues new component_id
@@ -196,8 +198,7 @@ public class CRModule extends TransactionModule {
 			/*
 			 * updates openhab items
 			 */
-			ohe.updateOpenhabRecords(repository.getAllRooms(), repository.getAllComponents());
-			
+			ohe.updateOpenhabRecords(repository.getAllRooms(), repository.getAllComponents());			
 		} else { //error 1: invalid com_type
 			logger.error("Error! Invalid component type! Component registration failed");
 			JSONObject response = new JSONObject();

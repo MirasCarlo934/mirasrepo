@@ -214,7 +214,7 @@ public class ComponentRepository {
 		}
 		
 		Property[] props = com_props.toArray(new Property[0]);
-		c = new Component(id, name, function, room, esp_com_type + "_" + id + "_topic", mac, props);
+		c = new Component(id, name, function, room, esp_com_type + "_" + id + "_topic", mac, props, true);
 		
 		HashMap<String, Object> a = new HashMap<String, Object>(1);
 		a.put(SSID_col_name, c.getRoom());
@@ -235,7 +235,7 @@ public class ComponentRepository {
 		} else if(!rtres2.getObjects().isEmpty()){ //there is a room with the specified NAME
 			//gets the ssid of the existing room
 			c.setRoom((String)rtres2.getObjects().get(0).get(SSID_col_name));
-			logger.debug((String)rtres2.getObjects().get(0).get(SSID_col_name));
+			//logger.debug((String)rtres2.getObjects().get(0).get(SSID_col_name));
 		}
 		
 		//persists new component to database
@@ -246,10 +246,11 @@ public class ComponentRepository {
 		vals.put(comFunction_col_name, c.getFunction());
 		vals.put(comDescription_col_name, name);
 		vals.put(comRoomid_col_name, c.getRoom());
-		logger.debug(c.getRoom());
+		vals.put("active", true);
+		/*logger.debug(c.getRoom());
 		logger.debug(c.getMqttTopic());
 		logger.debug(c.getFunction());
-		logger.debug(c.getMacAddress());
+		logger.debug(c.getMacAddress());*/
 		InsertTransactionRequest insert = new InsertTransactionRequest("component", vals);
 		te.insert(insert);
 		
@@ -279,6 +280,80 @@ public class ComponentRepository {
 	}
 	
 	/**
+	 * Sets the Component with the specified <b>com_id</b> to become active, updating its status in the repository as
+	 * well as the database.
+	 * 
+	 * @param com_id the CID of the Component to be activated
+	 * @return <b>true</b> if the activation was successful, <b>false</b> if the DB update encountered an error or if
+	 * 		there are no registered Components with the specified <b>com_id</b>
+	 */
+	public boolean activateComponent(String com_id) {
+		logger.trace("Activating Component " + com_id);
+		Component c = repository.get(com_id);
+		boolean b = false;
+		
+		if(c != null) {
+			c.setActive(true);
+			HashMap<String, Object> args = new HashMap<String, Object>(1);
+			args.put("ssid", com_id);
+			HashMap<String, Object> vals = new HashMap<String, Object>(1);
+			vals.put("active", true);
+			InsertTransactionRequest utr = new InsertTransactionRequest("component", args, vals);
+			try {
+				te.update(utr);
+				b = true;
+				logger.trace("Activation successful!");
+			} catch (SQLException e) {
+				logger.error("Cannot activate Component!", e);
+				b = false;
+			}
+		}
+		else {
+			logger.error("Component " + com_id + " does not exist!");
+			b = false;
+		}
+		
+		return b;
+	}
+	
+	/**
+	 * Sets the Component with the specified <b>com_id</b> to become inactive, updating its status in the repository as
+	 * well as the database.
+	 * 
+	 * @param com_id the CID of the Component to be deactivated
+	 * @return <b>true</b> if the deactivation was successful, <b>false</b> if the DB update encountered an error or if
+	 * 		there are no registered Components with the specified <b>com_id</b>
+	 */
+	public boolean deactivateComponent(String com_id) {
+		logger.trace("Activating Component " + com_id);
+		Component c = repository.get(com_id);
+		boolean b = false;
+		
+		if(c != null) {
+			c.setActive(false);
+			HashMap<String, Object> args = new HashMap<String, Object>(1);
+			args.put("ssid", com_id);
+			HashMap<String, Object> vals = new HashMap<String, Object>(1);
+			vals.put("active", false);
+			InsertTransactionRequest utr = new InsertTransactionRequest("component", args, vals);
+			try {
+				te.update(utr);
+				b = true;
+				logger.trace("Activation successful!");
+			} catch (SQLException e) {
+				logger.error("Cannot activate Component!", e);
+				b = false;
+			}
+		}
+		else {
+			logger.error("Component " + com_id + " does not exist!");
+			b = false;
+		}
+		
+		return b;
+	}
+	
+	/**
 	 * Updates the records of this ComponentRepository by fetching the records from the database
 	 */
 	public void update() {
@@ -293,11 +368,11 @@ public class ComponentRepository {
 			while(rs.next()) {
 				Component c = null;
 				String id = rs.getString(comSSID_col_name);
-				String topic = rs.getString(comMqttTopic_col_name);
+				/*String topic = rs.getString(comMqttTopic_col_name);
 				String mac = rs.getString(comMacAddress_col_name);
 				String function = rs.getString(comFunction_col_name);
 				String description = rs.getString(comDescription_col_name);
-				String room = rs.getString(comRoomid_col_name);
+				String room = rs.getString(comRoomid_col_name);*/
 				
 				c = getComponentFromDB(id);
 				
@@ -383,6 +458,7 @@ public class ComponentRepository {
 		String mac = (String)comp.get("mac");
 		String function = (String)comp.get("functn");
 		String room = (String)comp.get("room");
+		boolean active = (Boolean)comp.get("active");
 		
 		//gets all Component information from DB (PROPCAT, COMPROPLIST, PVALCAT)
 		HashMap<String, Object> arg0 = new HashMap<String, Object>(1);
@@ -421,7 +497,7 @@ public class ComponentRepository {
 		//
 		
 		Property[] props = com_props.toArray(new Property[0]);
-		return new Component(id, name, function, room, topic, mac, props);
+		return new Component(id, name, function, room, topic, mac, props, active);
 	}
 	
 	/**

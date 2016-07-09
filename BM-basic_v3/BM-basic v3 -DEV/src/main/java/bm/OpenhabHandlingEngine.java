@@ -203,7 +203,7 @@ public class OpenhabHandlingEngine {
 		//if com props > 1, add com to groups
 		for(int i = 0; i < coms.length; i++) {
 			Component com = coms[i];
-			if(com.getProperties().length > 1) {
+			if(com.getProperties().length > 1 && com.isActive()) {
 				groups += com.toOHGroup() + "\n";
 			}
 		}
@@ -220,17 +220,22 @@ public class OpenhabHandlingEngine {
 		String items = "";
 		for(int i = 0; i < coms.length; i++) {
 			Component com = coms[i];
-			if(com.getProperties().length > 1) {
-				String[] com_items = com.getOHItemScripts(com.getId(), OH_mqtt_broker, openhab_mqtt_topic);
-				for(int j = 0; j < com_items.length; j++) {
-					items += com_items[j];
+			if(com.isActive()) {
+				if(com.getProperties().length > 1) {
+					String[] com_items = com.getOHItemScripts(com.getId(), OH_mqtt_broker, openhab_mqtt_topic);
+					for(int j = 0; j < com_items.length; j++) {
+						items += com_items[j];
+						items += "\n";
+					}
+				}
+				else {
+					String[] com_items = com.getOHItemScripts(com.getRoom(), OH_mqtt_broker, openhab_mqtt_topic);
+					items += com_items[0];
 					items += "\n";
 				}
 			}
 			else {
-				String[] com_items = com.getOHItemScripts(com.getRoom(), OH_mqtt_broker, openhab_mqtt_topic);
-				items += com_items[0];
-				items += "\n";
+				items += OpenhabItem.getDeactivatedComponentScript(com) + "\n";
 			}
 		}
 		str += items;

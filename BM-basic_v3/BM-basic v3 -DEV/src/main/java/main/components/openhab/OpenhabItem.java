@@ -161,6 +161,11 @@ public enum OpenhabItem {
 		}
 	}
 	
+	public static String getDeactivatedComponentScript(Component com) {
+		return StringTools.injectStrings("String %s \"%s [Temporarily Down]\" <_stop> (%s)", 
+				new String[]{com.getId(), com.getName(), com.getRoom()}, "%s");
+	}
+	
 	/**
 	 * 
 	 * Retrieves the Openhab .items script representation for this specific property.

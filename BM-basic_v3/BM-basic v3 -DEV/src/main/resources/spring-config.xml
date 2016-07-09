@@ -172,6 +172,11 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		        		<constructor-arg name="cr" ref="ComponentRepository"/>
 		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
 		        	</bean>
+		        	<bean id="ByeModule" class="bm.modules.ByeModule">
+		        		<constructor-arg name="componentRepository" ref="ComponentRepository"/>
+		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>
+		        		<constructor-arg name="openhabHandlingEngine" ref="OpenhabEngine"/>
+		        	</bean>
 		        	<!-- <bean id="MessagingModule" class="bm.modules.DMPModule">
 		        		<constructor-arg name="componentRepository" ref="ComponentRepository"/>
 		        		<constructor-arg name="mqttHandler" ref="BM-MQTTHandler"/>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+		<bean id="DerbyTrafficController" class="tools.TrafficController">
+        	<constructor-arg index="0" value="BM/TrafficController"/>
+        </bean>
+        
+        <!-- <bean id="DerbyTrafficController" class="tools.TrafficController">
+        	<constructor-arg index="0" value="BM/TrafficController"/>
+        	<constructor-arg index="1" value="jdbc:derby://localhost:1527/MQTT;create=true"></constructor-arg>
+        	<constructor-arg index="2" value="APP"></constructor-arg>
+        	<constructor-arg index="3" value="APP"></constructor-arg>
+        </bean> -->
+</beans>

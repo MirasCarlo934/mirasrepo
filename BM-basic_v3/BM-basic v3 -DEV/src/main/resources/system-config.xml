@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- <import resource="conntools-config.xml"/> -->
+	
+	<bean id="sysconfig" class="main.configuration.Configuration">
+		<constructor-arg name="systemConfiguration">
+			<!-- <bean class="main.configuration.SystemConfiguration"></bean> -->
+			<bean class="main.configuration.SystemConfiguration">
+				<constructor-arg name="userConfig" ref="properties"/>
+				<property name="systemCommands">
+					<array>
+						<value>exit_system</value>
+					</array>
+				</property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="connectionConfiguration">
+			<bean class="main.configuration.ConnectionConfiguration">
+				<constructor-arg name="userConfig" ref="properties"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="databaseConfiguration">
+			<bean class="main.configuration.DatabaseConfiguration">
+				<property name="ssidColName" value="SSID"/>
+				<property name="ssidLength" value="4"/>
+				<property name="dbTableConfigs">
+				<map>
+					<entry key="component">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="component"/>
+							<constructor-arg name="tableName" value="components"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="com_prop">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="com_prop"/>
+							<constructor-arg name="tableName" value="comp_properties"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="function">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="function"/>
+							<constructor-arg name="tableName" value="comcat"/>
+							<constructor-arg name="ssidType" value="INT"/>
+						</bean>
+					</entry>
+					<entry key="room">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="room"/>
+							<constructor-arg name="tableName" value="rooms"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="pval">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="pval"/>
+							<constructor-arg name="tableName" value="pvalcat"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="cplist">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="cplist"/>
+							<constructor-arg name="tableName" value="comproplist"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+					<entry key="property">
+						<bean class="main.objects.DB.DBTableConfig">
+							<constructor-arg name="objectName" value="property"/>
+							<constructor-arg name="tableName" value="propcat"/>
+							<constructor-arg name="ssidType" value="MIXEDCHAR"/>
+						</bean>
+					</entry>
+				</map>
+				</property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="mqttTopicConfiguration">
+			<bean class="main.configuration.MqttTopicConfiguration">
+				<property name="BMTopic" value="BM"/>
+				<property name="adminTopic" value="admin"/>
+				<property name="WSTopic" value="WS"/>
+				<property name="defaultTopic" value="default_topic"/>
+				<property name="httpLayerTopic" value="HL"/>
+				<property name="errorTopic" value="error_topic"/>
+				<property name="openhabTopic" value="openhab"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="requestParameterConfiguration">
+			<bean class="main.configuration.RequestParameterConfiguration">
+				<property name="requestIdKey" value="RID"/>
+				<property name="requestTypeKey" value="RTY"/>
+				<property name="componentIdKey" value="CID"/>
+				<property name="errorKey" value="errorcode"/>
+				<property name="errorMsgKey" value="errormsg"/>
+				<property name="commandKey" value="com_str"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="instructionPropsConfig">
+			<bean class="main.configuration.InstructionPropsConfiguration">
+				<constructor-arg name="uconf" ref="properties"/>
+				<property name="componentPropertyList" ref="ComponentPropertyList"/>
+			</bean>
+		</constructor-arg>
+		</bean>
+		
+		<bean id="ComponentPropertyList" class="main.configuration.ComponentPropertyList">
+			<constructor-arg name="list">
+				<map>
+					<entry key="state">
+						<array>
+							<value>1</value>
+							<value>0</value>
+						</array>
+					</entry>
+				</map>
+			</constructor-arg>
+		</bean>
+		
+		<bean id="properties" class="main.configuration.UserConfig">
+		</bean>
+</beans>

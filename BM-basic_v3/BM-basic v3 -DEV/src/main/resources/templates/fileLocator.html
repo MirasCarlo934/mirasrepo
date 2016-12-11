@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"/>
+<title>XenHome Controller</title>
+<script>
+var timer = setInterval(displayPath, 10);
+
+function displayPath() {
+	var path = document.getElementById("path").value;
+	document.getElementById("path_shower").innerHTML = path;
+}
+</script>
+</head>
+<body>
+	<h1>Set CIR file location:</h1>
+	<p>Tip: The location of the CIR file is in the BM installation folder go to the folder resources.</p>
+	<form action="setCIRFile">
+		<input type="text" id="path" name="path" placeholder="CIR File Path"/>
+		<input type="submit" value="Set"/><br/><br/>
+		<span id="path_shower">sdfsd</span>
+	</form>
+</body>
+</html>

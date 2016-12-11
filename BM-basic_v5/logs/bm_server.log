@@ -1,0 +1,43 @@
+2016-12-12 00:37:18,230 INFO  [BM_LOG.main] Starting the BM...
+2016-12-12 00:37:19,866 INFO  [BM_LOG.Devices] Populating Devices...
+2016-12-12 00:37:19,947 DEBUG [BM_LOG.Devices] Adding device: O5V0 into Devices
+2016-12-12 00:37:19,952 DEBUG [BM_LOG.Devices] Setting property: 0002 of device: O5V0 with value: 1
+2016-12-12 00:37:19,953 DEBUG [BM_LOG.Devices] Setting property: 0020 of device: O5V0 with value: 0
+2016-12-12 00:37:19,953 DEBUG [BM_LOG.Devices] Setting property: 0019 of device: O5V0 with value: 0
+2016-12-12 00:37:19,953 DEBUG [BM_LOG.Devices] Setting property: 0024 of device: O5V0 with value: 0
+2016-12-12 00:37:19,954 DEBUG [BM_LOG.Devices] Setting property: 0005 of device: O5V0 with value: 0
+2016-12-12 00:37:19,954 DEBUG [BM_LOG.Devices] Setting property: 0023 of device: O5V0 with value: 0
+2016-12-12 00:37:19,954 DEBUG [BM_LOG.Devices] Setting property: 0004 of device: O5V0 with value: 0
+2016-12-12 00:37:19,954 DEBUG [BM_LOG.Devices] Setting property: 0022 of device: O5V0 with value: 0
+2016-12-12 00:37:19,955 DEBUG [BM_LOG.Devices] Setting property: 0003 of device: O5V0 with value: 0
+2016-12-12 00:37:19,955 DEBUG [BM_LOG.Devices] Setting property: 0021 of device: O5V0 with value: 0
+2016-12-12 00:37:19,977 DEBUG [BM_LOG.Devices] Adding device: YB87 into Devices
+2016-12-12 00:37:19,978 DEBUG [BM_LOG.Devices] Setting property: 0002 of device: YB87 with value: 0
+2016-12-12 00:37:19,979 DEBUG [BM_LOG.Devices] Setting property: 0020 of device: YB87 with value: 0
+2016-12-12 00:37:19,979 DEBUG [BM_LOG.Devices] Setting property: 0019 of device: YB87 with value: 0
+2016-12-12 00:37:19,979 DEBUG [BM_LOG.Devices] Setting property: 0024 of device: YB87 with value: 0
+2016-12-12 00:37:19,979 DEBUG [BM_LOG.Devices] Setting property: 0005 of device: YB87 with value: 0
+2016-12-12 00:37:19,979 DEBUG [BM_LOG.Devices] Setting property: 0023 of device: YB87 with value: 0
+2016-12-12 00:37:19,979 DEBUG [BM_LOG.Devices] Setting property: 0004 of device: YB87 with value: 0
+2016-12-12 00:37:19,980 DEBUG [BM_LOG.Devices] Setting property: 0022 of device: YB87 with value: 0
+2016-12-12 00:37:19,980 DEBUG [BM_LOG.Devices] Setting property: 0003 of device: YB87 with value: 0
+2016-12-12 00:37:19,980 DEBUG [BM_LOG.Devices] Setting property: 0021 of device: YB87 with value: 0
+2016-12-12 00:37:19,997 DEBUG [BM_LOG.Devices] Adding device: YW7S into Devices
+2016-12-12 00:37:19,997 DEBUG [BM_LOG.Devices] Setting property: 0016 of device: YW7S with value: 0
+2016-12-12 00:37:19,997 DEBUG [BM_LOG.Devices] Setting property: 0017 of device: YW7S with value: 0
+2016-12-12 00:37:19,997 DEBUG [BM_LOG.Devices] Setting property: 0018 of device: YW7S with value: 1
+2016-12-12 00:37:19,998 INFO  [BM_LOG.Devices] Devices population done!
+2016-12-12 00:37:20,003 INFO  [BM_LOG.Controller] Controller constructed!
+2016-12-12 00:37:20,062 INFO  [BM_LOG.main] Config file cfg/core-config.xml loaded.
+2016-12-12 00:37:20,063 INFO  [BM_LOG.main] BusinessMachine started!
+2016-12-12 00:37:20,093 DEBUG [BM_LOG.mqtt] Connected to MQTT!
+2016-12-12 00:37:20,098 DEBUG [BM_LOG.mqtt] Subscribed to BM topic!
+2016-12-12 00:37:20,098 DEBUG [BM_LOG.mqtt] Callback set!
+2016-12-12 00:37:22,832 DEBUG [BM_LOG.mqtt] Message arrived at topic BM
+2016-12-12 00:37:22,832 DEBUG [BM_LOG.mqtt] Message is: {
+RID:"test1",
+CID:"YB87",
+RTY:"detach",
+}
+2016-12-12 00:37:22,850 DEBUG [BM_LOG.DetachmentModule] DetachmentModule request processing started!
+2016-12-12 00:37:22,851 INFO  [BM_LOG.DetachmentModule] hello -detachmentmodule

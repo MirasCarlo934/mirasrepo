@@ -87,6 +87,9 @@ public abstract class AbstModule {
 	protected void error(ResError error) {
 		LOG.error(error.message);
 		mh.publishToErrorTopic(error);
+		/*
+		 * Do CID checking for this one
+		 */
 		mh.publish(error);
 	}
 

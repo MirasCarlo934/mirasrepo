@@ -8,4 +8,10 @@ public class ResError extends AbstResponse {
 		super.addParameter("message", message);
 		this.message = message;
 	}
+	
+	public ResError(AbstRequest request, String message) {
+		super(request.rid, request.cid, false);
+		addParameter("message", message);
+		this.message = message;
+	}
 }

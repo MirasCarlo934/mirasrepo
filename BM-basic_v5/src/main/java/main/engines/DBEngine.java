@@ -238,6 +238,33 @@ public class DBEngine {
     	executeQuery(q);
     }
     
+    public ResultSet deleteQuery(String table, HashMap<String, Object> args) throws SQLException {
+    	String q = "DELETE FROM " + table;
+    	
+    	//constructs where clause
+    	if(!args.isEmpty()) { //to prevent deletion of entire table contents
+	    	String where = " WHERE "; // where clause that ignores case
+			Object[] argscols = args.keySet().toArray();
+			for(int i = 0; i < argscols.length; i++) {
+				String col = (String) argscols[i];
+				Object value = args.get(col);
+				
+				if(value.getClass().equals(String.class)) { //if value is a string
+					//where = where + "UPPER(" + col + ") LIKE UPPER('" + value + "')";
+					where = where + col + " = '" + value + "'";
+				} else {
+					where = where + col + " = " + value + "";
+				}
+				where += " AND ";
+			}
+			where = where.substring(0, where.length() - 4);
+			return executeQuery(q + where);
+    	} else {
+    		LOG.error("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
+    		throw new SQLException("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
+    	}
+    }
+    
     /**
      * Ideal method for handling update query. Method uses HashMap vals to construct the 'set' clause and the HashMap args to construct 
      * the 'where' clause of the query.

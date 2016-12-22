@@ -32,7 +32,6 @@ public class DetachmentModule extends AbstModule {
 		vals1.put("com_id", cid);
 		HashMap<String, Object> vals2 = new HashMap<String, Object>(1,1);
 		vals2.put("ssid", cid);
-		//LOG.info(vals1.size());
 		try {
 			dbe.deleteQuery(propsTable, vals1);
 			dbe.deleteQuery(comsTable, vals2);

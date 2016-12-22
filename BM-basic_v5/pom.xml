@@ -1,9 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>HomeSymphony</groupId>
-  <artifactId>BM-basic_v4</artifactId>
+  <groupId>TransTech</groupId>
+  <artifactId>BM-basic_v5</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>BM-basic v4</name>
+  <name>BM-basic-v5</name>
+  
+  <build>
+  <plugins>
+	<plugin>
+    	<groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+	</plugin>
+  </plugins>
+  </build>
   
   <repositories>
     <repository>
@@ -69,6 +78,5 @@
   <properties>
    	  <!-- The main class to start by executing java -jar -->
    	  <start-class>main.BusinessMachine</start-class>
-      <java.version>1.8</java.version>
   </properties>
 </project>

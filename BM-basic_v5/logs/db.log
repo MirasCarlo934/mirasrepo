@@ -1,2 +1,2 @@
-2016-12-12 00:37:19,337 INFO  [DB_LOG.TrafficController] DBEngine construct start! url=jdbc:derby://192.168.1.5:1527/DB
-2016-12-12 00:37:19,674 INFO  [DB_LOG.TrafficController] Connected to Derby DB!
+2016-12-22 19:06:13,177 INFO  [DB_LOG.TrafficController] DBEngine construct start! url=jdbc:derby://192.168.1.5:1527/DB
+2016-12-22 19:06:13,684 INFO  [DB_LOG.TrafficController] Connected to Derby DB!

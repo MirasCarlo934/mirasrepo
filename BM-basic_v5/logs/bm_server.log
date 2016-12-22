@@ -1,55 +1,21 @@
-2016-12-13 06:10:10,508 INFO  [BM_LOG.main] Starting the BM...
-2016-12-13 06:10:12,307 INFO  [BM_LOG.Devices] Populating Devices...
-2016-12-13 06:10:12,365 DEBUG [BM_LOG.Devices] Adding device: N40M into Devices
-2016-12-13 06:10:12,368 DEBUG [BM_LOG.Devices] Setting property: 0002 of device: N40M with value: 0
-2016-12-13 06:10:12,368 DEBUG [BM_LOG.Devices] Setting property: 0020 of device: N40M with value: 0
-2016-12-13 06:10:12,368 DEBUG [BM_LOG.Devices] Setting property: 0019 of device: N40M with value: 0
-2016-12-13 06:10:12,369 DEBUG [BM_LOG.Devices] Setting property: 0024 of device: N40M with value: 0
-2016-12-13 06:10:12,369 DEBUG [BM_LOG.Devices] Setting property: 0005 of device: N40M with value: 0
-2016-12-13 06:10:12,369 DEBUG [BM_LOG.Devices] Setting property: 0023 of device: N40M with value: 0
-2016-12-13 06:10:12,369 DEBUG [BM_LOG.Devices] Setting property: 0004 of device: N40M with value: 0
-2016-12-13 06:10:12,369 DEBUG [BM_LOG.Devices] Setting property: 0022 of device: N40M with value: 0
-2016-12-13 06:10:12,370 DEBUG [BM_LOG.Devices] Setting property: 0003 of device: N40M with value: 0
-2016-12-13 06:10:12,370 DEBUG [BM_LOG.Devices] Setting property: 0021 of device: N40M with value: 0
-2016-12-13 06:10:12,370 INFO  [BM_LOG.Devices] Devices population done!
-2016-12-13 06:10:12,376 INFO  [BM_LOG.Controller] Controller constructed!
-2016-12-13 06:10:12,424 INFO  [BM_LOG.main] Config file cfg/core-config.xml loaded.
-2016-12-13 06:10:12,424 INFO  [BM_LOG.main] BusinessMachine started!
-2016-12-13 06:10:12,453 DEBUG [BM_LOG.mqtt] Connected to MQTT!
-2016-12-13 06:10:12,458 DEBUG [BM_LOG.mqtt] Subscribed to BM topic!
-2016-12-13 06:10:12,458 DEBUG [BM_LOG.mqtt] Callback set!
-2016-12-13 06:10:23,670 DEBUG [BM_LOG.mqtt] Message arrived at topic BM
-2016-12-13 06:10:23,670 DEBUG [BM_LOG.mqtt] Message is: {
-RID:"testmac1",
-CID:"0002",
-RTY:"register",
-name:"testcom1",
-prodID:"0002",
-roomID:"DKF5"
-}
-2016-12-13 06:10:23,684 DEBUG [BM_LOG.RegistrationModule] RegistrationModule request processing started!
-2016-12-13 06:10:23,685 ERROR [BM_LOG.RegistrationModule] Component already exists in system!
-2016-12-13 06:11:24,459 DEBUG [BM_LOG.mqtt] Message arrived at topic BM
-2016-12-13 06:11:24,459 DEBUG [BM_LOG.mqtt] Message is: {
-RID:"testmac2",
-CID:"0002",
-RTY:"register",
-name:"testcom2",
-prodID:"0002",
-roomID:"DKF5"
-}
-2016-12-13 06:11:24,462 DEBUG [BM_LOG.RegistrationModule] RegistrationModule request processing started!
-2016-12-13 06:11:24,482 INFO  [BM_LOG.RegistrationModule] Registering component testmac2 to system...
-2016-12-13 06:11:24,559 DEBUG [BM_LOG.RegistrationModule] Persisting component into DB...
-2016-12-13 06:11:25,095 DEBUG [BM_LOG.RegistrationModule] Component persistence complete!
-2016-12-13 06:11:25,097 INFO  [BM_LOG.RegistrationModule] Registration complete!
-2016-12-13 06:11:44,706 DEBUG [BM_LOG.mqtt] Message arrived at topic BM
-2016-12-13 06:11:44,706 DEBUG [BM_LOG.mqtt] Message is: {
-RID:"test1",
-CID:"PJO6",
-RTY:"detach"
-}
-2016-12-13 06:11:44,715 DEBUG [BM_LOG.DetachmentModule] DetachmentModule request processing started!
-2016-12-13 06:11:44,715 INFO  [BM_LOG.DetachmentModule] Deleting component PJO6 from system...
-2016-12-13 06:11:44,715 DEBUG [BM_LOG.DetachmentModule] Deleting component from CR...
-2016-12-13 06:11:44,715 DEBUG [BM_LOG.DetachmentModule] Deleting component from DB...
+2016-12-22 19:06:10,616 INFO  [BM_LOG.main] Starting the BM...
+2016-12-22 19:06:13,903 INFO  [BM_LOG.Devices] Populating Devices...
+2016-12-22 19:06:14,072 DEBUG [BM_LOG.Devices] Adding device: N40M into Devices
+2016-12-22 19:06:14,079 DEBUG [BM_LOG.Devices] Setting property: 0002 of device: N40M with value: 0
+2016-12-22 19:06:14,079 DEBUG [BM_LOG.Devices] Setting property: 0020 of device: N40M with value: 0
+2016-12-22 19:06:14,079 DEBUG [BM_LOG.Devices] Setting property: 0019 of device: N40M with value: 0
+2016-12-22 19:06:14,080 DEBUG [BM_LOG.Devices] Setting property: 0024 of device: N40M with value: 0
+2016-12-22 19:06:14,080 DEBUG [BM_LOG.Devices] Setting property: 0005 of device: N40M with value: 0
+2016-12-22 19:06:14,080 DEBUG [BM_LOG.Devices] Setting property: 0023 of device: N40M with value: 0
+2016-12-22 19:06:14,081 DEBUG [BM_LOG.Devices] Setting property: 0004 of device: N40M with value: 0
+2016-12-22 19:06:14,081 DEBUG [BM_LOG.Devices] Setting property: 0022 of device: N40M with value: 0
+2016-12-22 19:06:14,081 DEBUG [BM_LOG.Devices] Setting property: 0003 of device: N40M with value: 0
+2016-12-22 19:06:14,082 DEBUG [BM_LOG.Devices] Setting property: 0021 of device: N40M with value: 1
+2016-12-22 19:06:14,082 INFO  [BM_LOG.Devices] Devices population done!
+2016-12-22 19:06:14,093 INFO  [BM_LOG.Controller] Controller constructed!
+2016-12-22 19:06:14,201 INFO  [BM_LOG.main] Config file cfg/core-config.xml loaded.
+2016-12-22 19:06:14,201 INFO  [BM_LOG.main] BusinessMachine started!
+2016-12-22 19:06:14,251 DEBUG [BM_LOG.mqtt] Connected to MQTT!
+2016-12-22 19:06:14,260 DEBUG [BM_LOG.mqtt] Subscribed to BM topic!
+2016-12-22 19:06:14,261 DEBUG [BM_LOG.mqtt] Callback set!
+2016-12-22 20:22:18,466 FATAL [BM_LOG.mqtt] Connection lost with MQTT server!

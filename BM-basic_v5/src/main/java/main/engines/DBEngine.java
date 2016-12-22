@@ -260,7 +260,7 @@ public class DBEngine {
 			where = where.substring(0, where.length() - 4);
 			return executeQuery(q + where);
     	} else {
-    		LOG.error("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
+    		LOG.warn("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
     		throw new SQLException("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
     	}
     }

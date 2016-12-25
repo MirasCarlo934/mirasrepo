@@ -8,7 +8,7 @@ public class Controller {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.Controller");
 	private MQTTHandler mh;
 	private ComponentRepository devices;
-	private int processCounter = 1;
+	public static int processCounter = 1;
 	
 	public Controller(MQTTHandler mh, ComponentRepository devices) {
 		this.mh = mh;

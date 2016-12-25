@@ -10,8 +10,13 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-public class DBEngine {
-	private static final Logger LOG = Logger.getLogger("DB_LOG.TrafficController");
+import main.engines.requests.EngineRequest;
+import main.engines.requests.DBEngine.DBEngineRequest;
+import main.engines.requests.DBEngine.QueryType;
+import main.engines.requests.DBEngine.RawDBEReq;
+
+public class DBEngine extends Engine {
+	//private static final Logger LOG = Logger.getLogger("DB_LOG.TrafficController");
 	private String dbURL;
     private Connection conn;
     private String dbusr;
@@ -25,6 +30,7 @@ public class DBEngine {
      * @param dbpwd
      */
     public DBEngine(String dbURL, String dbusr, String dbpwd) { //before Config object implementation
+    	super("DBEngine", DBEngine.class.toString());
     	LOG.info("DBEngine construct start! url=" + dbURL);
     	this.dbURL = dbURL;
     	this.dbusr = dbusr;
@@ -49,6 +55,22 @@ public class DBEngine {
     	LOG.info("Disconnected from Deby DB!");
     }
     
+
+	@Override
+	protected Object processRequest(EngineRequest er) {
+		DBEngineRequest dber = (DBEngineRequest) er;
+		try {
+			if(dber.getQueryType() == QueryType.RAW) {
+				RawDBEReq r  = (RawDBEReq) dber;
+				return executeQuery(r.getQuery());
+			}
+		} catch (SQLException e) {
+			LOG.error(e);
+			e.printStackTrace();
+		}
+		return null;
+	}
+    
     public ResultSet executeQuery(String query) throws SQLException {
     	Statement stmt = null;
     	try{
@@ -57,10 +79,11 @@ public class DBEngine {
         	LOG.trace("Executing " + query + " ...");
         	stmt.execute(query);
         	LOG.trace("Query executed successfully!");
+        	return stmt.getResultSet();
     	} catch(NullPointerException e) {
     		LOG.fatal("Connection not yet established!");
+    		return null;
     	}
-    	return stmt.getResultSet();
     }
     
     public ResultSet selectQuery(String cols, String table) throws SQLException {

@@ -14,6 +14,7 @@ import json.objects.ResError;
 import json.objects.ResRegister;
 import main.ComponentRepository;
 import main.engines.DBEngine;
+import main.engines.requests.DBEngine.RawDBEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
 
@@ -44,8 +45,15 @@ public class RegistrationModule extends AbstModule {
 			while(rs1.next()) {
 				ids.add(rs1.getString("ssid"));
 			}
-			ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
-			product = new Product(rs2);
+			//ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
+			Object o = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
+					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'"));
+			if(o.getClass().equals(ResError.class)) {
+				error((ResError) o);
+			} else {
+				ResultSet rs2 = (ResultSet) o;
+				product = new Product(rs2);
+			}
 		} catch (SQLException e) {
 			error(new ResError(reg.rid, reg.cid, "Cannot process register request!"));
 			e.printStackTrace();
@@ -103,7 +111,10 @@ public class RegistrationModule extends AbstModule {
 		ReqRegister reg = new ReqRegister(request.getJSON());
 		boolean b = true;
 		if(cr.containsDevice(reg.mac)) {
+			Component c = cr.getComponent(reg.mac);
 			error(new ResError(reg.rid, reg.cid, "Component already exists in system!"));
+			//LOG.debug("HEY");
+			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
 			return false;
 		}
 		try {

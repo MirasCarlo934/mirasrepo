@@ -170,8 +170,19 @@ public class ComponentRepository {
 		registeredMACs.remove(mac);
 	}
 	
-	public Component getComponent(String SSID) {
-		return components.get(SSID);
+	/**
+	 * Returns the Component with the specified SSID or MAC
+	 * @param s The SSID or MAC to specify
+	 * @return the Component with the specified SSID or MAC, <i>null</i> if nonexistent
+	 */
+	public Component getComponent(String s) {
+		if(components.containsKey(s)) {
+			return components.get(s);
+		} else if (registeredMACs.containsKey(s)) {
+			return components.get(registeredMACs.get(s));
+		} else {
+			return null;
+		}
 	}
 	
 	/**

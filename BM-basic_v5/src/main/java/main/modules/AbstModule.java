@@ -90,7 +90,7 @@ public abstract class AbstModule {
 		/*
 		 * Do CID checking for this one
 		 */
-		mh.publish(error);
+		//mh.publish(error);
 	}
 
 	/**

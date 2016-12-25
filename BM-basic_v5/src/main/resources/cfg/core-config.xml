@@ -10,7 +10,7 @@
    <bean id="config" class="main.ConfigLoader">
     <property name="configFiles">
       <list>
-      	<value>cfg/db-config.xml</value>
+      	<value>cfg/engines-config.xml</value>
         <value>cfg/mqtt-config.xml</value>
         <value>cfg/main-config.xml</value>
         <value>cfg/modules-config.xml</value>

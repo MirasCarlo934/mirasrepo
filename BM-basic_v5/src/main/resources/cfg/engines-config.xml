@@ -13,7 +13,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		</property>
 	</bean>
    
-	<bean id="DBManager" class="main.engines.DBEngine">
+	<bean id="DBManager" class="main.engines.DBEngine" scope="prototype">
 		<constructor-arg name="dbURL" value="${db.host}"/>
 		<constructor-arg name="dbusr" value="${db.dbusr}"/>
 		<constructor-arg name="dbpwd" value="${db.dbpwd}"/>

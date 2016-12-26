@@ -31,7 +31,7 @@ public class POOPModule extends AbstModule {
 		LOG.info("Changing component " + request.cid + " property " + poop.propIndex + " to " + poop.propValue + "...");
 		updateSystem(poop);
 		updateDatabase(poop);
-		mh.publish(new ResPOOP(request.rid, request.cid));
+		mh.publish(new ResPOOP(request, poop.propIndex, poop.propValue));
 		LOG.info("POOP processing complete!");
 	}
 	

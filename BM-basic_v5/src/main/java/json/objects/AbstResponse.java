@@ -2,7 +2,7 @@ package json.objects;
 
 import org.json.JSONObject;
 
-public class AbstResponse {
+public abstract class AbstResponse {
 	private JSONObject json = new JSONObject();
 	public String rid;
 	public String cid;

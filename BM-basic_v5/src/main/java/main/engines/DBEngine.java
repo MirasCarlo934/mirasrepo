@@ -365,14 +365,14 @@ public class DBEngine extends Engine {
     	return executeQuery(q);
     }*/
     
-    public int getLastId (String idname, String table) throws SQLException {
+    /*public int getLastId (String idname, String table) throws SQLException {
     	ResultSet rs = executeQuery("select max(" + idname + ") from " + table);
     	int id = -1;
     	if(rs.next()) {
     		id = rs.getInt(1);
     	}
     	return id;
-    }
+    }*/
 
 	public String getDbURL() {
 		return dbURL;

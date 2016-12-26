@@ -7,12 +7,15 @@ import json.objects.ReqRequest;
 import json.objects.ResError;
 import main.ComponentRepository;
 import main.engines.DBEngine;
+import main.engines.requests.DBEngine.DeleteDBEReq;
 import mqtt.MQTTHandler;
+import tools.IDGenerator;
 
 public class DetachmentModule extends AbstModule {
 	private String propsTable;
 	private String comsTable;
 	private DBEngine dbe;
+	private IDGenerator idg = new IDGenerator();
 
 	public DetachmentModule(String RTY, MQTTHandler mh, ComponentRepository cr, DBEngine dbe) {
 		super("DetachmentModule", RTY, new String[0], mh, cr);
@@ -32,13 +35,17 @@ public class DetachmentModule extends AbstModule {
 		vals1.put("com_id", cid);
 		HashMap<String, Object> vals2 = new HashMap<String, Object>(1,1);
 		vals2.put("ssid", cid);
-		try {
-			dbe.deleteQuery(propsTable, vals1);
-			dbe.deleteQuery(comsTable, vals2);
+		
+		dbe.forwardRequest(new DeleteDBEReq(idg.generateMixedCharID(10), propsTable, vals1));
+		dbe.forwardRequest(new DeleteDBEReq(idg.generateMixedCharID(10), comsTable, vals2));
+		/*try {
+			//dbe.deleteQuery(propsTable, vals1);
+			//dbe.deleteQuery(comsTable, vals2);
 		} catch (SQLException e) {
 			error(new ResError(request, "Cannot delete component from DB!"));
 			e.printStackTrace();
-		}
+		}*/
+		
 		LOG.info("Detachment complete!");
 	}
 

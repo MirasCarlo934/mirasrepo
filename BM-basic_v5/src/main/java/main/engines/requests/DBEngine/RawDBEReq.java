@@ -4,7 +4,7 @@ public class RawDBEReq extends DBEngineRequest {
 	private String query;
 
 	public RawDBEReq(String id, String query) {
-		super(id, QueryType.RAW);
+		super(id, QueryType.RAW, null);
 		this.setQuery(query);
 	}
 

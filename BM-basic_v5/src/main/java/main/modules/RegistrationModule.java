@@ -14,7 +14,9 @@ import json.objects.ResError;
 import json.objects.ResRegister;
 import main.ComponentRepository;
 import main.engines.DBEngine;
+import main.engines.requests.DBEngine.InsertDBEReq;
 import main.engines.requests.DBEngine.RawDBEReq;
+import main.engines.requests.DBEngine.SelectDBEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
 
@@ -41,12 +43,19 @@ public class RegistrationModule extends AbstModule {
 		Vector<String> ids = new Vector<String>(1,1);
 		Product product = null;
 		try {
-			ResultSet rs1 = dbe.selectQuery("ssid", "components");
-			while(rs1.next()) {
-				ids.add(rs1.getString("ssid"));
+			//ResultSet rs1 = dbe.selectQuery("ssid", "components");
+			Object o = dbe.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), 
+					"components", new String[]{"ssid"}));
+			if(o.getClass().equals(ResError.class)) {
+				error((ResError) o);
+			} else {
+				ResultSet rs1 = (ResultSet) o;
+				while(rs1.next()) {
+					ids.add(rs1.getString("ssid"));
+				}
 			}
 			//ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
-			Object o = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
+			o = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
 					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'"));
 			if(o.getClass().equals(ResError.class)) {
 				error((ResError) o);
@@ -78,7 +87,20 @@ public class RegistrationModule extends AbstModule {
 		vals1.put("room", c.getRoom());
 		vals1.put("functn", c.getProduct().getSSID());
 		vals1.put("active", c.isActive());
-		try {
+		dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), comsTable, vals1));
+		Property[] props = c.getProperties().values().toArray(new Property[0]);
+		LOG.trace("Persisting component properties into DB...");
+		for(int i = 0; i < props.length; i++) {
+			Property p = props[i];
+			HashMap<String, Object> vals2 = new HashMap<String, Object>(1);
+			vals2.put("com_id", c.getSSID());
+			vals2.put("prop_name", p.getSystemName());
+			vals2.put("prop_value", String.valueOf(p.getValue()));
+			vals2.put("cpl_ssid", p.getIndex());
+			dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), propsTable, vals2));
+		}
+		LOG.debug("Component persistence complete!");
+		/*try {
 			dbe.insertQuery(comsTable, vals1);
 			Property[] props = c.getProperties().values().toArray(new Property[0]);
 			for(int i = 0; i < props.length; i++) {
@@ -94,7 +116,7 @@ public class RegistrationModule extends AbstModule {
 		} catch (SQLException e) {
 			error(new ResError(reg.rid, reg.cid, "Cannot persist component!"));
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	/**
@@ -124,12 +146,20 @@ public class RegistrationModule extends AbstModule {
 			    return false;
 			}
 			
-			ResultSet rs3 = dbe.selectQuery("ssid", "rooms");
+			//ResultSet rs3 = dbe.selectQuery("ssid", "rooms");
 			b = false;
-			while(rs3.next()) {
-				if(reg.room.equals(rs3.getString("ssid"))) {
-					b = true;
-					return true;
+			Object o = dbe.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), 
+					"rooms", new String[]{"ssid"}));
+			if(o.getClass().equals(ResError.class)) {
+				error((ResError) o);
+			} else {
+				ResultSet rs3 = (ResultSet) o;
+				while(rs3.next()) {
+					//LOG.debug(rs3.getString("ssid"));
+					if(reg.room.equals(rs3.getString("ssid"))) {
+						b = true;
+						return true;
+					}
 				}
 			}
 			if(!b) {

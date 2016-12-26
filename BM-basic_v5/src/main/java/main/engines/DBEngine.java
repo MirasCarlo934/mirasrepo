@@ -14,6 +14,7 @@ import main.engines.requests.EngineRequest;
 import main.engines.requests.DBEngine.DBEngineRequest;
 import main.engines.requests.DBEngine.QueryType;
 import main.engines.requests.DBEngine.RawDBEReq;
+import tools.SystemTimer;
 
 public class DBEngine extends Engine {
 	//private static final Logger LOG = Logger.getLogger("DB_LOG.TrafficController");
@@ -29,7 +30,8 @@ public class DBEngine extends Engine {
      * @param dbusr
      * @param dbpwd
      */
-    public DBEngine(String dbURL, String dbusr, String dbpwd) { //before Config object implementation
+    public DBEngine(String dbURL, String dbusr, String dbpwd) {
+    	//super(systimer, "DBEngine", DBEngine.class.toString());
     	super("DBEngine", DBEngine.class.toString());
     	LOG.info("DBEngine construct start! url=" + dbURL);
     	this.dbURL = dbURL;
@@ -60,12 +62,13 @@ public class DBEngine extends Engine {
 	protected Object processRequest(EngineRequest er) {
 		DBEngineRequest dber = (DBEngineRequest) er;
 		try {
-			if(dber.getQueryType() == QueryType.RAW) {
+			return executeQuery(dber.getQuery());
+			/*if(dber.getQueryType() == QueryType.RAW) {
 				RawDBEReq r  = (RawDBEReq) dber;
 				return executeQuery(r.getQuery());
-			}
+			}*/
 		} catch (SQLException e) {
-			LOG.error(e);
+			LOG.error("SQLException!", e);
 			e.printStackTrace();
 		}
 		return null;
@@ -86,7 +89,7 @@ public class DBEngine extends Engine {
     	}
     }
     
-    public ResultSet selectQuery(String cols, String table) throws SQLException {
+    /*public ResultSet selectQuery(String cols, String table) throws SQLException {
     	String q = "select " + cols + " from " + table;
     	return executeQuery(q);
     }
@@ -94,7 +97,7 @@ public class DBEngine extends Engine {
     public ResultSet selectQuery(String cols, String table, String where) throws SQLException {
     	String q = "select " + cols + " from " + table + " where " + where;
     	return executeQuery(q);
-    }
+    }*/
     
     /**
      * Ideal method for handling select query. Method uses HashMap args to construct the WHERE clause of the query.
@@ -107,7 +110,7 @@ public class DBEngine extends Engine {
      * @return
      * @throws SQLException
      */
-    public ResultSet selectQuery(String columns, String table, HashMap<String, Object> args) throws SQLException {
+    /*public ResultSet selectQuery(String columns, String table, HashMap<String, Object> args) throws SQLException {
     	String q = "select " + columns + " from " + table;
     	
     	//constructs where clause
@@ -127,7 +130,7 @@ public class DBEngine extends Engine {
 		where = where.substring(0, where.length() - 4); //cuts last AND in where String
 		q += where;
     	return executeQuery(q);
-    }
+    }*/
     
     /**
      * Select query for 'where' clause with single comparison only
@@ -191,7 +194,7 @@ public class DBEngine extends Engine {
     	return executeQuery(q);
     }
     
-    public void insertQuery(String values, String table) throws SQLException {
+    /*public void insertQuery(String values, String table) throws SQLException {
     	String q = "insert into " + table + " values(" + values + ")";
     	executeQuery(q);
     }
@@ -209,7 +212,7 @@ public class DBEngine extends Engine {
     	vals = vals.substring(0, vals.length() - 1); //cuts off last comma
     	String q = "insert into " + table + " values(" + vals + ")";
     	executeQuery(q);
-    }
+    }*/
     
     /**
      * @param cols Array of the column names
@@ -217,7 +220,7 @@ public class DBEngine extends Engine {
      * @param table SQL table name
      * @throws SQLException
      */
-    public void insertQuery(String[] cols, Object[] values, String table) throws SQLException {
+    /*public void insertQuery(String[] cols, Object[] values, String table) throws SQLException {
     	String scols = "";
     	String vals = "";
     	for(int i = 0; i < cols.length; i++) {
@@ -259,9 +262,9 @@ public class DBEngine extends Engine {
     	
     	String q = "insert into " + table + "(" + scols + ") values(" + vals + ")";
     	executeQuery(q);
-    }
+    }*/
     
-    public ResultSet deleteQuery(String table, HashMap<String, Object> args) throws SQLException {
+    /*public ResultSet deleteQuery(String table, HashMap<String, Object> args) throws SQLException {
     	String q = "DELETE FROM " + table;
     	
     	//constructs where clause
@@ -286,7 +289,7 @@ public class DBEngine extends Engine {
     		LOG.warn("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
     		throw new SQLException("Empty 'WHERE' statement in DELETE query not allowed in DBEngine!");
     	}
-    }
+    }*/
     
     /**
      * Ideal method for handling update query. Method uses HashMap vals to construct the 'set' clause and the HashMap args to construct 
@@ -297,7 +300,7 @@ public class DBEngine extends Engine {
      * @return 
      * @throws SQLException 
      */
-    public ResultSet updateQuery(String table, HashMap<String, Object> args, HashMap<String, Object> vals) throws SQLException {
+    /*public ResultSet updateQuery(String table, HashMap<String, Object> args, HashMap<String, Object> vals) throws SQLException {
     	String q = "update " + table;
     	
     	//constructs set clause
@@ -334,7 +337,7 @@ public class DBEngine extends Engine {
 		
 		q += set + where;
     	return executeQuery(q);
-    }
+    }*/
     
     /*public ResultSet updateQuery(String table, String args, HashMap<String, Object> vals) throws SQLException {
     	String q = "update " + table;

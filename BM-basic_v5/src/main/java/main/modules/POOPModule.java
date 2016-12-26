@@ -8,13 +8,17 @@ import devices.Property;
 import json.objects.ReqPOOP;
 import json.objects.ReqRequest;
 import json.objects.ResError;
+import json.objects.ResPOOP;
 import main.ComponentRepository;
 import main.engines.DBEngine;
+import main.engines.requests.DBEngine.UpdateDBEReq;
 import mqtt.MQTTHandler;
+import tools.IDGenerator;
 
 public class POOPModule extends AbstModule {
 	private DBEngine dbe;
 	private String propsTable = ""; //PROPERTIES table
+	private IDGenerator idg = new IDGenerator();
 
 	public POOPModule(String RTY, MQTTHandler mh, ComponentRepository cr, DBEngine dbe) {
 		super("POOPModule", RTY, new String[]{"property", "value"}, mh, cr);
@@ -27,6 +31,7 @@ public class POOPModule extends AbstModule {
 		LOG.info("Changing component " + request.cid + " property " + poop.propIndex + " to " + poop.propValue + "...");
 		updateSystem(poop);
 		updateDatabase(poop);
+		mh.publish(new ResPOOP(request.rid, request.cid));
 		LOG.info("POOP processing complete!");
 	}
 	
@@ -42,13 +47,15 @@ public class POOPModule extends AbstModule {
 		args.put("cpl_ssid", poop.propIndex);
 		HashMap<String, Object> vals = new HashMap<String, Object>(1);
 		vals.put("prop_value", String.valueOf(poop.propValue));
-		try {
+		LOG.debug("Updating component property in DB...");
+		dbe.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals, args));
+		/*try {
 			LOG.debug("Updating component property in DB...");
-			dbe.updateQuery(propsTable, args, vals);
+			//dbe.updateQuery(propsTable, args, vals);
 		} catch (SQLException e) {
 			LOG.error("Cannot update component property in DB!");
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	/**

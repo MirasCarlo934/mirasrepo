@@ -15,6 +15,7 @@ import devices.Product;
 import devices.Property;
 import json.objects.ReqRegister;
 import main.engines.DBEngine;
+import main.engines.requests.DBEngine.UpdateDBEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
 
@@ -24,7 +25,7 @@ public class ComponentRepository {
 	private MQTTHandler mh;
 	private Hashtable<String, Component> components = new Hashtable<String, Component>(1);
 	private Hashtable<String, String> registeredMACs = new Hashtable<String, String>(1,1); //registered MAC and corresponding SSID
-	private IDGenerator idgen = new IDGenerator();
+	private IDGenerator idg = new IDGenerator();
 	private DBEngine dbm;
 	//private Catalog catalog;
 	private String deviceQuery;
@@ -142,17 +143,28 @@ public class ComponentRepository {
 		Property property = device.getProperty(propID);
 		property.setValue(propValue);
 		
-		try {
+		LOG.info("Updating property:" + propID + " of device:" + deviceID + " in DB...");
+		HashMap<String, Object> args = new HashMap<String, Object>(1);
+		args.put("CPL_SSID", propID);
+		HashMap<String, Object> vals = new HashMap<String, Object>(1);
+		vals.put("prop_value", String.valueOf(propValue));
+		//dbm.updateQuery("comp_properties", args, vals);
+		dbm.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), "comp_properties", 
+				args, vals));
+		LOG.info("Property updated!");
+		/*try {
 			LOG.info("Updating property:" + propID + " of device:" + deviceID + " in DB...");
 			HashMap<String, Object> args = new HashMap<String, Object>(1);
 			args.put("CPL_SSID", propID);
 			HashMap<String, Object> vals = new HashMap<String, Object>(1);
 			vals.put("prop_value", String.valueOf(propValue));
-			dbm.updateQuery("comp_properties", args, vals);
+			//dbm.updateQuery("comp_properties", args, vals);
+			dbm.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), "comp_properties", 
+					args, vals));
 			LOG.info("Property updated!");
 		} catch (SQLException e) {
 			LOG.error("Cannot update property in DB!", e);
-		}
+		}*/
 	}
 	
 	public void addComponent(Component device) {

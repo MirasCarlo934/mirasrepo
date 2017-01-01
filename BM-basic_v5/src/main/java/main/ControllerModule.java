@@ -81,7 +81,7 @@ public class ControllerModule implements Runnable {
 		
 		//#4
 		if(json.getString("RTY").equals("register"));
-		else if(!devices.containsDevice(json.getString("CID"))) {
+		else if(!devices.containsComponent(json.getString("CID"))) {
 			sendError("CID does not exist!");
 			return false;
 		}

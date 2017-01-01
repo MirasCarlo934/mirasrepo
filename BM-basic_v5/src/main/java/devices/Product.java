@@ -55,7 +55,7 @@ public class Product {
 	}*/
 	
 	public void addProperty(Property prop) {
-		properties.put(prop.getPropertyID(), prop);
+		properties.put(prop.getSSID(), prop);
 	}
 	
 	public Property getProperty(String name) {

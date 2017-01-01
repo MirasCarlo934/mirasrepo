@@ -1,7 +1,7 @@
 package devices;
 
 public class Property {
-	private String propertyID;
+	private String id;
 	private String displayName;
 	private String systemName; //[generic name]-[index]
 	private String index;
@@ -11,7 +11,7 @@ public class Property {
 	private int value = 0;
 	
 	public Property(String propertyID, String index, String genericName, String dispname, String mode, int minValue, int maxValue) {
-		this.setPropertyID(propertyID);
+		this.setSSID(index);
 		this.setDisplayName(dispname);
 		this.setSystemName(genericName, index);
 		this.setIndex(index);
@@ -80,15 +80,15 @@ public class Property {
 	 * Returns the generic SSID of the property in COMPROPLIST
 	 * @return the propertyID
 	 */
-	public String getPropertyID() {
-		return propertyID;
+	public String getSSID() {
+		return id;
 	}
 
 	/**
 	 * @param propertyID the propertyID to set
 	 */
-	public void setPropertyID(String propertyID) {
-		this.propertyID = propertyID;
+	public void setSSID(String propertyID) {
+		this.id = propertyID;
 	}
 
 	/**

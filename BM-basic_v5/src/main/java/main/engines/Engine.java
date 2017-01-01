@@ -59,7 +59,7 @@ public abstract class Engine extends TimerTask {
 			return resQueue.get(engineRequest.getId());
 		} else {
 			LOG.error("Processing failure!");
-			return new ResError(name, "BM", "Processing failure!");
+			return new ResError(name, "BM", "N/A", "Processing failure!");
 		}
 	}
 	
@@ -80,7 +80,8 @@ public abstract class Engine extends TimerTask {
 				resQueue.put(er.getId(), res);
 				//return processRequest(engineRequest);
 			} else {
-				resQueue.put(er.getId(), new ResError(name, "BM", "Invalid EngineRequest for " + name));
+				resQueue.put(er.getId(), new ResError(name, "BM", "N/A", 
+						"Invalid EngineRequest for " + name));
 				//return new ResError(name, "BM", "Invalid EngineRequest for " + name);
 			}
 			counter++;

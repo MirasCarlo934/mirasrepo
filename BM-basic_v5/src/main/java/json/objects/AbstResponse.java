@@ -30,11 +30,13 @@ public abstract class AbstResponse {
 	 * @param rid
 	 * @param cid
 	 */
-	public AbstResponse(String rid, String cid, boolean success) {
+	public AbstResponse(String rid, String cid, String rty, boolean success) {
 		this.rid = rid;
 		this.cid = cid;
+		this.rty = rty;
 		this.success = success;
 		json.put("RID", rid);
+		json.put("RTY", rty);
 		json.put("success", success);
 	}
 	
@@ -46,8 +48,10 @@ public abstract class AbstResponse {
 	public AbstResponse(AbstRequest request, boolean success) {
 		this.rid = request.rid;
 		this.cid = request.cid;
+		this.rty = request.rty;
 		this.success = success;
 		json.put("RID", rid);
+		json.put("RTY", rty);
 		json.put("success", success);
 	}
 	

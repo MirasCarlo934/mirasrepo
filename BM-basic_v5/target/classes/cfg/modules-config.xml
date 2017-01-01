@@ -21,6 +21,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="cire" ref="CIREngine"/>
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
 	<bean id="detach" class="main.modules.DetachmentModule" scope="prototype">

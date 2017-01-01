@@ -17,7 +17,7 @@ public class BusinessMachine {
 	private String coreConfig = "cfg/core-config.xml";
 	public static ApplicationContext context;
 	private static final Logger LOG = Logger.getLogger("BM_LOG.main");
-	//private static final Logger logger = Logger.getLogger(BusinessMachine.class);
+	private static String bm_props_file = "/home/pi/test/BM/properties/bm.properties";
 	
 	public BusinessMachine() {
 		// TODO Auto-generated constructor stub
@@ -36,10 +36,23 @@ public class BusinessMachine {
 				String val = s[1];
 				if(arg.equals("cir.fileloc")) {
 					try {
-						FileHandler fh = new FileHandler("src/main/resources/cfg/bm.properties");
+						FileHandler fh = new FileHandler(bm_props_file);
 						Properties p = new Properties();
 						p.load(fh.getFileReader());
 						p.setProperty("cir.file_location", val);
+						fh.saveProperties(p, null);
+					} catch(IOException e) {
+						LOG.fatal("Cannot load properties file!");
+						e.printStackTrace();
+						b = false;
+					}
+				} else if (arg.equals("bm.props.fileloc")) {
+					try {
+						bm_props_file = val;
+						FileHandler fh = new FileHandler(val);
+						Properties p = new Properties();
+						p.load(fh.getFileReader());
+						p.setProperty("bm.properties.filepath", val);
 						fh.saveProperties(p, null);
 					} catch(IOException e) {
 						LOG.fatal("Cannot load properties file!");

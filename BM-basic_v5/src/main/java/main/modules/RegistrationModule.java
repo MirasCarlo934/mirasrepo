@@ -64,7 +64,7 @@ public class RegistrationModule extends AbstModule {
 				product = new Product(rs2);
 			}
 		} catch (SQLException e) {
-			error(new ResError(reg.rid, reg.cid, "Cannot process register request!"));
+			error(new ResError(reg, "Cannot process register request!"));
 			e.printStackTrace();
 		}
 		String ssid = idg.generateMixedCharID(4, ids.toArray(new String[0]));
@@ -132,9 +132,9 @@ public class RegistrationModule extends AbstModule {
 		LOG.trace("Additional secondary request parameter checking...");
 		ReqRegister reg = new ReqRegister(request.getJSON());
 		boolean b = true;
-		if(cr.containsDevice(reg.mac)) {
+		if(cr.containsComponent(reg.mac)) {
 			Component c = cr.getComponent(reg.mac);
-			error(new ResError(reg.rid, reg.cid, "Component already exists in system!"));
+			error(new ResError(reg, "Component already exists in system!"));
 			//LOG.debug("HEY");
 			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
 			return false;
@@ -142,22 +142,24 @@ public class RegistrationModule extends AbstModule {
 		try {
 			ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
 			if (!rs2.isBeforeFirst() ) {    
-			    error(new ResError(reg.rid, reg.cid, "Product ID is invalid!"));
+			    error(new ResError(reg, "Product ID is invalid!"));
 			    return false;
 			}
 			
 			//ResultSet rs3 = dbe.selectQuery("ssid", "rooms");
 			b = false;
 			Object o = dbe.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), 
-					"rooms", new String[]{"ssid"}));
+					"rooms"));
 			if(o.getClass().equals(ResError.class)) {
 				error((ResError) o);
 			} else {
 				ResultSet rs3 = (ResultSet) o;
 				while(rs3.next()) {
 					//LOG.debug(rs3.getString("ssid"));
-					if(reg.room.equals(rs3.getString("ssid"))) {
+					if(reg.room.equals(rs3.getString("ssid")) || 
+							reg.room.equalsIgnoreCase(rs3.getString("name"))) {
 						b = true;
+						request.getJSON().put("roomID", rs3.getString("ssid"));
 						return true;
 					}
 				}

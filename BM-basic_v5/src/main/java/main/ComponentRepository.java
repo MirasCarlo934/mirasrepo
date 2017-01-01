@@ -202,7 +202,7 @@ public class ComponentRepository {
 	 * @param str The SSID or MAC to be tested
 	 * @return
 	 */
-	public boolean containsDevice(String str) {
+	public boolean containsComponent(String str) {
 		if(components.containsKey(str) || registeredMACs.containsKey(str)) {
 			return true;
 		} else {

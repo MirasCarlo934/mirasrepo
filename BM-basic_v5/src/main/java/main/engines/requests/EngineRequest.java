@@ -4,12 +4,17 @@ import main.engines.Engine;
 
 public abstract class EngineRequest {
 	private String id; //the ID of the EngineRequest
-	private String engineType; //the Engine that can process this EngineRequest
+	private String engineType; //the Engine class string that can process this EngineRequest
 	protected Object response = null; // the response of the Engine
 	
-	public EngineRequest(String id, String engineType) {
+	/**
+	 * 
+	 * @param id The unique ID of this EngineRequest, given upon instantiation of the EngineRequest
+	 * @param engineClass The Class of the Engine in Sring format
+	 */
+	public EngineRequest(String id, String engineClass) {
 		this.id = id;
-		this.engineType = engineType;
+		this.engineType = engineClass;
 	}
 
 	/**

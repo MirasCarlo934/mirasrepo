@@ -19,4 +19,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="dbusr" value="${db.dbusr}"/>
 		<constructor-arg name="dbpwd" value="${db.dbpwd}"/>
 	</bean>
+	
+	<bean id="CIREngine" class="main.engines.CIREngine" scope="singleton">
+		<!-- <constructor-arg name="systimer" ref="SystemTimer"/> -->
+		<constructor-arg name="bm_props_filepath" value="${bm.properties.filepath}"/>
+		<constructor-arg name="componentRepository" ref="Components"/>
+	</bean>
 </beans>

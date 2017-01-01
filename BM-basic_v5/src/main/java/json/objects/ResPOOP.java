@@ -4,8 +4,8 @@ public class ResPOOP extends AbstResponse {
 	private String propSSID;
 	private int propVal;
 
-	public ResPOOP(String rid, String cid, String propSSID, int propVal) {
-		super(rid, cid, true);
+	public ResPOOP(String rid, String cid, String rty, String propSSID, int propVal) {
+		super(rid, cid, rty, true);
 		setPropSSID(propSSID);
 		setPropVal(propVal);
 	}

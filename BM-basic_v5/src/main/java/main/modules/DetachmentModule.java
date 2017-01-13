@@ -17,8 +17,8 @@ public class DetachmentModule extends AbstModule {
 	private DBEngine dbe;
 	private IDGenerator idg = new IDGenerator();
 
-	public DetachmentModule(String RTY, MQTTHandler mh, ComponentRepository cr, DBEngine dbe) {
-		super("DetachmentModule", RTY, new String[0], mh, cr);
+	public DetachmentModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository cr, DBEngine dbe) {
+		super("DetachmentModule", RTY, params, mh, cr);
 		this.dbe = dbe;
 	}
 

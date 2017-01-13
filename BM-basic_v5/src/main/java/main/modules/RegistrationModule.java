@@ -27,8 +27,8 @@ public class RegistrationModule extends AbstModule {
 	private DBEngine dbe;
 	private String productQuery;
 	
-	public RegistrationModule(String RTY, MQTTHandler mh, ComponentRepository components, DBEngine dbe, String productQuery) {
-		super("RegistrationModule", RTY, new String[]{"name", "prodID", "roomID"}, mh, components);
+	public RegistrationModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository components, DBEngine dbe, String productQuery) {
+		super("RegistrationModule", RTY, params, mh, components);
 		this.dbe = dbe;
 		this.productQuery = productQuery;
 	}

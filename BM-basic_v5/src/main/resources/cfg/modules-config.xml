@@ -13,6 +13,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="components" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
 		<constructor-arg name="productQuery" value="${product.queryString}"/>
+		<constructor-arg name="params">
+			<list>
+				<value>${registration.param.name}</value>
+				<value>${registration.param.productID}</value>
+				<value>${registration.param.roomID}</value>
+			</list>
+		</constructor-arg>
 		<property name="comsTable" value="${table.comstable}"/>
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
@@ -22,6 +29,12 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
 		<constructor-arg name="cire" ref="CIREngine"/>
+		<constructor-arg name="params">
+			<list>
+				<value>${poop.param.propertyID}</value>
+				<value>${poop.param.propertyValue}</value>
+			</list>
+		</constructor-arg>
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
 	<bean id="detach" class="main.modules.DetachmentModule" scope="prototype">
@@ -29,6 +42,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="params">
+			<list>
+			</list>
+		</constructor-arg>
 		<property name="propsTable" value="${table.propstable}"/>
 		<property name="comsTable" value="${table.comstable}"/>
 	</bean>

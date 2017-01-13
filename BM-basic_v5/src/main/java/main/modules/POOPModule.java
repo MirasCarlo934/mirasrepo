@@ -29,8 +29,8 @@ public class POOPModule extends AbstModule {
 	private String propsTable = ""; //PROPERTIES table
 	private IDGenerator idg = new IDGenerator();
 
-	public POOPModule(String RTY, MQTTHandler mh, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
-		super("POOPModule", RTY, new String[]{"property", "value"}, mh, cr);
+	public POOPModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
+		super("POOPModule", RTY, params, mh, cr);
 		this.dbe = dbe;
 		this.cire = cire;
 	}

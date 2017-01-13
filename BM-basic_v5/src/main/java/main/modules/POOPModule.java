@@ -62,9 +62,15 @@ public class POOPModule extends AbstModule {
 		LOG.debug("Updating affected component properties in system...");
 		//LOG.fatal(poop.propIndex);
 		//Vector<Statement> rules = cire.getCIRStatementsWithArgComponent(c, c.getProperty(poop.propIndex));
-		@SuppressWarnings("unchecked")
-		Vector<Statement> rules = (Vector<Statement>) cire.forwardRequest(new GetStatementsCIREReq(
-				idg.generateMixedCharID(10), c, c.getProperty(poop.propSSID)));
+		Object o = cire.forwardRequest(new GetStatementsCIREReq(idg.generateMixedCharID(10), 
+				c, c.getProperty(poop.propSSID)));
+		Vector<Statement> rules = new Vector<Statement>(0);
+		if(o.getClass().equals(ResError.class)) {
+			error((ResError) o);
+		}
+		else {
+			rules = (Vector<Statement>) o;
+		}
 		for(int i = 0; i < rules.size(); i++) {
 			Statement rule = rules.get(i);
 			Argument[] args = rule.getArguments();
@@ -161,9 +167,15 @@ public class POOPModule extends AbstModule {
 		LOG.debug("Updating affected component properties in DB...");
 		Component c = cr.getComponent(poop.cid);
 		//Vector<Statement> rules = cire.getCIRStatementsWithArgComponent(c, c.getProperty(poop.propIndex));
-		@SuppressWarnings("unchecked")
-		Vector<Statement> rules = (Vector<Statement>) cire.forwardRequest(new GetStatementsCIREReq(
-				idg.generateMixedCharID(10), c, c.getProperty(poop.propSSID)));
+		Object o = cire.forwardRequest(new GetStatementsCIREReq(idg.generateMixedCharID(10), 
+				c, c.getProperty(poop.propSSID)));
+		Vector<Statement> rules = new Vector<Statement>(0);
+		if(o.getClass().equals(ResError.class)) {
+			error((ResError) o);
+		}
+		else {
+			rules = (Vector<Statement>) o;
+		}
 		for(int i = 0; i < rules.size(); i++) {
 			Statement rule = rules.get(i);
 			Argument[] args = rule.getArguments();

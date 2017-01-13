@@ -94,8 +94,22 @@ public class FileHandler {
 		writer.newLine();
 		writer.write(str);
 		writer.close();
+		logger.trace("Append successful!");
 	}
 	
+	/**
+	 * Writes the specified String to the file. Overwrites all pre-existing contents of the file.
+	 * @param str The String to be written
+	 * @throws IOException
+	 */
+	public void writeToFile(String str) throws IOException {
+		logger.trace("Writing ''" + str + "'' to " + file.getName());
+		FileWriter fw = new FileWriter(file.getAbsolutePath(), false);
+		BufferedWriter writer = new BufferedWriter(fw);
+		writer.write(str);
+		writer.close();
+		logger.trace("Write successful!");
+	}
 	/**
 	 * Checks the if the file extension is the same with the extension specified.
 	 * 

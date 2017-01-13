@@ -74,7 +74,7 @@ public class DBEngine extends Engine {
 		return null;
 	}
     
-    public ResultSet executeQuery(String query) throws SQLException {
+    private ResultSet executeQuery(String query) throws SQLException {
     	Statement stmt = null;
     	try{
     		stmt = getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

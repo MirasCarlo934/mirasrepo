@@ -42,7 +42,7 @@ public abstract class Engine extends TimerTask {
 	 * 		if the EngineRequest is invalid
 	 */
 	public Object forwardRequest(EngineRequest engineRequest) {
-		LOG.debug("Adding " + engineRequest.getClass().toString() + " " + 
+		LOG.trace("Adding " + engineRequest.getClass().toString() + " " + 
 				engineRequest.getId() + " to " + name + "!");
 		reqQueue.put(engineRequest.getId(), engineRequest);
 		/*Thread t = new Thread(this, name + "Process" + counter);
@@ -55,10 +55,10 @@ public abstract class Engine extends TimerTask {
 			if(now - processStart > 10000) break;
 		}
 		if(resQueue.containsKey(engineRequest.getId())) {
-			LOG.info("EngineRequest " + engineRequest.getId() + " processing complete!");
+			LOG.trace("EngineRequest " + engineRequest.getId() + " processing complete!");
 			return resQueue.get(engineRequest.getId());
 		} else {
-			LOG.error("Processing failure!");
+			LOG.error("EngineRequest " + engineRequest.getId() + " processing failure!");
 			return new ResError(name, "BM", "N/A", "Processing failure!");
 		}
 	}

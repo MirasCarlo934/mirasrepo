@@ -14,7 +14,9 @@ import devices.Component;
 import devices.Product;
 import devices.Property;
 import json.objects.ReqRegister;
+import json.objects.ResError;
 import main.engines.DBEngine;
+import main.engines.requests.DBEngine.RawDBEReq;
 import main.engines.requests.DBEngine.UpdateDBEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
@@ -42,7 +44,13 @@ public class ComponentRepository {
 	public void populateDevices() {
 		try {
 			LOG.info("Populating Devices...");
-			ResultSet rs = dbm.executeQuery(deviceQuery);
+			Object o = dbm.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), deviceQuery));
+			if(o.getClass().equals(ResError.class)) {
+				ResError error = (ResError) o;
+				LOG.error(error.message);
+				return;
+			}
+			ResultSet rs = (ResultSet) o;
 			while(rs.next()) {
 				String SSID = rs.getString("SSID");
 				String topic = rs.getString("topic");
@@ -56,7 +64,14 @@ public class ComponentRepository {
 				int prop_val = rs.getInt("prop_value");
 				
 				if(!components.containsKey(SSID)) { //true if devices does NOT contain this device
-					ResultSet rs2 = dbm.executeQuery(productQuery + " and cpl.COM_TYPE = '" + prod_id + "'");
+					Object o2 = dbm.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
+							productQuery + " and cpl.COM_TYPE = '" + prod_id + "'"));
+					if(o2.getClass().equals(ResError.class)) {
+						ResError error = (ResError) o2;
+						LOG.error(error.message);
+						return;
+					}
+					ResultSet rs2 = (ResultSet) o2;
 					LOG.debug("Adding device: " + SSID + " into Devices");
 					Component com = new Component(SSID, MAC, name, topic, room, active, new Product(rs2));
 					addComponent(com);

@@ -140,7 +140,14 @@ public class RegistrationModule extends AbstModule {
 			return false;
 		}
 		try {
-			ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
+			Object obj = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
+					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'"));
+			if(obj.getClass().equals(ResError.class)) {
+				ResError error = (ResError) obj;
+				error(error);
+				return false;
+			}
+			ResultSet rs2 = (ResultSet) obj;
 			if (!rs2.isBeforeFirst() ) {    
 			    error(new ResError(reg, "Product ID is invalid!"));
 			    return false;

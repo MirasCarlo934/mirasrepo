@@ -1,5 +1,6 @@
 package main;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -10,14 +11,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
+import main.engines.OHEngine;
+import main.engines.requests.CIREngine.UpdateCIREReq;
+import main.engines.requests.OHEngine.StartOHEReq;
 import mqtt.MQTTHandler;
 import tools.FileHandler;
+import tools.IDGenerator;
 
 public class BusinessMachine {
 	private String coreConfig = "cfg/core-config.xml";
 	public static ApplicationContext context;
 	private static final Logger LOG = Logger.getLogger("BM_LOG.main");
-	private static String bm_props_file = "/home/pi/test/BM/properties/bm.properties";
+	private static String bm_props_file = "src/main/resources/cfg/bm.properties";
+	private static IDGenerator idg = new IDGenerator();
 	
 	public BusinessMachine() {
 		// TODO Auto-generated constructor stub
@@ -27,41 +33,50 @@ public class BusinessMachine {
 		//initialization phase
 		LOG.info("Initializing BM...");
 		boolean b = true;
+		Properties p = new Properties();
+		FileHandler fh = null;
+		try {
+			fh = new FileHandler(bm_props_file);
+			p.load(fh.getFileReader());
+		} catch (FileNotFoundException e1) {
+			LOG.warn("bm.properties file not found, filepath must be set in the args");
+		} catch (IOException e) {
+			LOG.warn("bm.properties file not found, filepath must be set in the args");
+		}
+		
 		for(int i = 0; i < args.length; i++) {
 			String[] s = args[i].split(":");
 			if(s.length < 2 || s.length > 2) {
-				LOG.fatal("Improper arguments!");
+				LOG.error("Improper arguments!");
 			} else {
 				String arg = s[0];
 				String val = s[1];
-				if(arg.equals("cir.fileloc")) {
+				if (arg.equals("bm.properties.filepath")) { //this MUST be specified first
+					bm_props_file = val;
 					try {
-						FileHandler fh = new FileHandler(bm_props_file);
-						Properties p = new Properties();
+						fh = new FileHandler(bm_props_file);
 						p.load(fh.getFileReader());
-						p.setProperty("cir.file_location", val);
-						fh.saveProperties(p, null);
-					} catch(IOException e) {
-						LOG.fatal("Cannot load properties file!");
+					} catch (FileNotFoundException e) {
+						LOG.fatal("Cannot find bm.properties file in specified location! "
+								+ "BM cannot start!");
+						errorStartup();
+					} catch (IOException e) {
+						LOG.fatal("Cannot load bm.properties file!", e);
 						e.printStackTrace();
-						b = false;
 					}
-				} else if (arg.equals("bm.props.fileloc")) {
-					try {
-						bm_props_file = val;
-						FileHandler fh = new FileHandler(val);
-						Properties p = new Properties();
-						p.load(fh.getFileReader());
-						p.setProperty("bm.properties.filepath", val);
-						fh.saveProperties(p, null);
-					} catch(IOException e) {
-						LOG.fatal("Cannot load properties file!");
-						e.printStackTrace();
-						b = false;
-					}
+				}
+				if(fh != null) { //to set the property
+					p.setProperty(arg, val);
+				}
+				else {
+					LOG.fatal("bm.properties file location not yet specified! "
+							+ "BM cannot start!");
+					errorStartup();
+					break;
 				}
 			}
 		}
+		if(args.length > 0) fh.saveProperties(p, null);
 		
 		//startup phase
 		if(b) {
@@ -71,6 +86,9 @@ public class BusinessMachine {
 				//SpringApplication.run(BusinessMachine.class, args);
 				MQTTHandler mh = (MQTTHandler) context.getBean("MQTTHandler");
 				mh.connectToMQTT();
+				OHEngine ohe = (OHEngine) context.getBean("OHEngine");
+				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)));
+				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
 				LOG.info("BusinessMachine started!");
 			} catch (Exception e) {
 				LOG.info("BM threw exception");
@@ -81,6 +99,10 @@ public class BusinessMachine {
 		else {
 			LOG.fatal("BM initialization process failed!");
 		}
+	}
+	
+	public static void errorStartup() {
+		LOG.fatal("Cannot start BM! See error logs for more info.");
 	}
 	
 	 /**
@@ -101,4 +123,48 @@ public class BusinessMachine {
         context = new ClassPathXmlApplicationContext(cfgFiles);
         LOG.info("Config file " + coreConfig +" loaded.");
     }
+    
+    /*
+     * in setup phase
+     * 
+     * String arg = s[0];
+	String val = s[1];
+	if(arg.equals("cir.fileloc")) {
+		try {
+			FileHandler fh = new FileHandler(bm_props_file);
+			Properties p = new Properties();
+			p.load(fh.getFileReader());
+			p.setProperty("cir.file_location", val);
+			fh.saveProperties(p, null);
+		} catch(IOException e) {
+			LOG.fatal("Cannot load properties file!");
+			e.printStackTrace();
+			b = false;
+		}
+	} else if (arg.equals("bm.props.fileloc")) {
+		try {
+			bm_props_file = val;
+			FileHandler fh = new FileHandler(val);
+			Properties p = new Properties();
+			p.load(fh.getFileReader());
+			p.setProperty("bm.properties.filepath", val);
+			fh.saveProperties(p, null);
+		} catch(IOException e) {
+			LOG.fatal("Cannot load properties file!");
+			e.printStackTrace();
+			b = false;
+		}
+	} else if (arg.equals("bm.os")) {
+		try {
+			FileHandler fh = new FileHandler(val);
+			Properties p = new Properties();
+			p.load(fh.getFileReader());
+			p.setProperty("bm.os", val);
+			fh.saveProperties(p, null);
+		} catch(IOException e) {
+			LOG.fatal("Cannot load properties file!");
+			e.printStackTrace();
+			b = false;
+		}
+	}*/
 }

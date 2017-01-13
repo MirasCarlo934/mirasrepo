@@ -57,7 +57,7 @@ public class CIREngine extends Engine {
 	
 	public CIREngine(String bm_props_filepath, ComponentRepository componentRepository) {
 		super("CIREngine", CIREngine.class.toString());
-		LOG.info("CIREngine started!");
+		LOG.info("CIREngine started!" + bm_props_filepath);
 		cr = componentRepository;
 		try {
 			bm_props_file = new FileHandler(bm_props_filepath);
@@ -86,19 +86,20 @@ public class CIREngine extends Engine {
 			}
 			return get.getResponse();
 		}
-		
-		return null;
+		else {
+			return null;
+		}
 	}
 	
 	/**
 	 * Updates the CIR statement records of the CIREngine by reading from the CIR file and interpreting its contents.
 	 */
-	private void update() {
+	protected void update() {
 		LOG.trace("Updating CIR records...");
 		try {
 			//interpret(TransTechSystem.config.getInstructionPropsConfig().getRulesFileLocation());
 			bm_props.load(bm_props_file.getFileReader());
-			cir_filepath = bm_props.getProperty("cir.file_location");
+			cir_filepath = bm_props.getProperty("cir.filepath");
 			interpret(cir_filepath);
 			LOG.trace("CIR records updated!");
 		} catch (IOException e) {
@@ -381,7 +382,7 @@ public class CIREngine extends Engine {
 	 * @param p The Property object
 	 * @return The Vector containing all the CIR statements found
 	 */
-	private Vector<Statement> getCIRStatementsWithArgComponent(Component c, Property p) {
+	protected Vector<Statement> getCIRStatementsWithArgComponent(Component c, Property p) {
 		LOG.debug("Retrieving CIR for component " + c.getSSID() + " with property " + p.getSystemName());
 		Vector<Statement> statements = new Vector<Statement>(1,1);
 		for(int i = 0; i < cirStatements.size(); i++) {
@@ -407,7 +408,7 @@ public class CIREngine extends Engine {
 	 * 
 	 * @return the cirStatements
 	 */
-	private Vector<Statement> getCIRStatements() {
+	protected Vector<Statement> getCIRStatements() {
 		return cirStatements;
 	}
 }

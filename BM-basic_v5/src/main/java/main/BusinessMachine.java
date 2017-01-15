@@ -3,6 +3,8 @@ package main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -11,6 +13,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
+import components.Component;
+import components.properties.Property;
 import main.engines.OHEngine;
 import main.engines.requests.CIREngine.UpdateCIREReq;
 import main.engines.requests.OHEngine.StartOHEReq;
@@ -22,12 +26,8 @@ public class BusinessMachine {
 	private String coreConfig = "cfg/core-config.xml";
 	public static ApplicationContext context;
 	private static final Logger LOG = Logger.getLogger("BM_LOG.main");
-	private static String bm_props_file = "src/main/resources/cfg/bm.properties";
+	private static String bm_props_file = "configuration/bm.properties";
 	private static IDGenerator idg = new IDGenerator();
-	
-	public BusinessMachine() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public static void main(String[] args) {
 		//initialization phase
@@ -83,12 +83,53 @@ public class BusinessMachine {
 			BusinessMachine bm = new BusinessMachine();
 			try {
 				bm.setupSpring();
-				//SpringApplication.run(BusinessMachine.class, args);
-				MQTTHandler mh = (MQTTHandler) context.getBean("MQTTHandler");
+				final MQTTHandler mh = (MQTTHandler) context.getBean("MQTTHandler");
+				final ComponentRepository cr = (ComponentRepository) context.getBean("Components");
 				mh.connectToMQTT();
 				OHEngine ohe = (OHEngine) context.getBean("OHEngine");
 				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)));
 				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
+				
+				//updates OH items' states
+				final Thread thisThread = Thread.currentThread();
+				final class OHUpdater extends TimerTask {
+					@Override
+					public void run() {
+						LOG.trace("UPDATE!");
+						LOG.info("Updating OH items' states...");
+						Component[] coms = cr.getAllComponents();
+						for(int i = 0; i < coms.length; i++) {
+							Component c = coms[i];
+							Property[] props = c.getProperties().values().toArray(new Property[0]);
+							for(int j = 0; j < props.length; j++) {
+								Property prop = props[j];
+								LOG.trace("Updating property " + prop.getIndex() + " in OH...");
+								mh.publish("openhab/" + c.getTopic(), prop.getIndex() + "_" 
+										+ prop.getValue());
+							}
+						}
+						LOG.debug("Update complete!");
+						try {
+							synchronized (thisThread) {
+								thisThread.notify();
+							}
+						} catch (IllegalMonitorStateException e) {
+							LOG.error("Cannot start 'main' thread!", e);
+							e.printStackTrace();
+						}
+					}
+			    }
+				Timer t = new Timer("OHUpdater");
+				OHUpdater ohUpdater = new OHUpdater();
+				t.schedule(ohUpdater, 2000);
+				try {
+					synchronized (thisThread) {
+						thisThread.wait();
+					}
+				} catch (IllegalMonitorStateException e) {
+					LOG.error(e);
+					e.printStackTrace();
+				}
 				LOG.info("BusinessMachine started!");
 			} catch (Exception e) {
 				LOG.info("BM threw exception");
@@ -123,6 +164,8 @@ public class BusinessMachine {
         context = new ClassPathXmlApplicationContext(cfgFiles);
         LOG.info("Config file " + coreConfig +" loaded.");
     }
+    
+    
     
     /*
      * in setup phase

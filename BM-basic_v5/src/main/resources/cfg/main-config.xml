@@ -7,6 +7,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:annotation-config/>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<!-- <value>..\..\..\configuration\bm.properties</value> -->
+			<value>file:configuration/bm.properties</value>
+		</property>
+	</bean>
 	<!-- <import resource="modules-config.xml"/> -->
 	
 	<bean id="Components" class="main.ComponentRepository">

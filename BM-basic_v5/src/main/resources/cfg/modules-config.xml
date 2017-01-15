@@ -34,6 +34,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="cire" ref="CIREngine"/>
 		<constructor-arg name="propIDParam" value="${poop.param.propertyID}"/>
 		<constructor-arg name="propValParam" value="${poop.param.propertyValue}"/>
+		<constructor-arg name="ohe" ref="OHEngine"></constructor-arg>
 		<!-- <constructor-arg name="params">
 			<list>
 				<value>${poop.param.propertyID}</value>

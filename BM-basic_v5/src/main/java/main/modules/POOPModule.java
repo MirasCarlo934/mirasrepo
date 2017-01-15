@@ -17,6 +17,7 @@ import json.objects.ResPOOP;
 import main.ComponentRepository;
 import main.engines.CIREngine;
 import main.engines.DBEngine;
+import main.engines.OHEngine;
 import main.engines.requests.CIREngine.GetStatementsCIREReq;
 import main.engines.requests.CIREngine.UpdateCIREReq;
 import main.engines.requests.DBEngine.UpdateDBEReq;
@@ -26,12 +27,14 @@ import tools.IDGenerator;
 public class POOPModule extends AbstModule {
 	private DBEngine dbe;
 	private CIREngine cire;
+	private OHEngine ohe;
 	private String propIDParam;
 	private String propValParam;
 	private String propsTable = ""; //PROPERTIES table
 	private IDGenerator idg = new IDGenerator();
 
-	public POOPModule(String RTY, String propIDParam, String propValParam, MQTTHandler mh, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
+	public POOPModule(String RTY, String propIDParam, String propValParam, MQTTHandler mh, 
+			OHEngine ohe, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
 		super("POOPModule", RTY, new String[]{propIDParam, propValParam}, mh, cr);
 		this.dbe = dbe;
 		this.cire = cire;
@@ -42,6 +45,7 @@ public class POOPModule extends AbstModule {
 	@Override
 	protected void process(ReqRequest request) {
 		ReqPOOP poop = new ReqPOOP(request);
+		Component c = cr.getComponent(poop.cid);
 		LOG.info("Changing component " + request.cid + " property " 
 				+ poop.propSSID + " to " + poop.propValue + "...");
 		//cire.update();
@@ -49,6 +53,7 @@ public class POOPModule extends AbstModule {
 		updateSystem(poop);
 		updateDatabase(poop);
 		mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
+		mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
 		LOG.info("POOP processing complete!");
 	}
 	
@@ -144,8 +149,12 @@ public class POOPModule extends AbstModule {
 						ExecutionBlock exec = execs[k];
 						Component com = cr.getComponent(exec.getComID());
 						com.setPropertyValue(exec.getPropName(), Integer.parseInt(exec.getPropValue()));
+						//updates the physical component
 						mh.publish(com.getTopic(), new ResPOOP(poop.rid, com.getSSID(), poop.rty,
 								exec.getPropName(), Integer.parseInt(exec.getPropValue())));
+						//updates OpenHAB component item
+						mh.publish("openhab/" + com.getTopic(), exec.getPropName() + "_"
+								+ exec.getPropValue());
 					}
 				}					
 			}

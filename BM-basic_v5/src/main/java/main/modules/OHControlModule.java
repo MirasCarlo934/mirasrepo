@@ -2,6 +2,7 @@ package main.modules;
 
 import json.objects.ReqOHCommand;
 import json.objects.ReqRequest;
+import json.objects.ResBasic;
 import json.objects.ResError;
 import main.ComponentRepository;
 import main.engines.OHEngine;
@@ -43,6 +44,7 @@ public class OHControlModule extends AbstModule {
 		
 		if(!o.getClass().equals(ResError.class)) {
 			LOG.debug("OpenHAB command processing complete!");
+			mh.publish(new ResBasic(rohc, true));
 		} else {
 			error((ResError) o);
 		}

@@ -8,8 +8,8 @@ import cir.ArgOperator;
 import cir.Argument;
 import cir.ExecutionBlock;
 import cir.Statement;
-import devices.Component;
-import devices.Property;
+import components.Component;
+import components.properties.Property;
 import json.objects.ReqPOOP;
 import json.objects.ReqRequest;
 import json.objects.ResError;
@@ -26,13 +26,17 @@ import tools.IDGenerator;
 public class POOPModule extends AbstModule {
 	private DBEngine dbe;
 	private CIREngine cire;
+	private String propIDParam;
+	private String propValParam;
 	private String propsTable = ""; //PROPERTIES table
 	private IDGenerator idg = new IDGenerator();
 
-	public POOPModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
-		super("POOPModule", RTY, params, mh, cr);
+	public POOPModule(String RTY, String propIDParam, String propValParam, MQTTHandler mh, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
+		super("POOPModule", RTY, new String[]{propIDParam, propValParam}, mh, cr);
 		this.dbe = dbe;
 		this.cire = cire;
+		this.propIDParam = propIDParam;
+		this.propValParam = propValParam;
 	}
 
 	@Override
@@ -267,7 +271,7 @@ public class POOPModule extends AbstModule {
 	@Override
 	protected boolean additionalRequestChecking(ReqRequest request) {
 		boolean b = false;
-		ReqPOOP poop = new ReqPOOP(request.getJSON());
+		ReqPOOP poop = new ReqPOOP(request.getJSON(), propIDParam, propValParam);
 		
 		Component c = cr.getComponent(poop.cid);
 		if(c.getProperty(poop.propSSID) != null) {

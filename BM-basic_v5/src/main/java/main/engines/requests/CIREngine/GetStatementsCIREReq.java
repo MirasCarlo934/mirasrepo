@@ -1,7 +1,7 @@
 package main.engines.requests.CIREngine;
 
-import devices.Component;
-import devices.Property;
+import components.Component;
+import components.properties.Property;
 
 public class GetStatementsCIREReq extends CIREngineRequest {
 	private Component component = null;

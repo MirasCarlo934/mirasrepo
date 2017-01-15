@@ -1,4 +1,4 @@
-package devices;
+package components;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,6 +6,10 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
+
+import components.properties.Property;
+import components.properties.PropertyMode;
+import components.properties.PropertyValueType;
 
 public class Product {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.Product");
@@ -15,7 +19,9 @@ public class Product {
 	private Hashtable<String, Property> properties = new Hashtable<String, Property>(1,1);
 	
 	public Product(String ssid, String name, String description) {
-		
+		this.SSID = ssid;
+		this.name = name;
+		this.description = description;
 	}
 	
 	/**
@@ -33,10 +39,13 @@ public class Product {
 			String prop_dispname = rs.getString("prop_dispname");
 			String prop_sysname = rs.getString("prop_sysname");
 			String prop_mode = rs.getString("prop_mode");
+			String pval_type = rs.getString("prop_val_type");
 			int prop_min = rs.getInt("prop_min");
 			int prop_max = rs.getInt("prop_max");
 			String prop_index = rs.getString("prop_index");
-			Property prop = new Property(prop_ID, prop_index, prop_sysname, prop_dispname, prop_mode, prop_min, prop_max);
+			Property prop = new Property(prop_ID, prop_index, prop_sysname, prop_dispname, 
+					PropertyMode.parseModeFromString(prop_mode), 
+					PropertyValueType.parsePropValTypeFromString(pval_type), prop_min, prop_max);
 			properties.put(prop.getIndex(), prop);
 		}
 	}

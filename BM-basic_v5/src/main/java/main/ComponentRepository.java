@@ -10,13 +10,14 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import devices.Component;
-import devices.Product;
-import devices.Property;
+import components.Component;
+import components.Product;
+import components.properties.Property;
 import json.objects.ReqRegister;
 import json.objects.ResError;
 import main.engines.DBEngine;
 import main.engines.requests.DBEngine.RawDBEReq;
+import main.engines.requests.DBEngine.SelectDBEReq;
 import main.engines.requests.DBEngine.UpdateDBEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
@@ -25,22 +26,30 @@ public class ComponentRepository {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.Devices");
 	@Autowired
 	private MQTTHandler mh;
-	private Hashtable<String, Component> components = new Hashtable<String, Component>(1);
-	private Hashtable<String, String> registeredMACs = new Hashtable<String, String>(1,1); //registered MAC and corresponding SSID
+	private HashMap<String, String> rooms = new HashMap<String, String>(1,1);
+	private HashMap<String, Component> components = new HashMap<String, Component>(1);
+	private HashMap<String, String> registeredMACs = new HashMap<String, String>(1,1); //registered MAC and corresponding SSID
 	private IDGenerator idg = new IDGenerator();
 	private DBEngine dbm;
 	//private Catalog catalog;
 	private String deviceQuery;
 	private String productQuery;
+	private String roomsTable;
 
-	public ComponentRepository(/*Catalog catalog, */DBEngine dbm, String deviceQuery, String productQuery) {
+	public ComponentRepository(/*Catalog catalog, */DBEngine dbm, String deviceQuery, 
+			String productQuery, String roomsTable) {
 		this.deviceQuery = deviceQuery;
 		this.productQuery = productQuery;
+		this.roomsTable = roomsTable;
 		//this.catalog = catalog;
 		this.dbm = dbm;
 		populateDevices();
+		retrieveRooms();
 	}
 	
+	/**
+	 * Retrieves all components from DB.
+	 */
 	public void populateDevices() {
 		try {
 			LOG.info("Populating Devices...");
@@ -69,6 +78,7 @@ public class ComponentRepository {
 					if(o2.getClass().equals(ResError.class)) {
 						ResError error = (ResError) o2;
 						LOG.error(error.message);
+						rs.close();
 						return;
 					}
 					ResultSet rs2 = (ResultSet) o2;
@@ -82,9 +92,35 @@ public class ComponentRepository {
 				Component com = components.get(SSID);
 				com.getProperty(prop_id).setValue(prop_val);
 			}
+			rs.close();
 			LOG.info("Devices population done!");
 		} catch (SQLException e) {
 			LOG.error("Cannot populate Devices!", e);
+		}
+	}
+	
+	/**
+	 * Retrieves all rooms from DB.
+	 */
+	public void retrieveRooms() {
+		LOG.info("Retrieving rooms from DB...");
+		Object o = dbm.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), roomsTable));
+		if(o.getClass().equals(ResError.class)) {
+			ResError e = (ResError) o;
+			LOG.error("Cannot retrieve rooms from DB!");
+			LOG.error("Error message: " + e.message);
+		} else {
+			ResultSet rs1 = (ResultSet) o;
+			try {
+				while(rs1.next()) {
+					rooms.put(rs1.getString("ssid"), rs1.getString("name"));
+				}
+				rs1.close();
+				LOG.debug("Rooms retrieved!");
+			} catch (SQLException e) {
+				LOG.error("ResultSet error in retrieving rooms!", e);
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -210,6 +246,22 @@ public class ComponentRepository {
 		} else {
 			return null;
 		}
+	}
+	
+	/**
+	 * Returns all the Components registered in this ComponentRepository
+	 * @return the array containing all Components
+	 */
+	public Component[] getAllComponents() {
+		return components.values().toArray(new Component[components.size()]);
+	}
+	
+	/**
+	 * Returns all existing rooms in this ComponentRepository
+	 * @return the HashMap containing all room SSID and room names
+	 */
+	public HashMap<String, String> getAllRooms() {
+		return rooms;
 	}
 	
 	/**

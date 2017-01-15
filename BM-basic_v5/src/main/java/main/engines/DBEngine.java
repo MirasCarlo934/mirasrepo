@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
+import json.objects.ResError;
 import main.engines.requests.EngineRequest;
 import main.engines.requests.DBEngine.DBEngineRequest;
 import main.engines.requests.DBEngine.QueryType;
@@ -70,6 +71,8 @@ public class DBEngine extends Engine {
 		} catch (SQLException e) {
 			LOG.error("SQLException!", e);
 			e.printStackTrace();
+			currentRequest.setResponse(new ResError(name, "Cannot execute query! Check error logs"
+					+ " for more details."));
 		}
 		return null;
 	}
@@ -85,6 +88,7 @@ public class DBEngine extends Engine {
         	return stmt.getResultSet();
     	} catch(NullPointerException e) {
     		LOG.fatal("Connection not yet established!");
+    		currentRequest.setResponse(new ResError(name, "Connection not yet established!"));
     		return null;
     	}
     }

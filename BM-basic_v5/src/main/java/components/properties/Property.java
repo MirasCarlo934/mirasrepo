@@ -1,4 +1,4 @@
-package devices;
+package components.properties;
 
 public class Property {
 	private String id;
@@ -6,16 +6,19 @@ public class Property {
 	private String systemName; //[generic name]-[index]
 	private String index;
 	private PropertyMode mode;
+	private PropertyValueType propValType;
 	private int min;
 	private int max;
 	private int value = 0;
 	
-	public Property(String propertyID, String index, String genericName, String dispname, String mode, int minValue, int maxValue) {
+	public Property(String propertyID, String index, String genericName, String dispname, 
+			PropertyMode mode, PropertyValueType propValType, int minValue, int maxValue) {
 		this.setSSID(index);
 		this.setDisplayName(dispname);
 		this.setSystemName(genericName, index);
 		this.setIndex(index);
-		this.setMode(PropertyMode.parseModeFromString(mode));
+		this.setMode(mode);
+		this.setPropValType(propValType);
 		this.setMin(minValue);
 		this.setMax(maxValue);
 	}
@@ -132,5 +135,13 @@ public class Property {
 	 */
 	public void setIndex(String index) {
 		this.index = index;
+	}
+
+	public PropertyValueType getPropValType() {
+		return propValType;
+	}
+
+	public void setPropValType(PropertyValueType propValType) {
+		this.propValType = propValType;
 	}
 }

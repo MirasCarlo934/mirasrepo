@@ -16,13 +16,18 @@ import main.engines.requests.EngineRequest;
 import tools.SystemTimer;
 
 public abstract class Engine extends TimerTask {
-	private String name;
+	protected String name;
 	private String className;
 	protected static Logger LOG;
 	protected HashMap<String, EngineRequest> reqQueue = new HashMap<String, EngineRequest>(10,10);
 	protected HashMap<String, Object> resQueue = new HashMap<String, Object>(10,10);
 	private int counter = 1;
 	private Timer timer;
+	/**
+	 * The current EngineRequest being processed by this Engine. Changes every time the <i>run()</i>
+	 * method is invoked.
+	 */
+	protected EngineRequest currentRequest = null;
 	//private SystemTimer systimer;
 	
 	public Engine(String name, String className) {
@@ -72,6 +77,7 @@ public abstract class Engine extends TimerTask {
 		if(!reqQueue.isEmpty()) {
 			//checks if EngineRequest is valid for this Engine
 			EngineRequest er = reqQueue.values().iterator().next();
+			currentRequest = er;
 			reqQueue.remove(er.getId());
 			boolean b = checkEngineRequest(er);
 			

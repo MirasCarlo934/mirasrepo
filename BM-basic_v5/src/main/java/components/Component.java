@@ -1,7 +1,8 @@
-package devices;
+package components;
 
 import java.util.Hashtable;
 
+import components.properties.Property;
 import json.objects.ReqRegister;
 
 public class Component {

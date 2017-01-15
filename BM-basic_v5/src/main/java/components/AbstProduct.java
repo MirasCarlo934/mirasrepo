@@ -1,9 +1,11 @@
-package devices;
+package components;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
+
+import components.properties.Property;
 
 public abstract class AbstProduct {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.Product");

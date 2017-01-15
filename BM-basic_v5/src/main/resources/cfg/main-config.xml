@@ -12,6 +12,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<bean id="Components" class="main.ComponentRepository">
 		<constructor-arg name="deviceQuery" value="${devices.queryString}"/>
 		<constructor-arg name="productQuery" value="${product.queryString}"/>
+		<constructor-arg name="roomsTable" value="${table.roomstable}"></constructor-arg>
 		<!-- <constructor-arg name="catalog" ref="ProdCatalog"/> -->
 		<constructor-arg name="dbm" ref="DBManager"/>
 	</bean>

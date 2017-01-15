@@ -2,7 +2,7 @@ package json.objects;
 
 import org.json.JSONObject;
 
-import devices.Product;
+import components.Product;
 
 /*
  * This is the object populated when a register JSON transaction arrives from mqtt
@@ -16,10 +16,10 @@ public class ReqRegister extends AbstRequest{
 	//public String product_id;
 	public String mac;
 
-	public ReqRegister(JSONObject json) {
+	public ReqRegister(JSONObject json, String nameParam, String prodIDParam, String roomIDParam) {
 		super(json);
-		this.name = json.getString("name");
-		this.room = json.getString("roomID");
+		this.name = json.getString(nameParam);
+		this.room = json.getString(roomIDParam);
 		//this.product_id = json.getString("prodID");
 		this.mac = json.getString("RID");
 	}

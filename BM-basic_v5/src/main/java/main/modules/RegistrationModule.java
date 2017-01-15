@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Vector;
 
-import devices.Component;
-import devices.Product;
-import devices.Property;
+import components.Component;
+import components.Product;
+import components.properties.Property;
 import json.objects.ReqRegister;
 import json.objects.ReqRequest;
 import json.objects.ResError;
@@ -26,11 +26,19 @@ public class RegistrationModule extends AbstModule {
 	private IDGenerator idg = new IDGenerator();
 	private DBEngine dbe;
 	private String productQuery;
+	private String nameParam;
+	private String prodIDParam;
+	private String roomIDParam;
 	
-	public RegistrationModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository components, DBEngine dbe, String productQuery) {
-		super("RegistrationModule", RTY, params, mh, components);
+	public RegistrationModule(String RTY, String nameParam, String prodIDParam, String roomIDParam,
+			MQTTHandler mh, ComponentRepository components, DBEngine dbe, String productQuery) {
+		super("RegistrationModule", RTY, new String[]{nameParam, prodIDParam, roomIDParam}, 
+				mh, components);
 		this.dbe = dbe;
 		this.productQuery = productQuery;
+		this.nameParam = nameParam;
+		this.prodIDParam = prodIDParam;
+		this.roomIDParam = roomIDParam;
 	}
 
 	/**
@@ -38,7 +46,7 @@ public class RegistrationModule extends AbstModule {
 	 */
 	@Override
 	protected void process(ReqRequest request) {
-		ReqRegister reg = new ReqRegister(request.getJSON());
+		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		LOG.info("Registering component " + reg.mac + " to system...");
 		Vector<String> ids = new Vector<String>(1,1);
 		Product product = null;
@@ -53,6 +61,7 @@ public class RegistrationModule extends AbstModule {
 				while(rs1.next()) {
 					ids.add(rs1.getString("ssid"));
 				}
+				rs1.close();
 			}
 			//ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
 			o = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
@@ -77,7 +86,7 @@ public class RegistrationModule extends AbstModule {
 	}
 	
 	private void persistComponent(Component c, ReqRequest request) {
-		ReqRegister reg = new ReqRegister(request.getJSON());
+		//ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		LOG.debug("Persisting component into DB...");
 		HashMap<String, Object> vals1 = new HashMap<String, Object>(1);
 		vals1.put("ssid", c.getSSID());
@@ -130,12 +139,11 @@ public class RegistrationModule extends AbstModule {
 	@Override
 	protected boolean additionalRequestChecking(ReqRequest request) {
 		LOG.trace("Additional secondary request parameter checking...");
-		ReqRegister reg = new ReqRegister(request.getJSON());
+		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		boolean b = true;
 		if(cr.containsComponent(reg.mac)) {
 			Component c = cr.getComponent(reg.mac);
 			error(new ResError(reg, "Component already exists in system!"));
-			//LOG.debug("HEY");
 			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
 			return false;
 		}
@@ -150,8 +158,10 @@ public class RegistrationModule extends AbstModule {
 			ResultSet rs2 = (ResultSet) obj;
 			if (!rs2.isBeforeFirst() ) {    
 			    error(new ResError(reg, "Product ID is invalid!"));
+			    rs2.close();
 			    return false;
 			}
+			rs2.close();
 			
 			//ResultSet rs3 = dbe.selectQuery("ssid", "rooms");
 			b = false;
@@ -167,9 +177,11 @@ public class RegistrationModule extends AbstModule {
 							reg.room.equalsIgnoreCase(rs3.getString("name"))) {
 						b = true;
 						request.getJSON().put("roomID", rs3.getString("ssid"));
+						rs3.close();
 						return true;
 					}
 				}
+				rs3.close();
 			}
 			if(!b) {
 				LOG.error("Room ID is invalid!");

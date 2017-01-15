@@ -22,8 +22,9 @@ import org.apache.log4j.Logger;
 
 import cir.*;
 import cir.exceptions.*;
-import devices.Component;
-import devices.Property;
+import components.Component;
+import components.properties.Property;
+import json.objects.ResError;
 //import main.TransTechSystem;
 import main.ComponentRepository;
 import main.engines.requests.EngineRequest;
@@ -105,6 +106,7 @@ public class CIREngine extends Engine {
 		} catch (IOException e) {
 			LOG.fatal("Could not interpret CIR file!", e);
 			e.printStackTrace();
+			currentRequest.setResponse(new ResError(name, "Could not interpret CIR file!"));
 		}
 	}
 	
@@ -130,6 +132,9 @@ public class CIREngine extends Engine {
 				s = extractStatement(line);
 			} catch (CIRSSyntaxException e) {
 				LOG.error("Syntax error in line " + i + " in the CIR file!", e);
+				e.printStackTrace();
+				currentRequest.setResponse(new ResError(name, "Syntax error in line " + i 
+						+ " in the CIR file! " + e.getMessage()));
 			}
 			if(s != null) { //only null if line sent is a whitespace
 				statements.add(s);

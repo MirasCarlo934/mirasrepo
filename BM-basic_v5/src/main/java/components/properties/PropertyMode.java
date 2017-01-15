@@ -1,4 +1,4 @@
-package devices;
+package components.properties;
 
 public enum PropertyMode {
 	I, O, IO;

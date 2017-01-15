@@ -27,6 +27,17 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<bean id="OHEngine" class="main.engines.OHEngine" scope="singleton">
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="bm_props_filepath" value="${bm.properties.filepath}"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="roomsTable" value="${table.roomstable}"/>
+		<constructor-arg name="itemsList">
+			<map>
+				<entry key="digital" value="${oh.items.digital}"/>
+				<entry key="analog" value="${oh.items.analog}"/>
+				<entry key="analogHue" value="${oh.items.hue}"/>
+				<entry key="percent" value="${oh.items.percent}"/>
+			</map>
+		</constructor-arg>
+		<constructor-arg name="OHMqttBroker" value="${oh.mqttbroker}"/>
 	</bean>
 	
 </beans>

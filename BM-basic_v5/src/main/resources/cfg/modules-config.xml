@@ -13,13 +13,16 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="components" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
 		<constructor-arg name="productQuery" value="${product.queryString}"/>
-		<constructor-arg name="params">
+		<constructor-arg name="nameParam" value="${registration.param.name}"/>
+		<constructor-arg name="prodIDParam" value="${registration.param.productID}"/>
+		<constructor-arg name="roomIDParam" value="${registration.param.roomID}"/>
+		<!-- <constructor-arg name="params">
 			<list>
 				<value>${registration.param.name}</value>
 				<value>${registration.param.productID}</value>
 				<value>${registration.param.roomID}</value>
 			</list>
-		</constructor-arg>
+		</constructor-arg> -->
 		<property name="comsTable" value="${table.comstable}"/>
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
@@ -29,12 +32,14 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
 		<constructor-arg name="cire" ref="CIREngine"/>
-		<constructor-arg name="params">
+		<constructor-arg name="propIDParam" value="${poop.param.propertyID}"/>
+		<constructor-arg name="propValParam" value="${poop.param.propertyValue}"/>
+		<!-- <constructor-arg name="params">
 			<list>
 				<value>${poop.param.propertyID}</value>
 				<value>${poop.param.propertyValue}</value>
 			</list>
-		</constructor-arg>
+		</constructor-arg> -->
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
 	<bean id="detach" class="main.modules.DetachmentModule" scope="prototype">

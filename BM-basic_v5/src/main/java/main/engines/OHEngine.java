@@ -210,6 +210,9 @@ public class OHEngine extends Engine {
 						+ ") {mqtt=\"<[" + OHMqttBroker + ":openhab/" + c.getTopic() 
 						+ ":command:ON:" + p.getSSID() + "_1],<[" + OHMqttBroker + ":openhab/" 
 						+ c.getTopic() + ":command:OFF:" + p.getSSID() + "_0]\"} \n\n";
+				} else if(itemsList.get(p.getPropValType().toString()).equalsIgnoreCase("dimmer")) {
+					itemsStr += itemsList.get(p.getPropValType().toString()) + " " +c.getSSID()
+						+ "_" + p.getSSID() + " \"" + p.getDisplayName() + " \" (" + room + ") \n\n";					 
 				}
 			}
 		}

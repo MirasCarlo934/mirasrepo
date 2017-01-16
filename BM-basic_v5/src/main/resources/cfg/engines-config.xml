@@ -16,14 +16,11 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</bean>
 	<bean id="CIREngine" class="main.engines.CIREngine" scope="singleton">
 		<!-- <constructor-arg name="systimer" ref="SystemTimer"/> -->
-		<constructor-arg name="bm_props_filepath" value="${bm.properties.filepath}"/>
+		<constructor-arg name="cir_filepath" value="${cir.filepath}"/>
 		<constructor-arg name="componentRepository" ref="Components"/>
 	</bean>
 	<bean id="OHEngine" class="main.engines.OHEngine" scope="singleton">
 		<constructor-arg name="cr" ref="Components"/>
-		<constructor-arg name="bm_props_filepath" value="${bm.properties.filepath}"/>
-		<constructor-arg name="dbe" ref="DBManager"/>
-		<constructor-arg name="roomsTable" value="${table.roomstable}"/>
 		<constructor-arg name="itemsList">
 			<map>
 				<entry key="digital" value="${oh.items.digital}"/>
@@ -33,6 +30,11 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			</map>
 		</constructor-arg>
 		<constructor-arg name="OHMqttBroker" value="${oh.mqttbroker}"/>
+		<constructor-arg name="os" value="${bm.os}"/>
+		<constructor-arg name="oh_filepath" value="${oh.location}"/>
+		<constructor-arg name="items_filename" value="${oh.items_filename}"/>
+		<constructor-arg name="sitemap_filename" value="${oh.sitemap_filename}"/>
+		<constructor-arg name="sitemap_name" value="${oh.sitemap_name}"/>
 	</bean>
 	
 </beans>

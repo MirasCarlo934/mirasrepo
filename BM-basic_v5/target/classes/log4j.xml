@@ -23,7 +23,7 @@
       <param name="immediateFlush" value="true"/>
       <param name="File" value="logs/bm_server.log"/>
       <param name="Append" value="false"/>
-      <param name="Threshold" value="debug"/>
+      <param name="Threshold" value="trace"/>
 
       <!-- Rollover at midnight each day -->
       <param name="DatePattern" value="'.'yyyy-MM-dd"/>

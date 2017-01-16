@@ -43,8 +43,8 @@ public class CIREngine extends Engine {
 	private static final Logger LOG = Logger.getLogger(CIREngine.class);
 	private Vector<Statement> cirStatements = new Vector<Statement>(1,1);
 	private ComponentRepository cr;
-	private FileHandler bm_props_file;
-	private Properties bm_props = new Properties();
+	//private FileHandler bm_props_file;
+	//private Properties bm_props = new Properties();
 	private String cir_filepath;
 
 	/**
@@ -56,17 +56,19 @@ public class CIREngine extends Engine {
 		interpret();
 	}*/
 	
-	public CIREngine(String bm_props_filepath, ComponentRepository componentRepository) {
+	public CIREngine(String cir_filepath, ComponentRepository componentRepository) {
 		super("CIREngine", CIREngine.class.toString());
-		LOG.info("CIREngine started!" + bm_props_filepath);
+		LOG.info("CIREngine started!");
+		LOG.info("JAR Filepath:" + CIREngine.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		cr = componentRepository;
-		try {
+		this.cir_filepath = cir_filepath;
+		/*try {
 			bm_props_file = new FileHandler(bm_props_filepath);
 			//bm_props_file = new FileHandler("src/main/resources/cfg/bm.properties");
 		} catch (FileNotFoundException e) {
 			LOG.fatal("Cannot find bm.properties file! Bad filepath.");
 			e.printStackTrace();
-		}
+		}*/
 		update();
 	}
 	
@@ -99,12 +101,12 @@ public class CIREngine extends Engine {
 		LOG.trace("Updating CIR records...");
 		try {
 			//interpret(TransTechSystem.config.getInstructionPropsConfig().getRulesFileLocation());
-			bm_props.load(bm_props_file.getFileReader());
-			cir_filepath = bm_props.getProperty("cir.filepath");
+			//bm_props.load(bm_props_file.getFileReader());
+			//cir_filepath = bm_props.getProperty("cir.filepath");
 			interpret(cir_filepath);
 			LOG.trace("CIR records updated!");
 		} catch (IOException e) {
-			LOG.fatal("Could not interpret CIR file!", e);
+			LOG.fatal("Could not interpret CIR file! " + cir_filepath, e);
 			e.printStackTrace();
 			currentRequest.setResponse(new ResError(name, "Could not interpret CIR file!"));
 		}

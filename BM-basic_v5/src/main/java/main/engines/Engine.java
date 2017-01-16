@@ -15,14 +15,13 @@ import main.Controller;
 import main.engines.requests.EngineRequest;
 import tools.SystemTimer;
 
-public abstract class Engine extends TimerTask {
+public abstract class Engine {
 	protected String name;
 	private String className;
 	protected static Logger LOG;
 	protected HashMap<String, EngineRequest> reqQueue = new HashMap<String, EngineRequest>(10,10);
 	protected HashMap<String, Object> resQueue = new HashMap<String, Object>(10,10);
-	private int counter = 1;
-	private Timer timer;
+
 	/**
 	 * The current EngineRequest being processed by this Engine. Changes every time the <i>run()</i>
 	 * method is invoked.
@@ -33,10 +32,7 @@ public abstract class Engine extends TimerTask {
 	public Engine(String name, String className) {
 		this.name = name;
 		this.className = className;
-		timer = new Timer(name + "Processor");
-		//this.systimer = systimer;
-		LOG = Logger.getLogger("ENGINE_LOG." + name);
-		timer.schedule(this, 0, 10);
+		LOG = Logger.getLogger(name);
 	}
 	
 	/**
@@ -50,14 +46,17 @@ public abstract class Engine extends TimerTask {
 		LOG.trace("Adding " + engineRequest.getClass().toString() + " " + 
 				engineRequest.getId() + " to " + name + "!");
 		reqQueue.put(engineRequest.getId(), engineRequest);
-		/*Thread t = new Thread(this, name + "Process" + counter);
-		counter++;
-		t.start();*/
-		//wait for Engine to process the request
-		long processStart = Calendar.getInstance().getTimeInMillis();
-		while(!resQueue.containsKey(engineRequest.getId())) {
-			long now = Calendar.getInstance().getTimeInMillis();
-			if(now - processStart > 10000) break;
+		Thread parent = Thread.currentThread();
+		Thread process = new Thread(new EngineProcessor(parent), "Process" + Controller.processCounter);
+		process.start();
+		
+		synchronized (parent) {
+			try {
+				parent.wait();
+			} catch (InterruptedException e) {
+				LOG.error("Thread interrupted!");
+				e.printStackTrace();
+			}
 		}
 		if(resQueue.containsKey(engineRequest.getId())) {
 			LOG.trace("EngineRequest " + engineRequest.getId() + " processing complete!");
@@ -65,33 +64,6 @@ public abstract class Engine extends TimerTask {
 		} else {
 			LOG.error("EngineRequest " + engineRequest.getId() + " processing failure!");
 			return new ResError(name, "BM", "N/A", "Processing failure!");
-		}
-	}
-	
-	
-	/**
-	 * 
-	 */
-	@Override
-	public void run() {
-		if(!reqQueue.isEmpty()) {
-			//checks if EngineRequest is valid for this Engine
-			EngineRequest er = reqQueue.values().iterator().next();
-			currentRequest = er;
-			reqQueue.remove(er.getId());
-			boolean b = checkEngineRequest(er);
-			
-			if(b) {
-				Object res = processRequest(er);
-				resQueue.put(er.getId(), res);
-				//return processRequest(engineRequest);
-			} else {
-				resQueue.put(er.getId(), new ResError(name, "BM", "N/A", 
-						"Invalid EngineRequest for " + name));
-				//return new ResError(name, "BM", "Invalid EngineRequest for " + name);
-			}
-			counter++;
-			//notifyAll();
 		}
 	}
 	
@@ -114,4 +86,39 @@ public abstract class Engine extends TimerTask {
 	}
 	
 	protected abstract Object processRequest(EngineRequest er);
+	
+	private class EngineProcessor implements Runnable {
+		Thread parent;
+		
+		private EngineProcessor(Thread parent) {
+			this.parent = parent;
+		}
+		/**
+		 * 
+		 */
+		@Override
+		public void run() {
+			if(!reqQueue.isEmpty()) {
+				//checks if EngineRequest is valid for this Engine
+				EngineRequest er = reqQueue.values().iterator().next();
+				currentRequest = er;
+				reqQueue.remove(er.getId());
+				boolean b = checkEngineRequest(er);
+				
+				if(b) {
+					Object res = processRequest(er);
+					resQueue.put(er.getId(), res);
+					//return processRequest(engineRequest);
+				} else {
+					resQueue.put(er.getId(), new ResError(name, "BM", "N/A", 
+							"Invalid EngineRequest for " + name));
+					//return new ResError(name, "BM", "Invalid EngineRequest for " + name);
+				}
+
+				synchronized (parent) {
+					parent.notify();
+				}
+			}
+		}
+	}
 }

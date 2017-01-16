@@ -4,7 +4,7 @@ public class Property {
 	private String id;
 	private String displayName;
 	private String systemName; //[generic name]-[index]
-	private String index;
+	//private String index;
 	private PropertyMode mode;
 	private PropertyValueType propValType;
 	private int min;
@@ -16,7 +16,7 @@ public class Property {
 		this.setSSID(index);
 		this.setDisplayName(dispname);
 		this.setSystemName(genericName, index);
-		this.setIndex(index);
+		//this.setIndex(index);
 		this.setMode(mode);
 		this.setPropValType(propValType);
 		this.setMin(minValue);
@@ -126,16 +126,16 @@ public class Property {
 	/**
 	 * @return the index (also the SSID of the property in comproplist)
 	 */
-	public String getIndex() {
+	/*public String getIndex() {
 		return index;
-	}
+	}*/
 
 	/**
 	 * @param index the index to set
 	 */
-	public void setIndex(String index) {
+	/*public void setIndex(String index) {
 		this.index = index;
-	}
+	}*/
 
 	public PropertyValueType getPropValType() {
 		return propValType;

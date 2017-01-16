@@ -89,6 +89,7 @@ public class BusinessMachine {
 				OHEngine ohe = (OHEngine) context.getBean("OHEngine");
 				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)));
 				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
+				LOG.info("BusinessMachine started!");
 				
 				//updates OH items' states
 				final Thread thisThread = Thread.currentThread();
@@ -103,8 +104,8 @@ public class BusinessMachine {
 							Property[] props = c.getProperties().values().toArray(new Property[0]);
 							for(int j = 0; j < props.length; j++) {
 								Property prop = props[j];
-								LOG.trace("Updating property " + prop.getIndex() + " in OH...");
-								mh.publish("openhab/" + c.getTopic(), prop.getIndex() + "_" 
+								LOG.trace("Updating property " + prop.getSSID() + " in OH...");
+								mh.publish("openhab/" + c.getTopic(), prop.getSSID() + "_" 
 										+ prop.getValue());
 							}
 						}
@@ -130,7 +131,6 @@ public class BusinessMachine {
 					LOG.error(e);
 					e.printStackTrace();
 				}
-				LOG.info("BusinessMachine started!");
 			} catch (Exception e) {
 				LOG.info("BM threw exception");
 				// TODO Auto-generated catch block

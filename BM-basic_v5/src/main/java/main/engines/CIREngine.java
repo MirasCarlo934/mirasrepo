@@ -401,7 +401,7 @@ public class CIREngine extends Engine {
 				LOG.fatal(c.getSSID());
 				LOG.fatal(arg.getPropName());
 				LOG.fatal(p.getIndex());*/
-				if(arg.getComID().equals(c.getSSID()) && arg.getPropName().equals(p.getIndex())) {
+				if(arg.getComID().equals(c.getSSID()) && arg.getPropName().equals(p.getSSID())) {
 					statements.add(rule);
 				}
 			}

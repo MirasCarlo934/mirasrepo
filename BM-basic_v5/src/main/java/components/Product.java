@@ -46,7 +46,7 @@ public class Product {
 			Property prop = new Property(prop_ID, prop_index, prop_sysname, prop_dispname, 
 					PropertyMode.parseModeFromString(prop_mode), 
 					PropertyValueType.parsePropValTypeFromString(pval_type), prop_min, prop_max);
-			properties.put(prop.getIndex(), prop);
+			properties.put(prop.getSSID(), prop);
 		}
 	}
 	

@@ -105,7 +105,7 @@ public class RegistrationModule extends AbstModule {
 			vals2.put("com_id", c.getSSID());
 			vals2.put("prop_name", p.getSystemName());
 			vals2.put("prop_value", String.valueOf(p.getValue()));
-			vals2.put("cpl_ssid", p.getIndex());
+			vals2.put("cpl_ssid", p.getSSID());
 			dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), propsTable, vals2));
 		}
 		LOG.debug("Component persistence complete!");

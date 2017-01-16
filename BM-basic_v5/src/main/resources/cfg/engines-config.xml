@@ -35,6 +35,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="items_filename" value="${oh.items_filename}"/>
 		<constructor-arg name="sitemap_filename" value="${oh.sitemap_filename}"/>
 		<constructor-arg name="sitemap_name" value="${oh.sitemap_name}"/>
+		<constructor-arg name="rules_filename" value="${oh.rules_filename}"/>
 	</bean>
 	
 </beans>

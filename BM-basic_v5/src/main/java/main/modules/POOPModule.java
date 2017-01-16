@@ -48,12 +48,17 @@ public class POOPModule extends AbstModule {
 		Component c = cr.getComponent(poop.cid);
 		LOG.info("Changing component " + request.cid + " property " 
 				+ poop.propSSID + " to " + poop.propValue + "...");
-		//cire.update();
-		cire.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
-		updateSystem(poop);
-		updateDatabase(poop);
-		mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
-		mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
+		if(c.getProperty(poop.propSSID).getValue() == poop.propValue) {
+			LOG.info("Property is already set at " + poop.propValue);
+		}
+		else {
+			//cire.update();
+			cire.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
+			updateSystem(poop);
+			updateDatabase(poop);
+			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
+			mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
+		}
 		LOG.info("POOP processing complete!");
 	}
 	

@@ -95,7 +95,7 @@ public class BusinessMachine {
 				final class OHUpdater extends TimerTask {
 					@Override
 					public void run() {
-						LOG.trace("UPDATE!");
+						//LOG.trace("UPDATE!");
 						LOG.info("Updating OH items' states...");
 						Component[] coms = cr.getAllComponents();
 						for(int i = 0; i < coms.length; i++) {

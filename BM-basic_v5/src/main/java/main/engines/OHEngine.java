@@ -11,6 +11,7 @@ import java.util.concurrent.Executor;
 
 import components.Component;
 import components.properties.Property;
+import components.properties.PropertyValueType;
 import json.objects.ResError;
 import main.ComponentRepository;
 import main.engines.requests.EngineRequest;
@@ -27,22 +28,25 @@ public class OHEngine extends Engine {
 	private String OHMqttBroker;
 	private String oh_location;
 	private String items_filename;
+	private String rules_filename;
 	private String sitemap_filename;
 	private String sitemap_name;
 	//private Properties bm_props = new Properties();
 	private FileHandler items;
 	private FileHandler sitemap;
+	private FileHandler rules;
 	private HashMap<String, String> itemsList;
 	//private IDGenerator idg = new IDGenerator();
 	private OHEngineRequest oher = null;
 
 	public OHEngine(String os, String oh_filepath, String items_filename, String sitemap_filename, 
-			String sitemap_name, ComponentRepository cr, HashMap<String, String> itemsList, 
-			String OHMqttBroker) {
+			String rules_filename, String sitemap_name, ComponentRepository cr, 
+			HashMap<String, String> itemsList, String OHMqttBroker) {
 		super("OHEngine", OHEngine.class.toString());
 		this.oh_location = oh_filepath;
 		this.items_filename = items_filename;
 		this.sitemap_filename = sitemap_filename;
+		this.rules_filename = rules_filename;
 		this.sitemap_name = sitemap_name;
 		this.cr = cr;
 		this.os = os;
@@ -70,6 +74,7 @@ public class OHEngine extends Engine {
 			//startOH();
 			connectToFiles();
 			updateItems();
+			updateRules();
 			updateSitemap();
 			return oher;
 		}
@@ -80,6 +85,7 @@ public class OHEngine extends Engine {
 		else if(oher.getType() == OHRequestType.update) {
 			LOG.info("Updating OpenHAB files...");
 			updateItems();
+			updateRules();
 			updateSitemap();
 			LOG.debug("OpenHAB update complete!");
 			return oher;
@@ -134,18 +140,20 @@ public class OHEngine extends Engine {
 	}
 	
 	/**
-	 * Opens a FileHandler connected to the .items and .sitemap files in OpenHAB directory
+	 * Opens a FileHandler connected to the .items, .rules, and .sitemap files in OpenHAB directory
 	 */
 	private void connectToFiles() {
-		LOG.info("Connecting to .items and .sitemap files in OpenHAB directory...");
+		LOG.info("Connecting to OH files in OpenHAB directory...");
 		try {
 			//LOG.fatal(items_filepath);
 			//LOG.fatal(sitemap_filepath);
+			//LOG.fatal(oh_location + "/configurations/rules/" + rules_filename);
 			items = new FileHandler(oh_location + "/configurations/items/" + items_filename);
+			rules = new FileHandler(oh_location + "/configurations/rules/" + rules_filename);
 			sitemap = new FileHandler(oh_location + "/configurations/sitemaps/" + sitemap_filename);
-			LOG.debug("Connected to. items and .sitemap files!");
+			LOG.debug("Connected to OH files!");
 		} catch (FileNotFoundException e) {
-			LOG.error("Cannot open .items and .sitemap files!", e);
+			LOG.error("Cannot open OH files!", e);
 		}
 	}
 	
@@ -214,6 +222,54 @@ public class OHEngine extends Engine {
 			LOG.error("Cannot write to .items file!", e);
 			e.printStackTrace();
 			currentRequest.setResponse(new ResError(name, "Cannot write to .items file!"));
+		}
+	}
+	
+	/**
+	 * Updates the contents of the .rules file in OpenHAB.
+	 */
+	private void updateRules() {
+		LOG.debug("Updating .rules file...");
+		String str = "";
+		Component[] coms = cr.getAllComponents();
+		
+		for(int i = 0; i < coms.length; i++) {
+			Component c = coms[i];
+			Property[] props = c.getProperties().values().toArray(new Property[0]);
+			for(int j = 0; j < props.length; j++) {
+				Property p = props[j];
+				LOG.trace("Updating rules of property " + p.getSSID());
+		        if(p.getPropValType().equals(PropertyValueType.digital)) {
+		        	str += "rule \"" + p.getSSID() + " ON\"\n"
+		        			+ "when \n"
+		        			+ "\t Item " + c.getSSID() + "_" + p.getIndex() + " received command ON \n"
+		        			+ "then mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getIndex() + "','RID':'0000','value':'1','CID':'" + c.getSSID() + "'}\") \n"
+		        			+ "\t  \n"
+		        			+ "end \n\n";
+		        	str += "rule \"" + p.getSSID() + " OFF\"\n"
+		        			+ "when \n"
+		        			+ "\t Item " + c.getSSID() + "_" + p.getIndex() + " received command OFF \n"
+		        			+ "then mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getIndex() + "','RID':'0000','value':'0','CID':'" + c.getSSID() + "'}\") \n"
+		        			+ "\t  \n"
+		        			+ "end \n\n";
+		        }
+		        else {
+		        	str += "rule \"" + p.getSSID() + " CHANGED\"\n"
+		        			+ "when \n"
+		        			+ "\t Item " + c.getSSID() + "_" + p.getIndex() + " received command ON \n"
+		        			+ "then mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getIndex() + "','RID':'0000','value':'\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
+		        			+ "\t  \n"
+		        			+ "end \n\n";
+		        }
+			}
+		}
+		
+		try {
+			rules.writeToFile(str);
+		} catch (IOException e) {
+			LOG.error("Cannot write to .rules file!", e);
+			e.printStackTrace();
+			currentRequest.setResponse(new ResError(name, "Cannot write to .rules file!"));
 		}
 	}
 	

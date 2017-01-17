@@ -1,99 +1,942 @@
-2017-01-17 21:49:03,930 INFO  [main] (BM_LOG.main) Initializing BM...
-2017-01-17 21:49:03,936 INFO  [main] (BM_LOG.main) Starting the BM...
-2017-01-17 21:49:05,521 INFO  [main] (BM_LOG.Devices) Populating Devices...
-2017-01-17 21:49:05,652 INFO  [main] (BM_LOG.Devices) Devices population done!
-2017-01-17 21:49:05,652 INFO  [main] (BM_LOG.Devices) Retrieving rooms from DB...
-2017-01-17 21:49:05,805 INFO  [main] (BM_LOG.Controller) Controller constructed!
-2017-01-17 21:49:05,892 INFO  [main] (BM_LOG.main) Config file cfg/core-config.xml loaded.
-2017-01-17 21:49:05,933 INFO  [main] (BM_LOG.main) BusinessMachine started!
-2017-01-17 21:49:05,939 INFO  [Process1] (BM_LOG.Devices) Retrieving rooms from DB...
-2017-01-17 21:49:05,959 INFO  [Process1] (BM_LOG.Devices) Retrieving rooms from DB...
-2017-01-17 21:49:07,933 INFO  [OHUpdater] (BM_LOG.main) Updating OH items' states...
-2017-01-17 21:49:08,020 INFO  [Process1] (BM_LOG.POOPModule) Changing component J3D7 property 0006 to 1...
-2017-01-17 21:49:08,043 INFO  [Process1] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:49:08,044 INFO  [Process1] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,050 INFO  [Process2] (BM_LOG.POOPModule) Changing component J3D7 property 0006 to 1...
-2017-01-17 21:49:08,065 INFO  [Process2] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:49:08,065 INFO  [Process2] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,067 INFO  [Process4] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
-2017-01-17 21:49:08,067 INFO  [Process4] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,067 INFO  [Process4] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,068 INFO  [Process3] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
-2017-01-17 21:49:08,084 INFO  [Process3] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,084 INFO  [Process3] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,102 INFO  [Process5] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
-2017-01-17 21:49:08,103 INFO  [Process5] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,103 INFO  [Process5] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,110 INFO  [Process6] (BM_LOG.POOPModule) Changing component N40M property 0019 to 1...
-2017-01-17 21:49:08,112 INFO  [Process7] (BM_LOG.POOPModule) Changing component N40M property 0019 to 1...
-2017-01-17 21:49:08,120 INFO  [Process8] (BM_LOG.POOPModule) Changing component N40M property 0024 to 0...
-2017-01-17 21:49:08,121 INFO  [Process6] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:49:08,121 INFO  [Process6] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,121 INFO  [Process8] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,122 INFO  [Process8] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,122 INFO  [Process7] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:49:08,122 INFO  [Process7] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,133 INFO  [Process10] (BM_LOG.POOPModule) Changing component N40M property 0023 to 0...
-2017-01-17 21:49:08,136 INFO  [Process9] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
-2017-01-17 21:49:08,136 INFO  [Process10] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,136 INFO  [Process10] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,151 INFO  [Process9] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,151 INFO  [Process9] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,153 INFO  [Process11] (BM_LOG.POOPModule) Changing component N40M property 0024 to 0...
-2017-01-17 21:49:08,154 INFO  [Process11] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,154 INFO  [Process11] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,160 INFO  [Process12] (BM_LOG.POOPModule) Changing component N40M property 0023 to 0...
-2017-01-17 21:49:08,160 INFO  [Process12] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,160 INFO  [Process12] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,212 INFO  [Process13] (BM_LOG.POOPModule) Changing component N40M property 0022 to 0...
-2017-01-17 21:49:08,213 INFO  [Process13] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,213 INFO  [Process13] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,418 INFO  [Process15] (BM_LOG.POOPModule) Changing component N40M property 0021 to 0...
-2017-01-17 21:49:08,419 INFO  [Process14] (BM_LOG.POOPModule) Changing component N40M property 0022 to 0...
-2017-01-17 21:49:08,425 INFO  [Process16] (BM_LOG.POOPModule) Changing component N40M property 0021 to 0...
-2017-01-17 21:49:08,426 INFO  [Process15] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,426 INFO  [Process15] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,427 INFO  [Process16] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,427 INFO  [Process14] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:49:08,427 INFO  [Process14] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:08,427 INFO  [Process16] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:49:59,766 INFO  [Process17] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
-2017-01-17 21:49:59,782 FATAL [Process17] (BM_LOG.POOPModule) ModuleERID:KTDQWVOBGF
-2017-01-17 21:49:59,782 FATAL [Process17] (BM_LOG.POOPModule) ModuleThread:Process17
-2017-01-17 21:50:00,149 INFO  [Process17] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:50:00,179 INFO  [Process18] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
-2017-01-17 21:50:00,180 INFO  [Process18] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:50:00,180 INFO  [Process18] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:50:00,473 INFO  [Process19] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
-2017-01-17 21:50:00,473 INFO  [Process19] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:50:00,474 INFO  [Process19] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:50:57,503 INFO  [Process20] (BM_LOG.POOPModule) Changing component N40M property 0020 to 1...
-2017-01-17 21:50:57,514 FATAL [Process20] (BM_LOG.POOPModule) ModuleERID:M861OJJ0U1
-2017-01-17 21:50:57,514 FATAL [Process20] (BM_LOG.POOPModule) ModuleThread:Process20
-2017-01-17 21:50:57,874 INFO  [Process20] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:50:57,945 INFO  [Process21] (BM_LOG.POOPModule) Changing component N40M property 0020 to 1...
-2017-01-17 21:50:57,945 INFO  [Process21] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:50:57,945 INFO  [Process21] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:50:58,265 INFO  [Process22] (BM_LOG.POOPModule) Changing component N40M property 0020 to 1...
-2017-01-17 21:50:58,265 INFO  [Process22] (BM_LOG.POOPModule) Property is already set at 1
-2017-01-17 21:50:58,266 INFO  [Process22] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:51:04,136 INFO  [Process23] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
-2017-01-17 21:51:04,145 FATAL [Process23] (BM_LOG.POOPModule) ModuleERID:I1SGYP0512
-2017-01-17 21:51:04,145 FATAL [Process23] (BM_LOG.POOPModule) ModuleThread:Process23
-2017-01-17 21:51:04,200 INFO  [Process23] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:51:04,260 INFO  [Process24] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
-2017-01-17 21:51:04,260 INFO  [Process24] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:51:04,261 INFO  [Process24] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:51:04,470 INFO  [Process25] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
-2017-01-17 21:51:04,471 INFO  [Process25] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:51:04,471 INFO  [Process25] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:51:04,675 INFO  [Process26] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
-2017-01-17 21:51:04,685 FATAL [Process26] (BM_LOG.POOPModule) ModuleERID:F2404YT6T1
-2017-01-17 21:51:04,685 FATAL [Process26] (BM_LOG.POOPModule) ModuleThread:Process26
-2017-01-17 21:51:04,785 INFO  [Process26] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:51:04,815 INFO  [Process27] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
-2017-01-17 21:51:04,822 INFO  [Process27] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:51:04,822 INFO  [Process27] (BM_LOG.POOPModule) POOP processing complete!
-2017-01-17 21:51:05,015 INFO  [Process28] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
-2017-01-17 21:51:05,015 INFO  [Process28] (BM_LOG.POOPModule) Property is already set at 0
-2017-01-17 21:51:05,016 INFO  [Process28] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:06,192 INFO  [main] (BM_LOG.main) Initializing BM...
+2017-01-17 22:20:06,200 INFO  [main] (BM_LOG.main) Starting the BM...
+2017-01-17 22:20:08,055 INFO  [main] (BM_LOG.Devices) Populating Devices...
+2017-01-17 22:20:08,127 DEBUG [main] (BM_LOG.Devices) Adding device: N40M into Devices
+2017-01-17 22:20:08,131 DEBUG [main] (BM_LOG.Devices) Setting property: 0002 of device: N40M with value: 0
+2017-01-17 22:20:08,132 DEBUG [main] (BM_LOG.Devices) Setting property: 0020 of device: N40M with value: 0
+2017-01-17 22:20:08,132 DEBUG [main] (BM_LOG.Devices) Setting property: 0019 of device: N40M with value: 0
+2017-01-17 22:20:08,132 DEBUG [main] (BM_LOG.Devices) Setting property: 0024 of device: N40M with value: 0
+2017-01-17 22:20:08,132 DEBUG [main] (BM_LOG.Devices) Setting property: 0005 of device: N40M with value: 36
+2017-01-17 22:20:08,133 DEBUG [main] (BM_LOG.Devices) Setting property: 0023 of device: N40M with value: 0
+2017-01-17 22:20:08,133 DEBUG [main] (BM_LOG.Devices) Setting property: 0004 of device: N40M with value: 0
+2017-01-17 22:20:08,133 DEBUG [main] (BM_LOG.Devices) Setting property: 0022 of device: N40M with value: 0
+2017-01-17 22:20:08,133 DEBUG [main] (BM_LOG.Devices) Setting property: 0003 of device: N40M with value: 0
+2017-01-17 22:20:08,133 DEBUG [main] (BM_LOG.Devices) Setting property: 0021 of device: N40M with value: 0
+2017-01-17 22:20:08,154 DEBUG [main] (BM_LOG.Devices) Adding device: I068 into Devices
+2017-01-17 22:20:08,154 DEBUG [main] (BM_LOG.Devices) Setting property: 0001 of device: I068 with value: 0
+2017-01-17 22:20:08,167 DEBUG [main] (BM_LOG.Devices) Adding device: B51V into Devices
+2017-01-17 22:20:08,167 DEBUG [main] (BM_LOG.Devices) Setting property: 0028 of device: B51V with value: 1000
+2017-01-17 22:20:08,168 DEBUG [main] (BM_LOG.Devices) Setting property: 0027 of device: B51V with value: 1
+2017-01-17 22:20:08,184 DEBUG [main] (BM_LOG.Devices) Adding device: J3D7 into Devices
+2017-01-17 22:20:08,185 DEBUG [main] (BM_LOG.Devices) Setting property: 0006 of device: J3D7 with value: 1
+2017-01-17 22:20:08,189 INFO  [main] (BM_LOG.Devices) Devices population done!
+2017-01-17 22:20:08,189 INFO  [main] (BM_LOG.Devices) Retrieving rooms from DB...
+2017-01-17 22:20:08,205 DEBUG [main] (BM_LOG.Devices) Rooms retrieved!
+2017-01-17 22:20:08,324 INFO  [main] (BM_LOG.Controller) Controller constructed!
+2017-01-17 22:20:08,415 INFO  [main] (BM_LOG.main) Config file cfg/core-config.xml loaded.
+2017-01-17 22:20:08,445 DEBUG [main] (BM_LOG.mqtt) Connected to MQTT!
+2017-01-17 22:20:08,451 DEBUG [main] (BM_LOG.mqtt) Subscribed to BM topic!
+2017-01-17 22:20:08,452 DEBUG [main] (BM_LOG.mqtt) Callback set!
+2017-01-17 22:20:08,461 INFO  [Process1] (BM_LOG.Devices) Retrieving rooms from DB...
+2017-01-17 22:20:08,477 DEBUG [Process1] (BM_LOG.Devices) Rooms retrieved!
+2017-01-17 22:20:08,480 INFO  [Process1] (BM_LOG.Devices) Retrieving rooms from DB...
+2017-01-17 22:20:08,499 DEBUG [Process1] (BM_LOG.Devices) Rooms retrieved!
+2017-01-17 22:20:08,516 INFO  [main] (BM_LOG.main) BusinessMachine started!
+2017-01-17 22:20:10,516 INFO  [OHUpdater] (BM_LOG.main) Updating OH items' states...
+2017-01-17 22:20:10,518 DEBUG [OHUpdater] (BM_LOG.main) Update complete!
+2017-01-17 22:20:10,520 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:20:10,522 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,595 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0028_1000 to topic:openhab/B51V_topic
+2017-01-17 22:20:10,597 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,657 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0027_1 to topic:openhab/B51V_topic
+2017-01-17 22:20:10,665 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,709 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0006_1 to topic:openhab/J3D7_topic
+2017-01-17 22:20:10,710 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,743 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:10,743 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:10,744 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0006','RID':'0000','value':'1','CID':'J3D7'}
+2017-01-17 22:20:10,761 DEBUG [Process1] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:10,763 INFO  [Process1] (BM_LOG.POOPModule) Changing component J3D7 property 0006 to 1...
+2017-01-17 22:20:10,763 INFO  [Process1] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:20:10,763 DEBUG [Process1] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:10,763 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:10,764 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,786 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:10,786 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:10,786 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:10,789 DEBUG [Process2] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:10,789 INFO  [Process2] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:10,790 INFO  [Process2] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:10,790 DEBUG [Process2] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:10,813 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0020_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:10,813 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,839 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:10,839 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:10,839 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0020','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:10,851 DEBUG [Process3] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:10,851 INFO  [Process3] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
+2017-01-17 22:20:10,851 INFO  [Process3] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:10,851 DEBUG [Process3] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:10,870 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0019_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:10,870 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,875 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:10,875 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:10,875 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0020','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:10,888 DEBUG [Process4] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:10,889 INFO  [Process4] (BM_LOG.POOPModule) Changing component N40M property 0020 to 0...
+2017-01-17 22:20:10,889 INFO  [Process4] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:10,889 DEBUG [Process4] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:10,920 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0024_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:10,920 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,922 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:10,923 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:10,923 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0019','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:10,925 DEBUG [Process5] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:10,925 INFO  [Process5] (BM_LOG.POOPModule) Changing component N40M property 0019 to 0...
+2017-01-17 22:20:10,925 INFO  [Process5] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:10,925 DEBUG [Process5] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:10,970 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0005_36 to topic:openhab/N40M_topic
+2017-01-17 22:20:10,970 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:10,973 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:10,973 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:10,973 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0024','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:10,975 DEBUG [Process6] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:10,975 INFO  [Process6] (BM_LOG.POOPModule) Changing component N40M property 0024 to 0...
+2017-01-17 22:20:10,975 INFO  [Process6] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:10,975 DEBUG [Process6] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,020 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0023_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:11,021 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:11,041 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,041 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,041 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0023','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,049 DEBUG [Process7] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,049 INFO  [Process7] (BM_LOG.POOPModule) Changing component N40M property 0023 to 0...
+2017-01-17 22:20:11,049 INFO  [Process7] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,049 DEBUG [Process7] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,070 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0004_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:11,070 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:11,186 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0022_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:11,186 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:11,201 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,201 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,201 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0024','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,214 DEBUG [Process8] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,214 INFO  [Process8] (BM_LOG.POOPModule) Changing component N40M property 0024 to 0...
+2017-01-17 22:20:11,214 INFO  [Process8] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,214 DEBUG [Process8] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,241 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0003_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:11,246 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,246 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,246 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0022','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,246 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:11,250 DEBUG [Process9] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,250 INFO  [Process9] (BM_LOG.POOPModule) Changing component N40M property 0022 to 0...
+2017-01-17 22:20:11,250 INFO  [Process9] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,250 DEBUG [Process9] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,251 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,251 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,251 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0023','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,253 DEBUG [Process10] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,253 INFO  [Process10] (BM_LOG.POOPModule) Changing component N40M property 0023 to 0...
+2017-01-17 22:20:11,254 INFO  [Process10] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,254 DEBUG [Process10] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,291 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0021_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:11,291 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:11,296 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,296 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,296 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0019','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,297 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,297 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,297 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0022','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,300 DEBUG [Process11] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,300 INFO  [Process11] (BM_LOG.POOPModule) Changing component N40M property 0019 to 0...
+2017-01-17 22:20:11,300 INFO  [Process11] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,300 DEBUG [Process11] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,301 DEBUG [Process12] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,302 INFO  [Process12] (BM_LOG.POOPModule) Changing component N40M property 0022 to 0...
+2017-01-17 22:20:11,302 INFO  [Process12] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,302 DEBUG [Process12] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,507 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,508 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,508 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0021','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,508 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:11,508 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:11,508 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0021','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:11,512 DEBUG [Process13] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,512 INFO  [Process13] (BM_LOG.POOPModule) Changing component N40M property 0021 to 0...
+2017-01-17 22:20:11,512 INFO  [Process13] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,512 DEBUG [Process13] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:11,513 DEBUG [Process14] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:11,513 INFO  [Process14] (BM_LOG.POOPModule) Changing component N40M property 0021 to 0...
+2017-01-17 22:20:11,513 INFO  [Process14] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:11,513 DEBUG [Process14] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:15,787 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:15,787 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:15,788 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:20:15,790 DEBUG [Process15] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:15,790 INFO  [Process15] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:20:15,803 DEBUG [Process15] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:20:15,803 DEBUG [Process15] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:20:15,803 FATAL [Process15] (BM_LOG.POOPModule) ModuleERID:E0AV6005LT
+2017-01-17 22:20:15,804 FATAL [Process15] (BM_LOG.POOPModule) ModuleThread:Process15
+2017-01-17 22:20:15,814 DEBUG [Process15] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:15,855 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:20:15,855 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:15,905 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:20:15,905 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:16,165 DEBUG [Process15] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:20:16,168 DEBUG [Process15] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:16,193 DEBUG [Process15] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:16,241 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:20:16,241 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:16,291 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:20:16,291 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:16,308 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:16,308 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:16,308 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:20:16,314 DEBUG [Process16] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:16,314 INFO  [Process16] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:20:16,314 INFO  [Process16] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:20:16,314 DEBUG [Process16] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:16,510 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:16,510 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:16,510 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:20:16,512 DEBUG [Process17] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:16,512 INFO  [Process17] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:20:16,512 INFO  [Process17] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:20:16,512 DEBUG [Process17] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:18,019 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:18,019 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:18,019 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:18,020 DEBUG [Process18] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:18,020 INFO  [Process18] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:18,035 DEBUG [Process18] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:20:18,035 DEBUG [Process18] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:20:18,035 FATAL [Process18] (BM_LOG.POOPModule) ModuleERID:QSU22HJEL3
+2017-01-17 22:20:18,036 FATAL [Process18] (BM_LOG.POOPModule) ModuleThread:Process18
+2017-01-17 22:20:18,040 DEBUG [Process18] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:18,061 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:20:18,062 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:18,080 DEBUG [Process18] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:20:18,087 DEBUG [Process18] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:18,111 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:20:18,111 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:18,116 DEBUG [Process18] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:18,161 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:20:18,161 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:18,211 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:18,211 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:18,231 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:18,231 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:18,231 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:18,233 DEBUG [Process19] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:18,233 INFO  [Process19] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:18,233 INFO  [Process19] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:18,233 DEBUG [Process19] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:18,430 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:18,430 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:18,430 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:18,432 DEBUG [Process20] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:18,432 INFO  [Process20] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:18,432 INFO  [Process20] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:18,432 DEBUG [Process20] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:19,462 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:19,462 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:19,462 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:20:19,468 DEBUG [Process21] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:19,468 INFO  [Process21] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:20:19,479 DEBUG [Process21] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:20:19,479 DEBUG [Process21] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:20:19,479 FATAL [Process21] (BM_LOG.POOPModule) ModuleERID:T4505EB1IL
+2017-01-17 22:20:19,479 FATAL [Process21] (BM_LOG.POOPModule) ModuleThread:Process21
+2017-01-17 22:20:19,486 DEBUG [Process21] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:19,513 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:20:19,514 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:19,518 DEBUG [Process21] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:20:19,520 DEBUG [Process21] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:19,541 DEBUG [Process21] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:19,563 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:20:19,563 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:19,613 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:20:19,613 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:19,663 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:20:19,663 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:19,678 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:19,678 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:19,678 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:20:19,682 DEBUG [Process22] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:19,682 INFO  [Process22] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:20:19,682 INFO  [Process22] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:20:19,682 DEBUG [Process22] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:19,878 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:19,879 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:19,879 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:20:19,881 DEBUG [Process23] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:19,881 INFO  [Process23] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:20:19,881 INFO  [Process23] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:20:19,881 DEBUG [Process23] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:20,957 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:20,957 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:20,957 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:20,965 DEBUG [Process24] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:20,965 INFO  [Process24] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:20,993 DEBUG [Process24] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:20:20,994 DEBUG [Process24] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:20:20,994 FATAL [Process24] (BM_LOG.POOPModule) ModuleERID:Y3H6587221
+2017-01-17 22:20:20,994 FATAL [Process24] (BM_LOG.POOPModule) ModuleThread:Process24
+2017-01-17 22:20:21,012 DEBUG [Process24] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:21,042 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:20:21,042 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:21,047 DEBUG [Process24] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:20:21,052 DEBUG [Process24] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:20:21,081 DEBUG [Process24] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:21,092 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:20:21,092 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:21,142 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:20:21,142 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:21,192 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:20:21,192 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:20:21,210 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:21,210 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:21,211 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:21,212 DEBUG [Process25] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:21,213 INFO  [Process25] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:21,213 INFO  [Process25] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:21,213 DEBUG [Process25] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:20:21,412 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:20:21,412 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:20:21,412 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:20:21,414 DEBUG [Process26] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:20:21,414 INFO  [Process26] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:20:21,414 INFO  [Process26] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:20:21,414 DEBUG [Process26] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:55,329 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:55,329 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:55,329 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:55,331 DEBUG [Process27] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:55,331 INFO  [Process27] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:55,335 DEBUG [Process27] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:55,335 DEBUG [Process27] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:55,335 FATAL [Process27] (BM_LOG.POOPModule) ModuleERID:FSMYOSCHOR
+2017-01-17 22:22:55,335 FATAL [Process27] (BM_LOG.POOPModule) ModuleThread:Process27
+2017-01-17 22:22:55,344 DEBUG [Process27] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:55,370 DEBUG [Process27] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:55,373 DEBUG [Process27] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:55,392 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:22:55,392 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:55,401 DEBUG [Process27] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:55,442 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:22:55,442 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:55,492 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:22:55,492 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:55,542 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:22:55,543 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:55,557 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:55,557 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:55,557 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:55,559 DEBUG [Process28] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:55,559 INFO  [Process28] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:55,559 INFO  [Process28] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:22:55,559 DEBUG [Process28] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:57,568 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:57,569 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:57,569 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:57,576 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:57,576 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:57,576 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:57,577 DEBUG [Process30] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:57,577 INFO  [Process30] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:57,581 DEBUG [Process30] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:57,581 DEBUG [Process30] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:57,581 FATAL [Process30] (BM_LOG.POOPModule) ModuleERID:UM20PNTG8H
+2017-01-17 22:22:57,581 FATAL [Process30] (BM_LOG.POOPModule) ModuleThread:Process30
+2017-01-17 22:22:57,583 DEBUG [Process29] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:57,583 INFO  [Process29] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:57,590 DEBUG [Process30] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:57,602 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:22:57,602 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,603 DEBUG [Process29] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:57,603 DEBUG [Process29] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:57,603 FATAL [Process29] (BM_LOG.POOPModule) ModuleERID:V0FC013RUW
+2017-01-17 22:22:57,603 FATAL [Process29] (BM_LOG.POOPModule) ModuleThread:Process29
+2017-01-17 22:22:57,610 DEBUG [Process29] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:57,652 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:22:57,652 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,702 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:22:57,702 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,719 DEBUG [Process30] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:57,724 DEBUG [Process30] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:57,737 DEBUG [Process29] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:57,744 DEBUG [Process29] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:57,752 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:22:57,752 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,754 DEBUG [Process30] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:57,772 DEBUG [Process29] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:57,802 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:22:57,802 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,852 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:22:57,852 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,867 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:57,868 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:57,868 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:57,869 DEBUG [Process31] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:57,869 INFO  [Process31] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:57,876 DEBUG [Process31] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:57,876 DEBUG [Process31] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:57,876 FATAL [Process31] (BM_LOG.POOPModule) ModuleERID:P180DBYUKA
+2017-01-17 22:22:57,876 FATAL [Process31] (BM_LOG.POOPModule) ModuleThread:Process31
+2017-01-17 22:22:57,884 DEBUG [Process31] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:57,902 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:22:57,902 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,908 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:57,908 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:57,908 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:57,909 DEBUG [Process31] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:57,911 DEBUG [Process32] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:57,911 INFO  [Process32] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:57,912 INFO  [Process32] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:22:57,912 DEBUG [Process32] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:57,924 DEBUG [Process31] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:57,944 DEBUG [Process31] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:57,952 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:22:57,952 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:57,967 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:57,967 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:57,967 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:57,968 DEBUG [Process33] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:57,968 INFO  [Process33] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:57,981 DEBUG [Process33] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:57,981 DEBUG [Process33] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:57,981 FATAL [Process33] (BM_LOG.POOPModule) ModuleERID:SLMS273EMC
+2017-01-17 22:22:57,981 FATAL [Process33] (BM_LOG.POOPModule) ModuleThread:Process33
+2017-01-17 22:22:58,004 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:22:58,005 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,008 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,009 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,009 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:58,010 DEBUG [Process34] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,010 INFO  [Process34] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:58,010 INFO  [Process34] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:22:58,011 DEBUG [Process34] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,017 DEBUG [Process33] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,041 DEBUG [Process33] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:58,047 DEBUG [Process33] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,053 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:22:58,053 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,074 DEBUG [Process33] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,103 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:22:58,103 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,153 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:22:58,153 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,168 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,168 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,168 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:58,185 DEBUG [Process35] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,185 INFO  [Process35] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:58,206 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:22:58,207 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,208 DEBUG [Process35] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:58,208 DEBUG [Process35] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:58,208 FATAL [Process35] (BM_LOG.POOPModule) ModuleERID:A73737S748
+2017-01-17 22:22:58,208 FATAL [Process35] (BM_LOG.POOPModule) ModuleThread:Process35
+2017-01-17 22:22:58,210 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,210 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,210 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:58,211 DEBUG [Process36] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,211 INFO  [Process36] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:58,212 INFO  [Process36] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:22:58,212 DEBUG [Process36] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,216 DEBUG [Process35] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,251 DEBUG [Process35] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:58,256 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:22:58,256 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,257 DEBUG [Process35] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,286 DEBUG [Process35] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,306 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:22:58,306 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,356 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:22:58,356 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,370 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,370 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,370 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:58,374 DEBUG [Process37] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,374 INFO  [Process37] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:58,379 DEBUG [Process37] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:58,379 DEBUG [Process37] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:58,379 FATAL [Process37] (BM_LOG.POOPModule) ModuleERID:FN1VE7YJJI
+2017-01-17 22:22:58,379 FATAL [Process37] (BM_LOG.POOPModule) ModuleThread:Process37
+2017-01-17 22:22:58,403 DEBUG [Process37] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,406 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:22:58,414 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,414 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,414 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:58,415 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,416 DEBUG [Process38] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,417 INFO  [Process38] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:58,417 INFO  [Process38] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:22:58,417 DEBUG [Process38] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,426 DEBUG [Process37] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:58,427 DEBUG [Process37] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,455 DEBUG [Process37] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,456 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:22:58,456 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,506 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:22:58,506 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,557 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:22:58,558 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,583 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,583 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,584 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:58,585 DEBUG [Process39] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,585 INFO  [Process39] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:58,592 DEBUG [Process39] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:58,592 DEBUG [Process39] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:58,592 FATAL [Process39] (BM_LOG.POOPModule) ModuleERID:LH8IHUAWIK
+2017-01-17 22:22:58,592 FATAL [Process39] (BM_LOG.POOPModule) ModuleThread:Process39
+2017-01-17 22:22:58,600 DEBUG [Process39] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,607 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:22:58,607 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,609 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,609 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,609 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:58,612 DEBUG [Process40] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,612 INFO  [Process40] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:58,612 INFO  [Process40] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:22:58,612 DEBUG [Process40] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,632 DEBUG [Process39] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:58,640 DEBUG [Process39] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,657 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:22:58,657 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,676 DEBUG [Process39] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,707 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:22:58,707 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,757 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:22:58,757 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,777 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,777 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,777 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:58,781 DEBUG [Process41] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,781 INFO  [Process41] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:58,790 DEBUG [Process41] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:58,790 DEBUG [Process41] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:58,791 FATAL [Process41] (BM_LOG.POOPModule) ModuleERID:M03L2378C2
+2017-01-17 22:22:58,791 FATAL [Process41] (BM_LOG.POOPModule) ModuleThread:Process41
+2017-01-17 22:22:58,800 DEBUG [Process41] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,807 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:22:58,807 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,812 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,813 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,813 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:58,814 DEBUG [Process42] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,814 INFO  [Process42] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:58,814 INFO  [Process42] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:22:58,815 DEBUG [Process42] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,817 DEBUG [Process41] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:58,820 DEBUG [Process41] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:58,852 DEBUG [Process41] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:58,860 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:22:58,864 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,910 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:22:58,910 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,960 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:22:58,960 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:58,975 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:58,975 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:58,976 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:58,977 DEBUG [Process43] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:58,977 INFO  [Process43] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:58,982 DEBUG [Process43] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:58,982 DEBUG [Process43] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:58,983 FATAL [Process43] (BM_LOG.POOPModule) ModuleERID:P07S5QHSCY
+2017-01-17 22:22:58,983 FATAL [Process43] (BM_LOG.POOPModule) ModuleThread:Process43
+2017-01-17 22:22:58,991 DEBUG [Process43] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,010 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:22:59,011 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,015 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,015 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,015 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:59,019 DEBUG [Process44] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,019 INFO  [Process44] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:59,019 INFO  [Process44] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:22:59,019 DEBUG [Process44] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,071 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:22:59,072 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,121 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:22:59,121 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,171 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:22:59,171 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,185 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,185 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,185 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:59,186 DEBUG [Process45] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,186 INFO  [Process45] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:59,193 DEBUG [Process45] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:59,193 DEBUG [Process45] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:59,193 FATAL [Process45] (BM_LOG.POOPModule) ModuleERID:N1BKV4O67X
+2017-01-17 22:22:59,194 FATAL [Process45] (BM_LOG.POOPModule) ModuleThread:Process45
+2017-01-17 22:22:59,202 DEBUG [Process45] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,221 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:22:59,221 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,223 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,224 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,224 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:59,225 DEBUG [Process46] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,225 INFO  [Process46] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:59,225 INFO  [Process46] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:22:59,225 DEBUG [Process46] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,271 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:22:59,271 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,321 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:22:59,321 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,371 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:22:59,371 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,659 DEBUG [Process43] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:59,664 DEBUG [Process43] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,678 DEBUG [Process45] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:59,684 DEBUG [Process45] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,697 DEBUG [Process43] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,719 DEBUG [Process45] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,721 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:22:59,721 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,771 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:22:59,771 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,785 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,785 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,785 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:59,786 DEBUG [Process47] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,786 INFO  [Process47] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:59,795 DEBUG [Process47] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:59,795 DEBUG [Process47] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:59,795 FATAL [Process47] (BM_LOG.POOPModule) ModuleERID:NYOK123261
+2017-01-17 22:22:59,795 FATAL [Process47] (BM_LOG.POOPModule) ModuleThread:Process47
+2017-01-17 22:22:59,804 DEBUG [Process47] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,821 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:22:59,821 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,823 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,823 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,823 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:22:59,824 DEBUG [Process48] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,824 INFO  [Process48] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:22:59,824 INFO  [Process48] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:22:59,824 DEBUG [Process48] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,838 DEBUG [Process47] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:22:59,845 DEBUG [Process47] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,871 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:22:59,871 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,879 DEBUG [Process47] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,896 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,897 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,897 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:59,898 DEBUG [Process49] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,898 INFO  [Process49] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:59,905 DEBUG [Process49] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:22:59,905 DEBUG [Process49] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:22:59,905 FATAL [Process49] (BM_LOG.POOPModule) ModuleERID:X7S6S18X7A
+2017-01-17 22:22:59,905 FATAL [Process49] (BM_LOG.POOPModule) ModuleThread:Process49
+2017-01-17 22:22:59,914 DEBUG [Process49] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:22:59,921 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:22:59,921 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,971 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:22:59,971 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:22:59,978 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:22:59,978 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:22:59,978 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:22:59,980 DEBUG [Process50] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:22:59,980 INFO  [Process50] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:22:59,980 INFO  [Process50] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:22:59,980 DEBUG [Process50] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:22:59,995 DEBUG [Process49] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:23:00,004 DEBUG [Process49] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,021 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:23:00,021 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,032 DEBUG [Process49] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,071 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:23:00,071 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,081 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,081 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,081 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:00,083 DEBUG [Process51] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,083 INFO  [Process51] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:00,086 DEBUG [Process51] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:23:00,086 DEBUG [Process51] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:23:00,086 FATAL [Process51] (BM_LOG.POOPModule) ModuleERID:OS7UYYKR53
+2017-01-17 22:23:00,086 FATAL [Process51] (BM_LOG.POOPModule) ModuleThread:Process51
+2017-01-17 22:23:00,095 DEBUG [Process51] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,121 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:23:00,121 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,123 DEBUG [Process51] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:23:00,123 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,123 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,123 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:00,124 DEBUG [Process51] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,125 DEBUG [Process52] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,125 INFO  [Process52] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:00,125 INFO  [Process52] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:23:00,125 DEBUG [Process52] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,163 DEBUG [Process51] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,171 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:23:00,171 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,221 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:23:00,221 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,271 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:23:00,271 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,284 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,284 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,284 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:00,286 DEBUG [Process53] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,286 INFO  [Process53] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:00,296 DEBUG [Process53] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:23:00,296 DEBUG [Process53] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:23:00,296 FATAL [Process53] (BM_LOG.POOPModule) ModuleERID:U4Y15EW201
+2017-01-17 22:23:00,296 FATAL [Process53] (BM_LOG.POOPModule) ModuleThread:Process53
+2017-01-17 22:23:00,304 DEBUG [Process53] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,321 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:23:00,321 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,323 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,324 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,324 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:00,325 DEBUG [Process54] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,325 INFO  [Process54] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:00,325 INFO  [Process54] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:23:00,325 DEBUG [Process54] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,333 DEBUG [Process53] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:23:00,344 DEBUG [Process53] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,371 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:23:00,371 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,380 DEBUG [Process53] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,421 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:23:00,421 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,471 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:23:00,471 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,480 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,481 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,481 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:00,482 DEBUG [Process55] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,482 INFO  [Process55] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:00,485 DEBUG [Process55] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:23:00,485 DEBUG [Process55] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:23:00,485 FATAL [Process55] (BM_LOG.POOPModule) ModuleERID:JCW3L3INGQ
+2017-01-17 22:23:00,485 FATAL [Process55] (BM_LOG.POOPModule) ModuleThread:Process55
+2017-01-17 22:23:00,494 DEBUG [Process55] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,521 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:23:00,521 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,571 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:23:00,571 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,621 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:23:00,621 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,671 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:23:00,671 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,723 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:23:00,723 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,763 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,763 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,763 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:00,771 DEBUG [Process55] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:23:00,784 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:23:00,785 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,809 DEBUG [Process56] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,809 INFO  [Process56] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:00,809 INFO  [Process56] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:23:00,809 DEBUG [Process56] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,817 DEBUG [Process55] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,819 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,819 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,819 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:00,821 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:00,821 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:00,821 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:00,822 DEBUG [Process58] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,822 INFO  [Process58] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:00,842 DEBUG [Process57] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:00,843 INFO  [Process57] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:00,851 DEBUG [Process57] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:23:00,851 DEBUG [Process57] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:23:00,851 FATAL [Process57] (BM_LOG.POOPModule) ModuleERID:ATD017C8H3
+2017-01-17 22:23:00,851 FATAL [Process57] (BM_LOG.POOPModule) ModuleThread:Process57
+2017-01-17 22:23:00,858 DEBUG [Process57] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,890 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":1} to topic:I068_topic
+2017-01-17 22:23:00,892 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,905 DEBUG [Process57] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:23:00,911 DEBUG [Process57] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:00,937 DEBUG [Process57] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:00,940 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_1 to topic:openhab/I068_topic
+2017-01-17 22:23:00,940 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:00,990 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":1} to topic:N40M_topic
+2017-01-17 22:23:00,990 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:01,040 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_1 to topic:openhab/N40M_topic
+2017-01-17 22:23:01,040 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:01,065 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:01,065 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:01,065 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:01,066 DEBUG [Process59] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:01,066 INFO  [Process59] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:01,067 INFO  [Process59] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:23:01,067 DEBUG [Process59] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:01,268 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:01,268 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:01,268 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:01,279 DEBUG [Process60] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:01,280 INFO  [Process60] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:01,280 INFO  [Process60] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:23:01,280 DEBUG [Process60] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:12,196 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:12,196 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:12,196 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'1','CID':'N40M'}
+2017-01-17 22:23:12,199 DEBUG [Process61] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:12,199 INFO  [Process61] (BM_LOG.POOPModule) Changing component N40M property 0002 to 1...
+2017-01-17 22:23:12,199 INFO  [Process61] (BM_LOG.POOPModule) Property is already set to 1!
+2017-01-17 22:23:12,199 DEBUG [Process61] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:13,258 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:13,258 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:13,258 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:13,260 DEBUG [Process62] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:13,260 INFO  [Process62] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:13,265 DEBUG [Process62] (BM_LOG.POOPModule) Updating component property in system...
+2017-01-17 22:23:13,266 DEBUG [Process62] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-01-17 22:23:13,266 FATAL [Process62] (BM_LOG.POOPModule) ModuleERID:D8K33RII4I
+2017-01-17 22:23:13,266 FATAL [Process62] (BM_LOG.POOPModule) ModuleThread:Process62
+2017-01-17 22:23:13,274 DEBUG [Process62] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:13,301 DEBUG [Process62] (BM_LOG.POOPModule) Updating affected component properties in DB...
+2017-01-17 22:23:13,304 DEBUG [Process62] (BM_LOG.POOPModule) Updating component property in DB...
+2017-01-17 22:23:13,312 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0001","RID":"0000","value":0} to topic:I068_topic
+2017-01-17 22:23:13,312 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:13,325 DEBUG [Process62] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:13,362 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/I068_topic
+2017-01-17 22:23:13,362 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:13,412 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:{"RTY":"poop","success":true,"property":"0002","RID":"0000","value":0} to topic:N40M_topic
+2017-01-17 22:23:13,412 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:13,462 DEBUG [MQTTHandler] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N40M_topic
+2017-01-17 22:23:13,462 DEBUG [MQTTHandler] (BM_LOG.mqtt) Message published!
+2017-01-17 22:23:13,480 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:13,480 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:13,480 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:13,482 DEBUG [Process63] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:13,482 INFO  [Process63] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:13,482 INFO  [Process63] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:23:13,482 DEBUG [Process63] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 22:23:13,680 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) 
+
+
+2017-01-17 22:23:13,680 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message arrived at topic BM
+2017-01-17 22:23:13,680 DEBUG [MQTT Call: BM] (BM_LOG.mqtt) Message is: {'RTY':'poop','property':'0002','RID':'0000','value':'0','CID':'N40M'}
+2017-01-17 22:23:13,681 DEBUG [Process64] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-01-17 22:23:13,682 INFO  [Process64] (BM_LOG.POOPModule) Changing component N40M property 0002 to 0...
+2017-01-17 22:23:13,682 INFO  [Process64] (BM_LOG.POOPModule) Property is already set to 0!
+2017-01-17 22:23:13,682 DEBUG [Process64] (BM_LOG.POOPModule) POOP processing complete!
+2017-01-17 23:38:54,328 FATAL [MQTT Rec: BM] (BM_LOG.mqtt) Connection lost with MQTT server!

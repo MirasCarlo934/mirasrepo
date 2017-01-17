@@ -45,7 +45,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 		} catch (MqttException e) {
 			logger.fatal("Cannot create MQTTClient!", e);
 		}
-		timer.schedule(this, 0, 10);
+		timer.schedule(this, 0, 50);
 	}
 	
 	public void connectToMQTT() {
@@ -116,11 +116,12 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	public void run() {
 		if(!queue.isEmpty()) {
 			MQTTMessage m = queue.removeFirst();
-			logger.trace("Publishing message:" + m.message + " to topic:" + m.topic);
+			logger.debug("Publishing message:" + m.message + " to topic:" + m.topic);
 			MqttMessage payload = new MqttMessage(m.message.getBytes());
 			payload.setQos(0);
 			try {
 				client.publish(m.topic, payload);
+				logger.debug("Message published!");
 			} catch (MqttPersistenceException e) {
 				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
 			} catch (MqttException e) {

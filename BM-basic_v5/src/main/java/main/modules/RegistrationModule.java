@@ -185,9 +185,10 @@ public class RegistrationModule extends AbstModule {
 		boolean b = true;
 		if(cr.containsComponent(reg.mac)) {
 			Component c = cr.getComponent(reg.mac);
-			error(new ResError(reg, "Component already exists in system!"));
+			LOG.warn(new ResError(reg, "Component already exists in system! "
+					+ "Returning existing credentials."));
 			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
-			return false;
+			return true;
 		}
 		try {
 			RawDBEReq dber3 = new RawDBEReq(idg.generateMixedCharID(10), 

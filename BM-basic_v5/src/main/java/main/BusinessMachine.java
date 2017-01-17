@@ -89,8 +89,24 @@ public class BusinessMachine {
 				OHEngine ohe = (OHEngine) context.getBean("OHEngine");
 				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)), 
 						Thread.currentThread());
+				try {
+					synchronized (Thread.currentThread()) {
+						Thread.currentThread().wait();
+					}
+				} catch (IllegalMonitorStateException e) {
+					LOG.error(e);
+					e.printStackTrace();
+				}
 				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), 
 						Thread.currentThread());
+				try {
+					synchronized (Thread.currentThread()) {
+						Thread.currentThread().wait();
+					}
+				} catch (IllegalMonitorStateException e) {
+					LOG.error(e);
+					e.printStackTrace();
+				}
 				LOG.info("BusinessMachine started!");
 				
 				//updates OH items' states

@@ -7,7 +7,9 @@ import json.objects.ReqRequest;
 import json.objects.ResError;
 import main.ComponentRepository;
 import main.engines.DBEngine;
+import main.engines.OHEngine;
 import main.engines.requests.DBEngine.DeleteDBEReq;
+import main.engines.requests.OHEngine.UpdateOHEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
 
@@ -15,11 +17,14 @@ public class DetachmentModule extends AbstModule {
 	private String propsTable;
 	private String comsTable;
 	private DBEngine dbe;
+	private OHEngine ohe;
 	private IDGenerator idg = new IDGenerator();
 
-	public DetachmentModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository cr, DBEngine dbe) {
+	public DetachmentModule(String RTY, String[] params, MQTTHandler mh, ComponentRepository cr, 
+			DBEngine dbe, OHEngine ohe) {
 		super("DetachmentModule", RTY, params, mh, cr);
 		this.dbe = dbe;
+		this.ohe = ohe;
 	}
 
 	@Override
@@ -38,6 +43,7 @@ public class DetachmentModule extends AbstModule {
 		
 		dbe.forwardRequest(new DeleteDBEReq(idg.generateMixedCharID(10), propsTable, vals1));
 		dbe.forwardRequest(new DeleteDBEReq(idg.generateMixedCharID(10), comsTable, vals2));
+		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)));
 		/*try {
 			//dbe.deleteQuery(propsTable, vals1);
 			//dbe.deleteQuery(comsTable, vals2);

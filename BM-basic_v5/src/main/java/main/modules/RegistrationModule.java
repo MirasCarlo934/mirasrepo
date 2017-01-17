@@ -14,9 +14,11 @@ import json.objects.ResError;
 import json.objects.ResRegister;
 import main.ComponentRepository;
 import main.engines.DBEngine;
+import main.engines.OHEngine;
 import main.engines.requests.DBEngine.InsertDBEReq;
 import main.engines.requests.DBEngine.RawDBEReq;
 import main.engines.requests.DBEngine.SelectDBEReq;
+import main.engines.requests.OHEngine.UpdateOHEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
 
@@ -25,16 +27,19 @@ public class RegistrationModule extends AbstModule {
 	private static String propsTable = ""; //COMPONENTS table
 	private IDGenerator idg = new IDGenerator();
 	private DBEngine dbe;
+	private OHEngine ohe;
 	private String productQuery;
 	private String nameParam;
 	private String prodIDParam;
 	private String roomIDParam;
 	
 	public RegistrationModule(String RTY, String nameParam, String prodIDParam, String roomIDParam,
-			MQTTHandler mh, ComponentRepository components, DBEngine dbe, String productQuery) {
+			MQTTHandler mh, ComponentRepository components, DBEngine dbe, OHEngine ohe,
+			String productQuery) {
 		super("RegistrationModule", RTY, new String[]{nameParam, prodIDParam, roomIDParam}, 
 				mh, components);
 		this.dbe = dbe;
+		this.ohe = ohe;
 		this.productQuery = productQuery;
 		this.nameParam = nameParam;
 		this.prodIDParam = prodIDParam;
@@ -81,6 +86,7 @@ public class RegistrationModule extends AbstModule {
 		Component c = new Component(ssid, reg.mac, reg.name, topic, reg.room, true, product);
 		cr.addComponent(c);
 		persistComponent(c, request);
+		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)));
 		mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
 		LOG.info("Registration complete!");
 	}

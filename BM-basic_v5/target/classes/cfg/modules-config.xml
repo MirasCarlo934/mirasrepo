@@ -16,6 +16,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="nameParam" value="${registration.param.name}"/>
 		<constructor-arg name="prodIDParam" value="${registration.param.productID}"/>
 		<constructor-arg name="roomIDParam" value="${registration.param.roomID}"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
 		<!-- <constructor-arg name="params">
 			<list>
 				<value>${registration.param.name}</value>
@@ -48,6 +49,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
 		<constructor-arg name="params">
 			<list>
 			</list>

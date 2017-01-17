@@ -198,21 +198,24 @@ public class OHEngine extends Engine {
 				Property p = props[j];
 				LOG.trace("Adding property " + p.getSSID() + " of component " + c.getSSID());
 				String room = null;
+				String itemName = null;
 				//Switch UR6C_DigitalOutput_1 "DEFAULT DigitalOutput-1" (U1T4) { mqtt="<[mqttb:openhab/ESP_UR6C_topic:command:ON:DigitalOutput-1_1],<[mqttb:openhab/ESP_UR6C_topic:command:OFF:DigitalOutput-1_0],"}
 				if(props.length > 1) { //room = c.SSID
 					room = c.getSSID();
+					itemName = p.getDisplayName();
 				} else { //room = c.room
 					room = c.getRoom();
+					itemName = c.getName();
 				}
 				if(itemsList.get(p.getPropValType().toString()).equalsIgnoreCase("switch")) {
 					itemsStr += itemsList.get(p.getPropValType().toString()) + " " + c.getSSID()
-						+ "_" + p.getSSID() + " \"" + p.getDisplayName() + "\" (" + room
+						+ "_" + p.getSSID() + " \"" + itemName + "\" (" + room
 						+ ") {mqtt=\"<[" + OHMqttBroker + ":openhab/" + c.getTopic() 
 						+ ":command:ON:" + p.getSSID() + "_1],<[" + OHMqttBroker + ":openhab/" 
 						+ c.getTopic() + ":command:OFF:" + p.getSSID() + "_0]\"} \n\n";
 				} else if(itemsList.get(p.getPropValType().toString()).equalsIgnoreCase("dimmer")) {
 					itemsStr += itemsList.get(p.getPropValType().toString()) + " " +c.getSSID()
-						+ "_" + p.getSSID() + " \"" + p.getDisplayName() + " \" (" + room + ") \n\n";					 
+						+ "_" + p.getSSID() + " \"" + itemName + " \" (" + room + ") \n\n";					 
 				}
 			}
 		}
@@ -246,22 +249,22 @@ public class OHEngine extends Engine {
 		        	str += "rule \"" + p.getSSID() + " ON\"\n"
 		        			+ "when \n"
 		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command ON \n"
-		        			+ "then mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'1','CID':'" + c.getSSID() + "'}\") \n"
-		        			+ "\t  \n"
+		        			+ "then \n"
+		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'1','CID':'" + c.getSSID() + "'}\") \n"
 		        			+ "end \n\n";
 		        	str += "rule \"" + p.getSSID() + " OFF\"\n"
 		        			+ "when \n"
 		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command OFF \n"
-		        			+ "then mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'0','CID':'" + c.getSSID() + "'}\") \n"
-		        			+ "\t  \n"
+		        			+ "then \n "
+		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'0','CID':'" + c.getSSID() + "'}\") \n"
 		        			+ "end \n\n";
 		        }
 		        else {
 		        	str += "rule \"" + p.getSSID() + " CHANGED\"\n"
 		        			+ "when \n"
-		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command ON \n"
-		        			+ "then mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
-		        			+ "\t  \n"
+		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command \n"
+		        			+ "then \n "
+		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
 		        			+ "end \n\n";
 		        }
 			}

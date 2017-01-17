@@ -26,7 +26,7 @@ public abstract class AbstModule {
 	
 	public void processRequest(ReqRequest request) {
 		LOG.debug(name + " request processing started!");
-		if(checkRequestValidity(request)) {
+		if(checkSecondaryRequestValidity(request)) {
 			LOG.trace("Request valid! Proceeding to request processing...");
 			process(request);
 		} else {
@@ -46,7 +46,7 @@ public abstract class AbstModule {
 	 * 			<li>There are secondary request parameters that are null/empty</li>
 	 * 		</ul>
 	 */
-	private boolean checkRequestValidity(ReqRequest request) {
+	private boolean checkSecondaryRequestValidity(ReqRequest request) {
 		LOG.trace("Checking secondary request parameters...");
 		boolean b = false; //true if request is valid
 		

@@ -87,8 +87,10 @@ public class BusinessMachine {
 				final ComponentRepository cr = (ComponentRepository) context.getBean("Components");
 				mh.connectToMQTT();
 				OHEngine ohe = (OHEngine) context.getBean("OHEngine");
-				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)));
-				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
+				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)), 
+						Thread.currentThread());
+				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), 
+						Thread.currentThread());
 				LOG.info("BusinessMachine started!");
 				
 				//updates OH items' states

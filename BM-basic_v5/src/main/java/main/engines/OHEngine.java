@@ -22,7 +22,7 @@ import mqtt.MQTTHandler;
 import tools.FileHandler;
 import tools.IDGenerator;
 
-public class OHEngine extends Engine {
+public class OHEngine extends AbstEngine {
 	private ComponentRepository cr;
 	private String os;
 	private String OHMqttBroker;

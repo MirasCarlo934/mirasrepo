@@ -1,7 +1,7 @@
 package main.engines.requests.DBEngine;
 
 import main.engines.DBEngine;
-import main.engines.Engine;
+import main.engines.AbstEngine;
 import main.engines.requests.EngineRequest;
 
 public abstract class DBEngineRequest extends EngineRequest {

@@ -39,7 +39,7 @@ import tools.FileHandler;
  * 
  * @author Carlo
  */
-public class CIREngine extends Engine {
+public class CIREngine extends AbstEngine {
 	private static final Logger LOG = Logger.getLogger(CIREngine.class);
 	private Vector<Statement> cirStatements = new Vector<Statement>(1,1);
 	private ComponentRepository cr;

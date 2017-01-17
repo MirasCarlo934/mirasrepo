@@ -57,7 +57,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="propsTable" value="${table.propstable}"/>
 		<property name="comsTable" value="${table.comstable}"/>
 	</bean>
-	<bean id="ohcommand" class="main.modules.OHControlModule" scope="prototype">
+	<!-- <bean id="ohcommand" class="main.modules.OHControlModule" scope="prototype">
 		<constructor-arg name="RTY" value="detach"/>
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="cr" ref="Components"/>
@@ -65,5 +65,5 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="commandParam" value="${ohcommand.param.command}"/>
 		<constructor-arg name="start" value="${ohcommand.command.start}"/>
 		<constructor-arg name="stop" value="${ohcommand.command.stop}"/>
-	</bean>
+	</bean> -->
 </beans>

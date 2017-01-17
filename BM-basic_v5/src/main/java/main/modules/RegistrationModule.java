@@ -57,8 +57,16 @@ public class RegistrationModule extends AbstModule {
 		Product product = null;
 		try {
 			//ResultSet rs1 = dbe.selectQuery("ssid", "components");
-			Object o = dbe.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), 
-					"components", new String[]{"ssid"}));
+			SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), 
+					"components", new String[]{"ssid"});
+			dbe.forwardRequest(dber1, Thread.currentThread());
+			try {
+				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			} catch (InterruptedException e) {
+				LOG.error("Cannot stop thread!", e);
+				e.printStackTrace();
+			}
+			Object o = dbe.getResponse(dber1.getId());
 			if(o.getClass().equals(ResError.class)) {
 				error((ResError) o);
 			} else {
@@ -69,8 +77,16 @@ public class RegistrationModule extends AbstModule {
 				rs1.close();
 			}
 			//ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
-			o = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
-					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'"));
+			RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
+					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
+			dbe.forwardRequest(dber2, Thread.currentThread());
+			try {
+				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			} catch (InterruptedException e) {
+				LOG.error("Cannot stop thread!", e);
+				e.printStackTrace();
+			}
+			o = dbe.getResponse(dber2.getId());
 			if(o.getClass().equals(ResError.class)) {
 				error((ResError) o);
 			} else {
@@ -86,7 +102,13 @@ public class RegistrationModule extends AbstModule {
 		Component c = new Component(ssid, reg.mac, reg.name, topic, reg.room, true, product);
 		cr.addComponent(c);
 		persistComponent(c, request);
-		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)));
+		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)), Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
 		mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
 		LOG.info("Registration complete!");
 	}
@@ -102,7 +124,14 @@ public class RegistrationModule extends AbstModule {
 		vals1.put("room", c.getRoom());
 		vals1.put("functn", c.getProduct().getSSID());
 		vals1.put("active", c.isActive());
-		dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), comsTable, vals1));
+		dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), comsTable, vals1), 
+				Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
 		Property[] props = c.getProperties().values().toArray(new Property[0]);
 		LOG.trace("Persisting component properties into DB...");
 		for(int i = 0; i < props.length; i++) {
@@ -112,7 +141,14 @@ public class RegistrationModule extends AbstModule {
 			vals2.put("prop_name", p.getSystemName());
 			vals2.put("prop_value", String.valueOf(p.getValue()));
 			vals2.put("cpl_ssid", p.getSSID());
-			dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), propsTable, vals2));
+			dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), propsTable, vals2), 
+					Thread.currentThread());
+			try {
+				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			} catch (InterruptedException e) {
+				LOG.error("Cannot stop thread!", e);
+				e.printStackTrace();
+			}
 		}
 		LOG.debug("Component persistence complete!");
 		/*try {
@@ -154,8 +190,16 @@ public class RegistrationModule extends AbstModule {
 			return false;
 		}
 		try {
-			Object obj = dbe.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
-					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'"));
+			RawDBEReq dber3 = new RawDBEReq(idg.generateMixedCharID(10), 
+					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
+			dbe.forwardRequest(dber3, Thread.currentThread());
+			try {
+				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			} catch (InterruptedException e) {
+				LOG.error("Cannot stop thread!", e);
+				e.printStackTrace();
+			}
+			Object obj = dbe.getResponse(dber3.getId());
 			if(obj.getClass().equals(ResError.class)) {
 				ResError error = (ResError) obj;
 				error(error);
@@ -171,8 +215,16 @@ public class RegistrationModule extends AbstModule {
 			
 			//ResultSet rs3 = dbe.selectQuery("ssid", "rooms");
 			b = false;
-			Object o = dbe.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), 
-					"rooms"));
+			SelectDBEReq dber4 = new SelectDBEReq(idg.generateMixedCharID(10), 
+					"rooms");
+			dbe.forwardRequest(dber4, Thread.currentThread());
+			try {
+				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			} catch (InterruptedException e) {
+				LOG.error("Cannot stop thread!", e);
+				e.printStackTrace();
+			}
+			Object o = dbe.getResponse(dber4.getId());
 			if(o.getClass().equals(ResError.class)) {
 				error((ResError) o);
 			} else {

@@ -53,7 +53,10 @@ public class ComponentRepository {
 	public void populateDevices() {
 		try {
 			LOG.info("Populating Devices...");
-			Object o = dbm.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), deviceQuery));
+			RawDBEReq dber1 = new RawDBEReq(idg.generateMixedCharID(10), deviceQuery);
+			dbm.forwardRequest(dber1, Thread.currentThread());
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			Object o = dbm.getResponse(dber1.getId());
 			if(o.getClass().equals(ResError.class)) {
 				ResError error = (ResError) o;
 				LOG.error(error.message);
@@ -73,8 +76,11 @@ public class ComponentRepository {
 				int prop_val = rs.getInt("prop_value");
 				
 				if(!components.containsKey(SSID)) { //true if devices does NOT contain this device
-					Object o2 = dbm.forwardRequest(new RawDBEReq(idg.generateMixedCharID(10), 
-							productQuery + " and cpl.COM_TYPE = '" + prod_id + "'"));
+					RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
+							productQuery + " and cpl.COM_TYPE = '" + prod_id + "'");
+					dbm.forwardRequest(dber2, Thread.currentThread());
+					synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+					Object o2 = dbm.getResponse(dber2.getId());
 					if(o2.getClass().equals(ResError.class)) {
 						ResError error = (ResError) o2;
 						LOG.error(error.message);
@@ -96,6 +102,9 @@ public class ComponentRepository {
 			LOG.info("Devices population done!");
 		} catch (SQLException e) {
 			LOG.error("Cannot populate Devices!", e);
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -104,7 +113,15 @@ public class ComponentRepository {
 	 */
 	public void retrieveRooms() {
 		LOG.info("Retrieving rooms from DB...");
-		Object o = dbm.forwardRequest(new SelectDBEReq(idg.generateMixedCharID(10), roomsTable));
+		SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), roomsTable);
+		dbm.forwardRequest(dber1, Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
+		Object o = dbm.getResponse(dber1.getId());
 		if(o.getClass().equals(ResError.class)) {
 			ResError e = (ResError) o;
 			LOG.error("Cannot retrieve rooms from DB!");
@@ -200,8 +217,9 @@ public class ComponentRepository {
 		HashMap<String, Object> vals = new HashMap<String, Object>(1);
 		vals.put("prop_value", String.valueOf(propValue));
 		//dbm.updateQuery("comp_properties", args, vals);
-		dbm.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), "comp_properties", 
-				args, vals));
+		UpdateDBEReq dber1 = new UpdateDBEReq(idg.generateMixedCharID(10), "comp_properties", 
+				args, vals);
+		dbm.forwardRequest(dber1, Thread.currentThread());
 		LOG.info("Property updated!");
 		/*try {
 			LOG.info("Updating property:" + propID + " of device:" + deviceID + " in DB...");

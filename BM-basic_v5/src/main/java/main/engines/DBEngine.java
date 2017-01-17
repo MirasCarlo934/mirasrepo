@@ -17,7 +17,7 @@ import main.engines.requests.DBEngine.QueryType;
 import main.engines.requests.DBEngine.RawDBEReq;
 import tools.SystemTimer;
 
-public class DBEngine extends Engine {
+public class DBEngine extends AbstEngine {
 	//private static final Logger LOG = Logger.getLogger("DB_LOG.TrafficController");
 	private String dbURL;
     private Connection conn;

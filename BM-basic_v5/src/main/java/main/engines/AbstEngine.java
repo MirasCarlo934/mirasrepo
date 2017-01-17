@@ -3,6 +3,8 @@ package main.engines;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -15,12 +17,15 @@ import main.Controller;
 import main.engines.requests.EngineRequest;
 import tools.SystemTimer;
 
-public abstract class Engine {
+public abstract class AbstEngine extends TimerTask {
 	protected String name;
 	private String className;
 	protected static Logger LOG;
-	protected HashMap<String, EngineRequest> reqQueue = new HashMap<String, EngineRequest>(10,10);
-	protected HashMap<String, Object> resQueue = new HashMap<String, Object>(10,10);
+	protected LinkedList<EngineRequest> reqQueue = new LinkedList<EngineRequest>();
+	protected HashMap<String, Thread> threads = new HashMap<String, Thread>(10, 1);
+	protected HashMap<String, Object> responses = new HashMap<String, Object>(10, 1);
+	private Timer timer;
+	private int counter = 0;
 
 	/**
 	 * The current EngineRequest being processed by this Engine. Changes every time the <i>run()</i>
@@ -29,10 +34,12 @@ public abstract class Engine {
 	protected EngineRequest currentRequest = null;
 	//private SystemTimer systimer;
 	
-	public Engine(String name, String className) {
+	public AbstEngine(String name, String className) {
 		this.name = name;
 		this.className = className;
 		LOG = Logger.getLogger(name);
+		timer = new Timer(name);
+		timer.schedule(this, 0, 10);
 	}
 	
 	/**
@@ -42,28 +49,35 @@ public abstract class Engine {
 	 * @return the response of the Engine, can be ResError if the Engine encountered an error or 
 	 * 		if the EngineRequest is invalid
 	 */
-	public Object forwardRequest(EngineRequest engineRequest) {
-		LOG.trace("Adding " + engineRequest.getClass().toString() + " " + 
+	public void forwardRequest(EngineRequest engineRequest, Thread t) {
+		LOG.info("Adding " + engineRequest.getClass().getName() + " " + 
 				engineRequest.getId() + " to " + name + "!");
-		reqQueue.put(engineRequest.getId(), engineRequest);
-		Thread parent = Thread.currentThread();
-		Thread process = new Thread(new EngineProcessor(parent), "Process" + Controller.processCounter);
-		process.start();
-		
-		synchronized (parent) {
-			try {
-				parent.wait();
-			} catch (InterruptedException e) {
-				LOG.error("Thread interrupted!");
-				e.printStackTrace();
-			}
-		}
-		if(resQueue.containsKey(engineRequest.getId())) {
-			LOG.trace("EngineRequest " + engineRequest.getId() + " processing complete!");
-			return resQueue.get(engineRequest.getId());
-		} else {
-			LOG.error("EngineRequest " + engineRequest.getId() + " processing failure!");
-			return new ResError(name, "BM", "N/A", "Processing failure!");
+		reqQueue.add(engineRequest);
+		threads.put(engineRequest.getId(), t);
+		LOG.fatal("Thread1: " + t.getName());
+	}
+	
+	/**
+	 * Retrieves the response from the specified EngineRequest
+	 * @param engineRequestID The ID of the EngineRequest
+	 * @return the response Object
+	 */
+	public Object getResponse(String engineRequestID) {
+		Object o = responses.remove(engineRequestID);
+		return o;
+	}
+	
+	@Override
+	public void run() {
+		if(!reqQueue.isEmpty()) {
+			counter++;
+			EngineRequest er = reqQueue.getFirst();
+			Thread t = threads.remove(er.getId());
+			LOG.fatal("ERID:" + er.getId());
+			Thread process = new Thread(new EngineProcessor(t), 
+					"Process" + Controller.processCounter);
+			process.start();
+			LOG.fatal("Thread2: " + t.getName());
 		}
 	}
 	
@@ -100,17 +114,14 @@ public abstract class Engine {
 		public void run() {
 			if(!reqQueue.isEmpty()) {
 				//checks if EngineRequest is valid for this Engine
-				EngineRequest er = reqQueue.values().iterator().next();
-				currentRequest = er;
-				reqQueue.remove(er.getId());
+				EngineRequest er = reqQueue.removeFirst();
 				boolean b = checkEngineRequest(er);
-				
 				if(b) {
 					Object res = processRequest(er);
-					resQueue.put(er.getId(), res);
-					//return processRequest(engineRequest);
+					responses.put(er.getId(), res);
+					LOG.fatal("Response:" + er.getId());
 				} else {
-					resQueue.put(er.getId(), new ResError(name, "BM", "N/A", 
+					responses.put(er.getId(), new ResError(name, "BM", "N/A", 
 							"Invalid EngineRequest for " + name));
 					//return new ResError(name, "BM", "Invalid EngineRequest for " + name);
 				}

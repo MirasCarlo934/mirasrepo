@@ -144,7 +144,7 @@ public class MQTTHandler implements MqttCallback{
 		System.out.println("\n\n");
 		logger.debug("Message arrived at topic " + topic);
 		logger.debug("Message is: " + msg.toString());
-		controller.processMqttMessage(msg);
+		controller.processMQTTMessage(msg);
 	}
 
 	/**

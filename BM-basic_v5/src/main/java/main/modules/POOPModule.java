@@ -20,6 +20,7 @@ import main.engines.DBEngine;
 import main.engines.OHEngine;
 import main.engines.requests.CIREngine.GetStatementsCIREReq;
 import main.engines.requests.CIREngine.UpdateCIREReq;
+import main.engines.requests.DBEngine.RawDBEReq;
 import main.engines.requests.DBEngine.UpdateDBEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
@@ -61,7 +62,13 @@ public class POOPModule extends AbstModule {
 		}
 		else {
 			//cire.update();
-			cire.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)));
+			cire.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), Thread.currentThread());
+			try {
+				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			} catch (InterruptedException e) {
+				LOG.error("Cannot stop thread!", e);
+				e.printStackTrace();
+			}
 			updateSystem(poop);
 			updateDatabase(poop);
 			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
@@ -84,8 +91,18 @@ public class POOPModule extends AbstModule {
 		LOG.debug("Updating affected component properties in system...");
 		//LOG.fatal(poop.propIndex);
 		//Vector<Statement> rules = cire.getCIRStatementsWithArgComponent(c, c.getProperty(poop.propIndex));
-		Object o = cire.forwardRequest(new GetStatementsCIREReq(idg.generateMixedCharID(10), 
-				c, c.getProperty(poop.propSSID)));
+		GetStatementsCIREReq cirer1 = new GetStatementsCIREReq(idg.generateMixedCharID(10), 
+				c, c.getProperty(poop.propSSID));
+		LOG.fatal("ModuleERID:" + cirer1.getId());
+		LOG.fatal("ModuleThread:" + Thread.currentThread().getName());
+		cire.forwardRequest(cirer1, Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
+		Object o = cire.getResponse(cirer1.getId());
 		Vector<Statement> rules = new Vector<Statement>(0);
 		if(o.getClass().equals(ResError.class)) {
 			error((ResError) o);
@@ -181,7 +198,14 @@ public class POOPModule extends AbstModule {
 		args1.put("cpl_ssid", poop.propSSID);
 		HashMap<String, Object> vals1 = new HashMap<String, Object>(1);
 		vals1.put("prop_value", String.valueOf(poop.propValue));
-		dbe.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals1, args1));
+		dbe.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals1, args1),
+				Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
 		/*try {
 			LOG.debug("Updating component property in DB...");
 			//dbe.updateQuery(propsTable, args, vals);
@@ -193,8 +217,16 @@ public class POOPModule extends AbstModule {
 		LOG.debug("Updating affected component properties in DB...");
 		Component c = cr.getComponent(poop.cid);
 		//Vector<Statement> rules = cire.getCIRStatementsWithArgComponent(c, c.getProperty(poop.propIndex));
-		Object o = cire.forwardRequest(new GetStatementsCIREReq(idg.generateMixedCharID(10), 
-				c, c.getProperty(poop.propSSID)));
+		GetStatementsCIREReq cirer1 = new GetStatementsCIREReq(idg.generateMixedCharID(10), 
+				c, c.getProperty(poop.propSSID));
+		cire.forwardRequest(cirer1, Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
+		Object o = cire.getResponse(cirer1.getId());
 		Vector<Statement> rules = new Vector<Statement>(0);
 		if(o.getClass().equals(ResError.class)) {
 			error((ResError) o);
@@ -276,7 +308,13 @@ public class POOPModule extends AbstModule {
 						vals2.put("prop_value", String.valueOf(exec.getPropValue()));
 						LOG.debug("Updating component property in DB...");
 						dbe.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals2, 
-								args2));
+								args2), Thread.currentThread());
+						try {
+							synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+						} catch (InterruptedException e) {
+							LOG.error("Cannot stop thread!", e);
+							e.printStackTrace();
+						}
 					}
 				}
 			}

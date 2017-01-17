@@ -1,6 +1,6 @@
 package main.engines.requests;
 
-import main.engines.Engine;
+import main.engines.AbstEngine;
 
 public abstract class EngineRequest {
 	private String id; //the ID of the EngineRequest

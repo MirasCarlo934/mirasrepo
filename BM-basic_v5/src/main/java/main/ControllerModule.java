@@ -28,7 +28,7 @@ public class ControllerModule implements Runnable {
 	
 	@Override
 	public void run() {
-		if(checkRequestValidity(message)) {
+		if(checkPrimaryRequestValidity(message)) {
 			ReqRequest request = new ReqRequest(new JSONObject(message.toString()));
 			String rty = request.getString("RTY");	
 			AbstModule m = (AbstModule) BusinessMachine.context.getBean(rty);
@@ -49,7 +49,7 @@ public class ControllerModule implements Runnable {
 	 * 			<li>RTY does not exist</li>
 	 * 		</ul>
 	 */
-	private boolean checkRequestValidity(MqttMessage message) {
+	private boolean checkPrimaryRequestValidity(MqttMessage message) {
 		LOG.trace("Checking primary request parameters...");
 		JSONObject json;
 		

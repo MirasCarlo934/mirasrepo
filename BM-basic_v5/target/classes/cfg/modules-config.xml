@@ -50,10 +50,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
 		<constructor-arg name="ohe" ref="OHEngine"/>
-		<constructor-arg name="params">
+		<!-- <constructor-arg name="params">
 			<list>
 			</list>
-		</constructor-arg>
+		</constructor-arg> -->
 		<property name="propsTable" value="${table.propstable}"/>
 		<property name="comsTable" value="${table.comstable}"/>
 	</bean>

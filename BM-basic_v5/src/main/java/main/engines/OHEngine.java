@@ -264,7 +264,7 @@ public class OHEngine extends Engine {
 		        			+ "when \n"
 		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command \n"
 		        			+ "then \n "
-		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
+		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'0000','value':'%\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
 		        			+ "end \n\n";
 		        }
 			}
@@ -286,7 +286,7 @@ public class OHEngine extends Engine {
 		LOG.debug("Updating .sitemap file...");
 		cr.retrieveRooms();
 		HashMap<String, String> rooms = cr.getAllRooms();
-		String str = "sitemap myhome label=\"" + sitemap_name + "\"{ \n"
+		String str = "sitemap home label=\"" + sitemap_name + "\"{ \n"
 				+ "Frame {\n";
 		
 		String[] roomIDs = rooms.keySet().toArray(new String[0]);

@@ -44,8 +44,16 @@ public class POOPModule extends AbstModule {
 
 	@Override
 	protected void process(ReqRequest request) {
-		ReqPOOP poop = new ReqPOOP(request);
+		ReqPOOP poop = new ReqPOOP(request, propIDParam, propValParam);
 		Component c = cr.getComponent(poop.cid);
+		Property p = c.getProperty(poop.propSSID);
+		
+		//check if propValue is a percentage (denoted by a % symbol)
+		//System.out.println("HEY" + poop.propValueStr);
+		if(poop.propValueStr.contains("%")) {
+			poop.propValue = Math.abs(poop.propValue) * (p.getMax() / 100);
+		}
+		
 		LOG.info("Changing component " + request.cid + " property " 
 				+ poop.propSSID + " to " + poop.propValue + "...");
 		if(c.getProperty(poop.propSSID).getValue() == poop.propValue) {

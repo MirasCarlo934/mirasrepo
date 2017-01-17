@@ -50,11 +50,11 @@ public abstract class AbstEngine extends TimerTask {
 	 * 		if the EngineRequest is invalid
 	 */
 	public void forwardRequest(EngineRequest engineRequest, Thread t) {
-		LOG.info("Adding " + engineRequest.getClass().getName() + " " + 
+		LOG.debug("Adding " + engineRequest.getClass().getName() + " " + 
 				engineRequest.getId() + " to " + name + "!");
 		reqQueue.add(engineRequest);
 		threads.put(engineRequest.getId(), t);
-		LOG.fatal("Thread1: " + t.getName());
+		//LOG.fatal("Thread1: " + t.getName());
 	}
 	
 	/**
@@ -73,11 +73,11 @@ public abstract class AbstEngine extends TimerTask {
 			counter++;
 			EngineRequest er = reqQueue.getFirst();
 			Thread t = threads.remove(er.getId());
-			LOG.fatal("ERID:" + er.getId());
+			//LOG.fatal("ERID:" + er.getId());
 			Thread process = new Thread(new EngineProcessor(t), 
 					"Process" + Controller.processCounter);
 			process.start();
-			LOG.fatal("Thread2: " + t.getName());
+			//LOG.fatal("Thread2: " + t.getName());
 		}
 	}
 	
@@ -119,7 +119,7 @@ public abstract class AbstEngine extends TimerTask {
 				if(b) {
 					Object res = processRequest(er);
 					responses.put(er.getId(), res);
-					LOG.fatal("Response:" + er.getId());
+					//LOG.fatal("Response:" + er.getId());
 				} else {
 					responses.put(er.getId(), new ResError(name, "BM", "N/A", 
 							"Invalid EngineRequest for " + name));

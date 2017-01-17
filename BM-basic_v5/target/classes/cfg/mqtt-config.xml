@@ -11,9 +11,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<bean id="MQTTHandler" class="mqtt.MQTTHandler">
 		<constructor-arg name="brokerURL" value="${mqtt.URL}"/>
 		<constructor-arg name="clientID" value="${mqtt.clientID}"/>
-		<property name="BM_topic" value="${mqtt.topic.BM}"/>
-		<property name="default_topic" value="${mqtt.topic.default}"/>
-		<property name="error_topic" value="${mqtt.topic.error}"/>
+		<constructor-arg name="BM_topic" value="${mqtt.topic.BM}"/>
+		<constructor-arg name="default_topic" value="${mqtt.topic.default}"/>
+		<constructor-arg name="error_topic" value="${mqtt.topic.error}"/>
 	</bean>
 		
 </beans>

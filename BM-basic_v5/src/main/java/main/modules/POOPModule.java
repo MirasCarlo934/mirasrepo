@@ -58,7 +58,7 @@ public class POOPModule extends AbstModule {
 		LOG.info("Changing component " + request.cid + " property " 
 				+ poop.propSSID + " to " + poop.propValue + "...");
 		if(c.getProperty(poop.propSSID).getValue() == poop.propValue) {
-			LOG.info("Property is already set at " + poop.propValue);
+			LOG.info("Property is already set to " + poop.propValue + "!");
 		}
 		else {
 			//cire.update();
@@ -74,7 +74,7 @@ public class POOPModule extends AbstModule {
 			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
 			mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
 		}
-		LOG.info("POOP processing complete!");
+		LOG.debug("POOP processing complete!");
 	}
 	
 	/**

@@ -1,5 +1,9 @@
 package mqtt;
 
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.apache.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -14,7 +18,7 @@ import json.objects.AbstResponse;
 import main.ComponentRepository;
 import main.Controller;
 
-public class MQTTHandler implements MqttCallback{
+public class MQTTHandler extends TimerTask implements MqttCallback {
 	private static final Logger logger = Logger.getLogger("BM_LOG.mqtt");
 	@Autowired
 	private Controller controller;
@@ -26,15 +30,22 @@ public class MQTTHandler implements MqttCallback{
 	private String BM_topic;
 	private String default_topic;
 	private String error_topic;
+	private LinkedList<MQTTMessage> queue = new LinkedList<MQTTMessage>();
+	private Timer timer = new Timer("MQTTHandler");
 
-	public MQTTHandler(String brokerURL, String clientID) {
-		this.brokerURL = brokerURL;
-		this.clientID = clientID;
+	public MQTTHandler(String brokerURL, String clientID, String BM_topic, String default_topic, 
+			String error_topic) {
+		this.setBrokerURL(brokerURL);
+		this.setClientID(clientID);
+		setBM_topic(BM_topic);
+		setDefault_topic(default_topic);
+		setError_topic(error_topic);
 		try {
 			client = new MqttClient(brokerURL, clientID);
 		} catch (MqttException e) {
 			logger.fatal("Cannot create MQTTClient!", e);
 		}
+		timer.schedule(this, 0, 10);
 	}
 	
 	public void connectToMQTT() {
@@ -59,19 +70,11 @@ public class MQTTHandler implements MqttCallback{
 	 */
 	public void publish(String destination, String message) {
 		String topic = destination;
-		if(cr.getComponent(destination) != null) {
+		if(cr.getComponent(destination) != null) { //get Component if destination is a CID
 			topic = cr.getComponent(destination).getTopic();
 		}
-		logger.trace("Publishing message:" + message + " to topic:" + topic);
-		MqttMessage m = new MqttMessage(message.getBytes());
-		m.setQos(0);
-		try {
-			client.publish(destination, m);
-		} catch (MqttPersistenceException e) {
-			logger.error("Cannot publish message:" + message + " to topic:" + destination + "!", e);
-		} catch (MqttException e) {
-			logger.error("Cannot publish message:" + message + " to topic:" + destination + "!", e);
-		}
+		logger.trace("Adding new MQTTMessage to topic '" + topic + "' to queue...");
+		queue.add(new MQTTMessage(topic, message));
 	}
 	
 	/**
@@ -80,20 +83,7 @@ public class MQTTHandler implements MqttCallback{
 	 * @param message The message
 	 */
 	public void publish(String destination, AbstResponse response) {
-		String topic = destination;
-		if(cr.getComponent(destination) != null) {
-			topic = cr.getComponent(destination).getTopic();
-		}
-		logger.trace("Publishing message:" + response.toString() + " to topic:" + topic);
-		MqttMessage m = new MqttMessage(response.toString().getBytes());
-		m.setQos(0);
-		try {
-			client.publish(topic, m);
-		} catch (MqttPersistenceException e) {
-			logger.error("Cannot publish message:" + response.toString() + " to topic:" + topic + "!", e);
-		} catch (MqttException e) {
-			logger.error("Cannot publish message:" + response.toString() + " to topic:" + topic + "!", e);
-		}
+		publish(destination, response.toString());
 	}
 	
 	/**
@@ -103,16 +93,7 @@ public class MQTTHandler implements MqttCallback{
 	 */
 	public void publish(AbstResponse response) {
 		String topic = cr.getComponent(response.cid).getTopic();
-		logger.trace("Publishing message:" + response.toString() + " to topic:" + topic);
-		MqttMessage m = new MqttMessage(response.toString().getBytes());
-		m.setQos(0);
-		try {
-			client.publish(topic, m);
-		} catch (MqttPersistenceException e) {
-			logger.error("Cannot publish message:" + response.toString() + " to topic:" + topic + "!", e);
-		} catch (MqttException e) {
-			logger.error("Cannot publish message:" + response.toString() + " to topic:" + topic + "!", e);
-		}
+		publish(topic, response.toString());
 	}
 	
 	public void publishToDefaultTopic(String message) {
@@ -130,6 +111,23 @@ public class MQTTHandler implements MqttCallback{
 	public void publishToErrorTopic(AbstResponse response) {
 		publish(error_topic, response.toString());
 	}
+	
+	@Override
+	public void run() {
+		if(!queue.isEmpty()) {
+			MQTTMessage m = queue.removeFirst();
+			logger.trace("Publishing message:" + m.message + " to topic:" + m.topic);
+			MqttMessage payload = new MqttMessage(m.message.getBytes());
+			payload.setQos(0);
+			try {
+				client.publish(m.topic, payload);
+			} catch (MqttPersistenceException e) {
+				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
+			} catch (MqttException e) {
+				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
+			}
+		}
+	}
 
 	public void connectionLost(Throwable arg0) {
 		logger.fatal("Connection lost with MQTT server!");
@@ -141,7 +139,7 @@ public class MQTTHandler implements MqttCallback{
 	}
 
 	public void messageArrived(String topic, MqttMessage msg) throws Exception {
-		System.out.println("\n\n");
+		logger.debug(("\n\n"));
 		logger.debug("Message arrived at topic " + topic);
 		logger.debug("Message is: " + msg.toString());
 		controller.processMQTTMessage(msg);
@@ -187,5 +185,31 @@ public class MQTTHandler implements MqttCallback{
 	 */
 	public void setError_topic(String error_topic) {
 		this.error_topic = error_topic;
+	}
+
+	public String getClientID() {
+		return clientID;
+	}
+
+	public void setClientID(String clientID) {
+		this.clientID = clientID;
+	}
+
+	public String getBrokerURL() {
+		return brokerURL;
+	}
+
+	public void setBrokerURL(String brokerURL) {
+		this.brokerURL = brokerURL;
+	}
+	
+	private class MQTTMessage {
+		private String topic;
+		private String message;
+		
+		private MQTTMessage(String topic, String message) {
+			this.topic = topic;
+			this.message = message;
+		}
 	}
 }

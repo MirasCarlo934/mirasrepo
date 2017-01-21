@@ -1,7 +1,9 @@
 package main;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,7 +33,12 @@ public class BusinessMachine {
 
 	public static void main(String[] args) {
 		//initialization phase
-		LOG.info("Initializing BM...");
+		try {
+			LOG.info(BusinessMachine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+		} catch (URISyntaxException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		boolean b = true;
 		Properties p = new Properties();
 		FileHandler fh = null;

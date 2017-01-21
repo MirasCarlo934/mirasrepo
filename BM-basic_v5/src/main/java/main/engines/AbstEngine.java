@@ -75,7 +75,7 @@ public abstract class AbstEngine extends TimerTask {
 			Thread t = threads.remove(er.getId());
 			//LOG.fatal("ERID:" + er.getId());
 			Thread process = new Thread(new EngineProcessor(t), 
-					"Process" + Controller.processCounter);
+					t.getName());
 			process.start();
 			//LOG.fatal("Thread2: " + t.getName());
 		}

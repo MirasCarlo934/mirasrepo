@@ -88,13 +88,12 @@ public class POOPModule extends AbstModule {
 		Component c = cr.getComponent(poop.cid);
 		c.setPropertyValue(poop.propSSID, poop.propValue);
 		
-		LOG.debug("Updating affected component properties in system...");
+		LOG.info("Updating affected component properties in system...");
+		boolean updatedOthers = false;
 		//LOG.fatal(poop.propIndex);
 		//Vector<Statement> rules = cire.getCIRStatementsWithArgComponent(c, c.getProperty(poop.propIndex));
 		GetStatementsCIREReq cirer1 = new GetStatementsCIREReq(idg.generateMixedCharID(10), 
 				c, c.getProperty(poop.propSSID));
-		LOG.fatal("ModuleERID:" + cirer1.getId());
-		LOG.fatal("ModuleThread:" + Thread.currentThread().getName());
 		cire.forwardRequest(cirer1, Thread.currentThread());
 		try {
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
@@ -174,10 +173,12 @@ public class POOPModule extends AbstModule {
 				}
 				
 				if(rule_result) {
-					//System.out.println(true);
+					updatedOthers = true;
 					for(int k = 0; k < execs.length; k++) {
 						ExecutionBlock exec = execs[k];
 						Component com = cr.getComponent(exec.getComID());
+						LOG.info("Changing commponent " + com.getSSID() + " property " + 
+								exec.getPropName() + " to " + exec.getPropValue() + "...");
 						com.setPropertyValue(exec.getPropName(), Integer.parseInt(exec.getPropValue()));
 						//updates the physical component
 						mh.publish(com.getTopic(), new ResPOOP(poop.rid, com.getSSID(), poop.rty,
@@ -189,6 +190,7 @@ public class POOPModule extends AbstModule {
 				}					
 			}
 		}
+		if(!updatedOthers) LOG.info("No other components updated!");
 	}
 	
 	private void updateDatabase(ReqPOOP poop) {

@@ -55,8 +55,11 @@ public class RegistrationModule extends AbstModule {
 		LOG.info("Registering component " + reg.mac + " to system...");
 		Vector<String> ids = new Vector<String>(1,1);
 		Product product = null;
+		
+		//getting Component product and properties
 		try {
-			//ResultSet rs1 = dbe.selectQuery("ssid", "components");
+			//getting existing Component SSIDs
+			LOG.debug("Retrieving existing SSIDs from DB...");
 			SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), 
 					"components", new String[]{"ssid"});
 			dbe.forwardRequest(dber1, Thread.currentThread());
@@ -75,8 +78,10 @@ public class RegistrationModule extends AbstModule {
 					ids.add(rs1.getString("ssid"));
 				}
 				rs1.close();
+				LOG.debug("Existing SSIDs retrieved!");
 			}
-			//ResultSet rs2 = dbe.executeQuery(productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
+			//getting Component product properties
+			LOG.debug("Retrieving Component product properties...");
 			RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
 					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
 			dbe.forwardRequest(dber2, Thread.currentThread());
@@ -92,15 +97,20 @@ public class RegistrationModule extends AbstModule {
 			} else {
 				ResultSet rs2 = (ResultSet) o;
 				product = new Product(rs2);
+				LOG.debug("Component product properties retrieved!");
 			}
 		} catch (SQLException e) {
 			error(new ResError(reg, "Cannot process register request!"));
 			e.printStackTrace();
 		}
+		
+		//creation of Component object within BM system
+		LOG.debug("Creating Component object...");
 		String ssid = idg.generateMixedCharID(4, ids.toArray(new String[0]));
 		String topic = ssid + "_topic";
 		Component c = new Component(ssid, reg.mac, reg.name, topic, reg.room, true, product);
 		cr.addComponent(c);
+		LOG.debug("Component object created!");
 		persistComponent(c, request);
 		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)), Thread.currentThread());
 		try {
@@ -109,8 +119,11 @@ public class RegistrationModule extends AbstModule {
 			LOG.error("Cannot stop thread!", e);
 			e.printStackTrace();
 		}
+		
+		//publishing of Component credentials to default topic
+		LOG.debug("Publishing Component credentials to default topic...");
 		mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
-		LOG.info("Registration complete!");
+		LOG.debug("Registration complete!");
 	}
 	
 	private void persistComponent(Component c, ReqRequest request) {

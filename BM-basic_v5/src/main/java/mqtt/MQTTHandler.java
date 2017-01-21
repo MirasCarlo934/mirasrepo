@@ -58,8 +58,12 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 			logger.debug("Callback set!");
 		} catch (MqttSecurityException e) {
 			logger.fatal("Cannot connect to MQTT server!", e);
+			logger.info("Attempting to reconnect...");
+			connectToMQTT();
 		} catch (MqttException e) {
 			logger.fatal("Cannot connect to MQTT server!", e);
+			logger.info("Attempting to reconnect...");
+			connectToMQTT();
 		}
 	}
 	
@@ -74,7 +78,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 			topic = cr.getComponent(destination).getTopic();
 		}
 		logger.trace("Adding new MQTTMessage to topic '" + topic + "' to queue...");
-		queue.add(new MQTTMessage(topic, message));
+		queue.add(new MQTTMessage(topic, message, Thread.currentThread()));
 	}
 	
 	/**
@@ -115,23 +119,15 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	@Override
 	public void run() {
 		if(!queue.isEmpty()) {
-			MQTTMessage m = queue.removeFirst();
-			logger.debug("Publishing message:" + m.message + " to topic:" + m.topic);
-			MqttMessage payload = new MqttMessage(m.message.getBytes());
-			payload.setQos(0);
-			try {
-				client.publish(m.topic, payload);
-				logger.debug("Message published!");
-			} catch (MqttPersistenceException e) {
-				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
-			} catch (MqttException e) {
-				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
-			}
+			Thread t = new Thread(new MQTTPublisher(), queue.getFirst().callerThread.getName());
+			t.start();
 		}
 	}
 
 	public void connectionLost(Throwable arg0) {
 		logger.fatal("Connection lost with MQTT server!");
+		logger.info("Attempting to reconnect...");
+		connectToMQTT();
 	}
 
 	public void deliveryComplete(IMqttDeliveryToken arg0) {
@@ -207,10 +203,37 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	private class MQTTMessage {
 		private String topic;
 		private String message;
+		private Thread callerThread;
 		
-		private MQTTMessage(String topic, String message) {
+		/**
+		 * 
+		 * @param topic
+		 * @param message
+		 * @param callerThread the Thread that called for the publishing of this MQTTMessage
+		 */
+		private MQTTMessage(String topic, String message, Thread callerThread) {
 			this.topic = topic;
 			this.message = message;
+			this.callerThread = callerThread;
+		}
+	}
+	
+	private class MQTTPublisher implements Runnable {
+
+		@Override
+		public void run() {
+			MQTTMessage m = queue.removeFirst();
+			logger.debug("Publishing message:" + m.message + " to topic:" + m.topic);
+			MqttMessage payload = new MqttMessage(m.message.getBytes());
+			payload.setQos(0);
+			try {
+				client.publish(m.topic, payload);
+				logger.debug("Message published!");
+			} catch (MqttPersistenceException e) {
+				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
+			} catch (MqttException e) {
+				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
+			}
 		}
 	}
 }

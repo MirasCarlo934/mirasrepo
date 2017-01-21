@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 
@@ -23,6 +25,7 @@ public class DBEngine extends AbstEngine {
     private Connection conn;
     private String dbusr;
     private String dbpwd;
+    private Timer reconnector = new Timer("DBEngineReconnector");
     
     /**
      * Primitive instantiation of DBEngine. Automatically connects itself to DB.
@@ -38,19 +41,22 @@ public class DBEngine extends AbstEngine {
     	this.dbURL = dbURL;
     	this.dbusr = dbusr;
     	this.dbpwd = dbpwd;
-    	try {
-			createConnection(dbURL, dbusr, dbpwd);
-		} catch (SQLException e) {
-			LOG.error("Cannot connect to DB!", e);
-		}
+		createConnection(dbURL, dbusr, dbpwd);
     }
     
-    public void createConnection(String dbURL, String dbusr, String dbpwd) throws SQLException {
+    public void createConnection(String dbURL, String dbusr, String dbpwd) {
     	this.dbURL = dbURL;
     	this.dbusr = dbusr;
     	this.dbpwd = dbpwd;
-    	setConn(DriverManager.getConnection(dbURL, dbusr, dbpwd));
-        LOG.info("Connected to Derby DB!");
+    	try {
+			setConn(DriverManager.getConnection(dbURL, dbusr, dbpwd));
+			LOG.info("Connected to Derby DB!");
+	        //reconnector.schedule(new DBEngineConnectionReconnector(), 0, 5000);
+		} catch (SQLException e) {
+			LOG.fatal("Cannot connect to DB! Reconnecting...");
+			createConnection(dbURL, dbusr, dbpwd);
+			e.printStackTrace();
+		}
     }
     
     public void closeConnection() throws SQLException {
@@ -64,10 +70,6 @@ public class DBEngine extends AbstEngine {
 		DBEngineRequest dber = (DBEngineRequest) er;
 		try {
 			return executeQuery(dber.getQuery());
-			/*if(dber.getQueryType() == QueryType.RAW) {
-				RawDBEReq r  = (RawDBEReq) dber;
-				return executeQuery(r.getQuery());
-			}*/
 		} catch (SQLException e) {
 			LOG.error("SQLException!", e);
 			e.printStackTrace();
@@ -394,5 +396,19 @@ public class DBEngine extends AbstEngine {
 	 */
 	public void setConn(Connection conn) {
 		this.conn = conn;
+	}
+	
+	private class DBEngineConnectionReconnector extends TimerTask {
+		@Override
+		public void run() {
+			try {
+				if(!conn.isValid(10)) {
+					createConnection(dbURL, dbusr, dbpwd);
+				}
+			} catch (SQLException e) {
+				LOG.error("Cannot reconnect to DB! Will try again in 15 seconds...");
+				e.printStackTrace();
+			}
+		}
 	}
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
@@ -49,6 +50,37 @@ public class FileHandler {
 		if(!file.exists()) {
 			throw new FileNotFoundException();
 		}
+	}
+	
+	/**
+	 * Reads one line from the file specified. A line is considered to be terminated 
+	 * by any one of a line feed ('\n'), a carriage return ('\r'), or a carriage return 
+	 * followed immediately by a linefeed.
+	 * <br><br>
+	 * <b>NOTE:</b> Always reads the next line every time this method is called.
+	 * 
+	 * @return String A String containing the contents of the line, not including any 
+	 * line-termination characters, or null if the end of the stream has been reached
+	 * @throws IOException
+	 */
+	public String readLine() throws IOException {
+		logger.trace("Reading one line from '" + file.getName() + "...");
+		BufferedReader reader = getFileReader();
+		InputStream in = new FileInputStream(file);
+		
+		return reader.readLine();
+	}
+	
+	public String[] readAllLines() throws IOException {
+		logger.trace("Reading one line from '" + file.getName() + "...");
+		BufferedReader reader = getFileReader();
+		InputStream in = new FileInputStream(file);
+		Vector<String> lines = new Vector<String>(10, 10);
+		
+		while(reader.ready()) {
+			lines.add(reader.readLine());
+		}
+		return lines.toArray(new String[lines.size()]);
 	}
 	
 	/**

@@ -48,6 +48,7 @@ C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\CIREngine\Up
 C:\Applications\git\BM-basic_v5\src\main\java\components\AbstProduct.java
 C:\Applications\git\BM-basic_v5\src\main\java\components\properties\PropertyValueType.java
 C:\Applications\git\BM-basic_v5\src\main\java\cir\exceptions\CIRSSyntaxException.java
+C:\Applications\git\BM-basic_v5\src\main\java\components\bindings\Binding.java
 C:\Applications\git\BM-basic_v5\src\main\java\components\properties\Property.java
 C:\Applications\git\BM-basic_v5\src\main\java\cir\Argument.java
 C:\Applications\git\BM-basic_v5\src\main\java\json\objects\ResPOOP.java

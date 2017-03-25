@@ -9,7 +9,10 @@ import java.util.Properties;
 import java.util.Vector;
 import java.util.concurrent.Executor;
 
+import org.apache.log4j.Logger;
+
 import components.Component;
+import components.bindings.Binding;
 import components.properties.Property;
 import components.properties.PropertyValueType;
 import json.objects.ResError;
@@ -18,11 +21,22 @@ import main.engines.requests.EngineRequest;
 import main.engines.requests.DBEngine.SelectDBEReq;
 import main.engines.requests.OHEngine.OHEngineRequest;
 import main.engines.requests.OHEngine.OHRequestType;
+import main.engines.requests.OHEngine.UpdateOHEReq;
 import mqtt.MQTTHandler;
 import tools.FileHandler;
 import tools.IDGenerator;
+import tools.StringTools;
 
+/**
+ * Handles all OpenHab related interactions for the BM. <br><br>
+ * 
+ * <b>NOTE:</b> This OHEngine version is only for OpenHab-2.0.0 only! Check backups for 
+ * more primitive versions.
+ * @author Carlo
+ *
+ */
 public class OHEngine extends AbstEngine {
+	//private static final Logger LOG = Logger.getLogger("BM_LOG.OHEngine");
 	private ComponentRepository cr;
 	private String os;
 	private String OHMqttBroker;
@@ -31,7 +45,6 @@ public class OHEngine extends AbstEngine {
 	private String rules_filename;
 	private String sitemap_filename;
 	private String sitemap_name;
-	//private Properties bm_props = new Properties();
 	private FileHandler items;
 	private FileHandler sitemap;
 	private FileHandler rules;
@@ -148,9 +161,9 @@ public class OHEngine extends AbstEngine {
 			//LOG.fatal(items_filepath);
 			//LOG.fatal(sitemap_filepath);
 			//LOG.fatal(oh_location + "/configurations/rules/" + rules_filename);
-			items = new FileHandler(oh_location + "/configurations/items/" + items_filename);
-			rules = new FileHandler(oh_location + "/configurations/rules/" + rules_filename);
-			sitemap = new FileHandler(oh_location + "/configurations/sitemaps/" + sitemap_filename);
+			items = new FileHandler(oh_location + "/conf/items/" + items_filename);
+			rules = new FileHandler(oh_location + "/conf/rules/" + rules_filename);
+			sitemap = new FileHandler(oh_location + "/conf/sitemaps/" + sitemap_filename);
 			LOG.debug("Connected to OH files!");
 		} catch (FileNotFoundException e) {
 			LOG.error("Cannot open OH files!", e);
@@ -163,7 +176,9 @@ public class OHEngine extends AbstEngine {
 	private void updateItems() {
 		LOG.debug("Updating .items file...");
 		cr.retrieveRooms();
+		cr.retrieveBindings();
 		Component[] coms = cr.getAllComponents();
+		Binding[] bindings = cr.getAllBindings();
 		HashMap<String, String> rooms = cr.getAllRooms();
 		String str = "";
 		String groups = "";
@@ -192,6 +207,7 @@ public class OHEngine extends AbstEngine {
 		
 		LOG.debug("Adding individual Properties to items declaration...");
 		for(int i = 0; i < coms.length; i++) {
+			HashMap<String, String> values = new HashMap<String,String>(1); //for use with BINDINGS
 			Component c = coms[i];
 			Property[] props = c.getProperties().values().toArray(new Property[0]);
 			for(int j = 0; j < props.length; j++) {
@@ -207,16 +223,33 @@ public class OHEngine extends AbstEngine {
 					room = c.getRoom();
 					itemName = c.getName();
 				}
-				if(itemsList.get(p.getPropValType().toString()).equalsIgnoreCase("switch")) {
-					itemsStr += itemsList.get(p.getPropValType().toString()) + " " + c.getSSID()
-						+ "_" + p.getSSID() + " \"" + itemName + "\" (" + room
-						+ ") {mqtt=\"<[" + OHMqttBroker + ":openhab/" + c.getTopic() 
-						+ ":state:ON:" + p.getSSID() + "_1],<[" + OHMqttBroker + ":openhab/" 
-						+ c.getTopic() + ":state:OFF:" + p.getSSID() + "_0]\"} \n\n";
-				} else if(itemsList.get(p.getPropValType().toString()).equalsIgnoreCase("dimmer")) {
-					itemsStr += itemsList.get(p.getPropValType().toString()) + " " +c.getSSID()
-						+ "_" + p.getSSID() + " \"" + itemName + " \" (" + room + ") \n\n";					 
+				values.put("mac", c.getMAC());
+				values.put("topic", c.getTopic());
+				values.put("prop_id", p.getSSID());
+				values.put("mqtt_broker", OHMqttBroker);
+				
+				//System.out.println(p.getDisplayName());
+				itemsStr += itemsList.get(p.getPropValType().toString()) + " " + c.getSSID()
+					+ "_" + p.getSSID() + " \"" + itemName;
+				//to add a field variable for String type OH items
+				if(p.getPropValType().equals(PropertyValueType.string)) {
+					itemsStr += " [%s]";
 				}
+				itemsStr += "\" (" + room
+					+ ") { ";
+				
+				//adding bindings
+				for(int k = 0; k < bindings.length; k++) {
+					Binding b = bindings[k];
+					if((b.getComType().equals("0000") && b.getPropIndex().equals(p.getPropTypeID())) //comtype '0000' means for ALL components
+							|| (b.getComType().equals(c.getProduct().getSSID()) && 
+							b.getPropIndex().equals(p.getSSID()))) {
+						String bind = b.getBinding();
+						bind = StringTools.injectStrings(bind, values, new String[]{"{","}"});
+						itemsStr += bind + ",";
+					}
+				}
+				itemsStr = itemsStr.substring(0, itemsStr.length() - 1) +  "} \n\n";
 			}
 		}
 		
@@ -245,19 +278,40 @@ public class OHEngine extends AbstEngine {
 			for(int j = 0; j < props.length; j++) {
 				Property p = props[j];
 				LOG.trace("Updating rules of property " + p.getSSID());
-		        if(p.getPropValType().equals(PropertyValueType.digital)) {
+				try {
+					FileHandler fh = new FileHandler
+							("resources/openhab/rules/" + p.getPropValType() + ".rules");
+					String[] lines = fh.readAllLines();
+					HashMap<String, String> values = new HashMap<String, String>(2);
+					values.put("prop_ssid", p.getSSID());
+					values.put("com_ssid", c.getSSID());
+					for(int k = 0; k < lines.length; k++) {
+						//LOG.fatal(lines[k]);
+						str += StringTools.injectStrings(lines[k], values, 
+								new String[]{"[","]"}) + "\n";
+					}
+				} catch (FileNotFoundException e) {
+					LOG.error("Rules for " + p.getPropValType() + " property value type not "
+							+ "found!");
+					e.printStackTrace();
+				} catch (IOException e) {
+					LOG.error("Cannot read lines from " + p.getPropValType() + ".rules!");
+					e.printStackTrace();
+				}
+				/*if(p.getPropValType().equals(PropertyValueType.digital)) {
+		        	
 		        	str += "rule \"" + p.getSSID() + " ON\"\n"
-		        			+ "when \n"
-		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command ON \n"
-		        			+ "then \n"
-		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'1','CID':'" + c.getSSID() + "'}\") \n"
-		        			+ "end \n\n";
-		        	str += "rule \"" + p.getSSID() + " OFF\"\n"
-		        			+ "when \n"
-		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command OFF \n"
-		        			+ "then \n "
-		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'0','CID':'" + c.getSSID() + "'}\") \n"
-		        			+ "end \n\n";
+        			+ "when \n"
+        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command ON \n"
+        			+ "then \n"
+        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'1','CID':'" + c.getSSID() + "'}\") \n"
+        			+ "end \n\n";
+        			str += "rule \"" + p.getSSID() + " OFF\"\n"
+        			+ "when \n"
+        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command OFF \n"
+        			+ "then \n "
+        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'0','CID':'" + c.getSSID() + "'}\") \n"
+        			+ "end \n\n";
 		        }
 		        else {
 		        	str += "rule \"" + p.getSSID() + " CHANGED\"\n"
@@ -266,7 +320,8 @@ public class OHEngine extends AbstEngine {
 		        			+ "then \n "
 		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'%\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
 		        			+ "end \n\n";
-		        }
+		        }*/
+		        
 			}
 		}
 		

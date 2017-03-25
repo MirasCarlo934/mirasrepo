@@ -232,6 +232,7 @@ public class POOPModule extends AbstModule {
 		Vector<Statement> rules = new Vector<Statement>(0);
 		if(o.getClass().equals(ResError.class)) {
 			error((ResError) o);
+			return;
 		}
 		else {
 			rules = (Vector<Statement>) o;

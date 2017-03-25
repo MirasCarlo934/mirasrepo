@@ -62,7 +62,7 @@ public class ControllerModule implements Runnable {
 		}
 		
 		//#2
-		if(!json.keySet().contains("RID") && !json.keySet().contains("CID") && !json.keySet().contains("RTY")) {
+		if(!json.keySet().contains("RID") || !json.keySet().contains("CID") || !json.keySet().contains("RTY")) {
 			sendError("Request does not contain all primary request parameters!");
 			return false;
 		}

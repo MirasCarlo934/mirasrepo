@@ -41,35 +41,14 @@ public class DetachmentModule extends AbstModule {
 		HashMap<String, Object> vals2 = new HashMap<String, Object>(1,1);
 		vals2.put("ssid", cid);
 		
-		dbe.forwardRequest(new DeleteDBEReq(idg.generateMixedCharID(10), propsTable, vals1), 
-				Thread.currentThread());
-		try {
-			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-		} catch (InterruptedException e) {
-			LOG.error("Cannot stop thread!", e);
-			e.printStackTrace();
-		}
-		dbe.forwardRequest(new DeleteDBEReq(idg.generateMixedCharID(10), comsTable, vals2), 
-				Thread.currentThread());
-		try {
-			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-		} catch (InterruptedException e) {
-			LOG.error("Cannot stop thread!", e);
-			e.printStackTrace();
-		}
-		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)), Thread.currentThread());
-		try {
-			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-		} catch (InterruptedException e) {
-			LOG.error("Cannot stop thread!", e);
-			e.printStackTrace();
-		}/*try {
-			//dbe.deleteQuery(propsTable, vals1);
-			//dbe.deleteQuery(comsTable, vals2);
-		} catch (SQLException e) {
-			error(new ResError(request, "Cannot delete component from DB!"));
-			e.printStackTrace();
-		}*/
+		//delete component properties from DB
+		forwardEngineRequest(dbe, new DeleteDBEReq(idg.generateMixedCharID(10), propsTable, vals1));
+
+		//delete component from DB
+		forwardEngineRequest(dbe, new DeleteDBEReq(idg.generateMixedCharID(10), comsTable, vals2));
+
+		//update OH of changes
+		forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
 		
 		LOG.info("Detachment complete!");
 	}

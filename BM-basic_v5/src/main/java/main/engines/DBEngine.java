@@ -20,7 +20,7 @@ import main.engines.requests.DBEngine.RawDBEReq;
 import tools.SystemTimer;
 
 public class DBEngine extends AbstEngine {
-	//private static final Logger LOG = Logger.getLogger("DB_LOG.TrafficController");
+	//private static final Logger LOG = Logger.getLogger("BM_LOG.DBEngine");
 	private String dbURL;
     private Connection conn;
     private String dbusr;
@@ -73,13 +73,12 @@ public class DBEngine extends AbstEngine {
 		} catch (SQLException e) {
 			LOG.error("SQLException!", e);
 			e.printStackTrace();
-			currentRequest.setResponse(new ResError(name, "Cannot execute query! Check error logs"
+			return (new ResError(name, "Cannot execute query! Check error logs"
 					+ " for more details."));
 		}
-		return null;
 	}
     
-    private ResultSet executeQuery(String query) throws SQLException {
+    private Object executeQuery(String query) throws SQLException {
     	Statement stmt = null;
     	try{
     		stmt = getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -87,11 +86,15 @@ public class DBEngine extends AbstEngine {
         	LOG.trace("Executing " + query + " ...");
         	stmt.execute(query);
         	LOG.trace("Query executed successfully!");
-        	return stmt.getResultSet();
+        	if(stmt.getResultSet() == null) { //usually the case for non-select queries
+        		return true;
+        	} else {
+        		return stmt.getResultSet();
+        	}
     	} catch(NullPointerException e) {
     		LOG.fatal("Connection not yet established!");
-    		currentRequest.setResponse(new ResError(name, "Connection not yet established!"));
-    		return null;
+    		//currentRequest.setResponse(new ResError(name, "Connection not yet established!"));
+    		return new ResError(name, "Connection not yet established!");
     	}
     }
     
@@ -146,7 +149,7 @@ public class DBEngine extends AbstEngine {
      * @param val
      * @return
      * @throws SQLException
-     */
+     
     public ResultSet selectQuery(String[] columns, String table, String colParam, Object val) throws SQLException {
     	String cols = "";
     	for(int i = 0; i < columns.length; i++) {
@@ -162,7 +165,7 @@ public class DBEngine extends AbstEngine {
     	}
     	String q = "select " + cols + " from " + table + " where " + colParam + " = " + v;
     	return executeQuery(q);
-    }
+    }*/
     
     /**
      * Select query for 'where' clause with multiple comparisons. Assumes that the lengths of colParams and vals are equal. To reduce
@@ -174,7 +177,7 @@ public class DBEngine extends AbstEngine {
      * @param vals
      * @return
      * @throws SQLException
-     */
+     
     public ResultSet selectQuery(String[] columns, String table, String[] colParams, Object[] vals) throws SQLException {
     	//translates columns to String
     	String cols = "";
@@ -199,6 +202,7 @@ public class DBEngine extends AbstEngine {
     	String q = "select " + cols + " from " + table + " where " + where;
     	return executeQuery(q);
     }
+    */
     
     /*public void insertQuery(String values, String table) throws SQLException {
     	String q = "insert into " + table + " values(" + values + ")";

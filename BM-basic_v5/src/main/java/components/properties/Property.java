@@ -7,11 +7,12 @@ public class Property {
 	//private String index;
 	private PropertyMode mode;
 	private PropertyValueType propValType;
+	private String propTypeID;
 	private int min;
 	private int max;
 	private int value = 0;
 	
-	public Property(String propertyID, String index, String genericName, String dispname, 
+	public Property(String propTypeID, String index, String genericName, String dispname, 
 			PropertyMode mode, PropertyValueType propValType, int minValue, int maxValue) {
 		this.setSSID(index);
 		this.setDisplayName(dispname);
@@ -21,6 +22,7 @@ public class Property {
 		this.setPropValType(propValType);
 		this.setMin(minValue);
 		this.setMax(maxValue);
+		this.setPropTypeID(propTypeID);
 	}
 
 	/**
@@ -143,5 +145,13 @@ public class Property {
 
 	public void setPropValType(PropertyValueType propValType) {
 		this.propValType = propValType;
+	}
+
+	public String getPropTypeID() {
+		return propTypeID;
+	}
+
+	public void setPropTypeID(String propTypeID) {
+		this.propTypeID = propTypeID;
 	}
 }

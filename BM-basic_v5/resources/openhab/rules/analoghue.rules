@@ -1,0 +1,6 @@
+rule "[prop_ssid] CHANGED"
+when 
+	 Item [com_ssid]_[prop_ssid] received command 
+then 
+ 	 mqtt_pub.postUpdate("{'RTY':'poop','property':'[prop_ssid]','RID':'OH-[prop_ssid]','value':'%" + receivedCommand + "','CID':'[com_ssid]'}") 
+end

@@ -84,7 +84,7 @@
    </logger>
    <logger name="org.springframework">
    		<appender-ref ref="console"/>
-   		<level value="info"/>
+   		<level value="error"/>
    </logger>
    
 </log4j:configuration>

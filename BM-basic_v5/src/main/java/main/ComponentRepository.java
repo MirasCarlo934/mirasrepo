@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import components.Component;
 import components.Product;
+import components.bindings.Binding;
 import components.properties.Property;
 import json.objects.ReqRegister;
 import json.objects.ResError;
@@ -23,11 +24,12 @@ import mqtt.MQTTHandler;
 import tools.IDGenerator;
 
 public class ComponentRepository {
-	private static final Logger LOG = Logger.getLogger("BM_LOG.Devices");
+	private static final Logger LOG = Logger.getLogger("BM_LOG.ComponentRepository");
 	@Autowired
 	private MQTTHandler mh;
 	private HashMap<String, String> rooms = new HashMap<String, String>(1,1);
 	private HashMap<String, Component> components = new HashMap<String, Component>(1);
+	private Vector<Binding> bindings = new Vector<Binding>(1,1);
 	private HashMap<String, String> registeredMACs = new HashMap<String, String>(1,1); //registered MAC and corresponding SSID
 	private IDGenerator idg = new IDGenerator();
 	private DBEngine dbm;
@@ -35,16 +37,19 @@ public class ComponentRepository {
 	private String deviceQuery;
 	private String productQuery;
 	private String roomsTable;
+	private String bindingsTable;
 
 	public ComponentRepository(/*Catalog catalog, */DBEngine dbm, String deviceQuery, 
-			String productQuery, String roomsTable) {
+			String productQuery, String roomsTable, String bindingsTable) {
 		this.deviceQuery = deviceQuery;
 		this.productQuery = productQuery;
 		this.roomsTable = roomsTable;
+		this.bindingsTable = bindingsTable;
 		//this.catalog = catalog;
 		this.dbm = dbm;
 		populateDevices();
 		retrieveRooms();
+		retrieveBindings();
 	}
 	
 	/**
@@ -136,6 +141,37 @@ public class ComponentRepository {
 				LOG.debug("Rooms retrieved!");
 			} catch (SQLException e) {
 				LOG.error("ResultSet error in retrieving rooms!", e);
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void retrieveBindings() {
+		LOG.info("Retrieving OH bindings from DB...");
+		SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), bindingsTable);
+		dbm.forwardRequest(dber1, Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
+		Object o = dbm.getResponse(dber1.getId());
+		if(o.getClass().equals(ResError.class)) {
+			ResError e = (ResError) o;
+			LOG.error("Cannot retrieve bindings from DB!");
+			LOG.error("Error message: " + e.message);
+		} else {
+			ResultSet rs1 = (ResultSet) o;
+			try {
+				while(rs1.next()) {
+					bindings.add(new Binding(rs1.getString("SSID"), rs1.getString("com_type"),
+							rs1.getString("prop_id"), rs1.getString("binding")));
+				}
+				rs1.close();
+				LOG.debug("Bindings retrieved!");
+			} catch (SQLException e) {
+				LOG.error("ResultSet error in retrieving bindings!", e);
 				e.printStackTrace();
 			}
 		}
@@ -280,6 +316,14 @@ public class ComponentRepository {
 	 */
 	public HashMap<String, String> getAllRooms() {
 		return rooms;
+	}
+	
+	/**
+	 * Returns all retrieved Bindings from DB
+	 * @return the array containing all Bindings
+	 */
+	public Binding[] getAllBindings() {
+		return bindings.toArray(new Binding[bindings.size()]);
 	}
 	
 	/**

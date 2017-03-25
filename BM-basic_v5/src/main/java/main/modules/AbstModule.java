@@ -1,17 +1,22 @@
 package main.modules;
 
+import java.util.Vector;
+
 import org.apache.log4j.Logger;
 
+import cir.Statement;
 import json.objects.ReqRequest;
 import json.objects.ResError;
 import main.ComponentRepository;
+import main.engines.AbstEngine;
+import main.engines.requests.EngineRequest;
 import mqtt.MQTTHandler;
 
 public abstract class AbstModule {
 	private String name;
 	private String requestType;
 	private String[] params;
-	protected static Logger LOG;
+	protected Logger LOG;
 	protected MQTTHandler mh;
 	protected ComponentRepository cr;
 
@@ -37,6 +42,34 @@ public abstract class AbstModule {
 	}
 	
 	/**
+	 * Forwards the supplied EngineRequest to the specified Engine. Handles the thread waiting
+	 * procedure and error handling for the Engine response.
+	 * 
+	 * @param engine The Engine where the EngineRequest will be sent to
+	 * @param engineRequest The EngineRequest that will be processed by the Engine
+	 * @return The Engine response object. Returns ResError object if the Engine encountered
+	 * 		an error during EngineRequest processing.
+	 */
+	protected Object forwardEngineRequest(AbstEngine engine, EngineRequest engineRequest) {
+		engine.forwardRequest(engineRequest, Thread.currentThread());
+		try {
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+		} catch (InterruptedException e) {
+			LOG.error("Cannot stop thread!", e);
+			e.printStackTrace();
+		}
+		Object o = engine.getResponse(engineRequest.getId());
+		if(o.getClass().equals(ResError.class)) {
+			ResError error = (ResError) o;
+			error(error);
+			return error;
+		}
+		else {
+			return o;
+		}
+	}
+	
+	/**
 	 * Checks if the request contains all the required secondary parameters
 	 * 
 	 * @param request The Request object
@@ -44,6 +77,9 @@ public abstract class AbstModule {
 	 * 		<ul>
 	 * 			<li>There are missing secondary request parameters</li>
 	 * 			<li>There are secondary request parameters that are null/empty</li>
+	 * 			<li>The module-specific request parameter check failed
+	 * 			<br><i>Each module can have additional request checks, see individual
+	 * 			modules for more details.</i></li>
 	 * 		</ul>
 	 */
 	private boolean checkSecondaryRequestValidity(ReqRequest request) {

@@ -35,7 +35,7 @@ public class Product {
 			name = rs.getString("prod_name");
 			description = rs.getString("prod_desc");
 			
-			String prop_ID = rs.getString("prop_SSID");
+			String prop_type = rs.getString("prop_type");
 			String prop_dispname = rs.getString("prop_dispname");
 			String prop_sysname = rs.getString("prop_sysname");
 			String prop_mode = rs.getString("prop_mode");
@@ -43,7 +43,7 @@ public class Product {
 			int prop_min = rs.getInt("prop_min");
 			int prop_max = rs.getInt("prop_max");
 			String prop_index = rs.getString("prop_index");
-			Property prop = new Property(prop_ID, prop_index, prop_sysname, prop_dispname, 
+			Property prop = new Property(prop_type, prop_index, prop_sysname, prop_dispname, 
 					PropertyMode.parseModeFromString(prop_mode), 
 					PropertyValueType.parsePropValTypeFromString(pval_type), prop_min, prop_max);
 			properties.put(prop.getSSID(), prop);

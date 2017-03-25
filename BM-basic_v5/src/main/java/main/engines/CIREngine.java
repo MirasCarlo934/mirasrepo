@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Vector;
 
@@ -40,7 +42,7 @@ import tools.FileHandler;
  * @author Carlo
  */
 public class CIREngine extends AbstEngine {
-	private static final Logger LOG = Logger.getLogger(CIREngine.class);
+	//private static final Logger LOG = Logger.getLogger(CIREngine.class);
 	private Vector<Statement> cirStatements = new Vector<Statement>(1,1);
 	private ComponentRepository cr;
 	//private FileHandler bm_props_file;
@@ -301,6 +303,9 @@ public class CIREngine extends AbstEngine {
 	 */
 	private ExecutionBlock parseExecutionBlock(String block) throws CIRSSyntaxException {
 		String exec = block;
+		for(int i = 0; i < exec.split(":").length; i++) {
+			//System.out.println(exec.split(":")[i]);
+		}
 		if(exec.split(":").length > 2) { //error 2: Syntax error, Improper usage of ':' in execution block!
 			throw new CIRSSyntaxException("Improper usage of ':' in execution block!");
 		} else if(exec.split("=").length > 2) { //error 3: Syntax error, Improper usage of '=' in execution block!
@@ -383,30 +388,48 @@ public class CIREngine extends AbstEngine {
 	
 	/**
 	 * Returns a Vector containing all CIR statements that have the specified component and property in
-	 * its argument block.
+	 * its argument block. <br><br>
+	 * 
+	 * The returned CIR statements are not only for the specified component property itself, 
+	 * but also for the other component properties that will be affected once these statements
+	 * are executed. For more information, see <i>Entangled CIR Statements</i> in the CIR
+	 * document.
 	 * 
 	 * @param c The Component object
 	 * @param p The Property object
 	 * @return The Vector containing all the CIR statements found
 	 */
 	protected Vector<Statement> getCIRStatementsWithArgComponent(Component c, Property p) {
+		//NOT YET FINISHED!
 		LOG.debug("Retrieving CIR for component " + c.getSSID() + " with property " + p.getSystemName());
+		Vector<Statement> collection = cirStatements;
+		Vector<String> affectedComs = new Vector<String>(1,1); //contains all the SSID of the components affected and their corresponding properties
 		Vector<Statement> statements = new Vector<Statement>(1,1);
-		for(int i = 0; i < cirStatements.size(); i++) {
-			Statement rule = cirStatements.get(i);
-			Argument[] args = rule.getArguments();
-			for(int j = 0; j < args.length; j++) {
-				Argument arg = args[j];
-				/*LOG.fatal(arg.getComID());
-				LOG.fatal(c.getSSID());
-				LOG.fatal(arg.getPropName());
-				LOG.fatal(p.getIndex());*/
-				if(arg.getComID().equals(c.getSSID()) && arg.getPropName().equals(p.getSSID())) {
-					statements.add(rule);
+		affectedComs.add(c.getSSID() + ":" + p.getSSID());
+		
+		while(!affectedComs.isEmpty()) {
+			String comSSID = affectedComs.get(0).split(":")[0];
+			String propSSID = affectedComs.get(0).split(":")[1];
+			affectedComs.remove(0);
+			for(int i = 0; i < collection.size(); i++) {
+				Statement rule = collection.get(i);
+				Argument[] args = rule.getArguments();
+				for(int j = 0; j < args.length; j++) {
+					Argument arg = args[j];
+					if(arg.getComID().equals(comSSID) && arg.getPropName().equals(propSSID)) {
+						statements.add(rule);
+						for(int l = 0; l < rule.getExecBlocks().length; l++) {
+							String affectedComSSID = rule.getExecBlocks()[l].getComID();
+							String affectedPropSSID = rule.getExecBlocks()[l].getPropName();
+							if(!affectedComs.contains(affectedComSSID + ":" + affectedPropSSID)) {
+								affectedComs.add(affectedComSSID + ":" + affectedPropSSID);
+							}
+						}
+					}
 				}
 			}
 		}
-		LOG.trace(statements.size() + " retrieved! Out of " + cirStatements.size());
+		LOG.trace(statements.size() + " retrieved!");
 		return statements;
 	}
 

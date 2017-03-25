@@ -27,6 +27,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 				<entry key="analog" value="${oh.items.analog}"/>
 				<entry key="analogHue" value="${oh.items.hue}"/>
 				<entry key="percent" value="${oh.items.percent}"/>
+				<entry key="string" value="${oh.items.string}"/>
 			</map>
 		</constructor-arg>
 		<constructor-arg name="OHMqttBroker" value="${oh.mqttbroker}"/>

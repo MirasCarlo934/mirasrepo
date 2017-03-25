@@ -52,6 +52,13 @@ public class RegistrationModule extends AbstModule {
 	@Override
 	protected void process(ReqRequest request) {
 		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
+		if(request.getJSON().has("exists")) {
+			Component c = cr.getComponent(reg.mac);
+			LOG.info("Component already exists in system! "
+					+ "Returning existing credentials.");
+			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
+			return;
+		}
 		LOG.info("Registering component " + reg.mac + " to system...");
 		Vector<String> ids = new Vector<String>(1,1);
 		Product product = null;
@@ -62,17 +69,8 @@ public class RegistrationModule extends AbstModule {
 			LOG.debug("Retrieving existing SSIDs from DB...");
 			SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), 
 					"components", new String[]{"ssid"});
-			dbe.forwardRequest(dber1, Thread.currentThread());
-			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
-				e.printStackTrace();
-			}
-			Object o = dbe.getResponse(dber1.getId());
-			if(o.getClass().equals(ResError.class)) {
-				error((ResError) o);
-			} else {
+			Object o = forwardEngineRequest(dbe, dber1);
+			if(!o.getClass().equals(ResError.class)) {
 				ResultSet rs1 = (ResultSet) o;
 				while(rs1.next()) {
 					ids.add(rs1.getString("ssid"));
@@ -84,17 +82,8 @@ public class RegistrationModule extends AbstModule {
 			LOG.debug("Retrieving Component product properties...");
 			RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
 					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
-			dbe.forwardRequest(dber2, Thread.currentThread());
-			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
-				e.printStackTrace();
-			}
-			o = dbe.getResponse(dber2.getId());
-			if(o.getClass().equals(ResError.class)) {
-				error((ResError) o);
-			} else {
+			o = forwardEngineRequest(dbe, dber2);
+			if(!o.getClass().equals(ResError.class)) {
 				ResultSet rs2 = (ResultSet) o;
 				product = new Product(rs2);
 				LOG.debug("Component product properties retrieved!");
@@ -109,16 +98,16 @@ public class RegistrationModule extends AbstModule {
 		String ssid = idg.generateMixedCharID(4, ids.toArray(new String[0]));
 		String topic = ssid + "_topic";
 		Component c = new Component(ssid, reg.mac, reg.name, topic, reg.room, true, product);
-		cr.addComponent(c);
 		LOG.debug("Component object created!");
-		persistComponent(c, request);
-		ohe.forwardRequest(new UpdateOHEReq(idg.generateMixedCharID(10)), Thread.currentThread());
-		try {
-			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-		} catch (InterruptedException e) {
-			LOG.error("Cannot stop thread!", e);
-			e.printStackTrace();
+		if(persistComponent(c, request)) {
+			cr.addComponent(c);
 		}
+		else {
+			LOG.error("Insert to DB error! Registration failed!");
+		}
+		
+		//updates OH
+		forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
 		
 		//publishing of Component credentials to default topic
 		LOG.debug("Publishing Component credentials to default topic...");
@@ -126,8 +115,8 @@ public class RegistrationModule extends AbstModule {
 		LOG.debug("Registration complete!");
 	}
 	
-	private void persistComponent(Component c, ReqRequest request) {
-		//ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
+	private boolean persistComponent(Component c, ReqRequest request) {
+		//persisting component credentials to DB
 		LOG.debug("Persisting component into DB...");
 		HashMap<String, Object> vals1 = new HashMap<String, Object>(1);
 		vals1.put("ssid", c.getSSID());
@@ -137,14 +126,14 @@ public class RegistrationModule extends AbstModule {
 		vals1.put("room", c.getRoom());
 		vals1.put("functn", c.getProduct().getSSID());
 		vals1.put("active", c.isActive());
-		dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), comsTable, vals1), 
-				Thread.currentThread());
-		try {
-			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-		} catch (InterruptedException e) {
-			LOG.error("Cannot stop thread!", e);
-			e.printStackTrace();
+		String vals1ID = idg.generateMixedCharID(10);
+		InsertDBEReq dber1 = new InsertDBEReq(vals1ID, comsTable, vals1);
+		Object o = forwardEngineRequest(dbe, dber1);
+		if(o.getClass().equals(ResError.class)) {
+			return false;
 		}
+		
+		//persisting component properties to DB
 		Property[] props = c.getProperties().values().toArray(new Property[0]);
 		LOG.trace("Persisting component properties into DB...");
 		for(int i = 0; i < props.length; i++) {
@@ -154,33 +143,15 @@ public class RegistrationModule extends AbstModule {
 			vals2.put("prop_name", p.getSystemName());
 			vals2.put("prop_value", String.valueOf(p.getValue()));
 			vals2.put("cpl_ssid", p.getSSID());
-			dbe.forwardRequest(new InsertDBEReq(idg.generateMixedCharID(10), propsTable, vals2), 
-					Thread.currentThread());
-			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
-				e.printStackTrace();
+			String vals2ID = idg.generateMixedCharID(10);
+			
+			Object o2 = forwardEngineRequest(dbe, new InsertDBEReq(vals2ID, propsTable, vals2));
+			if(o2.getClass().equals(ResError.class)) {
+				return false;
 			}
 		}
 		LOG.debug("Component persistence complete!");
-		/*try {
-			dbe.insertQuery(comsTable, vals1);
-			Property[] props = c.getProperties().values().toArray(new Property[0]);
-			for(int i = 0; i < props.length; i++) {
-				Property p = props[i];
-				HashMap<String, Object> vals2 = new HashMap<String, Object>(1);
-				vals2.put("com_id", c.getSSID());
-				vals2.put("prop_name", p.getSystemName());
-				vals2.put("prop_value", String.valueOf(p.getValue()));
-				vals2.put("cpl_ssid", p.getIndex());
-				dbe.insertQuery(propsTable, vals2);
-			}
-			LOG.debug("Component persistence complete!");
-		} catch (SQLException e) {
-			error(new ResError(reg.rid, reg.cid, "Cannot persist component!"));
-			e.printStackTrace();
-		}*/
+		return true;
 	}
 
 	/**
@@ -196,27 +167,18 @@ public class RegistrationModule extends AbstModule {
 		LOG.trace("Additional secondary request parameter checking...");
 		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		boolean b = true;
+		
+		LOG.trace("Checking MAC validity...");
 		if(cr.containsComponent(reg.mac)) {
-			Component c = cr.getComponent(reg.mac);
-			LOG.warn(new ResError(reg, "Component already exists in system! "
-					+ "Returning existing credentials."));
-			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
+			request.getJSON().put("exists", true);
 			return true;
 		}
 		try {
+			LOG.trace("Checking productID validity...");
 			RawDBEReq dber3 = new RawDBEReq(idg.generateMixedCharID(10), 
 					productQuery + " and cpl.COM_TYPE = '" + reg.cid + "'");
-			dbe.forwardRequest(dber3, Thread.currentThread());
-			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
-				e.printStackTrace();
-			}
-			Object obj = dbe.getResponse(dber3.getId());
+			Object obj = forwardEngineRequest(dbe, dber3);
 			if(obj.getClass().equals(ResError.class)) {
-				ResError error = (ResError) obj;
-				error(error);
 				return false;
 			}
 			ResultSet rs2 = (ResultSet) obj;
@@ -228,17 +190,11 @@ public class RegistrationModule extends AbstModule {
 			rs2.close();
 			
 			//ResultSet rs3 = dbe.selectQuery("ssid", "rooms");
+			LOG.trace("Checking roomID validity...");
 			b = false;
 			SelectDBEReq dber4 = new SelectDBEReq(idg.generateMixedCharID(10), 
 					"rooms");
-			dbe.forwardRequest(dber4, Thread.currentThread());
-			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
-				e.printStackTrace();
-			}
-			Object o = dbe.getResponse(dber4.getId());
+			Object o = forwardEngineRequest(dbe, dber4);
 			if(o.getClass().equals(ResError.class)) {
 				error((ResError) o);
 			} else {
@@ -248,15 +204,17 @@ public class RegistrationModule extends AbstModule {
 					if(reg.room.equals(rs3.getString("ssid")) || 
 							reg.room.equalsIgnoreCase(rs3.getString("name"))) {
 						b = true;
-						request.getJSON().put("roomID", rs3.getString("ssid"));
+						LOG.fatal(rs3.getString("ssid"));
+						request.getJSON().put(roomIDParam, rs3.getString("ssid"));
 						rs3.close();
-						return true;
+						break;
 					}
 				}
 				rs3.close();
 			}
 			if(!b) {
 				LOG.error("Room ID is invalid!");
+				return false;
 			}
 			
 		} catch (SQLException e) {

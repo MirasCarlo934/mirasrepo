@@ -1,5 +1,6 @@
 package tools;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
@@ -92,6 +93,55 @@ public class StringTools {
 		}
 		
 		return str;
+	}
+	
+	/**
+	 * Extends original injectStrings() by accommodating varying field strings. This is extremely useful when building a String that includes a
+	 * mixture of constant Strings and multiple variables. <i>This method simplifies that process.</i><br><br>
+	 * 
+	 * A classic example of a String built with mixed constant Strings and variables: <br>
+	 * <i>String s = "Hey there, " + name + ". Today is " + date + " and good day!";</i><br><br>
+	 * 
+	 * With the given variables "Carlo", and "6/15/2016" respectively, this results to:<br>
+	 * <i>Hey there, Carlo. Today is 6/15/2016 and good day!</i><br><br>
+	 * 
+	 * This example perfectly illustrates the difficulty of constructing a String that includes constant Strings and
+	 * variables. <b><i>This method simplifies this process by allowing the user to build the template String first and then
+	 * placing variable field Strings all over the template String where the variables will be injected into.</b></i><br><br>
+	 * 
+	 * Example:<br>
+	 * <i>injectStrings("Hey there, {name}. Today is {date} and good day!", new String[]{name, date}, "%s");</i><br><br>
+	 * 
+	 * This results to:<br>
+	 * <i>Hey there, Carlo. Today is 6/15/2016 and good day!</i><br><br>
+	 * 
+	 * <b>With this particular call on the method, the method replaces all the "%s" Strings in the main String with the
+	 * variables provided in the second field respectively.</b>
+	 * 
+	 * @param str the template String where additional Strings will be injected. The varying field Strings must
+	 * 		be enclosed in curly brackets <b>{ }</b>.
+	 * @param values the HashMap of Strings to be injected into the main String. The key Strings will be used to 
+	 * 		map the value Strings to be injected to <b>str</b>.
+	 * @param encloser The characters that enclose the key String. The first element of this array must be the
+	 * 		first enclosing character/s while the second element must be the final enclosing character/s.
+	 * 		<b>There must only be two elements in this array.</b>
+	 * @return
+	 * @throws StringInjectionException when the provided field String has a length of less than 2, if the size of the
+	 * 		provided String array to be injected is not equal with the amount of field Strings in the main String or
+	 * 		if the <b>field_str</b> contains an invalid character.
+	 */
+	public static String injectStrings(String str, HashMap<String, String> values, 
+			String[] encloser) {
+		String s = str;
+		String[] keys = values.keySet().toArray(new String[0]);
+		
+		for(int i = 0; i < values.size(); i++) {
+			String key = keys[i];
+			String value = values.get(key);
+			s = s.replace(encloser[0] + key + encloser[1], value);
+		}
+		
+		return s;
 	}
 	
 	/**

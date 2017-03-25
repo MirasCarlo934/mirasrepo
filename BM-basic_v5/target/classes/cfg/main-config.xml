@@ -21,6 +21,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="roomsTable" value="${table.roomstable}"></constructor-arg>
 		<!-- <constructor-arg name="catalog" ref="ProdCatalog"/> -->
 		<constructor-arg name="dbm" ref="DBManager"/>
+		<constructor-arg name="bindingsTable" value="${table.bindingstable}"/>
 	</bean>
 	
 	<bean id="Controller" class="main.Controller">

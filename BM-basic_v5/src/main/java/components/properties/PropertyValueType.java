@@ -1,7 +1,7 @@
 package components.properties;
 
 public enum PropertyValueType {
-	digital, analog, analogHue, percent;
+	digital, analog, analoghue, percent, string;
 	
 	/**
 	 * Parses a specified String and returns a PropertyValueType if the String is equal
@@ -16,9 +16,11 @@ public enum PropertyValueType {
 		else if(str.equalsIgnoreCase("analog"))
 			pvt = analog;
 		else if(str.equalsIgnoreCase("analogHue"))
-			pvt = analogHue;
+			pvt = analoghue;
 		else if(str.equalsIgnoreCase("percent"))
 			pvt = percent;
+		else if(str.equalsIgnoreCase("string"))
+			pvt = string;
 		
 		return pvt;
 	}

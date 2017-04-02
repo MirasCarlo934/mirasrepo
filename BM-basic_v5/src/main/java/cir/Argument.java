@@ -51,7 +51,7 @@ public class Argument extends CodeBlock {
 		if(rel.equals("NONE")) {
 			rel = "";
 		}
-		return StringTools.injectStrings("%s:%s %s %s %s", new String[]{getComID(), getPropName(), 
+		return StringTools.injectStrings("%s:%s %s %s %s", new String[]{getComID(), getPropSSID(), 
 				getOperator().getSymbol(), getPropValue(), rel}, "%s");
 	}
 }

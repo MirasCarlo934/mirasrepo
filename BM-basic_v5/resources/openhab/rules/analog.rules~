@@ -1,0 +1,14 @@
+rule "[prop_ssid] ON"
+when 
+	 Item [com_ssid]_[prop_ssid] received command ON 
+then 
+	 mqtt_pub.postUpdate("{'RTY':'poop','property':'[prop_ssid]','RID':'OH-[prop_ssid]','value':'1','CID':'[com_ssid]'}") 
+end 
+
+rule "[prop_ssid] OFF"
+when 
+	 Item [com_ssid]_[prop_ssid] received command OFF 
+then 
+ 	 mqtt_pub.postUpdate("{'RTY':'poop','property':'[prop_ssid]','RID':'OH-[prop_ssid]','value':'0','CID':'[com_ssid]'}") 
+end
+

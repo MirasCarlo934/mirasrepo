@@ -2,6 +2,8 @@ package cir;
 
 import org.apache.log4j.Logger;
 
+import components.Component;
+import components.properties.Property;
 import tools.StringTools;
 import tools.StringTools.StringInjectionException;
 
@@ -15,6 +17,29 @@ public class Statement {
 		setCondition(condition);
 		setArguments(arguments);
 		setExecBlocks(execBlocks);
+	}
+	
+	/**
+	 * Checks if the specified Component and Property pair exists in the arguments section 
+	 * of this Statement
+	 * 
+	 * @param c The Component to be checked for
+	 * @param p The Property paired with the Component which will also be checked for
+	 * @return <b>True</b> if the specified Component exists in the arguments section, 
+	 * 		<b>false</b> otherwise
+	 */
+	public boolean containsComponentInArguments(Component c, Property p) {
+		boolean b = false;
+		for(int i = 0; i < arguments.length; i++) {
+			Argument arg = arguments[i];
+			if(arg.getComID().equals(c.getSSID())) {
+				if(arg.getPropSSID().equals(p.getSSID())) {
+					b = true;
+					break;
+				}
+			}
+		}
+		return b;
 	}
 
 	/**

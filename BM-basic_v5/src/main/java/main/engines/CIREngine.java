@@ -26,12 +26,14 @@ import cir.*;
 import cir.exceptions.*;
 import components.Component;
 import components.properties.Property;
+import json.objects.ReqPOOP;
 import json.objects.ResError;
 //import main.TransTechSystem;
 import main.ComponentRepository;
 import main.engines.requests.EngineRequest;
 import main.engines.requests.CIREngine.CIREngineRequest;
 import main.engines.requests.CIREngine.CIRRequestType;
+import main.engines.requests.CIREngine.GetSpecificExecBlocksCIREReq;
 import main.engines.requests.CIREngine.GetStatementsCIREReq;
 import tools.FileHandler;
 
@@ -89,6 +91,11 @@ public class CIREngine extends AbstEngine {
 			} else {
 				get.setResponse(getCIRStatementsWithArgComponent(get.getComponent(), get.getProperty()));
 			}
+			return get.getResponse();
+		}
+		else if(cirer.getType() == CIRRequestType.getSpecificExecBlocks) {
+			GetSpecificExecBlocksCIREReq get = (GetSpecificExecBlocksCIREReq) cirer;
+			get.setResponse(getSpecificExecBlocks(get.getPoop()));
 			return get.getResponse();
 		}
 		else {
@@ -390,6 +397,30 @@ public class CIREngine extends AbstEngine {
 	 * Returns a Vector containing all CIR statements that have the specified component and property in
 	 * its argument block. <br><br>
 	 * 
+	 * <b>NOTE:</b> This does not support CIR entanglement.
+	 * @param c The Component object
+	 * @param p The Property object
+	 * @return The Vector containing all the CIR statements found
+	 */
+	protected Vector<Statement> getCIRStatementsWithArgComponent(Component c, Property p) {
+		LOG.debug("Retrieving CIR for component " + c.getSSID() + " with property " + p.getSystemName());
+		Vector<Statement> collection = cirStatements;
+		Vector<Statement> statements = new Vector<Statement>(1,1);
+		
+		for(int i = 0; i < collection.size(); i++) {
+			Statement rule = collection.get(i);
+			if(rule.containsComponentInArguments(c, p)) {
+				statements.add(rule);
+			}
+		}
+		LOG.trace(statements.size() + " retrieved!");
+		return statements;
+	}
+	
+	/**
+	 * Returns a Vector containing all CIR statements that have the specified component and property in
+	 * its argument block. <br><br>
+	 * 
 	 * The returned CIR statements are not only for the specified component property itself, 
 	 * but also for the other component properties that will be affected once these statements
 	 * are executed. For more information, see <i>Entangled CIR Statements</i> in the CIR
@@ -398,16 +429,20 @@ public class CIREngine extends AbstEngine {
 	 * @param c The Component object
 	 * @param p The Property object
 	 * @return The Vector containing all the CIR statements found
-	 */
+	 
 	protected Vector<Statement> getCIRStatementsWithArgComponent(Component c, Property p) {
-		//NOT YET FINISHED!
 		LOG.debug("Retrieving CIR for component " + c.getSSID() + " with property " + p.getSystemName());
 		Vector<Statement> collection = cirStatements;
 		Vector<String> affectedComs = new Vector<String>(1,1); //contains all the SSID of the components affected and their corresponding properties
 		Vector<Statement> statements = new Vector<Statement>(1,1);
 		affectedComs.add(c.getSSID() + ":" + p.getSSID());
-		
-		while(!affectedComs.isEmpty()) {
+		 
+		/*
+		 * START FIX HERE! Current patch compares statements size to collection size,
+		 * may cause problems when there are multiple rules as some rules can be repeated
+		 
+		LOG.fatal(collection.size());
+		while(!affectedComs.isEmpty() && statements.size() <= collection.size()) {
 			String comSSID = affectedComs.get(0).split(":")[0];
 			String propSSID = affectedComs.get(0).split(":")[1];
 			affectedComs.remove(0);
@@ -431,7 +466,7 @@ public class CIREngine extends AbstEngine {
 		}
 		LOG.trace(statements.size() + " retrieved!");
 		return statements;
-	}
+	}*/
 
 	/**
 	 * Gets all the CIR statements from the CIR file interpreted by this CIRInterpreter.
@@ -440,5 +475,93 @@ public class CIREngine extends AbstEngine {
 	 */
 	protected Vector<Statement> getCIRStatements() {
 		return cirStatements;
+	}
+	
+	/**
+	 * Returns the execution blocks of the rules that were followed as determined by the
+	 * POOP request that was received. <i>This method is exclusively called for by the 
+	 * POOPModule</i>
+	 * 
+	 * @param poop The POOP request received. This is supplied by the POOPModule
+	 * @return A Vector containing all the execution blocks of the rules that were followed, 
+	 * 		ResError object if the process encountered an error
+	 */
+	protected Object getSpecificExecBlocks(ReqPOOP poop) {
+		Component com = cr.getComponent(poop.cid);
+		Property prop = com.getProperty(poop.propSSID);
+		Vector<Statement> rules = getCIRStatementsWithArgComponent(com, prop);
+		Vector<ExecutionBlock> execsRetrieved = new Vector<ExecutionBlock>(1,1);
+		//LOG.fatal("Rules amount:" + rules.size());
+		
+		for(int i = 0; i < rules.size(); i++) {
+			Statement rule = rules.get(i);
+			Argument[] args = rule.getArguments();
+			ExecutionBlock[] execs = rule.getExecBlocks();
+			boolean rule_result = false; //TRUE if rule will be used, false otherwise
+			//LOG.fatal("Rule " + i + ":" + rule.toString());
+			
+			for(int j = 0; j < args.length; j++) {
+				rule_result = false;
+				Argument arg = args[j];
+				Component arg_com = cr.getComponent(arg.getComID());
+				int pval = arg_com.getProperty(arg.getPropSSID()).getValue();
+				rule_result = compareValueWithArgument(arg, pval);
+				
+				if(!rule_result) { //rule will NOT be used
+					break;
+				}
+			}
+			if(rule_result) { //rule will be used
+				for(int j = 0; j < execs.length; j++) {
+					execsRetrieved.add(execs[j]);
+				}
+			}
+		}
+		return execsRetrieved;
+	}
+	
+	/**
+	 * Checks if the specified Property value meets the specified Argument's condition
+	 * 
+	 * @param arg The Argument where the Property value will be compared with
+	 * @param pval The Property value that will be compared with the Argument
+	 * @return <b>True</b> if the specified Property value meets the specified Argument's 
+	 * 		condition, <b>false</b> otherwise.
+	 */
+	private boolean compareValueWithArgument(Argument arg, int pval) {
+		boolean b = false;
+		
+		if(arg.getOperator().equals(ArgOperator.EQUALS)) {
+			if(arg.getPropValue().equals(String.valueOf(pval))) {
+				b = true;
+			}
+		}
+		else if(arg.getOperator().equals(ArgOperator.GREATER)) {
+			if(Float.parseFloat(arg.getPropValue()) < pval) {
+				b = true;
+			}
+		}
+		else if(arg.getOperator().equals(ArgOperator.LESS)) {
+			if(Float.parseFloat(arg.getPropValue()) > pval) {
+				b = true;
+			}
+		}
+		else if(arg.getOperator().equals(ArgOperator.GREATEREQUALS)) {
+			if(Float.parseFloat(arg.getPropValue()) <= pval) {
+				b = true;
+			}
+		}
+		else if(arg.getOperator().equals(ArgOperator.LESSEQUALS)) {
+			if(Float.parseFloat(arg.getPropValue()) >= pval) {
+				b = true;
+			}
+		}
+		else if(arg.getOperator().equals(ArgOperator.INEQUAL)) {
+			if(Float.parseFloat(arg.getPropValue()) != pval) {
+				b = true;
+			}
+		}
+		
+		return b;
 	}
 }

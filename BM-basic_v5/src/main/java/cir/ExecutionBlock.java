@@ -14,7 +14,7 @@ public class ExecutionBlock extends CodeBlock {
 
 	@Override
 	public String toString() {
-		return StringTools.injectStrings("%s:%s = %s", new String[]{getComID(), getPropName(), getPropValue()}, "%s");
+		return StringTools.injectStrings("%s:%s = %s", new String[]{getComID(), getPropSSID(), getPropValue()}, "%s");
 	}
 
 }

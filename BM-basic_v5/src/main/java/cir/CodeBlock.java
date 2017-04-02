@@ -2,7 +2,7 @@ package cir;
 
 public abstract class CodeBlock {
 	private String comID;
-	private String propName;
+	private String propSSID;
 	private String propValue;
 	
 	public CodeBlock(String comID, String comProperty, String comValue) {
@@ -33,15 +33,15 @@ public abstract class CodeBlock {
 	/**
 	 * @return the comProperty
 	 */
-	public String getPropName() {
-		return propName;
+	public String getPropSSID() {
+		return propSSID;
 	}
 
 	/**
 	 * @param comProperty the comProperty to set
 	 */
 	public void setComProperty(String comProperty) {
-		this.propName = comProperty;
+		this.propSSID = comProperty;
 	}
 
 	/**

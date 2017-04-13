@@ -60,17 +60,17 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	public void connectToMQTT() {
 		try {
 			client.connect();
-			logger.debug("Connected to MQTT!");
+			logger.info("Connected to MQTT!");
 			client.subscribe(BM_topic, 0);
 			logger.debug("Subscribed to BM topic!");
 			client.setCallback(this);
 			logger.debug("Callback set!");
 		} catch (MqttSecurityException e) {
-			logger.fatal("Cannot connect to MQTT server!", e);
+			logger.fatal("Cannot connect to MQTT server due to MqttSecurityException!", e);
 			logger.info("Attempting to reconnect...");
 			connectToMQTT();
 		} catch (MqttException e) {
-			logger.fatal("Cannot connect to MQTT server!", e);
+			logger.fatal("Cannot connect to MQTT due to MqttException!", e);
 			logger.info("Attempting to reconnect...");
 			connectToMQTT();
 		}

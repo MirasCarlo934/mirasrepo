@@ -18,6 +18,7 @@ import main.engines.OHEngine;
 import main.engines.requests.DBEngine.InsertDBEReq;
 import main.engines.requests.DBEngine.RawDBEReq;
 import main.engines.requests.DBEngine.SelectDBEReq;
+import main.engines.requests.DBEngine.UpdateDBEReq;
 import main.engines.requests.OHEngine.UpdateOHEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
@@ -54,11 +55,28 @@ public class RegistrationModule extends AbstModule {
 		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		if(request.getJSON().has("exists")) {
 			Component c = cr.getComponent(reg.mac);
-			LOG.info("Component already exists in system! "
+			LOG.info("Component already exists in system as " + c.getSSID() + "! "
 					+ "Returning existing credentials.");
+			
+			LOG.debug("Returning existing credentials to default topic...");
 			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
+			
+			LOG.debug("Activating component " + c.getSSID() + " in DB...");
+			HashMap<String, Object> args = new HashMap<String, Object>(1,1);
+			args.put("mac", request.rid);
+			HashMap<String, Object> vals = new HashMap<String, Object>(1,1);
+			vals.put("active", true);
+			UpdateDBEReq updateActive = new UpdateDBEReq(idg.generateMixedCharID(10), comsTable, 
+					vals, args);
+			Object o1 = forwardEngineRequest(dbe, updateActive);
+			if(o1.getClass().equals(ResError.class)) {
+				ResError error = (ResError) o1;
+				error(error);
+				return;
+			}
 			return;
 		}
+		
 		LOG.info("Registering component " + reg.mac + " to system...");
 		Vector<String> ids = new Vector<String>(1,1);
 		Product product = null;

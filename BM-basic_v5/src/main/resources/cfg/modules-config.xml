@@ -8,7 +8,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 	<context:annotation-config/>
 	<bean id="register" class="main.modules.RegistrationModule" scope="prototype">
-		<constructor-arg name="RTY" value="register"/>
+		<constructor-arg name="RTY" value="${rty.registration}"/>
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="components" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
@@ -28,7 +28,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
 	<bean id="poop" class="main.modules.POOPModule" scope="prototype">
-		<constructor-arg name="RTY" value="poop"/>
+		<constructor-arg name="RTY" value="${rty.poop}"/>
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
@@ -45,17 +45,21 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="propsTable" value="${table.propstable}"/>
 	</bean>
 	<bean id="detach" class="main.modules.DetachmentModule" scope="prototype">
-		<constructor-arg name="RTY" value="detach"/>
+		<constructor-arg name="RTY" value="${rty.detachment}"/>
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>
 		<constructor-arg name="ohe" ref="OHEngine"/>
-		<!-- <constructor-arg name="params">
-			<list>
-			</list>
-		</constructor-arg> -->
 		<property name="propsTable" value="${table.propstable}"/>
 		<property name="comsTable" value="${table.comstable}"/>
+	</bean>
+	<bean id="bye" class="main.modules.DeactivationModule">
+		<constructor-arg name="RTY" value="${rty.deactivation}"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
+		<constructor-arg name="comstable" value="${table.comstable}"/>
 	</bean>
 	<!-- <bean id="ohcommand" class="main.modules.OHControlModule" scope="prototype">
 		<constructor-arg name="RTY" value="detach"/>

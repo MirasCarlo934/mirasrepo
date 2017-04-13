@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Vector;
@@ -28,10 +30,11 @@ import tools.IDGenerator;
 import tools.StringTools;
 
 /**
- * Handles all OpenHab related interactions for the BM. <br><br>
+ * Handles all OpenHAB related interactions for the BM. <br><br>
  * 
  * <b>NOTE:</b> This OHEngine version is only for OpenHab-2.0.0 only! Check backups for 
  * more primitive versions.
+ * 
  * @author Carlo
  *
  */
@@ -65,18 +68,6 @@ public class OHEngine extends AbstEngine {
 		this.os = os;
 		this.itemsList = itemsList;
 		this.OHMqttBroker = OHMqttBroker;
-		/*try {
-			LOG.info("Connecting to bm.properties...");
-			FileHandler fh = new FileHandler(bm_props_filepath);
-			bm_props.load(fh.getFileReader());
-			LOG.debug("Connected to bm.properties!");
-		} catch (FileNotFoundException e) {
-			LOG.error("Cannot open bm.properties!", e);
-			e.printStackTrace();
-		} catch (IOException e) {
-			LOG.error("Cannot open bm.properties!", e);
-			e.printStackTrace();
-		}*/
 	}
 
 	@Override
@@ -93,9 +84,12 @@ public class OHEngine extends AbstEngine {
 		}
 		else if(oher.getType() == OHRequestType.stop) {
 			//stopOH();
+			oher.setResponse(new ResError("OHEngine", "OpenHAB stop function is defunct! "
+					+ "OpenHAB cannot be stopped from within BM!"));
 			return oher;
 		}
 		else if(oher.getType() == OHRequestType.update) {
+			//updateOH()
 			LOG.info("Updating OpenHAB files...");
 			updateItems();
 			updateRules();
@@ -147,7 +141,7 @@ public class OHEngine extends AbstEngine {
 		try {
 			Runtime.getRuntime().exec("cmd /c \"taskkill /im java.exe /f\"");
 		} catch (IOException e) {
-			LOG.error("Cannot stpp OpenHAB!", e);
+			LOG.error("Cannot stop OpenHAB!", e);
 			e.printStackTrace();
 		}
 	}
@@ -275,53 +269,47 @@ public class OHEngine extends AbstEngine {
 		for(int i = 0; i < coms.length; i++) {
 			Component c = coms[i];
 			Property[] props = c.getProperties().values().toArray(new Property[0]);
+			
+			HashMap<String, String> values = new HashMap<String, String>(2); //values to be put inside rules files
+			values.put("com_ssid", c.getSSID());
+			//gets component-specific rules
+			try {
+				FileHandler specificPropertyRule = new FileHandler
+						("resources/openhab/rules/product/" + c.getProduct().getSSID() + ".rules");
+				String[] lines = specificPropertyRule.readAllLines();
+				for(int k = 0; k < lines.length; k++) {
+					str += StringTools.injectStrings(lines[k], values, 
+							new String[]{"[","]"}) + "\n";
+				}
+			} catch (FileNotFoundException e1) {
+				LOG.warn("Rules for component ID " + c.getProduct().getSSID() + " not found!");
+				//e1.printStackTrace();
+			} catch (IOException e) {
+				LOG.error("Cannot read lines from " + c.getProduct().getSSID() + ".rules!");
+				e.printStackTrace();
+			}
+			
+			//gets general property rules
 			for(int j = 0; j < props.length; j++) {
 				Property p = props[j];
 				LOG.trace("Updating rules of property " + p.getSSID());
-				try {
-					FileHandler fh = new FileHandler
-							("resources/openhab/rules/" + p.getPropValType() + ".rules");
-					String[] lines = fh.readAllLines();
-					HashMap<String, String> values = new HashMap<String, String>(2);
+				try { //retrieves rules from general rules files
 					values.put("prop_ssid", p.getSSID());
-					values.put("com_ssid", c.getSSID());
+					FileHandler generalPropertyRule = new FileHandler
+							("resources/openhab/rules/general/" + p.getPropValType() + ".rules");
+					String[] lines = generalPropertyRule.readAllLines();
 					for(int k = 0; k < lines.length; k++) {
-						//LOG.fatal(lines[k]);
 						str += StringTools.injectStrings(lines[k], values, 
 								new String[]{"[","]"}) + "\n";
 					}
 				} catch (FileNotFoundException e) {
-					LOG.error("Rules for " + p.getPropValType() + " property value type not "
+					LOG.warn("Rules for " + p.getPropValType() + " property value type not "
 							+ "found!");
-					e.printStackTrace();
+					//e.printStackTrace();
 				} catch (IOException e) {
 					LOG.error("Cannot read lines from " + p.getPropValType() + ".rules!");
 					e.printStackTrace();
-				}
-				/*if(p.getPropValType().equals(PropertyValueType.digital)) {
-		        	
-		        	str += "rule \"" + p.getSSID() + " ON\"\n"
-        			+ "when \n"
-        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command ON \n"
-        			+ "then \n"
-        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'1','CID':'" + c.getSSID() + "'}\") \n"
-        			+ "end \n\n";
-        			str += "rule \"" + p.getSSID() + " OFF\"\n"
-        			+ "when \n"
-        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command OFF \n"
-        			+ "then \n "
-        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'0','CID':'" + c.getSSID() + "'}\") \n"
-        			+ "end \n\n";
-		        }
-		        else {
-		        	str += "rule \"" + p.getSSID() + " CHANGED\"\n"
-		        			+ "when \n"
-		        			+ "\t Item " + c.getSSID() + "_" + p.getSSID() + " received command \n"
-		        			+ "then \n "
-		        			+ "\t mqtt_pub.postUpdate(\"{'RTY':'poop','property':'" + p.getSSID() + "','RID':'OH-" + p.getSSID() + "','value':'%\" + receivedCommand + \"','CID':'" + c.getSSID() + "'}\") \n"
-		        			+ "end \n\n";
-		        }*/
-		        
+				}		        
 			}
 		}
 		

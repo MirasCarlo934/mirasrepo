@@ -59,7 +59,7 @@ public class ComponentRepository {
 		try {
 			LOG.info("Populating Devices...");
 			RawDBEReq dber1 = new RawDBEReq(idg.generateMixedCharID(10), deviceQuery);
-			dbm.forwardRequest(dber1, Thread.currentThread());
+			dbm.processRequest(dber1, Thread.currentThread());
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 			Object o = dbm.getResponse(dber1.getId());
 			if(o.getClass().equals(ResError.class)) {
@@ -83,7 +83,7 @@ public class ComponentRepository {
 				if(!components.containsKey(SSID)) { //true if devices does NOT contain this device
 					RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
 							productQuery + " and cpl.COM_TYPE = '" + prod_id + "'");
-					dbm.forwardRequest(dber2, Thread.currentThread());
+					dbm.processRequest(dber2, Thread.currentThread());
 					synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 					Object o2 = dbm.getResponse(dber2.getId());
 					if(o2.getClass().equals(ResError.class)) {
@@ -119,7 +119,7 @@ public class ComponentRepository {
 	public void retrieveRooms() {
 		LOG.info("Retrieving rooms from DB...");
 		SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), roomsTable);
-		dbm.forwardRequest(dber1, Thread.currentThread());
+		dbm.processRequest(dber1, Thread.currentThread());
 		try {
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 		} catch (InterruptedException e) {
@@ -149,7 +149,7 @@ public class ComponentRepository {
 	public void retrieveBindings() {
 		LOG.info("Retrieving OH bindings from DB...");
 		SelectDBEReq dber1 = new SelectDBEReq(idg.generateMixedCharID(10), bindingsTable);
-		dbm.forwardRequest(dber1, Thread.currentThread());
+		dbm.processRequest(dber1, Thread.currentThread());
 		try {
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 		} catch (InterruptedException e) {
@@ -255,7 +255,7 @@ public class ComponentRepository {
 		//dbm.updateQuery("comp_properties", args, vals);
 		UpdateDBEReq dber1 = new UpdateDBEReq(idg.generateMixedCharID(10), "comp_properties", 
 				args, vals);
-		dbm.forwardRequest(dber1, Thread.currentThread());
+		dbm.processRequest(dber1, Thread.currentThread());
 		LOG.info("Property updated!");
 		/*try {
 			LOG.info("Updating property:" + propID + " of device:" + deviceID + " in DB...");

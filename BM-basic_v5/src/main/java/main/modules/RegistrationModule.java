@@ -91,6 +91,7 @@ public class RegistrationModule extends AbstModule {
 		} catch (SQLException e) {
 			error(new ResError(reg, "Cannot process register request!"));
 			e.printStackTrace();
+			return;
 		}
 		
 		//creation of Component object within BM system
@@ -104,6 +105,7 @@ public class RegistrationModule extends AbstModule {
 		}
 		else {
 			LOG.error("Insert to DB error! Registration failed!");
+			return;
 		}
 		
 		//updates OH

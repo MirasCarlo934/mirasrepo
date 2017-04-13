@@ -94,7 +94,7 @@ public class BusinessMachine {
 				final ComponentRepository cr = (ComponentRepository) context.getBean("Components");
 				mh.connectToMQTT();
 				OHEngine ohe = (OHEngine) context.getBean("OHEngine");
-				ohe.forwardRequest(new StartOHEReq(idg.generateMixedCharID(10)), 
+				ohe.processRequest(new StartOHEReq(idg.generateMixedCharID(10)), 
 						Thread.currentThread());
 				try {
 					synchronized (Thread.currentThread()) {
@@ -104,7 +104,7 @@ public class BusinessMachine {
 					LOG.error(e);
 					e.printStackTrace();
 				}
-				ohe.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), 
+				ohe.processRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), 
 						Thread.currentThread());
 				try {
 					synchronized (Thread.currentThread()) {

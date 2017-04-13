@@ -18,6 +18,15 @@ import json.objects.AbstResponse;
 import main.ComponentRepository;
 import main.Controller;
 
+/**
+ * The MQTTHandler is the object that handles all interactions related to an MQTT server. 
+ * Specifically, this object handles the connection of an MqttClient to the MQTT server, 
+ * reception of messages into the BM topic, the publishing of messages to different topics, 
+ * connection error handling, and the reconnection function for higher availability.
+ * 
+ * @author User
+ *
+ */
 public class MQTTHandler extends TimerTask implements MqttCallback {
 	private static final Logger logger = Logger.getLogger("BM_LOG.mqtt");
 	@Autowired

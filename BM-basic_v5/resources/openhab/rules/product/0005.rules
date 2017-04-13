@@ -1,0 +1,22 @@
+rule "[com_ssid] Pause Auto Toggle"
+when
+	Item [com_ssid]_0016 received command
+then
+	if([com_ssid]_0016.state == ON) {
+		postUpdate([com_ssid]_0017, OFF)
+	} else {
+		postUpdate([com_ssid]_0017, OFF)
+	}
+end
+
+rule "[com_ssid] Play Auto Toggle"
+when
+	Item [com_ssid]_0017 received command
+then
+	if([com_ssid]_0017.state == ON) {
+		postUpdate([com_ssid]_0016, OFF)
+	} else {
+		postUpdate([com_ssid]_0016, OFF)
+	}
+end
+

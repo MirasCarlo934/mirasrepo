@@ -17,7 +17,8 @@ public class Controller {
 	}
 
 	public void processMQTTMessage(MqttMessage mqttMessage) {
-		LOG.trace("Controller request processing started");
+		//LOG.trace("Controller request processing started");
+		LOG.info("Request received!");
 		Thread t = new Thread(new ControllerModule(mqttMessage, mh, devices), "Process" + processCounter);
 		t.start();
 		processCounter++;

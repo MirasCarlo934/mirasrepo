@@ -63,7 +63,7 @@ public class POOPModule extends AbstModule {
 		}
 		else {
 			//cire.update();
-			cire.forwardRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), Thread.currentThread());
+			cire.processRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), Thread.currentThread());
 			try {
 				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 			} catch (InterruptedException e) {
@@ -130,7 +130,7 @@ public class POOPModule extends AbstModule {
 			HashMap<String, Object> vals2 = new HashMap<String, Object>(1);
 			vals2.put("prop_value", String.valueOf(exec.getPropValue()));
 			LOG.debug("Updating component property in DB...");
-			dbe.forwardRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals2, 
+			dbe.processRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals2, 
 					args2), Thread.currentThread());
 			try {
 				synchronized (Thread.currentThread()){Thread.currentThread().wait();}

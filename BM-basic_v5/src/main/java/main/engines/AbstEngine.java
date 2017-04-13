@@ -49,7 +49,7 @@ public abstract class AbstEngine extends TimerTask {
 	 * @return the response of the Engine, can be ResError if the Engine encountered an error or 
 	 * 		if the EngineRequest is invalid
 	 */
-	public void forwardRequest(EngineRequest engineRequest, Thread t) {
+	public void processRequest(EngineRequest engineRequest, Thread t) {
 		LOG.debug("Adding " + engineRequest.getClass().getName() + " " + 
 				engineRequest.getId() + " to " + name + "!");
 		reqQueue.add(engineRequest);

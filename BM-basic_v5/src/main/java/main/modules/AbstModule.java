@@ -51,7 +51,7 @@ public abstract class AbstModule {
 	 * 		an error during EngineRequest processing.
 	 */
 	protected Object forwardEngineRequest(AbstEngine engine, EngineRequest engineRequest) {
-		engine.forwardRequest(engineRequest, Thread.currentThread());
+		engine.processRequest(engineRequest, Thread.currentThread());
 		try {
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 		} catch (InterruptedException e) {

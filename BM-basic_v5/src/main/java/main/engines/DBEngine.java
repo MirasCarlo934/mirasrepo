@@ -55,7 +55,6 @@ public class DBEngine extends AbstEngine {
 		} catch (SQLException e) {
 			LOG.fatal("Cannot connect to DB! Reconnecting...");
 			createConnection(dbURL, dbusr, dbpwd);
-			e.printStackTrace();
 		}
     }
     

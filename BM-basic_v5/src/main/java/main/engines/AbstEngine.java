@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import json.objects.ResError;
-import main.Controller;
+import main.controller.Controller;
 import main.engines.requests.EngineRequest;
 import tools.SystemTimer;
 

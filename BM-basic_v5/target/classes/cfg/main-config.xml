@@ -24,8 +24,24 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<constructor-arg name="bindingsTable" value="${table.bindingstable}"/>
 	</bean>
 	
-	<bean id="Controller" class="main.Controller">
+	<bean id="Controller" class="main.controller.Controller">
 		<constructor-arg name="devices" ref="Components"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="threadPool" ref="ThreadPool"/>
+	</bean>
+	
+	<bean id="ThreadPool" class="main.controller.ThreadPool">
+		<constructor-arg name="corePoolSize" value="3"/>
+		<constructor-arg name="maximumPoolSize" value="10"/>
+		<constructor-arg name="keepAliveTime" value="10"/>
+		<constructor-arg name="threadFactory" ref="ThreadFactory"/>
+		<constructor-arg name="handler" ref="ThreadRejectionHandler"/>
+	</bean>
+	
+	<bean id="ThreadFactory" class="main.controller.ControllerThreadFactory">
+	</bean>
+	
+	<bean id="ThreadRejectionHandler" class="main.controller.ThreadRejectionHandler">
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 	</bean>
 </beans>

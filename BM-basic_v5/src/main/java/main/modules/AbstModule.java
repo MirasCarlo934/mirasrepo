@@ -13,15 +13,17 @@ import main.engines.requests.EngineRequest;
 import mqtt.MQTTHandler;
 
 public abstract class AbstModule {
+	protected Logger mainLOG;
+	protected Logger errorLOG;
 	private String name;
 	private String requestType;
 	private String[] params;
-	protected Logger LOG;
 	protected MQTTHandler mh;
 	protected ComponentRepository cr;
 
 	public AbstModule(String name, String RTY, String[] params, MQTTHandler mh, ComponentRepository cr) {
-		LOG = Logger.getLogger("BM_LOG." + name);
+		mainLOG = Logger.getLogger("BM_LOG." + name);
+		errorLOG = Logger.getLogger("error." + name);
 		this.name = name;
 		this.setParams(params);
 		this.mh = mh;
@@ -30,12 +32,12 @@ public abstract class AbstModule {
 	}
 	
 	public void processRequest(ReqRequest request) {
-		LOG.debug(name + " request processing started!");
+		mainLOG.debug(name + " request processing started!");
 		if(checkSecondaryRequestValidity(request)) {
-			LOG.trace("Request valid! Proceeding to request processing...");
+			mainLOG.trace("Request valid! Proceeding to request processing...");
 			process(request);
 		} else {
-			LOG.error("Secondary request params didn't check out. See also the additional request params"
+			mainLOG.error("Secondary request params didn't check out. See also the additional request params"
 					+ " checking.");
 			//mh.publishToErrorTopic("Invalid request. Check secondary request parameters.");
 		}
@@ -55,7 +57,7 @@ public abstract class AbstModule {
 		try {
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 		} catch (InterruptedException e) {
-			LOG.error("Cannot stop thread!", e);
+			mainLOG.error("Cannot stop thread!", e);
 			e.printStackTrace();
 		}
 		Object o = engine.getResponse(engineRequest.getId());
@@ -83,7 +85,7 @@ public abstract class AbstModule {
 	 * 		</ul>
 	 */
 	private boolean checkSecondaryRequestValidity(ReqRequest request) {
-		LOG.trace("Checking secondary request parameters...");
+		mainLOG.trace("Checking secondary request parameters...");
 		boolean b = false; //true if request is valid
 		
 		if(params.length == 0) //there are no secondary request params
@@ -121,7 +123,7 @@ public abstract class AbstModule {
 	 * @param message The error message
 	 */
 	protected void error(ResError error) {
-		LOG.error(error.message);
+		mainLOG.error(error.message);
 		mh.publishToErrorTopic(error);
 		/*
 		 * Do CID checking for this one

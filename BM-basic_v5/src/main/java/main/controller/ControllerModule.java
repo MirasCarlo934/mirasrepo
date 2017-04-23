@@ -1,4 +1,4 @@
-package main;
+package main.controller;
 
 import org.apache.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -6,6 +6,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import json.objects.ReqRequest;
+import main.BusinessMachine;
+import main.ComponentRepository;
 import main.modules.AbstModule;
 import mqtt.MQTTHandler;
 
@@ -16,18 +18,31 @@ import mqtt.MQTTHandler;
  */
 public class ControllerModule implements Runnable {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.ControllerModule");
+	//private int assignedThread;
+	private int processNumber;
 	private MqttMessage message;
 	private MQTTHandler mh;
-	private ComponentRepository devices;
+	private ComponentRepository cr;
 
-	public ControllerModule(MqttMessage message, MQTTHandler mh, ComponentRepository devices) {
+	/**
+	 * @param processNumber The process number assigned to this <i>ControllerModule</i> by
+	 * 			the <i>Controller</i>
+	 * @param message The <i>MqttMessage</i> that contains the request sent by an external
+	 * 			component
+	 * @param mh The <i>MQTTHandler</i> of this BusinessMachine
+	 * @param cr The <i>ComponentRepository</i> of this BusinessMachine
+	 */
+	public ControllerModule(int processNumber, MqttMessage message, MQTTHandler mh, 
+			ComponentRepository cr) {
+		this.processNumber = processNumber;
 		this.message = message;
 		this.mh = mh;
-		this.devices = devices;
+		this.cr = cr;
 	}
 	
 	@Override
 	public void run() {
+		//renameThread();
 		if(checkPrimaryRequestValidity(message)) {
 			ReqRequest request = new ReqRequest(new JSONObject(message.toString()));
 			String rty = request.getString("RTY");	
@@ -81,7 +96,7 @@ public class ControllerModule implements Runnable {
 		
 		//#4
 		if(json.getString("RTY").equals("register"));
-		else if(!devices.containsComponent(json.getString("CID"))) {
+		else if(!cr.containsComponent(json.getString("CID"))) {
 			sendError("CID does not exist!");
 			return false;
 		}
@@ -114,4 +129,22 @@ public class ControllerModule implements Runnable {
 		LOG.error(message);
 		mh.publishToErrorTopic(message);
 	}
+	
+	/**
+	 * Returns the process number assigned to this <i>ControllerModule</i> by the <i>Controller</i>
+	 * @return The process number
+	 */
+	public int getProcessNumber() {
+		return processNumber;
+	}
+	
+	/**
+	 * Returns the thread number of the thread assigned to handle this <i>ControllerModule</i> 
+	 * by the <i>ThreadPoolExecutor</i> in <i>Controller</i>
+	 * 
+	 * @return The assigned thread number
+	
+	public int getAssignedThread() {
+		return assignedThread;
+	} */
 }

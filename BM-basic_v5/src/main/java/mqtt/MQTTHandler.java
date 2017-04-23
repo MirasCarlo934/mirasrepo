@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import json.objects.AbstResponse;
 import main.ComponentRepository;
-import main.Controller;
+import main.controller.Controller;
 
 /**
  * The MQTTHandler is the object that handles all interactions related to an MQTT server. 
@@ -134,7 +134,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	}
 
 	public void connectionLost(Throwable arg0) {
-		logger.fatal("Connection lost with MQTT server!");
+		logger.fatal("Connection lost with MQTT server!", arg0);
 		logger.info("Attempting to reconnect...");
 		connectToMQTT();
 	}

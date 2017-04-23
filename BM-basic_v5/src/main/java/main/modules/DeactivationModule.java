@@ -30,13 +30,13 @@ public class DeactivationModule extends AbstModule {
 		IDGenerator idg = new IDGenerator();
 		Component c = cr.getComponent(request.cid);
 		
-		LOG.info("Deactivating component " + c.getSSID() + " (MAC:" + c.getMAC() + ")");
+		mainLOG.info("Deactivating component " + c.getSSID() + " (MAC:" + c.getMAC() + ")");
 		HashMap<String, Object> args = new HashMap<String, Object>(1,1);
 		args.put("mac", request.cid);
 		HashMap<String, Object> vals = new HashMap<String, Object>(1,1);
 		vals.put("active", false);
 		
-		LOG.debug("Updating DB...");
+		mainLOG.debug("Updating DB...");
 		UpdateDBEReq updateActive = new UpdateDBEReq(idg.generateMixedCharID(10), comstable, 
 				vals, args);
 		Object o1 = forwardEngineRequest(dbe, updateActive);
@@ -46,7 +46,7 @@ public class DeactivationModule extends AbstModule {
 			return;
 		}
 		
-		LOG.debug("Updating OH...");
+		mainLOG.debug("Updating OH...");
 		UpdateOHEReq updateOH = new UpdateOHEReq(idg.generateMixedCharID(10));
 		Object o2 = forwardEngineRequest(ohe, updateOH);
 		if(o2.getClass().equals(ResError.class)) {
@@ -55,7 +55,7 @@ public class DeactivationModule extends AbstModule {
 			return;
 		}
 		
-		LOG.info("Component deactivated!");
+		mainLOG.info("Component deactivated!");
 	}
 
 	@Override

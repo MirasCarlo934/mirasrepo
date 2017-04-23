@@ -30,12 +30,12 @@ public class DetachmentModule extends AbstModule {
 	@Override
 	protected void process(ReqRequest request) {
 		String cid = request.cid;
-		LOG.info("Detaching component " + cid + " from system...");
+		mainLOG.info("Detaching component " + cid + " from system...");
 		
-		LOG.debug("Deleting component from CR...");
+		mainLOG.debug("Deleting component from CR...");
 		cr.removeComponent(cid);
 		
-		LOG.debug("Deleting component from DB...");
+		mainLOG.debug("Deleting component from DB...");
 		HashMap<String, Object> vals1 = new HashMap<String, Object>(1,1);
 		vals1.put("com_id", cid);
 		HashMap<String, Object> vals2 = new HashMap<String, Object>(1,1);
@@ -50,7 +50,7 @@ public class DetachmentModule extends AbstModule {
 		//update OH of changes
 		forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
 		
-		LOG.info("Detachment complete!");
+		mainLOG.info("Detachment complete!");
 	}
 
 	@Override

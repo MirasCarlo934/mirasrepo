@@ -56,10 +56,10 @@ public class POOPModule extends AbstModule {
 			poop.propValue = Math.abs(poop.propValue) * (p.getMax() / 100);
 		}
 		
-		LOG.info("Changing component " + request.cid + " property " 
+		mainLOG.info("Changing component " + request.cid + " property " 
 				+ poop.propSSID + " to " + poop.propValue + "...");
 		if(c.getProperty(poop.propSSID).getValue() == poop.propValue) {
-			LOG.info("Property is already set to " + poop.propValue + "!");
+			mainLOG.info("Property is already set to " + poop.propValue + "!");
 		}
 		else {
 			//cire.update();
@@ -67,14 +67,14 @@ public class POOPModule extends AbstModule {
 			try {
 				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
+				mainLOG.error("Cannot stop thread!", e);
 				e.printStackTrace();
 			}
 			updateSystem(poop);
 			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
 			mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
 		}
-		LOG.debug("POOP processing complete!");
+		mainLOG.debug("POOP processing complete!");
 	}
 	
 	/**
@@ -84,11 +84,11 @@ public class POOPModule extends AbstModule {
 	 * @param poop
 	 */
 	private void updateSystem(ReqPOOP poop) {
-		LOG.debug("Updating component property in system...");
+		mainLOG.debug("Updating component property in system...");
 		Component c = cr.getComponent(poop.cid);
 		c.setPropertyValue(poop.propSSID, poop.propValue);
 		
-		LOG.info("Updating affected component properties in system...");
+		mainLOG.info("Updating affected component properties in system...");
 		boolean updatedOthers = false;
 		GetSpecificExecBlocksCIREReq cirer1 = new GetSpecificExecBlocksCIREReq(idg.generateMixedCharID(10), 
 				poop);
@@ -101,7 +101,7 @@ public class POOPModule extends AbstModule {
 		for(int k = 0; k < execs.size(); k++) {
 			ExecutionBlock exec = execs.get(k);
 			Component com = cr.getComponent(exec.getComID());
-			LOG.info("Changing commponent " + com.getSSID() + " property " + 
+			mainLOG.info("Changing commponent " + com.getSSID() + " property " + 
 					exec.getPropSSID() + " to " + exec.getPropValue() + "...");
 			com.setPropertyValue(exec.getPropSSID(), Integer.parseInt(exec.getPropValue()));
 			//updates the physical component
@@ -113,7 +113,7 @@ public class POOPModule extends AbstModule {
 		}
 				
 		//updates database
-		LOG.debug("Updating component property in DB...");
+		mainLOG.debug("Updating component property in DB...");
 		HashMap<String, Object> args1 = new HashMap<String, Object>(2);
 		args1.put("com_id", poop.cid);
 		args1.put("cpl_ssid", poop.propSSID);
@@ -129,17 +129,17 @@ public class POOPModule extends AbstModule {
 			args2.put("cpl_ssid", exec.getPropSSID());
 			HashMap<String, Object> vals2 = new HashMap<String, Object>(1);
 			vals2.put("prop_value", String.valueOf(exec.getPropValue()));
-			LOG.debug("Updating component property in DB...");
+			mainLOG.debug("Updating component property in DB...");
 			dbe.processRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals2, 
 					args2), Thread.currentThread());
 			try {
 				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 			} catch (InterruptedException e) {
-				LOG.error("Cannot stop thread!", e);
+				mainLOG.error("Cannot stop thread!", e);
 				e.printStackTrace();
 			}
 		}
-		if(!updatedOthers) LOG.info("No other components updated!");
+		if(!updatedOthers) mainLOG.info("No other components updated!");
 	}
 
 	/**

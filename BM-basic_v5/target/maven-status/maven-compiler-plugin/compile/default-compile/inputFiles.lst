@@ -13,6 +13,7 @@ C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\DBEngine\Del
 C:\Applications\git\BM-basic_v5\src\main\java\cir\CIRStatementBuilder.java
 C:\Applications\git\BM-basic_v5\src\main\java\json\objects\ReqRequest.java
 C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\DBEngine\DBEngineRequest.java
+C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\CIREngine\GetSpecificExecBlocksCIREReq.java
 C:\Applications\git\BM-basic_v5\src\main\java\cir\ExecutionBlock.java
 C:\Applications\git\BM-basic_v5\src\main\java\main\ProductCatalog.java
 C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\DBEngine\InsertDBEReq.java
@@ -28,6 +29,7 @@ C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\OHEngine\Sta
 C:\Applications\git\BM-basic_v5\src\main\java\cir\CodeBlock.java
 C:\Applications\git\BM-basic_v5\src\main\java\main\engines\requests\OHEngine\OHEngineRequest.java
 C:\Applications\git\BM-basic_v5\src\main\java\main\modules\RegistrationModule.java
+C:\Applications\git\BM-basic_v5\src\main\java\main\modules\DeactivationModule.java
 C:\Applications\git\BM-basic_v5\src\main\java\components\Component.java
 C:\Applications\git\BM-basic_v5\src\main\java\mqtt\MQTTHandler.java
 C:\Applications\git\BM-basic_v5\src\main\java\json\objects\ReqPOOP.java

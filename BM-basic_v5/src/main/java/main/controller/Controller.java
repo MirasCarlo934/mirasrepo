@@ -1,7 +1,15 @@
-package main;
+package main.controller;
+
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+
+import main.ComponentRepository;
 import mqtt.MQTTHandler;
 
 public class Controller {
@@ -9,18 +17,20 @@ public class Controller {
 	private MQTTHandler mh;
 	private ComponentRepository devices;
 	public static int processCounter = 1;
+	private ThreadPool threadPool;
 	
-	public Controller(MQTTHandler mh, ComponentRepository devices) {
+	public Controller(MQTTHandler mh, ComponentRepository devices, ThreadPool threadPool) {
 		this.mh = mh;
 		this.devices = devices;
+		this.threadPool = threadPool;
+		//threadPool = new ThreadPool(3, 10, 5, TimeUnit.SECONDS, 
+		//		new ArrayBlockingQueue<Runnable>(10), threadFactory, new ThreadRejectionHandler());
 		LOG.info("Controller constructed!");
 	}
 
 	public void processMQTTMessage(MqttMessage mqttMessage) {
-		//LOG.trace("Controller request processing started");
 		LOG.info("Request received!");
-		Thread t = new Thread(new ControllerModule(mqttMessage, mh, devices), "Process" + processCounter);
-		t.start();
+		threadPool.execute(new ControllerModule(processCounter, mqttMessage, mh, devices));
 		processCounter++;
 	}
 

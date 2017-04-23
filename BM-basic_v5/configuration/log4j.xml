@@ -5,7 +5,7 @@
         
   
    <root>
-   		<level value="info" />
+   		<level value="debug" />
         <appender-ref ref="console" />
         <appender-ref ref="BM_APPENDER" />
    </root>

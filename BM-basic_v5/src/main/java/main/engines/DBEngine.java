@@ -25,7 +25,7 @@ public class DBEngine extends AbstEngine {
     private Connection conn;
     private String dbusr;
     private String dbpwd;
-    private Timer reconnector = new Timer("DBEngineReconnector");
+    //private Timer reconnector = new Timer("DBEngineReconnector");
     
     /**
      * Primitive instantiation of DBEngine. Automatically connects itself to DB.
@@ -34,13 +34,14 @@ public class DBEngine extends AbstEngine {
      * @param dbusr
      * @param dbpwd
      */
-    public DBEngine(String dbURL, String dbusr, String dbpwd) {
+    public DBEngine(String logDomain, String errorLogDomain, String dbURL, String dbusr, 
+    		String dbpwd) {
     	//super(systimer, "DBEngine", DBEngine.class.toString());
-    	super("DBEngine", DBEngine.class.toString());
-    	LOG.info("DBEngine construct start! url=" + dbURL);
+    	super(logDomain, errorLogDomain, "DBEngine", DBEngine.class.toString());
     	this.dbURL = dbURL;
     	this.dbusr = dbusr;
     	this.dbpwd = dbpwd;
+    	LOG.info("DBEngine started on url: " + dbURL);
 		createConnection(dbURL, dbusr, dbpwd);
     }
     
@@ -68,7 +69,9 @@ public class DBEngine extends AbstEngine {
 	protected Object processRequest(EngineRequest er) {
 		DBEngineRequest dber = (DBEngineRequest) er;
 		try {
-			return executeQuery(dber.getQuery());
+			Object o = executeQuery(dber.getQuery());
+			//LOG.debug(dber.getQueryType() + " DBEngineRequest processing complete!");
+			return o;
 		} catch (SQLException e) {
 			LOG.error("SQLException!", e);
 			e.printStackTrace();

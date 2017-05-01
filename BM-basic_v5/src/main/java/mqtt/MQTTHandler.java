@@ -28,7 +28,8 @@ import main.controller.Controller;
  *
  */
 public class MQTTHandler extends TimerTask implements MqttCallback {
-	private static final Logger logger = Logger.getLogger("BM_LOG.mqtt");
+	private static String logDomain;
+	private static Logger logger;
 	@Autowired
 	private Controller controller;
 	@Autowired
@@ -40,10 +41,11 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	private String default_topic;
 	private String error_topic;
 	private LinkedList<MQTTMessage> queue = new LinkedList<MQTTMessage>();
-	private Timer timer = new Timer("MQTTHandler");
+	private Timer publishTimer = new Timer("MQTTHandler");
 
-	public MQTTHandler(String brokerURL, String clientID, String BM_topic, String default_topic, 
-			String error_topic) {
+	public MQTTHandler(String logDomain, String brokerURL, String clientID, String BM_topic, 
+			String default_topic, String error_topic) {
+		logger = Logger.getLogger("mqtt.MQTTHandler");
 		this.setBrokerURL(brokerURL);
 		this.setClientID(clientID);
 		setBM_topic(BM_topic);
@@ -54,7 +56,8 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 		} catch (MqttException e) {
 			logger.fatal("Cannot create MQTTClient!", e);
 		}
-		timer.schedule(this, 0, 50);
+		publishTimer.schedule(this, 0, 50);
+		connectToMQTT();
 	}
 	
 	public void connectToMQTT() {
@@ -145,7 +148,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 	}
 
 	public void messageArrived(String topic, MqttMessage msg) throws Exception {
-		logger.debug(("\n\n"));
+		System.out.println("\n\n");
 		logger.debug("Message arrived at topic " + topic);
 		logger.debug("Message is: " + msg.toString());
 		controller.processMQTTMessage(msg);
@@ -209,7 +212,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 		this.brokerURL = brokerURL;
 	}
 	
-	private class MQTTMessage {
+	private final class MQTTMessage {
 		private String topic;
 		private String message;
 		private Thread callerThread;
@@ -227,7 +230,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 		}
 	}
 	
-	private class MQTTPublisher implements Runnable {
+	private final class MQTTPublisher implements Runnable {
 
 		@Override
 		public void run() {
@@ -237,7 +240,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 			payload.setQos(0);
 			try {
 				client.publish(m.topic, payload);
-				logger.debug("Message published!");
+				logger.trace("Message published!");
 			} catch (MqttPersistenceException e) {
 				logger.error("Cannot publish message:" + m.message + " to topic:" + m.topic + "!", e);
 			} catch (MqttException e) {

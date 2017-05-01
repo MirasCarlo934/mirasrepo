@@ -9,6 +9,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<context:annotation-config/>
 	<bean id="register" class="main.modules.RegistrationModule" scope="prototype">
 		<constructor-arg name="RTY" value="${rty.registration}"/>
+		<constructor-arg name="poopRTY" value="${rty.poop}"/>
 		<constructor-arg name="mh" ref="MQTTHandler"/>
 		<constructor-arg name="components" ref="Components"/>
 		<constructor-arg name="dbe" ref="DBManager"/>

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
@@ -14,6 +15,8 @@ import components.Component;
 import components.Product;
 import components.bindings.Binding;
 import components.properties.Property;
+import components.properties.PropertyMode;
+import components.properties.PropertyValueType;
 import json.objects.ReqRegister;
 import json.objects.ResError;
 import main.engines.DBEngine;
@@ -59,6 +62,7 @@ public class ComponentRepository {
 		try {
 			LOG.info("Populating Devices...");
 			RawDBEReq dber1 = new RawDBEReq(idg.generateMixedCharID(10), deviceQuery);
+			RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), productQuery);
 			dbm.processRequest(dber1, Thread.currentThread());
 			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
 			Object o = dbm.getResponse(dber1.getId());
@@ -67,35 +71,65 @@ public class ComponentRepository {
 				LOG.error(error.message);
 				return;
 			}
-			ResultSet rs = (ResultSet) o;
-			while(rs.next()) {
-				String SSID = rs.getString("SSID");
-				String topic = rs.getString("topic");
-				String MAC = rs.getString("MAC");
-				String room = rs.getString("room");
-				String prod_id = rs.getString("functn");
-				String name = rs.getString("name");
-				boolean active = rs.getBoolean("ACTIVE");
+			ResultSet coms_rs = (ResultSet) o;
+			
+			dbm.processRequest(dber2, Thread.currentThread());
+			synchronized (Thread.currentThread()){Thread.currentThread().wait();}
+			Object o2 = dbm.getResponse(dber2.getId());
+			if(o2.getClass().equals(ResError.class)) {
+				ResError error = (ResError) o2;
+				LOG.error(error.message);
+				coms_rs.close();
+				return;
+			}
+			ResultSet prod_rs = (ResultSet) o2;
+			
+			while(coms_rs.next()) {
+				String SSID = coms_rs.getString("SSID");
+				String topic = coms_rs.getString("topic");
+				String MAC = coms_rs.getString("MAC");
+				String room = coms_rs.getString("room");
+				String prod_id = coms_rs.getString("functn");
+				String name = coms_rs.getString("name");
+				boolean active = coms_rs.getBoolean("ACTIVE");
 				
-				String prop_id = rs.getString("prop_id");
-				int prop_val = rs.getInt("prop_value");
+				String prop_id = coms_rs.getString("prop_id");
+				int prop_val = coms_rs.getInt("prop_value");
 				
 				if(!components.containsKey(SSID)) { //true if devices does NOT contain this device
-					RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
-							productQuery + " and cpl.COM_TYPE = '" + prod_id + "'");
-					dbm.processRequest(dber2, Thread.currentThread());
-					synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-					Object o2 = dbm.getResponse(dber2.getId());
-					if(o2.getClass().equals(ResError.class)) {
-						ResError error = (ResError) o2;
-						LOG.error(error.message);
-						rs.close();
-						return;
+					String prod_name = "null";
+					String prod_desc = "null";
+					String prod_OH_icon = "null";
+					Vector<Property> prod_props = new Vector<Property>(1,1);
+					while(prod_rs.next()) {
+						String rs2_ssid = prod_rs.getString("prod_ssid");
+						if(rs2_ssid.equals(prod_id)) {
+							prod_name = prod_rs.getString("prod_name");
+							prod_desc = prod_rs.getString("prod_desc");
+							prod_OH_icon = prod_rs.getString("oh_icon");
+							
+							String prop_type = prod_rs.getString("prop_type");
+							String prop_dispname = prod_rs.getString("prop_dispname");
+							String prop_sysname = prod_rs.getString("prop_sysname");
+							String prop_mode = prod_rs.getString("prop_mode");
+							String pval_type = prod_rs.getString("prop_val_type");
+							int prop_min = prod_rs.getInt("prop_min");
+							int prop_max = prod_rs.getInt("prop_max");
+							String prop_index = prod_rs.getString("prop_index");
+							Property prop = new Property(prop_type, prop_index, prop_sysname, 
+									prop_dispname, PropertyMode.parseModeFromString(prop_mode), 
+									PropertyValueType.parsePropValTypeFromString(pval_type), 
+									prop_min, prop_max);
+							prod_props.add(prop);
+						}
 					}
-					ResultSet rs2 = (ResultSet) o2;
-					LOG.debug("Adding device: " + SSID + " into Devices");
-					Component com = new Component(SSID, MAC, name, topic, room, active, new Product(rs2));
+					prod_rs.beforeFirst();
+					Product product = new Product(prod_id, prod_name, prod_desc, prod_OH_icon, 
+							prod_props.toArray(new Property[prod_props.size()]));
+					LOG.debug("Adding component " + SSID + " into ComponentRepository...");
+					Component com = new Component(SSID, MAC, name, topic, room, active, product);
 					addComponent(com);
+					LOG.debug("Component " + SSID + " added!");
 				}
 				
 				//populates properties of device with persisted values
@@ -103,7 +137,8 @@ public class ComponentRepository {
 				Component com = components.get(SSID);
 				com.getProperty(prop_id).setValue(prop_val);
 			}
-			rs.close();
+			coms_rs.close();
+			prod_rs.close();
 			LOG.info("Devices population done!");
 		} catch (SQLException e) {
 			LOG.error("Cannot populate Devices!", e);
@@ -337,5 +372,22 @@ public class ComponentRepository {
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * Checks if a component with the specified name exists in the repository.
+	 * 
+	 * @param name The name of the component to be checked
+	 * @return
+	 */
+	public boolean containsComponentWithName(String name) {
+		Iterator<Component> coms = components.values().iterator();
+		while(coms.hasNext()) {
+			Component c = coms.next();
+			if(c.getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

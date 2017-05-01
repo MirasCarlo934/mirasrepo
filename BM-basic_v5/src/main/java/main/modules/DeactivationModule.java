@@ -32,9 +32,14 @@ public class DeactivationModule extends AbstModule {
 		
 		mainLOG.info("Deactivating component " + c.getSSID() + " (MAC:" + c.getMAC() + ")");
 		HashMap<String, Object> args = new HashMap<String, Object>(1,1);
-		args.put("mac", request.cid);
 		HashMap<String, Object> vals = new HashMap<String, Object>(1,1);
+		if(request.cid.length() == 4) { //checks if supplied request.cid is actual CID
+			args.put("mac", cr.getComponent(request.cid).getMAC());
+		} else args.put("mac", request.cid);
 		vals.put("active", false);
+		
+		mainLOG.debug("Updating system...");
+		cr.getComponent(request.cid).setActive(false);
 		
 		mainLOG.debug("Updating DB...");
 		UpdateDBEReq updateActive = new UpdateDBEReq(idg.generateMixedCharID(10), comstable, 

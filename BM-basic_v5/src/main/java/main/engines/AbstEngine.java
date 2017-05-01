@@ -18,7 +18,9 @@ import main.engines.requests.EngineRequest;
 import tools.SystemTimer;
 
 public abstract class AbstEngine extends TimerTask {
+	private String logDomain;
 	protected Logger LOG;
+	protected Logger errorLOG;
 	protected String name;
 	private String className;
 	protected LinkedList<EngineRequest> reqQueue = new LinkedList<EngineRequest>();
@@ -34,12 +36,14 @@ public abstract class AbstEngine extends TimerTask {
 	protected EngineRequest currentRequest = null;
 	//private SystemTimer systimer;
 	
-	public AbstEngine(String name, String className) {
+	public AbstEngine(String logDomain, String errorLogDomain, String name, String className) {
+		this.logDomain = logDomain;
 		this.name = name;
 		this.className = className;
 		timer = new Timer(name);
 		timer.schedule(this, 0, 100);
-		LOG = Logger.getLogger("BM_LOG." + name);
+		LOG = Logger.getLogger(logDomain + "." + name);
+		errorLOG = Logger.getLogger(errorLogDomain + "." + name);
 	}
 	
 	/**
@@ -84,6 +88,10 @@ public abstract class AbstEngine extends TimerTask {
 	
 	protected abstract Object processRequest(EngineRequest er);
 	
+	public String getLogDomain() {
+		return logDomain;
+	}
+
 	/**
 	 * The processing thread of the Engine. This object is instantiated every time an Engine
 	 * needs to process an ERQS request (See ERQS document for request handling procedure).
@@ -123,7 +131,9 @@ public abstract class AbstEngine extends TimerTask {
 			} else {
 				responses.put(er.getId(), new ResError(name, "BM", "N/A", 
 						"Invalid EngineRequest for " + name));
+				LOG.error("Invalid EngineRequest for " + name);
 			}
+			LOG.debug("EngineRequest processing complete!");
 
 			synchronized (parent) {
 				parent.notify();

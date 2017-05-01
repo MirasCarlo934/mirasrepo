@@ -44,7 +44,7 @@ import tools.FileHandler;
  * @author Carlo
  */
 public class CIREngine extends AbstEngine {
-	//private static final Logger LOG = Logger.getLogger(CIREngine.class);
+	//private static final Logger cirLOG = Logger.getLogger(getLogDomain() + ".CIREngine");
 	private Vector<Statement> cirStatements = new Vector<Statement>(1,1);
 	private ComponentRepository cr;
 	//private FileHandler bm_props_file;
@@ -60,19 +60,13 @@ public class CIREngine extends AbstEngine {
 		interpret();
 	}*/
 	
-	public CIREngine(String cir_filepath, ComponentRepository componentRepository) {
-		super("CIREngine", CIREngine.class.toString());
-		LOG.info("CIREngine started!");
-		LOG.info("JAR Filepath:" + CIREngine.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+	public CIREngine(String logDomain, String errorLogDomain, String cir_filepath, 
+			ComponentRepository componentRepository) {
+		super(logDomain, errorLogDomain, "CIREngine", CIREngine.class.toString());
+		//LOG.debug("JAR Filepath:" + CIREngine.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		cr = componentRepository;
 		this.cir_filepath = cir_filepath;
-		/*try {
-			bm_props_file = new FileHandler(bm_props_filepath);
-			//bm_props_file = new FileHandler("src/main/resources/cfg/bm.properties");
-		} catch (FileNotFoundException e) {
-			LOG.fatal("Cannot find bm.properties file! Bad filepath.");
-			e.printStackTrace();
-		}*/
+		LOG.info("CIREngine started!");
 		update();
 	}
 	

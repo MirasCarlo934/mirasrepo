@@ -16,24 +16,44 @@ public class Product {
 	private String SSID;
 	private String name;
 	private String description;
+	private String OH_icon;
 	private Hashtable<String, Property> properties = new Hashtable<String, Property>(1,1);
 	
-	public Product(String ssid, String name, String description) {
+	/**
+	 * The default constructor for the instantiation of the Product object
+	 * 
+	 * @param ssid The SSID of the product
+	 * @param name The name of the product
+	 * @param description The description of the product
+	 * @param OH_icon The icon used to represent the product in OpenHAB
+	 * @param properties The properties that this product possesses
+	 */
+	public Product(String ssid, String name, String description, String OH_icon, 
+			Property[] properties) {
 		this.SSID = ssid;
 		this.name = name;
 		this.description = description;
+		this.OH_icon = OH_icon;
+		for(int i = 0; i < properties.length; i++) {
+			Property p = properties[i];
+			this.properties.put(p.getSSID(), p);
+		}
 	}
 	
 	/**
-	 * The default constructor used for instantiation of Product object.
+	 * <i>Defunct.</i>
+	 * A constructor used for instantiation of Product object using a ResultSet that contains all 
+	 * the properties of a specified product
 	 * 
-	 * @param rs The ResultSet of the select query containing all the relevant data for the Product object
+	 * @param rs The ResultSet of the select query containing all the properties of the specified 
+	 * product
 	 */
 	public Product(ResultSet rs) throws SQLException{
 		while(rs.next()) {
 			SSID = rs.getString("prod_ssid");
 			name = rs.getString("prod_name");
 			description = rs.getString("prod_desc");
+			OH_icon = rs.getString("oh_icon");
 			
 			String prop_type = rs.getString("prop_type");
 			String prop_dispname = rs.getString("prop_dispname");
@@ -115,5 +135,19 @@ public class Product {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the oH_icon
+	 */
+	public String getOH_icon() {
+		return OH_icon;
+	}
+
+	/**
+	 * @param oH_icon the oH_icon to set
+	 */
+	public void setOH_icon(String oH_icon) {
+		OH_icon = oH_icon;
 	}
 }

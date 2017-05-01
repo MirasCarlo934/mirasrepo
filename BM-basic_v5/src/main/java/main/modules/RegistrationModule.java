@@ -2,7 +2,9 @@ package main.modules;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Vector;
 
 import components.Component;
@@ -11,6 +13,7 @@ import components.properties.Property;
 import json.objects.ReqRegister;
 import json.objects.ReqRequest;
 import json.objects.ResError;
+import json.objects.ResPOOP;
 import json.objects.ResRegister;
 import main.ComponentRepository;
 import main.engines.DBEngine;
@@ -33,9 +36,11 @@ public class RegistrationModule extends AbstModule {
 	private String nameParam;
 	private String prodIDParam;
 	private String roomIDParam;
+	private String poopRTY;
 	
-	public RegistrationModule(String RTY, String nameParam, String prodIDParam, String roomIDParam,
-			MQTTHandler mh, ComponentRepository components, DBEngine dbe, OHEngine ohe,
+	public RegistrationModule(String RTY, String poopRTY, String nameParam, String prodIDParam, 
+			String roomIDParam, MQTTHandler mh, ComponentRepository components, DBEngine dbe, 
+			OHEngine ohe,
 			String productQuery) {
 		super("RegistrationModule", RTY, new String[]{nameParam, prodIDParam, roomIDParam}, 
 				mh, components);
@@ -45,6 +50,7 @@ public class RegistrationModule extends AbstModule {
 		this.nameParam = nameParam;
 		this.prodIDParam = prodIDParam;
 		this.roomIDParam = roomIDParam;
+		this.poopRTY = poopRTY;
 	}
 
 	/**
@@ -55,11 +61,21 @@ public class RegistrationModule extends AbstModule {
 		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		if(request.getJSON().has("exists")) {
 			Component c = cr.getComponent(reg.mac);
+			request.cid = c.getSSID();
 			mainLOG.info("Component already exists in system as " + c.getSSID() + "! "
-					+ "Returning existing credentials.");
+					+ "Returning existing credentials and property states.");
 			
 			mainLOG.debug("Returning existing credentials to default topic...");
 			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
+			
+			mainLOG.debug("Returning component properties states...");
+			Iterator<Property> props = c.getProperties().values().iterator();
+			while(props.hasNext()) {
+				Property p = props.next();
+				ResPOOP poop = new ResPOOP(request, p.getSSID(), p.getValue());
+				poop.rty = poopRTY;
+				mh.publish(poop);
+			}
 			
 			mainLOG.debug("Activating component " + c.getSSID() + " in DB...");
 			HashMap<String, Object> args = new HashMap<String, Object>(1,1);
@@ -189,7 +205,7 @@ public class RegistrationModule extends AbstModule {
 		boolean b = true;
 		
 		mainLOG.trace("Checking MAC validity...");
-		if(cr.containsComponent(reg.mac)) {
+		if(cr.containsComponent(reg.mac) || cr.containsComponentWithName(reg.name)) {
 			request.getJSON().put("exists", true);
 			return true;
 		}

@@ -9,6 +9,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<context:annotation-config/>
 	
 	<bean id="MQTTHandler" class="mqtt.MQTTHandler">
+		<constructor-arg name="logDomain" value="${log.domain.mqtt}"></constructor-arg>
 		<constructor-arg name="brokerURL" value="${mqtt.URL}"/>
 		<constructor-arg name="clientID" value="${mqtt.clientID}"/>
 		<constructor-arg name="BM_topic" value="${mqtt.topic.BM}"/>

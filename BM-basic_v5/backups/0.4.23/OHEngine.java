@@ -2,18 +2,11 @@ package main.engines;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Properties;
 import java.util.Vector;
 import java.util.concurrent.Executor;
@@ -31,7 +24,6 @@ import main.engines.requests.EngineRequest;
 import main.engines.requests.DBEngine.SelectDBEReq;
 import main.engines.requests.OHEngine.OHEngineRequest;
 import main.engines.requests.OHEngine.OHRequestType;
-import main.engines.requests.OHEngine.RemoveItemOHEReq;
 import main.engines.requests.OHEngine.UpdateOHEReq;
 import mqtt.MQTTHandler;
 import tools.FileHandler;
@@ -50,7 +42,6 @@ import tools.StringTools;
 public class OHEngine extends AbstEngine {
 	//private static final Logger LOG = Logger.getLogger("BM_LOG.OHEngine");
 	private ComponentRepository cr;
-	private String ohIP;
 	private String os;
 	private String OHMqttBroker;
 	private String oh_location;
@@ -65,11 +56,10 @@ public class OHEngine extends AbstEngine {
 	//private IDGenerator idg = new IDGenerator();
 	private OHEngineRequest oher = null;
 
-	public OHEngine(String ohIP, String logDomain, String errorLogDomain, String os, String oh_filepath, String items_filename, 
+	public OHEngine(String logDomain, String errorLogDomain, String os, String oh_filepath, String items_filename, 
 			String sitemap_filename, String rules_filename, String sitemap_name, 
 			ComponentRepository cr, HashMap<String, String> itemsList, String OHMqttBroker) {
 		super(logDomain, errorLogDomain, "OHEngine", OHEngine.class.toString());
-		this.ohIP = ohIP;
 		this.oh_location = oh_filepath;
 		this.items_filename = items_filename;
 		this.sitemap_filename = sitemap_filename;
@@ -114,11 +104,6 @@ public class OHEngine extends AbstEngine {
 			updateRules();
 			updateSitemap();
 			LOG.debug("OpenHAB update complete!");
-			return oher;
-		}
-		else if(oher.getType() == OHRequestType.removeItem) {
-			RemoveItemOHEReq rioher = (RemoveItemOHEReq) oher;
-			removeItem(rioher.getCID());
 			return oher;
 		}
 		else {
@@ -192,43 +177,6 @@ public class OHEngine extends AbstEngine {
 		} catch (FileNotFoundException e) {
 			LOG.error("Cannot open OH files!", e);
 			return false;
-		}
-	}
-	
-	/**
-	 * Removes the specified component from OH using REST API. 
-	 * <br><br>
-	 * <i>Only removes the item from the OH DB. To fully remove from OH, also do an update() 
-	 * after detachment procedures.</i>
-	 * 
-	 * @param s CID/MAC of the component to be removed from OH.
-	 */
-	private void removeItem(String s) {
-		LOG.info("Removing OH item of component " + s + "...");
-		Component c = cr.getComponent(s);
-		Iterator<Property> props = c.getProperties().values().iterator();
-		while(props.hasNext()) {
-			Property p = props.next();
-			try {
-				//URL url = new URL("http://localhost:8080/rest/items/test1");
-				URL url = new URL("http://" + ohIP + "/rest/items/" + c.getSSID() + "_" + 
-						p.getSSID());
-				LOG.debug("Executing HTTP request " + url.toString() + "...");
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("DELETE");
-				conn.connect();
-				LOG.debug("Response: " + conn.getResponseMessage());
-				updateItems();
-				updateRules();
-				updateSitemap();
-			} catch (MalformedURLException e) {
-				LOG.error("Malformed URL!", e);
-				e.printStackTrace();
-			} catch (IOException e) {
-				LOG.error("Error connecting to item URL!", e);
-				e.printStackTrace();
-			}
-			
 		}
 	}
 	

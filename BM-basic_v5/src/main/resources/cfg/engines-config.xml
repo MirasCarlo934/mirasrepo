@@ -10,16 +10,22 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
    
 	<bean id="DBManager" class="main.engines.DBEngine" scope="singleton">
 		<!-- <constructor-arg name="systimer" ref="SystemTimer"/> -->
+		<constructor-arg name="logDomain" value="${log.domain.db}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
 		<constructor-arg name="dbURL" value="${db.host}"/>
 		<constructor-arg name="dbusr" value="${db.dbusr}"/>
 		<constructor-arg name="dbpwd" value="${db.dbpwd}"/>
 	</bean>
 	<bean id="CIREngine" class="main.engines.CIREngine" scope="singleton">
-		<!-- <constructor-arg name="systimer" ref="SystemTimer"/> -->
+		<constructor-arg name="logDomain" value="${log.domain.cir}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
 		<constructor-arg name="cir_filepath" value="${cir.filepath}"/>
 		<constructor-arg name="componentRepository" ref="Components"/>
 	</bean>
 	<bean id="OHEngine" class="main.engines.OHEngine" scope="singleton">
+		<constructor-arg name="ohIP" value="${oh.ip}"/>
+		<constructor-arg name="logDomain" value="${log.domain.oh}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
 		<constructor-arg name="cr" ref="Components"/>
 		<constructor-arg name="itemsList">
 			<map>

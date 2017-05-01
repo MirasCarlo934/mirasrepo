@@ -25,7 +25,7 @@ public abstract class AbstModule {
 		mainLOG = Logger.getLogger("BM_LOG." + name);
 		errorLOG = Logger.getLogger("error." + name);
 		this.name = name;
-		this.setParams(params);
+		this.params = params;
 		this.mh = mh;
 		this.cr = cr;
 		requestType = RTY;
@@ -109,7 +109,8 @@ public abstract class AbstModule {
 	protected abstract void process(ReqRequest request);
 	
 	/**
-	 * Used in case of additional request parameter checking. <i>Must always return true if there are no additional request checking</i>
+	 * Used in case of additional request parameter checking. <i><b>Must always return true 
+	 * if there are no additional request checking</b></i>
 	 * 
 	 * @param request The Request object
 	 * @return <b>True</b> if Request checks out, <b>false</b> otherwise. 
@@ -124,6 +125,7 @@ public abstract class AbstModule {
 	 */
 	protected void error(ResError error) {
 		mainLOG.error(error.message);
+		errorLOG.error(error.message);
 		mh.publishToErrorTopic(error);
 		/*
 		 * Do CID checking for this one

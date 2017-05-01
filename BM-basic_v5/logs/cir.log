@@ -1,0 +1,20 @@
+2017-05-01 19:05:10,363 INFO  [main] (cir.CIREngine) CIREngine started!
+2017-05-01 19:05:10,367 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,368 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,368 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,369 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,370 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,370 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,051 DEBUG [Thread3:24] (cir.CIREngine) Adding main.engines.requests.CIREngine.UpdateCIREReq BY7TN0MINH to CIREngine!
+2017-05-01 19:39:58,135 DEBUG [CIREngine] (cir.CIREngine) New EngineRequest detected! Processing...
+2017-05-01 19:39:58,137 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,138 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,139 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,140 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,140 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,141 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,141 DEBUG [Thread3:24] (cir.CIREngine) EngineRequest processing complete!
+2017-05-01 19:39:58,142 DEBUG [Thread3:24] (cir.CIREngine) Adding main.engines.requests.CIREngine.GetSpecificExecBlocksCIREReq VVT654E000 to CIREngine!
+2017-05-01 19:39:58,235 DEBUG [CIREngine] (cir.CIREngine) New EngineRequest detected! Processing...
+2017-05-01 19:39:58,236 DEBUG [Thread3:24] (cir.CIREngine) Retrieving CIR for component LLU3 with property DigitalOutput-0006
+2017-05-01 19:39:58,236 DEBUG [Thread3:24] (cir.CIREngine) EngineRequest processing complete!

@@ -1,0 +1,639 @@
+2017-05-01 19:05:07,810 INFO  [main] (main.BusinessMachine) Starting BM...
+2017-05-01 19:05:09,320 INFO  [main] (db.DBEngine) DBEngine started on url: jdbc:derby://192.168.1.5:1527/DB
+2017-05-01 19:05:09,641 INFO  [main] (db.DBEngine) Connected to Derby DB!
+2017-05-01 19:05:09,648 INFO  [main] (BM_LOG.ComponentRepository) Populating Devices...
+2017-05-01 19:05:09,650 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq IYBKWBWU87 to DBEngine!
+2017-05-01 19:05:09,720 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:05:09,771 DEBUG [main] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:05:09,773 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq T853X0Y678 to DBEngine!
+2017-05-01 19:05:09,821 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:05:09,890 DEBUG [main] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:05:09,892 INFO  [main] (BM_LOG.ComponentRepository) 0003:0003
+2017-05-01 19:05:09,901 DEBUG [main] (BM_LOG.ComponentRepository) Adding component LLU3 into ComponentRepository...
+2017-05-01 19:05:09,901 DEBUG [main] (BM_LOG.ComponentRepository) Component LLU3 added!
+2017-05-01 19:05:09,901 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: LLU3 with value: 1
+2017-05-01 19:05:09,910 INFO  [main] (BM_LOG.ComponentRepository) 0005:0005
+2017-05-01 19:05:09,911 INFO  [main] (BM_LOG.ComponentRepository) 0005:0005
+2017-05-01 19:05:09,911 INFO  [main] (BM_LOG.ComponentRepository) 0005:0005
+2017-05-01 19:05:09,911 INFO  [main] (BM_LOG.ComponentRepository) 0005:0005
+2017-05-01 19:05:09,912 INFO  [main] (BM_LOG.ComponentRepository) 0005:0005
+2017-05-01 19:05:09,912 INFO  [main] (BM_LOG.ComponentRepository) 0005:0005
+2017-05-01 19:05:09,921 DEBUG [main] (BM_LOG.ComponentRepository) Adding component CJ7A into ComponentRepository...
+2017-05-01 19:05:09,921 DEBUG [main] (BM_LOG.ComponentRepository) Component CJ7A added!
+2017-05-01 19:05:09,921 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0018 of device: CJ7A with value: 0
+2017-05-01 19:05:09,921 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0032 of device: CJ7A with value: 0
+2017-05-01 19:05:09,921 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0017 of device: CJ7A with value: 1
+2017-05-01 19:05:09,921 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0031 of device: CJ7A with value: 38
+2017-05-01 19:05:09,922 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0016 of device: CJ7A with value: 1
+2017-05-01 19:05:09,922 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0030 of device: CJ7A with value: 0
+2017-05-01 19:05:09,930 INFO  [main] (BM_LOG.ComponentRepository) 0008:0008
+2017-05-01 19:05:09,930 INFO  [main] (BM_LOG.ComponentRepository) 0008:0008
+2017-05-01 19:05:09,934 DEBUG [main] (BM_LOG.ComponentRepository) Adding component II81 into ComponentRepository...
+2017-05-01 19:05:09,934 DEBUG [main] (BM_LOG.ComponentRepository) Component II81 added!
+2017-05-01 19:05:09,934 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0026 of device: II81 with value: 0
+2017-05-01 19:05:09,934 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0025 of device: II81 with value: 1
+2017-05-01 19:05:09,943 INFO  [main] (BM_LOG.ComponentRepository) 0006:0006
+2017-05-01 19:05:09,943 INFO  [main] (BM_LOG.ComponentRepository) 0006:0006
+2017-05-01 19:05:09,944 INFO  [main] (BM_LOG.ComponentRepository) 0006:0006
+2017-05-01 19:05:09,944 INFO  [main] (BM_LOG.ComponentRepository) 0006:0006
+2017-05-01 19:05:09,948 DEBUG [main] (BM_LOG.ComponentRepository) Adding component H7K5 into ComponentRepository...
+2017-05-01 19:05:09,948 DEBUG [main] (BM_LOG.ComponentRepository) Component H7K5 added!
+2017-05-01 19:05:09,948 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0011 of device: H7K5 with value: 1
+2017-05-01 19:05:09,948 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0036 of device: H7K5 with value: 0
+2017-05-01 19:05:09,948 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0035 of device: H7K5 with value: 0
+2017-05-01 19:05:09,948 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0034 of device: H7K5 with value: 1
+2017-05-01 19:05:09,958 INFO  [main] (BM_LOG.ComponentRepository) 0001:0001
+2017-05-01 19:05:09,961 DEBUG [main] (BM_LOG.ComponentRepository) Adding component VUSO into ComponentRepository...
+2017-05-01 19:05:09,962 DEBUG [main] (BM_LOG.ComponentRepository) Component VUSO added!
+2017-05-01 19:05:09,962 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0001 of device: VUSO with value: 0
+2017-05-01 19:05:09,975 INFO  [main] (BM_LOG.ComponentRepository) 0009:0009
+2017-05-01 19:05:09,978 DEBUG [main] (BM_LOG.ComponentRepository) Adding component R8K6 into ComponentRepository...
+2017-05-01 19:05:09,979 DEBUG [main] (BM_LOG.ComponentRepository) Component R8K6 added!
+2017-05-01 19:05:09,979 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0033 of device: R8K6 with value: 1
+2017-05-01 19:05:09,987 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,988 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,988 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,988 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,988 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,988 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,989 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,989 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,989 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,989 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,989 INFO  [main] (BM_LOG.ComponentRepository) 0002:0002
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Adding component I6N7 into ComponentRepository...
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Component I6N7 added!
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0002 of device: I6N7 with value: 0
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0020 of device: I6N7 with value: 0
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0029 of device: I6N7 with value: 0
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0019 of device: I6N7 with value: 0
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0024 of device: I6N7 with value: 0
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0005 of device: I6N7 with value: 72
+2017-05-01 19:05:09,993 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0023 of device: I6N7 with value: 0
+2017-05-01 19:05:09,994 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0004 of device: I6N7 with value: 0
+2017-05-01 19:05:09,994 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0022 of device: I6N7 with value: 0
+2017-05-01 19:05:09,994 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0003 of device: I6N7 with value: 0
+2017-05-01 19:05:09,994 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0021 of device: I6N7 with value: 0
+2017-05-01 19:05:10,004 INFO  [main] (BM_LOG.ComponentRepository) Devices population done!
+2017-05-01 19:05:10,004 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:05:10,005 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq PV11V66WU4 to DBEngine!
+2017-05-01 19:05:10,021 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:05:10,029 DEBUG [main] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:05:10,033 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:05:10,033 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
+2017-05-01 19:05:10,033 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq TBHQVXB764 to DBEngine!
+2017-05-01 19:05:10,121 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:05:10,128 DEBUG [main] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:05:10,133 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
+2017-05-01 19:05:10,301 INFO  [main] (mqtt.MQTTHandler) Connected to MQTT!
+2017-05-01 19:05:10,309 DEBUG [main] (mqtt.MQTTHandler) Subscribed to BM topic!
+2017-05-01 19:05:10,310 DEBUG [main] (mqtt.MQTTHandler) Callback set!
+2017-05-01 19:05:10,351 INFO  [main] (BM_LOG.Controller) Controller constructed!
+2017-05-01 19:05:10,363 INFO  [main] (cir.CIREngine) CIREngine started!
+2017-05-01 19:05:10,367 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,368 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,368 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,369 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,370 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,370 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:05:10,379 INFO  [main] (oh.OHEngine) Connecting to OH files in OpenHAB directory...
+2017-05-01 19:05:10,381 DEBUG [main] (oh.OHEngine) Connected to OH files!
+2017-05-01 19:05:10,381 DEBUG [main] (oh.OHEngine) Updating .items file...
+2017-05-01 19:05:10,381 DEBUG [main] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:05:10,382 DEBUG [main] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:05:10,382 DEBUG [main] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:05:10,390 DEBUG [main] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:05:10,391 WARN  [main] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:05:10,394 WARN  [main] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:05:10,414 WARN  [main] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:05:10,418 WARN  [main] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:05:10,434 WARN  [main] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:05:10,441 WARN  [main] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:05:10,453 DEBUG [main] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:05:10,453 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:05:10,453 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq L3TS24IP37 to DBEngine!
+2017-05-01 19:05:10,538 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:05:10,546 DEBUG [main] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:05:10,550 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:05:10,552 INFO  [main] (oh.OHEngine) OHEngine started!
+2017-05-01 19:05:10,645 INFO  [main] (main.BusinessMachine) Config file cfg/core-config.xml loaded.
+2017-05-01 19:05:10,645 INFO  [main] (main.BusinessMachine) Updating OH items' states...
+2017-05-01 19:05:10,647 DEBUG [main] (main.BusinessMachine) Update complete!
+2017-05-01 19:05:10,647 INFO  [main] (main.BusinessMachine) BusinessMachine started!
+2017-05-01 19:05:10,691 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0001_0 to topic:openhab/VUSO_topic
+2017-05-01 19:05:10,740 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0002_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,790 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0020_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,853 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0029_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,890 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0019_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,940 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0024_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,991 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0023_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,041 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0005_72 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,092 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0022_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,142 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0004_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,193 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0021_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,244 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0003_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,294 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0033_1 to topic:openhab/R8K6_topic
+2017-05-01 19:05:11,344 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0011_1 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,395 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,446 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,496 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,546 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0026_0 to topic:openhab/II81_topic
+2017-05-01 19:05:11,597 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0025_1 to topic:openhab/II81_topic
+2017-05-01 19:05:11,647 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0006_1 to topic:openhab/LLU3_topic
+2017-05-01 19:05:11,698 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0018_0 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,748 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0032_0 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,798 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0017_1 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,849 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0031_38 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,900 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0016_1 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,950 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0030_0 to topic:openhab/CJ7A_topic
+2017-05-01 19:06:12,179 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:06:12,180 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc793ce","CID":"5ccf7fc793ce","RTY":"bye"}
+2017-05-01 19:06:12,180 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:06:12,192 DEBUG [Thread1:1] (BM_LOG.ByeModule) ByeModule request processing started!
+2017-05-01 19:06:12,192 INFO  [Thread1:1] (BM_LOG.ByeModule) Deactivating component LLU3 (MAC:5ccf7fc793ce)
+2017-05-01 19:06:12,192 DEBUG [Thread1:1] (BM_LOG.ByeModule) Updating system...
+2017-05-01 19:06:12,192 DEBUG [Thread1:1] (BM_LOG.ByeModule) Updating DB...
+2017-05-01 19:06:12,193 DEBUG [Thread1:1] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq A3Y8J3XG45 to DBEngine!
+2017-05-01 19:06:12,292 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:06:13,012 DEBUG [Thread1:1] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:06:13,013 DEBUG [Thread1:1] (BM_LOG.ByeModule) Updating OH...
+2017-05-01 19:06:13,014 DEBUG [Thread1:1] (oh.OHEngine) Adding main.engines.requests.OHEngine.UpdateOHEReq E370BUGEX4 to OHEngine!
+2017-05-01 19:06:13,054 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-05-01 19:06:13,054 INFO  [Thread1:1] (oh.OHEngine) Updating OpenHAB files...
+2017-05-01 19:06:13,055 DEBUG [Thread1:1] (oh.OHEngine) Updating .items file...
+2017-05-01 19:06:13,055 DEBUG [Thread1:1] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:06:13,055 DEBUG [Thread1:1] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:06:13,055 DEBUG [Thread1:1] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:06:13,059 DEBUG [Thread1:1] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:06:13,059 WARN  [Thread1:1] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:06:13,061 WARN  [Thread1:1] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:06:13,072 WARN  [Thread1:1] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:06:13,074 WARN  [Thread1:1] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:06:13,079 WARN  [Thread1:1] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:06:13,083 WARN  [Thread1:1] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:06:13,102 DEBUG [Thread1:1] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:06:13,105 INFO  [Thread1:1] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:06:13,105 DEBUG [Thread1:1] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq DW1FT85HF4 to DBEngine!
+2017-05-01 19:06:13,208 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:06:13,216 DEBUG [Thread1:1] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:06:13,220 DEBUG [Thread1:1] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:06:13,221 DEBUG [Thread1:1] (oh.OHEngine) OpenHAB update complete!
+2017-05-01 19:06:13,221 DEBUG [Thread1:1] (oh.OHEngine) EngineRequest processing complete!
+2017-05-01 19:06:13,221 INFO  [Thread1:1] (BM_LOG.ByeModule) Component deactivated!
+2017-05-01 19:06:46,290 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:06:46,291 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc793ce,CID:0003,RTY:register,name:SoloSocket,roomID:U7YY,product:0003}
+2017-05-01 19:06:46,291 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:06:46,302 DEBUG [Thread2:2] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:06:46,302 INFO  [Thread2:2] (BM_LOG.RegistrationModule) Component already exists in system as LLU3! Returning existing credentials and property states.
+2017-05-01 19:06:46,303 DEBUG [Thread2:2] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:06:46,306 DEBUG [Thread2:2] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:06:46,307 DEBUG [Thread2:2] (BM_LOG.RegistrationModule) Activating component LLU3 in DB...
+2017-05-01 19:06:46,307 DEBUG [Thread2:2] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq R867SN1B0N to DBEngine!
+2017-05-01 19:06:46,317 DEBUG [Thread2:2] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"LLU3_topic","id":"LLU3","RID":"5ccf7fc793ce"} to topic:default_topic
+2017-05-01 19:06:46,368 DEBUG [Thread2:2] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0006","RID":"5ccf7fc793ce","value":1} to topic:LLU3_topic
+2017-05-01 19:06:46,396 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:06:47,260 DEBUG [Thread2:2] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:07:32,494 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:07:32,494 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:07:32,494 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:07:32,498 DEBUG [Thread3:3] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:07:32,498 INFO  [Thread3:3] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:07:32,499 DEBUG [Thread3:3] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:07:32,499 DEBUG [Thread3:3] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:07:32,499 DEBUG [Thread3:3] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:07:32,499 DEBUG [Thread3:3] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq SL1L42AYX1 to DBEngine!
+2017-05-01 19:07:32,531 DEBUG [Thread3:3] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:07:32,548 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:07:32,574 DEBUG [Thread3:3] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:07:32,582 DEBUG [Thread3:3] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:07:59,060 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:07:59,060 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {
+RID:"test1",
+CID:"LLU3",
+RTY:"register",
+name:"0001",
+roomID:1
+}
+2017-05-01 19:07:59,060 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:07:59,062 DEBUG [Thread1:4] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:08:16,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:08:16,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {
+RID:"test1",
+CID:"LLU3",
+RTY:"register",
+name:"0001",
+roomID:"1"
+}
+2017-05-01 19:08:16,896 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:08:16,897 DEBUG [Thread2:5] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:08:16,898 DEBUG [Thread2:5] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq K7M1W828IG to DBEngine!
+2017-05-01 19:08:16,918 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:08:17,107 DEBUG [Thread2:5] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:08:17,108 ERROR [Thread2:5] (BM_LOG.RegistrationModule) Product ID is invalid!
+2017-05-01 19:08:17,108 ERROR [Thread2:5] (error.RegistrationModule) Product ID is invalid!
+2017-05-01 19:08:17,125 ERROR [Thread2:5] (BM_LOG.RegistrationModule) Secondary request params didn't check out. See also the additional request params checking.
+2017-05-01 19:08:17,151 DEBUG [Thread2:5] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":false,"RID":"test1","message":"Product ID is invalid!"} to topic:error_topic
+2017-05-01 19:08:47,079 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:08:47,079 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:08:47,080 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:08:47,090 DEBUG [Thread3:6] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-05-01 19:08:47,091 INFO  [Thread3:6] (BM_LOG.POOPModule) Changing component R8K6 property 0033 to 1...
+2017-05-01 19:08:47,091 INFO  [Thread3:6] (BM_LOG.POOPModule) Property is already set to 1!
+2017-05-01 19:08:47,091 DEBUG [Thread3:6] (BM_LOG.POOPModule) POOP processing complete!
+2017-05-01 19:09:00,968 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:09:00,969 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:09:00,969 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:09:00,970 DEBUG [Thread4:7] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:09:00,970 INFO  [Thread4:7] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:09:00,970 DEBUG [Thread4:7] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:09:00,970 DEBUG [Thread4:7] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:09:00,970 DEBUG [Thread4:7] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:09:00,971 DEBUG [Thread4:7] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq YTO4870ULS to DBEngine!
+2017-05-01 19:09:00,976 DEBUG [Thread4:7] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:09:00,980 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:09:01,017 DEBUG [Thread4:7] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:09:01,027 DEBUG [Thread4:7] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:09:50,613 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:09:50,613 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:09:50,613 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:09:50,614 DEBUG [Thread2:8] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:09:50,615 INFO  [Thread2:8] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:09:50,615 DEBUG [Thread2:8] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:09:50,615 DEBUG [Thread2:8] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:09:50,615 DEBUG [Thread2:8] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:09:50,615 DEBUG [Thread2:8] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq D000166O4L to DBEngine!
+2017-05-01 19:09:50,623 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:09:50,626 DEBUG [Thread2:8] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:09:50,676 DEBUG [Thread2:8] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:09:51,373 DEBUG [Thread2:8] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:10:27,876 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:10:27,876 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:10:27,876 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:10:27,877 DEBUG [Thread3:9] (BM_LOG.ByeModule) ByeModule request processing started!
+2017-05-01 19:10:27,877 INFO  [Thread3:9] (BM_LOG.ByeModule) Deactivating component R8K6 (MAC:5ccf7fc84b7)
+2017-05-01 19:10:27,877 DEBUG [Thread3:9] (BM_LOG.ByeModule) Updating system...
+2017-05-01 19:10:27,877 DEBUG [Thread3:9] (BM_LOG.ByeModule) Updating DB...
+2017-05-01 19:10:27,877 DEBUG [Thread3:9] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq JP04Q1L40J to DBEngine!
+2017-05-01 19:10:27,968 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:10:28,719 DEBUG [Thread3:9] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:10:28,720 DEBUG [Thread3:9] (BM_LOG.ByeModule) Updating OH...
+2017-05-01 19:10:28,720 DEBUG [Thread3:9] (oh.OHEngine) Adding main.engines.requests.OHEngine.UpdateOHEReq S8O8081YS7 to OHEngine!
+2017-05-01 19:10:28,772 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-05-01 19:10:28,772 INFO  [Thread3:9] (oh.OHEngine) Updating OpenHAB files...
+2017-05-01 19:10:28,772 DEBUG [Thread3:9] (oh.OHEngine) Updating .items file...
+2017-05-01 19:10:28,773 DEBUG [Thread3:9] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:10:28,773 DEBUG [Thread3:9] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:10:28,773 DEBUG [Thread3:9] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:10:28,775 DEBUG [Thread3:9] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:10:28,776 WARN  [Thread3:9] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:10:28,777 WARN  [Thread3:9] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:10:28,794 WARN  [Thread3:9] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:10:28,796 WARN  [Thread3:9] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:10:28,804 WARN  [Thread3:9] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:10:28,813 WARN  [Thread3:9] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:10:28,926 DEBUG [Thread3:9] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:10:28,926 INFO  [Thread3:9] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:10:28,926 DEBUG [Thread3:9] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq B4U7EAV7CU to DBEngine!
+2017-05-01 19:10:28,934 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:10:29,019 DEBUG [Thread3:9] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:10:29,023 DEBUG [Thread3:9] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:10:29,024 DEBUG [Thread3:9] (oh.OHEngine) OpenHAB update complete!
+2017-05-01 19:10:29,024 DEBUG [Thread3:9] (oh.OHEngine) EngineRequest processing complete!
+2017-05-01 19:10:29,025 INFO  [Thread3:9] (BM_LOG.ByeModule) Component deactivated!
+2017-05-01 19:11:19,392 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:11:19,392 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:11:19,392 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:11:19,393 DEBUG [Thread4:10] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:11:19,393 INFO  [Thread4:10] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:11:19,394 DEBUG [Thread4:10] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:11:19,394 DEBUG [Thread4:10] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:11:19,394 DEBUG [Thread4:10] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:11:19,394 DEBUG [Thread4:10] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq L46A2SXPS5 to DBEngine!
+2017-05-01 19:11:19,412 DEBUG [Thread4:10] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:11:19,417 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:11:19,463 DEBUG [Thread4:10] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:11:20,685 DEBUG [Thread4:10] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:12:56,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:12:56,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:12:56,896 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:12:56,896 DEBUG [Thread2:11] (BM_LOG.ByeModule) ByeModule request processing started!
+2017-05-01 19:12:56,896 INFO  [Thread2:11] (BM_LOG.ByeModule) Deactivating component R8K6 (MAC:5ccf7fc84b7)
+2017-05-01 19:12:56,896 DEBUG [Thread2:11] (BM_LOG.ByeModule) Updating system...
+2017-05-01 19:12:56,897 DEBUG [Thread2:11] (BM_LOG.ByeModule) Updating DB...
+2017-05-01 19:12:56,897 DEBUG [Thread2:11] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq TV84J45136 to DBEngine!
+2017-05-01 19:12:56,909 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:12:56,937 DEBUG [Thread2:11] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:12:56,937 DEBUG [Thread2:11] (BM_LOG.ByeModule) Updating OH...
+2017-05-01 19:12:56,938 DEBUG [Thread2:11] (oh.OHEngine) Adding main.engines.requests.OHEngine.UpdateOHEReq WM0MNQXOU7 to OHEngine!
+2017-05-01 19:12:57,009 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-05-01 19:12:57,009 INFO  [Thread2:11] (oh.OHEngine) Updating OpenHAB files...
+2017-05-01 19:12:57,009 DEBUG [Thread2:11] (oh.OHEngine) Updating .items file...
+2017-05-01 19:12:57,010 DEBUG [Thread2:11] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:12:57,010 DEBUG [Thread2:11] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:12:57,010 DEBUG [Thread2:11] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:12:57,012 DEBUG [Thread2:11] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:12:57,012 WARN  [Thread2:11] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:12:57,013 WARN  [Thread2:11] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:12:57,023 WARN  [Thread2:11] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:12:57,024 WARN  [Thread2:11] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:12:57,030 WARN  [Thread2:11] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:12:57,032 WARN  [Thread2:11] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:12:57,041 DEBUG [Thread2:11] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:12:57,041 INFO  [Thread2:11] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:12:57,042 DEBUG [Thread2:11] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq VP86730184 to DBEngine!
+2017-05-01 19:12:57,109 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:12:57,121 DEBUG [Thread2:11] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:12:57,128 DEBUG [Thread2:11] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:12:57,129 DEBUG [Thread2:11] (oh.OHEngine) OpenHAB update complete!
+2017-05-01 19:12:57,129 DEBUG [Thread2:11] (oh.OHEngine) EngineRequest processing complete!
+2017-05-01 19:12:57,130 INFO  [Thread2:11] (BM_LOG.ByeModule) Component deactivated!
+2017-05-01 19:13:42,138 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:13:42,138 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:13:42,138 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:13:42,140 DEBUG [Thread3:12] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:13:42,140 INFO  [Thread3:12] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:13:42,140 DEBUG [Thread3:12] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:13:42,140 DEBUG [Thread3:12] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:13:42,140 DEBUG [Thread3:12] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:13:42,140 DEBUG [Thread3:12] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq T82L6PAPG6 to DBEngine!
+2017-05-01 19:13:42,157 DEBUG [Thread3:12] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:13:42,183 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:13:42,207 DEBUG [Thread3:12] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:13:42,943 DEBUG [Thread3:12] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:14:24,217 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:14:24,217 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:14:24,217 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:14:24,219 DEBUG [Thread4:13] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:14:24,219 INFO  [Thread4:13] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:14:24,219 DEBUG [Thread4:13] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:14:24,219 DEBUG [Thread4:13] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:14:24,220 DEBUG [Thread4:13] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:14:24,220 DEBUG [Thread4:13] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq J2UR84J060 to DBEngine!
+2017-05-01 19:14:24,240 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:14:24,246 DEBUG [Thread4:13] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:14:24,268 DEBUG [Thread4:13] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:14:24,296 DEBUG [Thread4:13] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:14:31,734 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:14:31,734 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:14:31,734 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:14:31,735 DEBUG [Thread2:14] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-05-01 19:14:31,735 INFO  [Thread2:14] (BM_LOG.POOPModule) Changing component R8K6 property 0033 to 1...
+2017-05-01 19:14:31,735 INFO  [Thread2:14] (BM_LOG.POOPModule) Property is already set to 1!
+2017-05-01 19:14:31,735 DEBUG [Thread2:14] (BM_LOG.POOPModule) POOP processing complete!
+2017-05-01 19:14:47,467 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:14:47,467 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:14:47,467 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:14:47,468 DEBUG [Thread3:15] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:14:47,468 INFO  [Thread3:15] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:14:47,468 DEBUG [Thread3:15] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:14:47,469 DEBUG [Thread3:15] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:14:47,469 DEBUG [Thread3:15] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:14:47,469 DEBUG [Thread3:15] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq Q3602YU5C7 to DBEngine!
+2017-05-01 19:14:47,494 DEBUG [Thread3:15] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:14:47,533 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:14:47,545 DEBUG [Thread3:15] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:14:48,283 DEBUG [Thread3:15] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:15:05,312 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:15:05,312 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:15:05,312 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:15:05,313 DEBUG [Thread4:16] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-05-01 19:15:05,313 INFO  [Thread4:16] (BM_LOG.POOPModule) Changing component R8K6 property 0033 to 1...
+2017-05-01 19:15:05,313 INFO  [Thread4:16] (BM_LOG.POOPModule) Property is already set to 1!
+2017-05-01 19:15:05,313 DEBUG [Thread4:16] (BM_LOG.POOPModule) POOP processing complete!
+2017-05-01 19:15:20,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:15:20,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:15:20,630 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:15:20,631 DEBUG [Thread2:17] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:15:20,631 INFO  [Thread2:17] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:15:20,631 DEBUG [Thread2:17] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:15:20,631 DEBUG [Thread2:17] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:15:20,631 DEBUG [Thread2:17] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:15:20,631 DEBUG [Thread2:17] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq QOMUFUBM7J to DBEngine!
+2017-05-01 19:15:20,650 DEBUG [Thread2:17] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:15:20,666 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:15:20,701 DEBUG [Thread2:17] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:15:21,440 DEBUG [Thread2:17] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:16:42,848 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:16:42,849 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:16:42,849 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:16:42,849 DEBUG [Thread3:18] (BM_LOG.ByeModule) ByeModule request processing started!
+2017-05-01 19:16:42,849 INFO  [Thread3:18] (BM_LOG.ByeModule) Deactivating component R8K6 (MAC:5ccf7fc84b7)
+2017-05-01 19:16:42,850 DEBUG [Thread3:18] (BM_LOG.ByeModule) Updating system...
+2017-05-01 19:16:42,850 DEBUG [Thread3:18] (BM_LOG.ByeModule) Updating DB...
+2017-05-01 19:16:42,850 DEBUG [Thread3:18] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq T4K6CTEFK6 to DBEngine!
+2017-05-01 19:16:42,859 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:16:42,888 DEBUG [Thread3:18] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:16:42,888 DEBUG [Thread3:18] (BM_LOG.ByeModule) Updating OH...
+2017-05-01 19:16:42,888 DEBUG [Thread3:18] (oh.OHEngine) Adding main.engines.requests.OHEngine.UpdateOHEReq P2611Y6D4E to OHEngine!
+2017-05-01 19:16:42,901 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-05-01 19:16:42,901 INFO  [Thread3:18] (oh.OHEngine) Updating OpenHAB files...
+2017-05-01 19:16:42,901 DEBUG [Thread3:18] (oh.OHEngine) Updating .items file...
+2017-05-01 19:16:42,902 DEBUG [Thread3:18] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:16:42,902 DEBUG [Thread3:18] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:16:42,902 DEBUG [Thread3:18] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:16:42,904 DEBUG [Thread3:18] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:16:42,905 WARN  [Thread3:18] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:16:42,906 WARN  [Thread3:18] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:16:42,924 WARN  [Thread3:18] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:16:42,932 WARN  [Thread3:18] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:16:42,936 WARN  [Thread3:18] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:16:42,943 WARN  [Thread3:18] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:16:42,962 DEBUG [Thread3:18] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:16:42,962 INFO  [Thread3:18] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:16:42,963 DEBUG [Thread3:18] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq VA552LS8I2 to DBEngine!
+2017-05-01 19:16:43,042 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:16:43,094 DEBUG [Thread3:18] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:16:43,101 DEBUG [Thread3:18] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:16:43,103 DEBUG [Thread3:18] (oh.OHEngine) OpenHAB update complete!
+2017-05-01 19:16:43,103 DEBUG [Thread3:18] (oh.OHEngine) EngineRequest processing complete!
+2017-05-01 19:16:43,103 INFO  [Thread3:18] (BM_LOG.ByeModule) Component deactivated!
+2017-05-01 19:17:48,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:17:48,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:17:48,630 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:17:48,631 DEBUG [Thread4:19] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:17:48,632 INFO  [Thread4:19] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:17:48,632 DEBUG [Thread4:19] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:17:48,632 DEBUG [Thread4:19] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:17:48,632 DEBUG [Thread4:19] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:17:48,632 DEBUG [Thread4:19] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq K014RT7OXM to DBEngine!
+2017-05-01 19:17:48,646 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:17:48,649 DEBUG [Thread4:19] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:17:48,697 DEBUG [Thread4:19] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:17:48,699 DEBUG [Thread4:19] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:18:04,526 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:18:04,526 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:18:04,526 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:18:04,551 DEBUG [Thread2:20] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-05-01 19:18:04,552 INFO  [Thread2:20] (BM_LOG.POOPModule) Changing component R8K6 property 0033 to 1...
+2017-05-01 19:18:04,552 INFO  [Thread2:20] (BM_LOG.POOPModule) Property is already set to 1!
+2017-05-01 19:18:04,552 DEBUG [Thread2:20] (BM_LOG.POOPModule) POOP processing complete!
+2017-05-01 19:18:19,030 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:18:19,030 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:18:19,030 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:18:19,044 DEBUG [Thread3:21] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:18:19,044 INFO  [Thread3:21] (BM_LOG.RegistrationModule) Component already exists in system as R8K6! Returning existing credentials and property states.
+2017-05-01 19:18:19,044 DEBUG [Thread3:21] (BM_LOG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-01 19:18:19,044 DEBUG [Thread3:21] (BM_LOG.RegistrationModule) Returning component properties states...
+2017-05-01 19:18:19,044 DEBUG [Thread3:21] (BM_LOG.RegistrationModule) Activating component R8K6 in DB...
+2017-05-01 19:18:19,044 DEBUG [Thread3:21] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq J8MC8W420G to DBEngine!
+2017-05-01 19:18:19,066 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:18:19,081 DEBUG [Thread3:21] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:18:19,111 DEBUG [Thread3:21] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:18:19,237 DEBUG [Thread3:21] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:19:26,907 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:19:26,907 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:19:26,907 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:19:26,907 DEBUG [Thread4:22] (BM_LOG.ByeModule) ByeModule request processing started!
+2017-05-01 19:19:26,908 INFO  [Thread4:22] (BM_LOG.ByeModule) Deactivating component R8K6 (MAC:5ccf7fc84b7)
+2017-05-01 19:19:26,908 DEBUG [Thread4:22] (BM_LOG.ByeModule) Updating system...
+2017-05-01 19:19:26,908 DEBUG [Thread4:22] (BM_LOG.ByeModule) Updating DB...
+2017-05-01 19:19:26,908 DEBUG [Thread4:22] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq LO1MA471UQ to DBEngine!
+2017-05-01 19:19:26,991 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:19:27,019 DEBUG [Thread4:22] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:19:27,020 DEBUG [Thread4:22] (BM_LOG.ByeModule) Updating OH...
+2017-05-01 19:19:27,020 DEBUG [Thread4:22] (oh.OHEngine) Adding main.engines.requests.OHEngine.UpdateOHEReq XS3R84B3Q4 to OHEngine!
+2017-05-01 19:19:27,088 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-05-01 19:19:27,088 INFO  [Thread4:22] (oh.OHEngine) Updating OpenHAB files...
+2017-05-01 19:19:27,089 DEBUG [Thread4:22] (oh.OHEngine) Updating .items file...
+2017-05-01 19:19:27,089 DEBUG [Thread4:22] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:19:27,089 DEBUG [Thread4:22] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:19:27,089 DEBUG [Thread4:22] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:19:27,091 DEBUG [Thread4:22] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:19:27,091 WARN  [Thread4:22] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:19:27,092 WARN  [Thread4:22] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:19:27,097 WARN  [Thread4:22] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:19:27,098 WARN  [Thread4:22] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:19:27,101 WARN  [Thread4:22] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:19:27,104 WARN  [Thread4:22] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:19:27,124 DEBUG [Thread4:22] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:19:27,124 INFO  [Thread4:22] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:19:27,125 DEBUG [Thread4:22] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq V6762M6SM7 to DBEngine!
+2017-05-01 19:19:27,204 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:19:27,214 DEBUG [Thread4:22] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:19:27,218 DEBUG [Thread4:22] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:19:27,220 DEBUG [Thread4:22] (oh.OHEngine) OpenHAB update complete!
+2017-05-01 19:19:27,220 DEBUG [Thread4:22] (oh.OHEngine) EngineRequest processing complete!
+2017-05-01 19:19:27,220 INFO  [Thread4:22] (BM_LOG.ByeModule) Component deactivated!
+2017-05-01 19:39:53,527 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:39:53,528 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"LLU3","property":"0006","value":"1","RTY":"poop"}
+2017-05-01 19:39:53,528 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:39:53,529 DEBUG [Thread2:23] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-05-01 19:39:53,529 INFO  [Thread2:23] (BM_LOG.POOPModule) Changing component LLU3 property 0006 to 1...
+2017-05-01 19:39:53,529 INFO  [Thread2:23] (BM_LOG.POOPModule) Property is already set to 1!
+2017-05-01 19:39:53,529 DEBUG [Thread2:23] (BM_LOG.POOPModule) POOP processing complete!
+2017-05-01 19:39:58,048 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:39:58,048 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"LLU3","property":"0006","value":"0","RTY":"poop"}
+2017-05-01 19:39:58,048 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:39:58,049 DEBUG [Thread3:24] (BM_LOG.POOPModule) POOPModule request processing started!
+2017-05-01 19:39:58,049 INFO  [Thread3:24] (BM_LOG.POOPModule) Changing component LLU3 property 0006 to 0...
+2017-05-01 19:39:58,051 DEBUG [Thread3:24] (cir.CIREngine) Adding main.engines.requests.CIREngine.UpdateCIREReq BY7TN0MINH to CIREngine!
+2017-05-01 19:39:58,135 DEBUG [CIREngine] (cir.CIREngine) New EngineRequest detected! Processing...
+2017-05-01 19:39:58,137 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,138 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,139 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,140 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,140 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,141 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-05-01 19:39:58,141 DEBUG [Thread3:24] (cir.CIREngine) EngineRequest processing complete!
+2017-05-01 19:39:58,141 DEBUG [Thread3:24] (BM_LOG.POOPModule) Updating component property in system...
+2017-05-01 19:39:58,141 INFO  [Thread3:24] (BM_LOG.POOPModule) Updating affected component properties in system...
+2017-05-01 19:39:58,142 DEBUG [Thread3:24] (cir.CIREngine) Adding main.engines.requests.CIREngine.GetSpecificExecBlocksCIREReq VVT654E000 to CIREngine!
+2017-05-01 19:39:58,235 DEBUG [CIREngine] (cir.CIREngine) New EngineRequest detected! Processing...
+2017-05-01 19:39:58,236 DEBUG [Thread3:24] (cir.CIREngine) Retrieving CIR for component LLU3 with property DigitalOutput-0006
+2017-05-01 19:39:58,236 DEBUG [Thread3:24] (cir.CIREngine) EngineRequest processing complete!
+2017-05-01 19:39:58,236 DEBUG [Thread3:24] (BM_LOG.POOPModule) Updating component property in DB...
+2017-05-01 19:39:58,236 DEBUG [Thread3:24] (db.DBEngine) Adding main.engines.requests.DBEngine.UpdateDBEReq N36LJ53245 to DBEngine!
+2017-05-01 19:39:58,242 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:39:58,337 DEBUG [Thread3:24] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:39:58,338 INFO  [Thread3:24] (BM_LOG.POOPModule) No other components updated!
+2017-05-01 19:39:58,338 DEBUG [Thread3:24] (BM_LOG.POOPModule) POOP processing complete!
+2017-05-01 19:39:58,351 DEBUG [Thread3:24] (mqtt.MQTTHandler) Publishing message:{"RTY":"poop","success":true,"property":"0006","RID":"0000","value":0} to topic:LLU3_topic
+2017-05-01 19:39:58,401 DEBUG [Thread3:24] (mqtt.MQTTHandler) Publishing message:0006_0 to topic:openhab/LLU3_topic
+2017-05-01 19:49:55,909 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:49:55,909 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:18fe34cf4fc1,CID:0002,RTY:register,name:Light1,roomID:Lanai,product:0002}
+2017-05-01 19:49:55,909 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
+2017-05-01 19:49:55,914 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) RegistrationModule request processing started!
+2017-05-01 19:49:55,914 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq RXMC3Y8A5N to DBEngine!
+2017-05-01 19:49:55,930 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:56,189 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:56,218 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq KC38H5A156 to DBEngine!
+2017-05-01 19:49:56,231 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:56,266 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:56,267 FATAL [Thread4:25] (BM_LOG.RegistrationModule) GD32
+2017-05-01 19:49:56,279 INFO  [Thread4:25] (BM_LOG.RegistrationModule) Registering component 18fe34cf4fc1 to system...
+2017-05-01 19:49:56,279 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Retrieving existing SSIDs from DB...
+2017-05-01 19:49:56,280 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq X2Y25V1Y7S to DBEngine!
+2017-05-01 19:49:56,331 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:56,345 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:56,352 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Existing SSIDs retrieved!
+2017-05-01 19:49:56,352 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Retrieving Component product properties...
+2017-05-01 19:49:56,352 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq O40231H820 to DBEngine!
+2017-05-01 19:49:56,431 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:56,452 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:56,453 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Component product properties retrieved!
+2017-05-01 19:49:56,454 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Creating Component object...
+2017-05-01 19:49:56,454 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Component object created!
+2017-05-01 19:49:56,454 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Persisting component into DB...
+2017-05-01 19:49:56,456 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq HE5Y267RR3 to DBEngine!
+2017-05-01 19:49:56,532 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,312 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,313 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq P1K4E4H15R to DBEngine!
+2017-05-01 19:49:57,335 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,383 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,384 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq MA72DM4W3G to DBEngine!
+2017-05-01 19:49:57,436 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,480 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,480 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq A1GTD7K453 to DBEngine!
+2017-05-01 19:49:57,536 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,583 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,583 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq K1WY7WX285 to DBEngine!
+2017-05-01 19:49:57,636 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,682 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,683 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq I0MYHBWE2C to DBEngine!
+2017-05-01 19:49:57,737 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,782 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,783 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq PRXSV20K4A to DBEngine!
+2017-05-01 19:49:57,837 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,882 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,882 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq LO416HS2YB to DBEngine!
+2017-05-01 19:49:57,938 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:57,989 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:57,990 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq MP145303WB to DBEngine!
+2017-05-01 19:49:58,038 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:58,085 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:58,085 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq NXECE15L52 to DBEngine!
+2017-05-01 19:49:58,138 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:58,220 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:58,221 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq D7E8R55075 to DBEngine!
+2017-05-01 19:49:58,238 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:58,324 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:58,325 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.InsertDBEReq FLXL11WI20 to DBEngine!
+2017-05-01 19:49:58,338 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:58,389 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:58,390 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Component persistence complete!
+2017-05-01 19:49:58,390 DEBUG [Thread4:25] (oh.OHEngine) Adding main.engines.requests.OHEngine.UpdateOHEReq E05604G4W7 to OHEngine!
+2017-05-01 19:49:58,440 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:58,441 INFO  [Thread4:25] (oh.OHEngine) Updating OpenHAB files...
+2017-05-01 19:49:58,441 DEBUG [Thread4:25] (oh.OHEngine) Updating .items file...
+2017-05-01 19:49:58,441 DEBUG [Thread4:25] (oh.OHEngine) Adding rooms to groups declaration...
+2017-05-01 19:49:58,442 DEBUG [Thread4:25] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-01 19:49:58,442 DEBUG [Thread4:25] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-05-01 19:49:58,457 DEBUG [Thread4:25] (oh.OHEngine) Updating .rules file...
+2017-05-01 19:49:58,458 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0001 not found!
+2017-05-01 19:49:58,460 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:49:58,530 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0002 not found!
+2017-05-01 19:49:58,629 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0009 not found!
+2017-05-01 19:49:58,689 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0006 not found!
+2017-05-01 19:49:58,760 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0008 not found!
+2017-05-01 19:49:58,869 WARN  [Thread4:25] (oh.OHEngine) Rules for component type 0003 not found!
+2017-05-01 19:49:58,916 DEBUG [Thread4:25] (oh.OHEngine) Updating .sitemap file...
+2017-05-01 19:49:58,917 INFO  [Thread4:25] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-01 19:49:58,917 DEBUG [Thread4:25] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq F5LMCFTJ6L to DBEngine!
+2017-05-01 19:49:58,996 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-05-01 19:49:59,018 DEBUG [Thread4:25] (db.DBEngine) EngineRequest processing complete!
+2017-05-01 19:49:59,028 DEBUG [Thread4:25] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-01 19:49:59,029 DEBUG [Thread4:25] (oh.OHEngine) OpenHAB update complete!
+2017-05-01 19:49:59,029 DEBUG [Thread4:25] (oh.OHEngine) EngineRequest processing complete!
+2017-05-01 19:49:59,030 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Publishing Component credentials to default topic...
+2017-05-01 19:49:59,032 DEBUG [Thread4:25] (BM_LOG.RegistrationModule) Registration complete!
+2017-05-01 19:49:59,168 DEBUG [Thread4:25] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"Y4OA_topic","id":"Y4OA","RID":"18fe34cf4fc1"} to topic:default_topic

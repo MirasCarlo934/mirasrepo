@@ -1,194 +1,194 @@
-2017-04-23 13:20:59,458 INFO  [main] (BM_LOG.main) /C:/Applications/git/BM-basic_v5/target/classes/
-2017-04-23 13:20:59,464 INFO  [main] (BM_LOG.main) Starting the BM...
-2017-04-23 13:21:00,774 INFO  [main] (BM_LOG.DBEngine) DBEngine construct start! url=jdbc:derby://localhost:1527/DB
-2017-04-23 13:21:01,014 INFO  [main] (BM_LOG.DBEngine) Connected to Derby DB!
-2017-04-23 13:21:01,024 INFO  [main] (BM_LOG.ComponentRepository) Populating Devices...
-2017-04-23 13:21:01,025 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq G6YPKGV845 to DBEngine!
-2017-04-23 13:21:01,074 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,113 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq F1FW8XU8PY to DBEngine!
-2017-04-23 13:21:01,174 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,181 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: N463 into Devices
-2017-04-23 13:21:01,189 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0002 of device: N463 with value: 0
-2017-04-23 13:21:01,190 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0020 of device: N463 with value: 1
-2017-04-23 13:21:01,190 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0029 of device: N463 with value: 1
-2017-04-23 13:21:01,190 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0019 of device: N463 with value: 1
-2017-04-23 13:21:01,191 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0024 of device: N463 with value: 1
-2017-04-23 13:21:01,191 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0005 of device: N463 with value: 360
-2017-04-23 13:21:01,191 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0023 of device: N463 with value: 1
-2017-04-23 13:21:01,192 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0004 of device: N463 with value: 0
-2017-04-23 13:21:01,192 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0022 of device: N463 with value: 1
-2017-04-23 13:21:01,192 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0003 of device: N463 with value: 100
-2017-04-23 13:21:01,193 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0021 of device: N463 with value: 1
-2017-04-23 13:21:01,193 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq Q35VIWU35Y to DBEngine!
-2017-04-23 13:21:01,274 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,277 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: LLU3 into Devices
-2017-04-23 13:21:01,278 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: LLU3 with value: 1
-2017-04-23 13:21:01,278 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq R004FQD81P to DBEngine!
-2017-04-23 13:21:01,374 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,378 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: CJ7A into Devices
-2017-04-23 13:21:01,379 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0018 of device: CJ7A with value: 1
-2017-04-23 13:21:01,379 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0032 of device: CJ7A with value: 0
-2017-04-23 13:21:01,380 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0017 of device: CJ7A with value: 1
-2017-04-23 13:21:01,380 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0031 of device: CJ7A with value: 38
-2017-04-23 13:21:01,380 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0016 of device: CJ7A with value: 1
-2017-04-23 13:21:01,381 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0030 of device: CJ7A with value: 0
-2017-04-23 13:21:01,381 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq NBQ3EA12NR to DBEngine!
-2017-04-23 13:21:01,474 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,476 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: PA5W into Devices
-2017-04-23 13:21:01,477 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: PA5W with value: 0
-2017-04-23 13:21:01,477 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq YE18P3O528 to DBEngine!
-2017-04-23 13:21:01,574 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,577 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: II81 into Devices
-2017-04-23 13:21:01,577 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0026 of device: II81 with value: 0
-2017-04-23 13:21:01,577 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0025 of device: II81 with value: 0
-2017-04-23 13:21:01,578 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq I3O1K113O6 to DBEngine!
-2017-04-23 13:21:01,674 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,677 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: EASO into Devices
-2017-04-23 13:21:01,677 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0033 of device: EASO with value: 0
-2017-04-23 13:21:01,678 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq P2178PBB0M to DBEngine!
-2017-04-23 13:21:01,774 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,777 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: H54V into Devices
-2017-04-23 13:21:01,778 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0001 of device: H54V with value: 0
-2017-04-23 13:21:01,778 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq TP743D14FQ to DBEngine!
-2017-04-23 13:21:01,875 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,880 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: I6N7 into Devices
-2017-04-23 13:21:01,881 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0002 of device: I6N7 with value: 0
-2017-04-23 13:21:01,881 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0020 of device: I6N7 with value: 0
-2017-04-23 13:21:01,881 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0029 of device: I6N7 with value: 0
-2017-04-23 13:21:01,882 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0019 of device: I6N7 with value: 0
-2017-04-23 13:21:01,882 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0024 of device: I6N7 with value: 0
-2017-04-23 13:21:01,882 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0005 of device: I6N7 with value: 72
-2017-04-23 13:21:01,882 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0023 of device: I6N7 with value: 0
-2017-04-23 13:21:01,882 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0004 of device: I6N7 with value: 0
-2017-04-23 13:21:01,883 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0022 of device: I6N7 with value: 0
-2017-04-23 13:21:01,883 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0003 of device: I6N7 with value: 0
-2017-04-23 13:21:01,883 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0021 of device: I6N7 with value: 0
-2017-04-23 13:21:01,886 INFO  [main] (BM_LOG.ComponentRepository) Devices population done!
-2017-04-23 13:21:01,887 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
-2017-04-23 13:21:01,887 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq FUKPC16S4H to DBEngine!
-2017-04-23 13:21:01,975 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:01,978 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
-2017-04-23 13:21:01,978 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
-2017-04-23 13:21:01,979 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq P2HU13LTHX to DBEngine!
-2017-04-23 13:21:02,075 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:02,078 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
-2017-04-23 13:21:02,332 INFO  [main] (BM_LOG.Controller) Controller constructed!
-2017-04-23 13:21:02,344 INFO  [main] (BM_LOG.CIREngine) CIREngine started!
-2017-04-23 13:21:02,344 INFO  [main] (BM_LOG.CIREngine) JAR Filepath:/C:/Applications/git/BM-basic_v5/target/classes/
-2017-04-23 13:21:02,349 WARN  [main] (BM_LOG.CIREngine) A statement is found to contain an invalid CID!
-2017-04-23 13:21:02,350 WARN  [main] (BM_LOG.CIREngine) A statement is found to contain an invalid CID!
-2017-04-23 13:21:02,430 INFO  [main] (BM_LOG.main) Config file cfg/core-config.xml loaded.
-2017-04-23 13:21:02,460 INFO  [main] (BM_LOG.mqtt) Connected to MQTT!
-2017-04-23 13:21:02,464 DEBUG [main] (BM_LOG.mqtt) Subscribed to BM topic!
-2017-04-23 13:21:02,464 DEBUG [main] (BM_LOG.mqtt) Callback set!
-2017-04-23 13:21:02,465 DEBUG [main] (BM_LOG.OHEngine) Adding main.engines.requests.OHEngine.StartOHEReq N845074C3A to OHEngine!
-2017-04-23 13:21:02,564 DEBUG [OHEngine] (BM_LOG.OHEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:02,564 INFO  [main] (BM_LOG.OHEngine) Connecting to OH files in OpenHAB directory...
-2017-04-23 13:21:02,565 DEBUG [main] (BM_LOG.OHEngine) Connected to OH files!
-2017-04-23 13:21:02,565 DEBUG [main] (BM_LOG.OHEngine) Updating .items file...
-2017-04-23 13:21:02,565 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
-2017-04-23 13:21:02,565 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq FDR64HO634 to DBEngine!
-2017-04-23 13:21:02,576 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:02,579 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
-2017-04-23 13:21:02,579 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
-2017-04-23 13:21:02,579 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq LD1KY7QR6A to DBEngine!
-2017-04-23 13:21:02,676 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:02,679 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
-2017-04-23 13:21:02,679 DEBUG [main] (BM_LOG.OHEngine) Adding rooms to groups declaration...
-2017-04-23 13:21:02,679 DEBUG [main] (BM_LOG.OHEngine) Adding Components with multiple properties to groups declaration...
-2017-04-23 13:21:02,679 DEBUG [main] (BM_LOG.OHEngine) Adding individual Properties to items declaration...
-2017-04-23 13:21:02,696 DEBUG [main] (BM_LOG.OHEngine) Updating .rules file...
-2017-04-23 13:21:02,696 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0002 not found!
-2017-04-23 13:21:02,710 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0003 not found!
-2017-04-23 13:21:02,711 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0002 not found!
-2017-04-23 13:21:02,728 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0009 not found!
-2017-04-23 13:21:02,729 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0008 not found!
-2017-04-23 13:21:02,732 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0003 not found!
-2017-04-23 13:21:02,756 WARN  [main] (BM_LOG.OHEngine) Rules for component ID 0001 not found!
-2017-04-23 13:21:02,759 DEBUG [main] (BM_LOG.OHEngine) Updating .sitemap file...
-2017-04-23 13:21:02,759 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
-2017-04-23 13:21:02,759 DEBUG [main] (BM_LOG.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq TPHM6L4AVA to DBEngine!
-2017-04-23 13:21:02,776 DEBUG [DBEngine] (BM_LOG.DBEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:02,779 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
-2017-04-23 13:21:02,781 DEBUG [main] (BM_LOG.OHEngine) Adding main.engines.requests.CIREngine.UpdateCIREReq RX0IIWNM45 to OHEngine!
-2017-04-23 13:21:02,865 DEBUG [OHEngine] (BM_LOG.OHEngine) New EngineRequest detected! Processing...
-2017-04-23 13:21:02,872 INFO  [main] (BM_LOG.main) BusinessMachine started!
-2017-04-23 13:21:04,872 INFO  [OHUpdater] (BM_LOG.main) Updating OH items' states...
-2017-04-23 13:21:04,873 DEBUG [OHUpdater] (BM_LOG.main) Update complete!
-2017-04-23 13:21:04,897 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0020_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:04,900 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:04,947 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:04,947 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:04,997 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0029_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:04,998 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,047 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0019_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,048 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,097 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0024_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,098 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,148 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0005_72 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,149 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,198 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0023_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,199 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,248 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0004_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,249 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,299 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0022_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,300 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,349 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0003_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,350 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,400 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0021_0 to topic:openhab/I6N7_topic
-2017-04-23 13:21:05,401 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,450 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0006_0 to topic:openhab/PA5W_topic
-2017-04-23 13:21:05,451 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,500 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0020_1 to topic:openhab/N463_topic
-2017-04-23 13:21:05,501 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,551 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0002_0 to topic:openhab/N463_topic
-2017-04-23 13:21:05,552 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,601 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0029_1 to topic:openhab/N463_topic
-2017-04-23 13:21:05,602 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,652 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0019_1 to topic:openhab/N463_topic
-2017-04-23 13:21:05,653 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,702 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0024_1 to topic:openhab/N463_topic
-2017-04-23 13:21:05,703 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,753 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0005_360 to topic:openhab/N463_topic
-2017-04-23 13:21:05,754 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,804 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0023_1 to topic:openhab/N463_topic
-2017-04-23 13:21:05,805 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,854 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0004_0 to topic:openhab/N463_topic
-2017-04-23 13:21:05,855 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,905 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0022_1 to topic:openhab/N463_topic
-2017-04-23 13:21:05,906 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:05,955 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0003_100 to topic:openhab/N463_topic
-2017-04-23 13:21:05,956 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,005 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0021_1 to topic:openhab/N463_topic
-2017-04-23 13:21:06,006 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,056 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0033_0 to topic:openhab/EASO_topic
-2017-04-23 13:21:06,057 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,107 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0026_0 to topic:openhab/II81_topic
-2017-04-23 13:21:06,107 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,157 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0025_0 to topic:openhab/II81_topic
-2017-04-23 13:21:06,158 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,207 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0006_1 to topic:openhab/LLU3_topic
-2017-04-23 13:21:06,208 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,258 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0018_1 to topic:openhab/CJ7A_topic
-2017-04-23 13:21:06,258 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,308 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0032_0 to topic:openhab/CJ7A_topic
-2017-04-23 13:21:06,309 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,358 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0017_1 to topic:openhab/CJ7A_topic
-2017-04-23 13:21:06,359 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,408 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0031_38 to topic:openhab/CJ7A_topic
-2017-04-23 13:21:06,409 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,459 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0016_1 to topic:openhab/CJ7A_topic
-2017-04-23 13:21:06,460 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,510 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0030_0 to topic:openhab/CJ7A_topic
-2017-04-23 13:21:06,511 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:06,560 DEBUG [OHUpdater] (BM_LOG.mqtt) Publishing message:0001_0 to topic:openhab/H54V_topic
-2017-04-23 13:21:06,561 DEBUG [OHUpdater] (BM_LOG.mqtt) Message published!
-2017-04-23 13:21:08,474 DEBUG [MQTT Call: BM_win] (BM_LOG.mqtt) 
-
-
-2017-04-23 13:21:08,474 DEBUG [MQTT Call: BM_win] (BM_LOG.mqtt) Message arrived at topic BM
-2017-04-23 13:21:08,474 DEBUG [MQTT Call: BM_win] (BM_LOG.mqtt) Message is: tests
-2017-04-23 13:21:08,474 INFO  [MQTT Call: BM_win] (BM_LOG.Controller) Request received!
-2017-04-23 13:21:08,478 ERROR [Thread1:1] (BM_LOG.ControllerModule) Improper JSON construction!
-2017-04-23 13:21:08,525 DEBUG [Thread1:1] (BM_LOG.mqtt) Publishing message:Improper JSON construction! to topic:error_topic
-2017-04-23 13:21:08,526 DEBUG [Thread1:1] (BM_LOG.mqtt) Message published!
+2017-04-25 17:01:17,732 INFO  [main] (BM_LOG.main) /C:/Applications/git/BM-basic_v5/target/classes/
+2017-04-25 17:01:17,742 INFO  [main] (BM_LOG.main) Starting the BM...
+2017-04-25 17:01:19,593 INFO  [main] (db.DBEngine) DBEngine construct start! url=jdbc:derby://192.168.1.5:1527/DB
+2017-04-25 17:01:24,642 INFO  [main] (db.DBEngine) Connected to Derby DB!
+2017-04-25 17:01:24,650 INFO  [main] (BM_LOG.ComponentRepository) Populating Devices...
+2017-04-25 17:01:24,651 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq HA25324G18 to DBEngine!
+2017-04-25 17:01:24,711 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:27,240 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq E2Q33A68TF to DBEngine!
+2017-04-25 17:01:27,323 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:28,630 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: N463 into Devices
+2017-04-25 17:01:28,638 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0002 of device: N463 with value: 0
+2017-04-25 17:01:28,638 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0020 of device: N463 with value: 1
+2017-04-25 17:01:28,638 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0029 of device: N463 with value: 1
+2017-04-25 17:01:28,639 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0019 of device: N463 with value: 1
+2017-04-25 17:01:28,639 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0024 of device: N463 with value: 1
+2017-04-25 17:01:28,639 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0005 of device: N463 with value: 360
+2017-04-25 17:01:28,639 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0023 of device: N463 with value: 1
+2017-04-25 17:01:28,640 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0004 of device: N463 with value: 0
+2017-04-25 17:01:28,640 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0022 of device: N463 with value: 1
+2017-04-25 17:01:28,640 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0003 of device: N463 with value: 100
+2017-04-25 17:01:28,641 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0021 of device: N463 with value: 1
+2017-04-25 17:01:28,641 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq H8GQNWG177 to DBEngine!
+2017-04-25 17:01:28,730 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:29,044 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: LLU3 into Devices
+2017-04-25 17:01:29,045 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: LLU3 with value: 0
+2017-04-25 17:01:29,046 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq S02J7TDIH4 to DBEngine!
+2017-04-25 17:01:29,132 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:29,524 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: CJ7A into Devices
+2017-04-25 17:01:29,526 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0018 of device: CJ7A with value: 1
+2017-04-25 17:01:29,526 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0032 of device: CJ7A with value: 0
+2017-04-25 17:01:29,526 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0017 of device: CJ7A with value: 1
+2017-04-25 17:01:29,527 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0031 of device: CJ7A with value: 38
+2017-04-25 17:01:29,527 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0016 of device: CJ7A with value: 1
+2017-04-25 17:01:29,527 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0030 of device: CJ7A with value: 0
+2017-04-25 17:01:29,528 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq N7WFFF8403 to DBEngine!
+2017-04-25 17:01:29,533 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:29,559 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: PA5W into Devices
+2017-04-25 17:01:29,559 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: PA5W with value: 0
+2017-04-25 17:01:29,560 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq UYTT54Y2LO to DBEngine!
+2017-04-25 17:01:29,633 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:31,909 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: II81 into Devices
+2017-04-25 17:01:31,910 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0026 of device: II81 with value: 1
+2017-04-25 17:01:31,910 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0025 of device: II81 with value: 1
+2017-04-25 17:01:31,910 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq UB8511BNGB to DBEngine!
+2017-04-25 17:01:31,939 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:32,399 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: H7K5 into Devices
+2017-04-25 17:01:32,400 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0011 of device: H7K5 with value: 1
+2017-04-25 17:01:32,400 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0036 of device: H7K5 with value: 0
+2017-04-25 17:01:32,401 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0035 of device: H7K5 with value: 0
+2017-04-25 17:01:32,401 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0034 of device: H7K5 with value: 1
+2017-04-25 17:01:32,401 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq U3636K0NP0 to DBEngine!
+2017-04-25 17:01:32,441 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:32,711 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: H54V into Devices
+2017-04-25 17:01:32,712 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0001 of device: H54V with value: 0
+2017-04-25 17:01:32,712 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.RawDBEReq H58R43PM40 to DBEngine!
+2017-04-25 17:01:32,741 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:32,833 DEBUG [main] (BM_LOG.ComponentRepository) Adding device: I6N7 into Devices
+2017-04-25 17:01:32,835 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0002 of device: I6N7 with value: 0
+2017-04-25 17:01:32,835 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0020 of device: I6N7 with value: 0
+2017-04-25 17:01:32,835 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0029 of device: I6N7 with value: 0
+2017-04-25 17:01:32,835 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0019 of device: I6N7 with value: 0
+2017-04-25 17:01:32,836 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0024 of device: I6N7 with value: 0
+2017-04-25 17:01:32,836 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0005 of device: I6N7 with value: 72
+2017-04-25 17:01:32,837 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0023 of device: I6N7 with value: 0
+2017-04-25 17:01:32,837 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0004 of device: I6N7 with value: 0
+2017-04-25 17:01:32,838 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0022 of device: I6N7 with value: 0
+2017-04-25 17:01:32,838 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0003 of device: I6N7 with value: 0
+2017-04-25 17:01:32,838 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0021 of device: I6N7 with value: 0
+2017-04-25 17:01:32,859 INFO  [main] (BM_LOG.ComponentRepository) Devices population done!
+2017-04-25 17:01:32,859 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-04-25 17:01:32,860 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq LJDSOH7311 to DBEngine!
+2017-04-25 17:01:32,942 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:33,125 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-04-25 17:01:33,125 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
+2017-04-25 17:01:33,125 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq S53EA3IU8R to DBEngine!
+2017-04-25 17:01:33,142 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:33,300 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
+2017-04-25 17:01:33,550 INFO  [main] (BM_LOG.Controller) Controller constructed!
+2017-04-25 17:01:33,585 INFO  [main] (cir.CIREngine) CIREngine started!
+2017-04-25 17:01:33,586 INFO  [main] (cir.CIREngine) JAR Filepath:/C:/Applications/git/BM-basic_v5/target/classes/
+2017-04-25 17:01:33,592 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-04-25 17:01:33,593 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
+2017-04-25 17:01:33,717 INFO  [main] (BM_LOG.main) Config file cfg/core-config.xml loaded.
+2017-04-25 17:01:33,778 INFO  [main] (mqtt.MQTTHandler) Connected to MQTT!
+2017-04-25 17:01:33,788 DEBUG [main] (mqtt.MQTTHandler) Subscribed to BM topic!
+2017-04-25 17:01:33,789 DEBUG [main] (mqtt.MQTTHandler) Callback set!
+2017-04-25 17:01:33,790 DEBUG [main] (oh.OHEngine) Adding main.engines.requests.OHEngine.StartOHEReq G0IKY50ILI to OHEngine!
+2017-04-25 17:01:33,829 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:33,829 INFO  [main] (oh.OHEngine) Connecting to OH files in OpenHAB directory...
+2017-04-25 17:01:33,830 DEBUG [main] (oh.OHEngine) Connected to OH files!
+2017-04-25 17:01:33,830 DEBUG [main] (oh.OHEngine) Updating .items file...
+2017-04-25 17:01:33,830 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-04-25 17:01:33,831 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq C4720VE6O2 to DBEngine!
+2017-04-25 17:01:33,843 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:33,880 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-04-25 17:01:33,880 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
+2017-04-25 17:01:33,880 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq KY1G657U44 to DBEngine!
+2017-04-25 17:01:33,944 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:33,987 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
+2017-04-25 17:01:33,988 DEBUG [main] (oh.OHEngine) Adding rooms to groups declaration...
+2017-04-25 17:01:33,988 DEBUG [main] (oh.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-04-25 17:01:33,989 DEBUG [main] (oh.OHEngine) Adding individual Properties to items declaration...
+2017-04-25 17:01:34,006 DEBUG [main] (oh.OHEngine) Updating .rules file...
+2017-04-25 17:01:34,007 WARN  [main] (oh.OHEngine) Rules for component ID 0002 not found!
+2017-04-25 17:01:34,022 WARN  [main] (oh.OHEngine) Rules for component ID 0003 not found!
+2017-04-25 17:01:34,025 WARN  [main] (oh.OHEngine) Rules for component ID 0002 not found!
+2017-04-25 17:01:34,040 WARN  [main] (oh.OHEngine) Rules for component ID 0006 not found!
+2017-04-25 17:01:34,068 WARN  [main] (oh.OHEngine) Rules for component ID 0008 not found!
+2017-04-25 17:01:34,073 WARN  [main] (oh.OHEngine) Rules for component ID 0003 not found!
+2017-04-25 17:01:34,082 WARN  [main] (oh.OHEngine) Rules for component ID 0001 not found!
+2017-04-25 17:01:34,085 DEBUG [main] (oh.OHEngine) Updating .sitemap file...
+2017-04-25 17:01:34,085 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-04-25 17:01:34,085 DEBUG [main] (db.DBEngine) Adding main.engines.requests.DBEngine.SelectDBEReq O5086620EM to DBEngine!
+2017-04-25 17:01:34,167 DEBUG [DBEngine] (db.DBEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:34,208 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-04-25 17:01:34,210 DEBUG [main] (oh.OHEngine) Adding main.engines.requests.CIREngine.UpdateCIREReq W6ES2IYMQ8 to OHEngine!
+2017-04-25 17:01:34,243 DEBUG [OHEngine] (oh.OHEngine) New EngineRequest detected! Processing...
+2017-04-25 17:01:34,250 INFO  [main] (BM_LOG.main) BusinessMachine started!
+2017-04-25 17:01:36,251 INFO  [OHUpdater] (BM_LOG.main) Updating OH items' states...
+2017-04-25 17:01:36,253 DEBUG [OHUpdater] (BM_LOG.main) Update complete!
+2017-04-25 17:01:36,281 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0020_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,284 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,330 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0002_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,331 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,381 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0029_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,382 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,432 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0019_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,433 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,482 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0024_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,483 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,533 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0005_72 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,534 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,583 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0023_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,584 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,633 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0004_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,634 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,684 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0022_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,685 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,734 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0003_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,735 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,784 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0021_0 to topic:openhab/I6N7_topic
+2017-04-25 17:01:36,785 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,834 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0006_0 to topic:openhab/PA5W_topic
+2017-04-25 17:01:36,835 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,884 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0020_1 to topic:openhab/N463_topic
+2017-04-25 17:01:36,885 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,934 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0002_0 to topic:openhab/N463_topic
+2017-04-25 17:01:36,935 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:36,985 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0029_1 to topic:openhab/N463_topic
+2017-04-25 17:01:36,986 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,036 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0019_1 to topic:openhab/N463_topic
+2017-04-25 17:01:37,037 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,086 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0024_1 to topic:openhab/N463_topic
+2017-04-25 17:01:37,087 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,136 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0005_360 to topic:openhab/N463_topic
+2017-04-25 17:01:37,137 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,186 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0023_1 to topic:openhab/N463_topic
+2017-04-25 17:01:37,187 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,237 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0004_0 to topic:openhab/N463_topic
+2017-04-25 17:01:37,238 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,288 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0022_1 to topic:openhab/N463_topic
+2017-04-25 17:01:37,289 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,338 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0003_100 to topic:openhab/N463_topic
+2017-04-25 17:01:37,340 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,388 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0021_1 to topic:openhab/N463_topic
+2017-04-25 17:01:37,389 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,438 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0011_1 to topic:openhab/H7K5_topic
+2017-04-25 17:01:37,439 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,490 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-04-25 17:01:37,491 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,539 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-04-25 17:01:37,539 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,589 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-04-25 17:01:37,589 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,640 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0026_1 to topic:openhab/II81_topic
+2017-04-25 17:01:37,640 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,691 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0025_1 to topic:openhab/II81_topic
+2017-04-25 17:01:37,691 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,741 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0006_0 to topic:openhab/LLU3_topic
+2017-04-25 17:01:37,741 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,792 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0018_1 to topic:openhab/CJ7A_topic
+2017-04-25 17:01:37,792 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,843 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0032_0 to topic:openhab/CJ7A_topic
+2017-04-25 17:01:37,843 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,893 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0017_1 to topic:openhab/CJ7A_topic
+2017-04-25 17:01:37,893 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,943 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0031_38 to topic:openhab/CJ7A_topic
+2017-04-25 17:01:37,943 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:37,993 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0016_1 to topic:openhab/CJ7A_topic
+2017-04-25 17:01:37,993 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:38,043 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0030_0 to topic:openhab/CJ7A_topic
+2017-04-25 17:01:38,043 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!
+2017-04-25 17:01:38,094 DEBUG [OHUpdater] (mqtt.MQTTHandler) Publishing message:0001_0 to topic:openhab/H54V_topic
+2017-04-25 17:01:38,095 DEBUG [OHUpdater] (mqtt.MQTTHandler) Message published!

@@ -9,6 +9,7 @@ import main.ComponentRepository;
 import main.engines.DBEngine;
 import main.engines.OHEngine;
 import main.engines.requests.DBEngine.DeleteDBEReq;
+import main.engines.requests.OHEngine.RemoveItemOHEReq;
 import main.engines.requests.OHEngine.UpdateOHEReq;
 import mqtt.MQTTHandler;
 import tools.IDGenerator;
@@ -32,9 +33,6 @@ public class DetachmentModule extends AbstModule {
 		String cid = request.cid;
 		mainLOG.info("Detaching component " + cid + " from system...");
 		
-		mainLOG.debug("Deleting component from CR...");
-		cr.removeComponent(cid);
-		
 		mainLOG.debug("Deleting component from DB...");
 		HashMap<String, Object> vals1 = new HashMap<String, Object>(1,1);
 		vals1.put("com_id", cid);
@@ -48,6 +46,14 @@ public class DetachmentModule extends AbstModule {
 		forwardEngineRequest(dbe, new DeleteDBEReq(idg.generateMixedCharID(10), comsTable, vals2));
 
 		//update OH of changes
+		//forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
+		mainLOG.debug("Deleting component from OH DB...");
+		//forwardEngineRequest(ohe, new RemoveItemOHEReq(idg.generateMixedCharID(10), cid));
+		
+		mainLOG.debug("Deleting component from CR...");
+		cr.removeComponent(cid);
+		
+		mainLOG.debug("Deleting component from OH config files...");
 		forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
 		
 		mainLOG.info("Detachment complete!");

@@ -1,0 +1,117 @@
+2017-05-01 19:05:10,301 INFO  [main] (mqtt.MQTTHandler) Connected to MQTT!
+2017-05-01 19:05:10,309 DEBUG [main] (mqtt.MQTTHandler) Subscribed to BM topic!
+2017-05-01 19:05:10,310 DEBUG [main] (mqtt.MQTTHandler) Callback set!
+2017-05-01 19:05:10,691 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0001_0 to topic:openhab/VUSO_topic
+2017-05-01 19:05:10,740 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0002_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,790 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0020_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,853 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0029_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,890 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0019_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,940 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0024_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:10,991 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0023_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,041 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0005_72 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,092 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0022_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,142 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0004_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,193 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0021_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,244 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0003_0 to topic:openhab/I6N7_topic
+2017-05-01 19:05:11,294 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0033_1 to topic:openhab/R8K6_topic
+2017-05-01 19:05:11,344 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0011_1 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,395 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,446 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,496 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-05-01 19:05:11,546 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0026_0 to topic:openhab/II81_topic
+2017-05-01 19:05:11,597 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0025_1 to topic:openhab/II81_topic
+2017-05-01 19:05:11,647 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0006_1 to topic:openhab/LLU3_topic
+2017-05-01 19:05:11,698 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0018_0 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,748 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0032_0 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,798 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0017_1 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,849 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0031_38 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,900 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0016_1 to topic:openhab/CJ7A_topic
+2017-05-01 19:05:11,950 DEBUG [main] (mqtt.MQTTHandler) Publishing message:0030_0 to topic:openhab/CJ7A_topic
+2017-05-01 19:06:12,179 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:06:12,180 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc793ce","CID":"5ccf7fc793ce","RTY":"bye"}
+2017-05-01 19:06:46,290 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:06:46,291 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc793ce,CID:0003,RTY:register,name:SoloSocket,roomID:U7YY,product:0003}
+2017-05-01 19:06:46,317 DEBUG [Thread2:2] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"LLU3_topic","id":"LLU3","RID":"5ccf7fc793ce"} to topic:default_topic
+2017-05-01 19:06:46,368 DEBUG [Thread2:2] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0006","RID":"5ccf7fc793ce","value":1} to topic:LLU3_topic
+2017-05-01 19:07:32,494 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:07:32,494 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:07:32,531 DEBUG [Thread3:3] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:07:32,582 DEBUG [Thread3:3] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:07:59,060 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:07:59,060 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {
+RID:"test1",
+CID:"LLU3",
+RTY:"register",
+name:"0001",
+roomID:1
+}
+2017-05-01 19:08:16,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:08:16,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {
+RID:"test1",
+CID:"LLU3",
+RTY:"register",
+name:"0001",
+roomID:"1"
+}
+2017-05-01 19:08:17,151 DEBUG [Thread2:5] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":false,"RID":"test1","message":"Product ID is invalid!"} to topic:error_topic
+2017-05-01 19:08:47,079 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:08:47,079 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:09:00,968 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:09:00,969 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:09:00,976 DEBUG [Thread4:7] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:09:01,027 DEBUG [Thread4:7] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:09:50,613 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:09:50,613 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:09:50,626 DEBUG [Thread2:8] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:09:50,676 DEBUG [Thread2:8] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:10:27,876 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:10:27,876 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:11:19,392 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:11:19,392 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:11:19,412 DEBUG [Thread4:10] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:11:19,463 DEBUG [Thread4:10] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:12:56,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:12:56,896 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:13:42,138 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:13:42,138 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:13:42,157 DEBUG [Thread3:12] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:13:42,207 DEBUG [Thread3:12] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:14:24,217 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:14:24,217 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:14:24,246 DEBUG [Thread4:13] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:14:24,296 DEBUG [Thread4:13] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:14:31,734 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:14:31,734 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:14:47,467 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:14:47,467 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:14:47,494 DEBUG [Thread3:15] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:14:47,545 DEBUG [Thread3:15] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:15:05,312 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:15:05,312 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:15:20,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:15:20,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:15:20,650 DEBUG [Thread2:17] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:15:20,701 DEBUG [Thread2:17] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:16:42,848 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:16:42,849 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:17:48,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:17:48,630 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:17:48,649 DEBUG [Thread4:19] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:17:48,699 DEBUG [Thread4:19] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:18:04,526 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:18:04,526 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"R8K6","property":"0033","value":"1","RTY":"poop"}
+2017-05-01 19:18:19,030 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:18:19,030 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:5ccf7fc84b7,CID:0009,RTY:register,name:IR,roomID:U7YY,product:0009}
+2017-05-01 19:18:19,081 DEBUG [Thread3:21] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"R8K6_topic","id":"R8K6","RID":"5ccf7fc84b7"} to topic:default_topic
+2017-05-01 19:18:19,237 DEBUG [Thread3:21] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0033","RID":"5ccf7fc84b7","value":1} to topic:R8K6_topic
+2017-05-01 19:19:26,907 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:19:26,907 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"5ccf7fc84b7","CID":"5ccf7fc84b7","RTY":"bye"}
+2017-05-01 19:39:53,527 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:39:53,528 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"LLU3","property":"0006","value":"1","RTY":"poop"}
+2017-05-01 19:39:58,048 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:39:58,048 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {"RID":"0000","CID":"LLU3","property":"0006","value":"0","RTY":"poop"}
+2017-05-01 19:39:58,351 DEBUG [Thread3:24] (mqtt.MQTTHandler) Publishing message:{"RTY":"poop","success":true,"property":"0006","RID":"0000","value":0} to topic:LLU3_topic
+2017-05-01 19:39:58,401 DEBUG [Thread3:24] (mqtt.MQTTHandler) Publishing message:0006_0 to topic:openhab/LLU3_topic
+2017-05-01 19:49:55,909 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message arrived at topic BM
+2017-05-01 19:49:55,909 DEBUG [MQTT Call: BM_win] (mqtt.MQTTHandler) Message is: {RID:18fe34cf4fc1,CID:0002,RTY:register,name:Light1,roomID:Lanai,product:0002}
+2017-05-01 19:49:59,168 DEBUG [Thread4:25] (mqtt.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"Y4OA_topic","id":"Y4OA","RID":"18fe34cf4fc1"} to topic:default_topic

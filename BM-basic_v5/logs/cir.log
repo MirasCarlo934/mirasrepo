@@ -1,20 +1,15 @@
-2017-05-01 19:05:10,363 INFO  [main] (cir.CIREngine) CIREngine started!
-2017-05-01 19:05:10,367 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:05:10,368 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:05:10,368 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:05:10,369 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:05:10,370 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:05:10,370 WARN  [main] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,051 DEBUG [Thread3:24] (cir.CIREngine) Adding main.engines.requests.CIREngine.UpdateCIREReq BY7TN0MINH to CIREngine!
-2017-05-01 19:39:58,135 DEBUG [CIREngine] (cir.CIREngine) New EngineRequest detected! Processing...
-2017-05-01 19:39:58,137 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,138 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,139 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,140 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,140 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,141 WARN  [Thread3:24] (cir.CIREngine) A statement is found to contain an invalid CID!
-2017-05-01 19:39:58,141 DEBUG [Thread3:24] (cir.CIREngine) EngineRequest processing complete!
-2017-05-01 19:39:58,142 DEBUG [Thread3:24] (cir.CIREngine) Adding main.engines.requests.CIREngine.GetSpecificExecBlocksCIREReq VVT654E000 to CIREngine!
-2017-05-01 19:39:58,235 DEBUG [CIREngine] (cir.CIREngine) New EngineRequest detected! Processing...
-2017-05-01 19:39:58,236 DEBUG [Thread3:24] (cir.CIREngine) Retrieving CIR for component LLU3 with property DigitalOutput-0006
-2017-05-01 19:39:58,236 DEBUG [Thread3:24] (cir.CIREngine) EngineRequest processing complete!
+2017-05-04 11:52:02,100 INFO  [main] (CIR.CIREngine) CIREngine started!
+2017-05-04 11:52:15,945 DEBUG [1:Process1] (CIR.CIREngine) Adding UpdateCIREReq GO3KHTRS01 to CIREngine!
+2017-05-04 11:52:15,956 DEBUG [CIREngine] (CIR.CIREngine) New EngineRequest detected! Processing...
+2017-05-04 11:52:15,956 DEBUG [1:Process1] (CIR.CIREngine) EngineRequest processing complete!
+2017-05-04 11:52:15,957 DEBUG [1:Process1] (CIR.CIREngine) Adding GetSpecificExecBlocksCIREReq M78T2AYVL4 to CIREngine!
+2017-05-04 11:52:16,056 DEBUG [CIREngine] (CIR.CIREngine) New EngineRequest detected! Processing...
+2017-05-04 11:52:16,056 DEBUG [1:Process1] (CIR.CIREngine) Retrieving CIR for component LLU3 with property DigitalOutput-0006
+2017-05-04 11:52:16,056 DEBUG [1:Process1] (CIR.CIREngine) EngineRequest processing complete!
+2017-05-04 11:52:20,794 DEBUG [2:Process2] (CIR.CIREngine) Adding UpdateCIREReq J58JY73BAJ to CIREngine!
+2017-05-04 11:52:20,873 DEBUG [CIREngine] (CIR.CIREngine) New EngineRequest detected! Processing...
+2017-05-04 11:52:20,873 DEBUG [2:Process2] (CIR.CIREngine) EngineRequest processing complete!
+2017-05-04 11:52:20,874 DEBUG [2:Process2] (CIR.CIREngine) Adding GetSpecificExecBlocksCIREReq JO78OUJUOX to CIREngine!
+2017-05-04 11:52:20,973 DEBUG [CIREngine] (CIR.CIREngine) New EngineRequest detected! Processing...
+2017-05-04 11:52:20,973 DEBUG [2:Process2] (CIR.CIREngine) Retrieving CIR for component LLU3 with property DigitalOutput-0006
+2017-05-04 11:52:20,973 DEBUG [2:Process2] (CIR.CIREngine) EngineRequest processing complete!

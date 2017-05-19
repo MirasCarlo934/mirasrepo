@@ -35,9 +35,10 @@ public class POOPModule extends AbstModule {
 	private String propsTable = ""; //PROPERTIES table
 	private IDGenerator idg = new IDGenerator();
 
-	public POOPModule(String RTY, String propIDParam, String propValParam, MQTTHandler mh, 
-			OHEngine ohe, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
-		super("POOPModule", RTY, new String[]{propIDParam, propValParam}, mh, cr);
+	public POOPModule(String logDomain, String errorLogDomain, String RTY, String propIDParam, 
+			String propValParam, MQTTHandler mh, OHEngine ohe, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
+		super(logDomain, errorLogDomain, "POOPModule", RTY, 
+				new String[]{propIDParam, propValParam}, mh, cr);
 		this.dbe = dbe;
 		this.cire = cire;
 		this.propIDParam = propIDParam;
@@ -60,6 +61,8 @@ public class POOPModule extends AbstModule {
 				+ poop.propSSID + " to " + poop.propValue + "...");
 		if(c.getProperty(poop.propSSID).getValue() == poop.propValue) {
 			mainLOG.info("Property is already set to " + poop.propValue + "!");
+			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
+			mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
 		}
 		else {
 			//cire.update();

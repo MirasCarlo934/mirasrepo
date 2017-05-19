@@ -17,9 +17,9 @@ public class DeactivationModule extends AbstModule {
 	private OHEngine ohe;
 	private String comstable;
 	
-	public DeactivationModule(String RTY, MQTTHandler mh, ComponentRepository cr, DBEngine dbe, 
-			OHEngine ohe, String comstable) {
-		super("ByeModule", RTY, new String[0], mh, cr);
+	public DeactivationModule(String logDomain, String errorLogDomain, String RTY, MQTTHandler mh, 
+			ComponentRepository cr, DBEngine dbe, OHEngine ohe, String comstable) {
+		super(logDomain, errorLogDomain, "ByeModule", RTY, new String[0], mh, cr);
 		this.dbe = dbe;
 		this.ohe = ohe;
 		this.comstable = comstable;

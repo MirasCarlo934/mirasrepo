@@ -16,7 +16,7 @@ public class ControllerThreadFactory implements ThreadFactory {
 	@Override
 	public Thread newThread(Runnable r) {
 		LOG.trace("Thread " + threads + " created!");
-		Thread t = new Thread(r, "Thread" + threads.getAndIncrement());
+		Thread t = new Thread(r, String.valueOf(threads.getAndIncrement()));
 		return t;
 	}
 }

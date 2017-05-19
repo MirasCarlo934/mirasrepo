@@ -135,6 +135,7 @@ public class ComponentRepository {
 				//populates properties of device with persisted values
 				LOG.debug("Setting property: " + prop_id + " of device: " + SSID + " with value: " + prop_val);
 				Component com = components.get(SSID);
+				LOG.fatal(com.getSSID());
 				com.getProperty(prop_id).setValue(prop_val);
 			}
 			coms_rs.close();

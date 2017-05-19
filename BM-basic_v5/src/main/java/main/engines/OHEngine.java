@@ -109,7 +109,7 @@ public class OHEngine extends AbstEngine {
 		}
 		else if(oher.getType() == OHRequestType.update) {
 			//updateOH()
-			LOG.info("Updating OpenHAB files...");
+			LOG.debug("Updating OpenHAB files...");
 			updateItems();
 			updateRules();
 			updateSitemap();

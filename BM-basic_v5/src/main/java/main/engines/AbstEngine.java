@@ -54,7 +54,7 @@ public abstract class AbstEngine extends TimerTask {
 	 * 		if the EngineRequest is invalid
 	 */
 	public void processRequest(EngineRequest engineRequest, Thread t) {
-		LOG.debug("Adding " + engineRequest.getClass().getName() + " " + 
+		LOG.debug("Adding " + engineRequest.getClass().getSimpleName() + " " + 
 				engineRequest.getId() + " to " + name + "!");
 		reqQueue.add(engineRequest);
 		threads.put(engineRequest.getId(), t);
@@ -62,7 +62,8 @@ public abstract class AbstEngine extends TimerTask {
 	}
 	
 	/**
-	 * Retrieves the response from the specified EngineRequest
+	 * Retrieves the response from the specified EngineRequest and removes it from the Engine
+	 * 
 	 * @param engineRequestID The ID of the EngineRequest
 	 * @return the response Object
 	 */
@@ -124,6 +125,7 @@ public abstract class AbstEngine extends TimerTask {
 		@Override
 		public void run() {
 			//checks if EngineRequest is valid for this Engine
+			Thread.currentThread().setName(parent.getName());
 			boolean b = checkEngineRequest(er);
 			if(b) {
 				Object res = processRequest(er);

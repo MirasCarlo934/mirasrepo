@@ -21,9 +21,10 @@ public abstract class AbstModule {
 	protected MQTTHandler mh;
 	protected ComponentRepository cr;
 
-	public AbstModule(String name, String RTY, String[] params, MQTTHandler mh, ComponentRepository cr) {
-		mainLOG = Logger.getLogger("BM_LOG." + name);
-		errorLOG = Logger.getLogger("error." + name);
+	public AbstModule(String logDomain, String errorLogDomain, String name, String RTY, String[] 
+			params, MQTTHandler mh, ComponentRepository cr) {
+		mainLOG = Logger.getLogger(logDomain + "." + name);
+		errorLOG = Logger.getLogger(errorLogDomain + "." + name);
 		this.name = name;
 		this.params = params;
 		this.mh = mh;

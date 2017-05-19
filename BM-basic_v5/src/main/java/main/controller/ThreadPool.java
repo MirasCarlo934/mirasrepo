@@ -42,9 +42,9 @@ public class ThreadPool extends ThreadPoolExecutor {
 		int processNumber = cm.getProcessNumber();
 		String s = t.getName();
 		if(s.contains(":")) {
-			s = s.substring(0, s.indexOf(":")) + ":" + processNumber;
+			s = s.substring(0, s.indexOf(":")) + ":Process" + processNumber;
 		} else {
-			s = s + ":" + processNumber;
+			s = s + ":Process" + processNumber;
 		}
 		t.setName(s);
 	}

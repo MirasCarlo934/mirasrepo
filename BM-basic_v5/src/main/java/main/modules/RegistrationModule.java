@@ -38,11 +38,10 @@ public class RegistrationModule extends AbstModule {
 	private String roomIDParam;
 	private String poopRTY;
 	
-	public RegistrationModule(String RTY, String poopRTY, String nameParam, String prodIDParam, 
-			String roomIDParam, MQTTHandler mh, ComponentRepository components, DBEngine dbe, 
-			OHEngine ohe,
-			String productQuery) {
-		super("RegistrationModule", RTY, new String[]{nameParam, prodIDParam, roomIDParam}, 
+	public RegistrationModule(String logDomain, String errorLogDomain, String RTY, String poopRTY, 
+			String nameParam, String prodIDParam, String roomIDParam, MQTTHandler mh, 
+			ComponentRepository components, DBEngine dbe, OHEngine ohe,String productQuery) {
+		super(logDomain, errorLogDomain, "RegistrationModule", RTY, new String[]{nameParam, prodIDParam, roomIDParam}, 
 				mh, components);
 		this.dbe = dbe;
 		this.ohe = ohe;
@@ -65,17 +64,11 @@ public class RegistrationModule extends AbstModule {
 			mainLOG.info("Component already exists in system as " + c.getSSID() + "! "
 					+ "Returning existing credentials and property states.");
 			
+			mainLOG.debug("Activating component in BM...");
+			c.setActive(true);
+			
 			mainLOG.debug("Returning existing credentials to default topic...");
 			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
-			
-			mainLOG.debug("Returning component properties states...");
-			Iterator<Property> props = c.getProperties().values().iterator();
-			while(props.hasNext()) {
-				Property p = props.next();
-				ResPOOP poop = new ResPOOP(request, p.getSSID(), p.getValue());
-				poop.rty = poopRTY;
-				mh.publish(poop);
-			}
 			
 			mainLOG.debug("Activating component " + c.getSSID() + " in DB...");
 			HashMap<String, Object> args = new HashMap<String, Object>(1,1);
@@ -90,6 +83,25 @@ public class RegistrationModule extends AbstModule {
 				error(error);
 				return;
 			}
+			
+			mainLOG.debug("Activating component in OH...");
+			Object o2 = forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
+			if(o2.getClass().equals(ResError.class)) {
+				ResError error = (ResError) o2;
+				error(error);
+				return;
+			}
+			
+			mainLOG.debug("Returning component properties states...");
+			Iterator<Property> props = c.getProperties().values().iterator();
+			while(props.hasNext()) {
+				Property p = props.next();
+				ResPOOP poop = new ResPOOP(request, p.getSSID(), p.getValue());
+				poop.rty = poopRTY;
+				mh.publish(poop);
+				mh.publish("openhab/" + c.getTopic(), poop.getPropSSID() + "_" + poop.getPropVal());
+			}
+			mainLOG.info("Registration complete!");
 			return;
 		}
 		

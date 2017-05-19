@@ -28,7 +28,6 @@ import main.controller.Controller;
  *
  */
 public class MQTTHandler extends TimerTask implements MqttCallback {
-	private static String logDomain;
 	private static Logger logger;
 	@Autowired
 	private Controller controller;
@@ -45,7 +44,7 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 
 	public MQTTHandler(String logDomain, String brokerURL, String clientID, String BM_topic, 
 			String default_topic, String error_topic) {
-		logger = Logger.getLogger("mqtt.MQTTHandler");
+		logger = Logger.getLogger(logDomain + ".MQTTHandler");
 		this.setBrokerURL(brokerURL);
 		this.setClientID(clientID);
 		setBM_topic(BM_topic);
@@ -56,11 +55,16 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 		} catch (MqttException e) {
 			logger.fatal("Cannot create MQTTClient!", e);
 		}
-		publishTimer.schedule(this, 0, 50);
 		connectToMQTT();
+		publishTimer.schedule(this, 0, 50);
 	}
 	
-	public void connectToMQTT() {
+	/**
+	 * Connects this MQTTHandler to the MQTT broker
+	 * 
+	 * @return <b>True</b> if the MQTTHandler has successfully connected, <b>false</b> otherwise.
+	 */
+	public boolean connectToMQTT() {
 		try {
 			client.connect();
 			logger.info("Connected to MQTT!");
@@ -68,14 +72,17 @@ public class MQTTHandler extends TimerTask implements MqttCallback {
 			logger.debug("Subscribed to BM topic!");
 			client.setCallback(this);
 			logger.debug("Callback set!");
+			return true;
 		} catch (MqttSecurityException e) {
 			logger.fatal("Cannot connect to MQTT server due to MqttSecurityException!", e);
 			logger.info("Attempting to reconnect...");
 			connectToMQTT();
+			return false;
 		} catch (MqttException e) {
 			logger.fatal("Cannot connect to MQTT due to MqttException!", e);
 			logger.info("Attempting to reconnect...");
 			connectToMQTT();
+			return false;
 		}
 	}
 	

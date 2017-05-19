@@ -7,17 +7,32 @@
         <appender-ref ref="console" />
         <appender-ref ref="BM_APPENDER" />
    </root>
-   <logger name="mqtt">
+   <logger name="MQTT">
         <appender-ref ref="MQTT_APPENDER" />
    </logger>
-   <logger name="db">
+   <logger name="DB">
    		<appender-ref ref="DB_APPENDER" />
    </logger>
-   <logger name="cir">
+   <logger name="CIR">
    		<appender-ref ref="CIR_APPENDER" />
    </logger>
-   <logger name="oh">
+   <logger name="OH">
    		<appender-ref ref="OH_APPENDER" />
+   </logger>
+   <logger name="POOP">
+   		<appender-ref ref="POOP_APPENDER" />
+   </logger>
+   <logger name="REG">
+   		<appender-ref ref="REGISTRATION_APPENDER" />
+   </logger>
+   <logger name="DET">
+   		<appender-ref ref="DETACHMENT_APPENDER" />
+   </logger>
+   <logger name="BYE">
+   		<appender-ref ref="DEACTIVATION_APPENDER" />
+   </logger>
+   <logger name="ERROR">
+   		<appender-ref ref="ERROR_APPENDER" />
    </logger>
    <logger name="org.springframework">
    		<appender-ref ref="SYSTEM_APPENDER"/>
@@ -59,7 +74,7 @@
    
    <appender name="MQTT_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
       <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
-      <param name="File" value="logs/mqtt.log"/>
+      <param name="File" value="logs/mqtt/mqtt.log"/>
       <param name="Append" value="false"/>
       <param name="Threshold" value="debug"/>
 
@@ -74,7 +89,7 @@
    
    <appender name="DB_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
       <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
-      <param name="File" value="logs/db.log"/>
+      <param name="File" value="logs/engines/db.log"/>
       <param name="Append" value="false"/>
       <param name="Threshold" value="debug"/>
 
@@ -89,7 +104,7 @@
    
    <appender name="CIR_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
       <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
-      <param name="File" value="logs/cir.log"/>
+      <param name="File" value="logs/engines/cir.log"/>
       <param name="Append" value="false"/>
       <param name="Threshold" value="debug"/>
 
@@ -104,7 +119,82 @@
    
    <appender name="OH_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
       <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
-      <param name="File" value="logs/openhab.log"/>
+      <param name="File" value="logs/engines/openhab.log"/>
+      <param name="Append" value="false"/>
+      <param name="Threshold" value="debug"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%t] (%c) %m%n"/>
+      </layout>
+   </appender>
+   
+   <appender name="POOP_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="File" value="logs/modules/poop.log"/>
+      <param name="Append" value="false"/>
+      <param name="Threshold" value="debug"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%t] (%c) %m%n"/>
+      </layout>
+   </appender>
+   
+   <appender name="DETACHMENT_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="File" value="logs/modules/detachment.log"/>
+      <param name="Append" value="false"/>
+      <param name="Threshold" value="debug"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%t] (%c) %m%n"/>
+      </layout>
+   </appender>
+   
+   <appender name="DEACTIVATION_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="File" value="logs/modules/deactivation.log"/>
+      <param name="Append" value="false"/>
+      <param name="Threshold" value="debug"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%t] (%c) %m%n"/>
+      </layout>
+   </appender>
+   
+   <appender name="REGISTRATION_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="File" value="logs/modules/registration.log"/>
+      <param name="Append" value="false"/>
+      <param name="Threshold" value="debug"/>
+
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%t] (%c) %m%n"/>
+      </layout>
+   </appender>
+   
+   <appender name="ERROR_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="File" value="logs/errors.log"/>
       <param name="Append" value="false"/>
       <param name="Threshold" value="debug"/>
 

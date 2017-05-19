@@ -13,13 +13,14 @@ import main.ComponentRepository;
 import mqtt.MQTTHandler;
 
 public class Controller {
-	private static final Logger LOG = Logger.getLogger("BM_LOG.Controller");
+	private static Logger LOG;
 	private MQTTHandler mh;
 	private ComponentRepository devices;
 	public static int processCounter = 1;
 	private ThreadPool threadPool;
 	
-	public Controller(MQTTHandler mh, ComponentRepository devices, ThreadPool threadPool) {
+	public Controller(String logDomain, MQTTHandler mh, ComponentRepository devices, ThreadPool threadPool) {
+		LOG = Logger.getLogger(logDomain + ".Controller");
 		this.mh = mh;
 		this.devices = devices;
 		this.threadPool = threadPool;

@@ -10,7 +10,7 @@ import mqtt.MQTTHandler;
 import tools.*;
 
 public class BusinessMachine {
-	private String coreConfig = "cfg/core-config.xml";
+	private String coreConfig = "core-config.xml";
 	public static ApplicationContext context;
 	private static final Logger LOG = Logger.getLogger("main.BusinessMachine");
 	private static String bm_props_file = "configuration/bm.properties";

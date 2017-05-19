@@ -10,11 +10,11 @@
    <bean id="config" class="main.ConfigLoader">
     <property name="configFiles">
       <list>
-      	<value>cfg/main-config.xml</value>
-      	<value>cfg/engines-config.xml</value>
-        <value>cfg/mqtt-config.xml</value>
-        <value>cfg/modules-config.xml</value>
-        <value>cfg/tools-config.xml</value>
+      	<value>configuration/spring/main-config.xml</value>
+      	<value>configuration/spring/engines-config.xml</value>
+        <value>configuration/spring/mqtt-config.xml</value>
+        <value>configuration/spring/modules-config.xml</value>
+        <value>configuration/spring/tools-config.xml</value>
       </list>
     </property>
    </bean> 

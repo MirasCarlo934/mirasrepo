@@ -1,4 +1,4 @@
-package json.objects;
+package json.RRP;
 
 /**
  * Instantiates a basic RRP Response which contains only the RID and the success boolean

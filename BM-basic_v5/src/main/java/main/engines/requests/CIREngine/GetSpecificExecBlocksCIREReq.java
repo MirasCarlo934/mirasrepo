@@ -1,6 +1,6 @@
 package main.engines.requests.CIREngine;
 
-import json.objects.ReqPOOP;
+import json.RRP.ReqPOOP;
 
 public class GetSpecificExecBlocksCIREReq extends CIREngineRequest {
 	private ReqPOOP poop;

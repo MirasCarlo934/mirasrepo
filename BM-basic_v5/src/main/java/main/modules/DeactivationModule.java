@@ -3,8 +3,8 @@ package main.modules;
 import java.util.HashMap;
 
 import components.Component;
-import json.objects.ReqRequest;
-import json.objects.ResError;
+import json.RRP.ReqRequest;
+import json.RRP.ResError;
 import main.ComponentRepository;
 import main.engines.*;
 import main.engines.requests.DBEngine.UpdateDBEReq;

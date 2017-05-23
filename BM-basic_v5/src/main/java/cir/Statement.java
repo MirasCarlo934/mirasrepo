@@ -3,7 +3,7 @@ package cir;
 import org.apache.log4j.Logger;
 
 import components.Component;
-import components.properties.Property;
+import components.properties.AbstProperty;
 import tools.StringTools;
 import tools.StringTools.StringInjectionException;
 
@@ -28,7 +28,7 @@ public class Statement {
 	 * @return <b>True</b> if the specified Component exists in the arguments section, 
 	 * 		<b>false</b> otherwise
 	 */
-	public boolean containsComponentInArguments(Component c, Property p) {
+	public boolean containsComponentInArguments(Component c, AbstProperty p) {
 		boolean b = false;
 		for(int i = 0; i < arguments.length; i++) {
 			Argument arg = arguments[i];

@@ -7,9 +7,12 @@ import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 
-import components.properties.Property;
+import components.properties.InnateProperty;
+import components.properties.AbstProperty;
+import components.properties.CommonProperty;
 import components.properties.PropertyMode;
 import components.properties.PropertyValueType;
+import components.properties.StringProperty;
 
 public class Product {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.Product");
@@ -17,7 +20,7 @@ public class Product {
 	private String name;
 	private String description;
 	private String OH_icon;
-	private Hashtable<String, Property> properties = new Hashtable<String, Property>(1,1);
+	private Hashtable<String, AbstProperty> properties = new Hashtable<String, AbstProperty>(1,1);
 	
 	/**
 	 * The default constructor for the instantiation of the Product object
@@ -29,13 +32,13 @@ public class Product {
 	 * @param properties The properties that this product possesses
 	 */
 	public Product(String ssid, String name, String description, String OH_icon, 
-			Property[] properties) {
+			AbstProperty[] properties) {
 		this.SSID = ssid;
 		this.name = name;
 		this.description = description;
 		this.OH_icon = OH_icon;
 		for(int i = 0; i < properties.length; i++) {
-			Property p = properties[i];
+			AbstProperty p = properties[i];
 			this.properties.put(p.getSSID(), p);
 		}
 	}
@@ -48,7 +51,7 @@ public class Product {
 	 * @param rs The ResultSet of the select query containing all the properties of the specified 
 	 * product
 	 */
-	public Product(ResultSet rs) throws SQLException{
+	public Product(String comID, ResultSet rs, String stringPropTypeID, String innatePropTypeID) throws SQLException{
 		while(rs.next()) {
 			SSID = rs.getString("prod_ssid");
 			name = rs.getString("prod_name");
@@ -63,10 +66,22 @@ public class Product {
 			int prop_min = rs.getInt("prop_min");
 			int prop_max = rs.getInt("prop_max");
 			String prop_index = rs.getString("prop_index");
-			Property prop = new Property(prop_type, prop_index, prop_sysname, prop_dispname, 
-					PropertyMode.parseModeFromString(prop_mode), 
-					PropertyValueType.parsePropValTypeFromString(pval_type), prop_min, prop_max);
-			properties.put(prop.getSSID(), prop);
+			if(prop_type.equals(stringPropTypeID)) {
+				StringProperty prop = new StringProperty(prop_type, prop_index, comID, prop_sysname, prop_dispname, 
+						PropertyMode.parseModeFromString(prop_mode));
+				properties.put(prop.getSSID(), prop);
+				//System.out.println("s-" + prop.getDisplayName());
+			} else if(prop_type.equals(innatePropTypeID)) {
+				InnateProperty prop = new InnateProperty(prop_type, prop_index, comID, prop_sysname, prop_dispname, 
+						PropertyValueType.parsePropValTypeFromString(pval_type));
+				properties.put(prop.getSSID(), prop);
+				//System.out.println("i-" + prop.getDisplayName());
+			} else {
+				CommonProperty prop = new CommonProperty(prop_type, prop_index, comID, prop_sysname, prop_dispname, 
+						PropertyMode.parseModeFromString(prop_mode), 
+						PropertyValueType.parsePropValTypeFromString(pval_type), prop_min, prop_max);
+				properties.put(prop.getSSID(), prop);
+			}
 		}
 	}
 	
@@ -83,15 +98,15 @@ public class Product {
 		return s;
 	}*/
 	
-	public void addProperty(Property prop) {
+	public void addProperty(AbstProperty prop) {
 		properties.put(prop.getSSID(), prop);
 	}
 	
-	public Property getProperty(String name) {
+	public AbstProperty getProperty(String name) {
 		return properties.get(name);
 	}
 	
-	public Hashtable<String, Property> getProperties() {
+	public Hashtable<String, AbstProperty> getProperties() {
 		return properties;
 	}
 	

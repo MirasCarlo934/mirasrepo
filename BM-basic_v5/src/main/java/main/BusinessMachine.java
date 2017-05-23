@@ -5,14 +5,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import components.Component;
-import components.properties.Property;
+import components.properties.AbstProperty;
 import mqtt.MQTTHandler;
 import tools.*;
 
 public class BusinessMachine {
 	private String coreConfig = "core-config.xml";
 	public static ApplicationContext context;
-	private static final Logger LOG = Logger.getLogger("main.BusinessMachine");
+	private static final Logger LOG = Logger.getLogger("MAIN.BusinessMachine");
 	private static String bm_props_file = "configuration/bm.properties";
 	private static IDGenerator idg = new IDGenerator();
 	private static MQTTHandler mh;
@@ -68,9 +68,9 @@ public class BusinessMachine {
 			Component[] coms = cr.getAllComponents();
 			for(int i = 0; i < coms.length; i++) {
 				Component c = coms[i];
-				Property[] props = c.getProperties().values().toArray(new Property[0]);
+				AbstProperty[] props = c.getProperties().values().toArray(new AbstProperty[0]);
 				for(int j = 0; j < props.length; j++) {
-					Property prop = props[j];
+					AbstProperty prop = props[j];
 					LOG.trace("Updating property " + prop.getSSID() + " in OH...");
 					mh.publish("openhab/" + c.getTopic(), prop.getSSID() + "_" 
 							+ prop.getValue());

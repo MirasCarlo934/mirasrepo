@@ -1,16 +1,16 @@
-package json.objects;
+package json.RRP;
 
 public class ResPOOP extends AbstResponse {
 	private String propSSID;
-	private int propVal;
+	private Object propVal;
 
-	public ResPOOP(String rid, String cid, String rty, String propSSID, int propVal) {
+	public ResPOOP(String rid, String cid, String rty, String propSSID, Object propVal) {
 		super(rid, cid, rty, true);
 		setPropSSID(propSSID);
 		setPropVal(propVal);
 	}
 	
-	public ResPOOP(AbstRequest request, String propSSID, int propVal) {
+	public ResPOOP(AbstRequest request, String propSSID, Object propVal) {
 		super(request, true);
 		setPropSSID(propSSID);
 		setPropVal(propVal);
@@ -25,11 +25,11 @@ public class ResPOOP extends AbstResponse {
 		super.addParameter("property", propSSID);
 	}
 
-	public int getPropVal() {
+	public Object getPropVal() {
 		return propVal;
 	}
 
-	public void setPropVal(int propVal) {
+	public void setPropVal(Object propVal) {
 		this.propVal = propVal;
 		super.addParameter("value", propVal);
 	}

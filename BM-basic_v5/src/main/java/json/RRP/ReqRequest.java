@@ -1,4 +1,4 @@
-package json.objects;
+package json.RRP;
 
 import org.json.JSONException;
 import org.json.JSONObject;

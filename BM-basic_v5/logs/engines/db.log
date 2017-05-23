@@ -1,0 +1,29 @@
+2017-05-21 20:33:47,012 INFO  [main] (DB.DBEngine) DBEngine started on url: jdbc:derby://192.168.1.5:1527/DB
+2017-05-21 20:33:47,315 INFO  [main] (DB.DBEngine) Connected to Derby DB!
+2017-05-21 20:33:47,327 DEBUG [main] (DB.DBEngine) Adding RawDBEReq N1XL4617H7 to DBEngine!
+2017-05-21 20:33:47,414 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:47,485 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:47,487 DEBUG [main] (DB.DBEngine) Adding RawDBEReq SX5K8OT1GN to DBEngine!
+2017-05-21 20:33:47,515 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:47,623 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:48,119 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq D16X2PIA3G to DBEngine!
+2017-05-21 20:33:48,217 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:48,234 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:48,242 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq PTF471EFL6 to DBEngine!
+2017-05-21 20:33:48,318 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:48,358 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:48,842 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq O6D7WVY233 to DBEngine!
+2017-05-21 20:33:48,920 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:48,984 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:12,682 DEBUG [1:Process1] (DB.DBEngine) Adding UpdateDBEReq W40UH61TC2 to DBEngine!
+2017-05-21 20:34:12,687 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:13,524 DEBUG [1:Process1] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:13,647 DEBUG [1:Process1] (DB.DBEngine) Adding SelectDBEReq URG75O1WXS to DBEngine!
+2017-05-21 20:34:13,689 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:13,754 DEBUG [1:Process1] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:54,171 DEBUG [2:Process2] (DB.DBEngine) Adding UpdateDBEReq A7I2676QQ3 to DBEngine!
+2017-05-21 20:34:54,194 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:54,284 DEBUG [2:Process2] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:54,345 DEBUG [2:Process2] (DB.DBEngine) Adding SelectDBEReq YUC32GB3F6 to DBEngine!
+2017-05-21 20:34:54,394 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:54,423 DEBUG [2:Process2] (DB.DBEngine) EngineRequest processing complete!

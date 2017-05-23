@@ -5,18 +5,19 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 
 import cir.Statement;
-import json.objects.ReqRequest;
-import json.objects.ResError;
+import json.RRP.ReqRequest;
+import json.RRP.ResError;
 import main.ComponentRepository;
 import main.engines.AbstEngine;
 import main.engines.requests.EngineRequest;
 import mqtt.MQTTHandler;
 
 public abstract class AbstModule {
+	protected String logDomain;
 	protected Logger mainLOG;
 	protected Logger errorLOG;
 	private String name;
-	private String requestType;
+	protected String requestType;
 	private String[] params;
 	protected MQTTHandler mh;
 	protected ComponentRepository cr;
@@ -25,6 +26,7 @@ public abstract class AbstModule {
 			params, MQTTHandler mh, ComponentRepository cr) {
 		mainLOG = Logger.getLogger(logDomain + "." + name);
 		errorLOG = Logger.getLogger(errorLogDomain + "." + name);
+		this.logDomain = logDomain;
 		this.name = name;
 		this.params = params;
 		this.mh = mh;
@@ -133,12 +135,17 @@ public abstract class AbstModule {
 		 */
 		//mh.publish(error);
 	}
-
+	
 	/**
-	 * @return the requestType
+	 * Used to publish an exception message in log, MQTT error topic, and requesting component topic
+	 * 
+	 * @param e The Exception
 	 */
-	public String getRequestType() {
-		return requestType;
+	
+	protected void error(Exception e) {
+		mainLOG.error(e.getMessage(), e);
+		errorLOG.error(e.getMessage(), e);
+		mh.publishToErrorTopic(e.getMessage());
 	}
 
 	/**

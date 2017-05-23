@@ -1,4 +1,4 @@
-package json.objects;
+package json.RRP;
 
 public class ResError extends AbstResponse {
 	public String message;

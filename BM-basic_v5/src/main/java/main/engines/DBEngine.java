@@ -12,7 +12,7 @@ import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 
-import json.objects.ResError;
+import json.RRP.ResError;
 import main.engines.requests.EngineRequest;
 import main.engines.requests.DBEngine.DBEngineRequest;
 import main.engines.requests.DBEngine.QueryType;

@@ -5,17 +5,17 @@ import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 
-import components.properties.Property;
+import components.properties.AbstProperty;
 
 public abstract class AbstProduct {
 	private static final Logger LOG = Logger.getLogger("BM_LOG.Product");
 	private String SSID;
 	private String name;
 	private String description;
-	private Hashtable<String, Property> properties;
+	private Hashtable<String, AbstProperty> properties;
 	
 	public AbstProduct() {
-		properties = new Hashtable<String, Property>() ;
+		properties = new Hashtable<String, AbstProperty>() ;
 	}
 	
 	public String toString(){
@@ -24,22 +24,22 @@ public abstract class AbstProduct {
 		Enumeration<String> enumKey = properties.keys();
 		while(enumKey.hasMoreElements()) {
 		    String key = enumKey.nextElement();
-		    Property prop = (Property)properties.get(key);
+		    AbstProperty prop = (AbstProperty)properties.get(key);
 		    //props = props + "\n\t ID=" + prop.getPropertyID()+ ","+ key +","+prop.getType() +"," + prop.getMin() + "," + prop.getMax();
 		}
 		s = s + props;
 		return s;
 	}
 	
-	public void addProperty(Property prop) {
+	public void addProperty(AbstProperty prop) {
 		properties.put(prop.getSSID(), prop);
 	}
 	
-	public Property getProperty(String name) {
+	public AbstProperty getProperty(String name) {
 		return properties.get(name);
 	}
 	
-	public Hashtable<String, Property> getProperties() {
+	public Hashtable<String, AbstProperty> getProperties() {
 		return properties;
 	}
 	

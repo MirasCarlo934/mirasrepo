@@ -1,0 +1,68 @@
+2017-05-21 20:33:48,625 INFO  [main] (MQTT.MQTTHandler) Connected to MQTT!
+2017-05-21 20:33:48,652 DEBUG [main] (MQTT.MQTTHandler) Subscribed to BM topic!
+2017-05-21 20:33:48,652 DEBUG [main] (MQTT.MQTTHandler) Callback set!
+2017-05-21 20:33:49,276 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0011_0 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,350 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,422 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,485 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,541 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0018_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,654 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0032_-1 to topic:openhab/R682_topic
+2017-05-21 20:33:49,720 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0017_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,792 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0045_-1 to topic:openhab/R682_topic
+2017-05-21 20:33:49,837 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0031_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,893 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0016_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,937 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0030_no to topic:openhab/R682_topic
+2017-05-21 20:33:50,042 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0026_0 to topic:openhab/II81_topic
+2017-05-21 20:33:50,089 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0025_0 to topic:openhab/II81_topic
+2017-05-21 20:33:50,144 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0006_0 to topic:openhab/LLU3_topic
+2017-05-21 20:33:50,187 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0039_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,237 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0038_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,287 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0037_1 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,337 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0044_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,392 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0043_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,443 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0042_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,494 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0041_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,544 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0040_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,594 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0002_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,644 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0020_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,694 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0029_1 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,744 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0019_1 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,794 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0024_47 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,844 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0023_1 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,894 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0022_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,944 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0021_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,994 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0003_0 to topic:openhab/WJ48_topic
+2017-05-21 20:34:12,659 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message arrived at topic BM
+2017-05-21 20:34:12,660 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message is: {
+RID:"5ccf7fc8a1fc",
+CID:"0005",
+RTY:"register",
+name:"Carlo phone (Plex)",
+roomID:"PLEX"
+}
+2017-05-21 20:34:12,693 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"H7K5_topic","id":"H7K5","RID":"5ccf7fc8a1fc"} to topic:H7K5_topic
+2017-05-21 20:34:13,917 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0011","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:13,967 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0011_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:14,017 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0036","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:14,067 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:14,117 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0035","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:14,169 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:14,218 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0034","RID":"5ccf7fc8a1fc","value":1} to topic:H7K5_topic
+2017-05-21 20:34:14,268 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,166 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message arrived at topic BM
+2017-05-21 20:34:54,166 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message is: {
+RID:"5ccf7fc8a1fc",
+CID:"0005",
+RTY:"register",
+name:"Carlo phone (Plex)",
+roomID:"PLEX"
+}
+2017-05-21 20:34:54,212 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"H7K5_topic","id":"H7K5","RID":"5ccf7fc8a1fc"} to topic:H7K5_topic
+2017-05-21 20:34:54,462 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0011","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:54,512 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0011_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,562 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0036","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:54,613 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,663 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0035","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:54,713 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,763 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0034","RID":"5ccf7fc8a1fc","value":1} to topic:H7K5_topic
+2017-05-21 20:34:54,814 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic

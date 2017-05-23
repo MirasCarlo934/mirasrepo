@@ -3,8 +3,8 @@ package main.modules;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import json.objects.ReqRequest;
-import json.objects.ResError;
+import json.RRP.ReqRequest;
+import json.RRP.ResError;
 import main.ComponentRepository;
 import main.engines.DBEngine;
 import main.engines.OHEngine;

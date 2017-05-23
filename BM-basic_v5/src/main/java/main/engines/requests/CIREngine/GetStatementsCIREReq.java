@@ -1,11 +1,11 @@
 package main.engines.requests.CIREngine;
 
 import components.Component;
-import components.properties.Property;
+import components.properties.AbstProperty;
 
 public class GetStatementsCIREReq extends CIREngineRequest {
 	private Component component = null;
-	private Property property = null;
+	private AbstProperty property = null;
 	private boolean getAll = false;
 
 	/**
@@ -15,7 +15,7 @@ public class GetStatementsCIREReq extends CIREngineRequest {
 	 * @param component The specified Component
 	 * @param property The specified Property
 	 */
-	public GetStatementsCIREReq(String id, Component component, Property property) {
+	public GetStatementsCIREReq(String id, Component component, AbstProperty property) {
 		super(id, CIRRequestType.getStatements);
 		setComponent(component);
 		setProperty(property);
@@ -39,11 +39,11 @@ public class GetStatementsCIREReq extends CIREngineRequest {
 		this.component = component;
 	}
 
-	public Property getProperty() {
+	public AbstProperty getProperty() {
 		return property;
 	}
 
-	private void setProperty(Property property) {
+	private void setProperty(AbstProperty property) {
 		this.property = property;
 	}
 

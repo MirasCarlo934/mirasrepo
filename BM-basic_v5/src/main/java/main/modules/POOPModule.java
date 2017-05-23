@@ -9,11 +9,13 @@ import cir.Argument;
 import cir.ExecutionBlock;
 import cir.Statement;
 import components.Component;
-import components.properties.Property;
-import json.objects.ReqPOOP;
-import json.objects.ReqRequest;
-import json.objects.ResError;
-import json.objects.ResPOOP;
+import components.properties.AbstProperty;
+import components.properties.CommonProperty;
+import components.properties.StringProperty;
+import json.RRP.ReqPOOP;
+import json.RRP.ReqRequest;
+import json.RRP.ResError;
+import json.RRP.ResPOOP;
 import main.ComponentRepository;
 import main.engines.CIREngine;
 import main.engines.DBEngine;
@@ -33,124 +35,98 @@ public class POOPModule extends AbstModule {
 	private String propIDParam;
 	private String propValParam;
 	private String propsTable = ""; //PROPERTIES table
+	private String oh_topic;
 	private IDGenerator idg = new IDGenerator();
 
 	public POOPModule(String logDomain, String errorLogDomain, String RTY, String propIDParam, 
-			String propValParam, MQTTHandler mh, OHEngine ohe, ComponentRepository cr, DBEngine dbe, CIREngine cire) {
+			String propValParam, String oh_topic, MQTTHandler mh, OHEngine ohe, ComponentRepository cr, 
+			DBEngine dbe, CIREngine cire) {
 		super(logDomain, errorLogDomain, "POOPModule", RTY, 
 				new String[]{propIDParam, propValParam}, mh, cr);
 		this.dbe = dbe;
 		this.cire = cire;
 		this.propIDParam = propIDParam;
 		this.propValParam = propValParam;
+		this.oh_topic = oh_topic;
 	}
 
+	/**
+	 * Updates the system of the property change of the requesting component and also the property
+	 * changes of all the affected components according to CIR.
+	 * 
+	 * @param request The Request to be processed. <b>Must be</b> a <i>ReqPOOP</i> object.
+	 */
 	@Override
 	protected void process(ReqRequest request) {
 		ReqPOOP poop = new ReqPOOP(request, propIDParam, propValParam);
 		Component c = cr.getComponent(poop.cid);
-		Property p = c.getProperty(poop.propSSID);
-		
-		//checks if propValue is a percentage (denoted by a % symbol)
-		//used for handling POOP requests from OH Dimmer items
-		if(poop.propValueStr.contains("%")) {
-			poop.propValue = Math.abs(poop.propValue) * (p.getMax() / 100);
-		}
 		
 		mainLOG.info("Changing component " + request.cid + " property " 
 				+ poop.propSSID + " to " + poop.propValue + "...");
-		if(c.getProperty(poop.propSSID).getValue() == poop.propValue) {
+		if(c.getProperty(poop.propSSID).getValue().equals(poop.propValue)) {
 			mainLOG.info("Property is already set to " + poop.propValue + "!");
 			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
 			mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
 		}
 		else {
-			//cire.update();
-			cire.processRequest(new UpdateCIREReq(idg.generateMixedCharID(10)), Thread.currentThread());
+			
+			mainLOG.debug("Updating component property in system...");
+			forwardEngineRequest(cire, new UpdateCIREReq(idg.generateMixedCharID(10)));
 			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				mainLOG.error("Cannot stop thread!", e);
+				AbstProperty prop = c.getProperty(poop.propSSID);
+				prop.setValue(poop.propValue, dbe, propsTable, logDomain);
+				prop.publishPropertyValueToMQTT(mh, poop.rid, poop.cid, poop.rty);
+			} catch (Exception e) {
+				mainLOG.error("Cannot change property " + poop.propSSID + " of component " + 
+						poop.cid);
+				error(e);
 				e.printStackTrace();
 			}
-			updateSystem(poop);
-			mh.publish(new ResPOOP(request, poop.propSSID, poop.propValue));
-			mh.publish("openhab/" + c.getTopic(), poop.propSSID + "_" + poop.propValue);
+			
+			mainLOG.info("Updating affected component properties in system...");
+			boolean updatedOthers = false;
+			GetSpecificExecBlocksCIREReq cirer1 = new GetSpecificExecBlocksCIREReq(idg.generateMixedCharID(10), 
+					poop);
+			Object o = forwardEngineRequest(cire, cirer1);
+			Vector<ExecutionBlock> execs = (Vector<ExecutionBlock>) o;
+			if(execs.size() > 0) updatedOthers = true;
+			for(int k = 0; k < execs.size(); k++) {
+				ExecutionBlock exec = execs.get(k);
+				Component com = cr.getComponent(exec.getComID());
+				mainLOG.info("Changing commponent " + com.getSSID() + " property " + 
+						exec.getPropSSID() + " to " + exec.getPropValue() + "...");
+				try {
+					AbstProperty prop = com.getProperty(exec.getPropSSID());
+					prop.setValue(exec.getPropValue(), dbe, propsTable, logDomain);
+					prop.publishPropertyValueToMQTT(mh, poop.rid, com.getSSID(), poop.rty);
+				} catch (Exception e) {
+					mainLOG.error("Cannot change property " + exec.getPropSSID() + " of component " + 
+							com.getSSID());
+					error(e);
+					e.printStackTrace();
+				}
+				//updates the physical component
+				//mh.publish(com.getTopic(), new ResPOOP(poop.rid, com.getSSID(), poop.rty,
+				//		exec.getPropSSID(), exec.getPropValue()));
+				//updates OpenHAB component item
+				//mh.publish(oh_topic + "/" + com.getTopic(), exec.getPropSSID() + "_"
+				//		+ exec.getPropValue());
+			}
+			if(!updatedOthers) mainLOG.info("No other components updated!");
 		}
 		mainLOG.debug("POOP processing complete!");
 	}
-	
-	/**
-	 * Updates the system of the property change of the requesting component and also the property
-	 * changes of all the affected components according to CIR.
-	 * 
-	 * @param poop
-	 */
-	private void updateSystem(ReqPOOP poop) {
-		mainLOG.debug("Updating component property in system...");
-		Component c = cr.getComponent(poop.cid);
-		c.setPropertyValue(poop.propSSID, poop.propValue);
-		
-		mainLOG.info("Updating affected component properties in system...");
-		boolean updatedOthers = false;
-		GetSpecificExecBlocksCIREReq cirer1 = new GetSpecificExecBlocksCIREReq(idg.generateMixedCharID(10), 
-				poop);
-		Object o = forwardEngineRequest(cire, cirer1);
-		Vector<ExecutionBlock> execs = (Vector<ExecutionBlock>) o;
-		
-		if(execs.size() > 0) updatedOthers = true;
-		
-		//updates system
-		for(int k = 0; k < execs.size(); k++) {
-			ExecutionBlock exec = execs.get(k);
-			Component com = cr.getComponent(exec.getComID());
-			mainLOG.info("Changing commponent " + com.getSSID() + " property " + 
-					exec.getPropSSID() + " to " + exec.getPropValue() + "...");
-			com.setPropertyValue(exec.getPropSSID(), Integer.parseInt(exec.getPropValue()));
-			//updates the physical component
-			mh.publish(com.getTopic(), new ResPOOP(poop.rid, com.getSSID(), poop.rty,
-					exec.getPropSSID(), Integer.parseInt(exec.getPropValue())));
-			//updates OpenHAB component item
-			mh.publish("openhab/" + com.getTopic(), exec.getPropSSID() + "_"
-					+ exec.getPropValue());
-		}
-				
-		//updates database
-		mainLOG.debug("Updating component property in DB...");
-		HashMap<String, Object> args1 = new HashMap<String, Object>(2);
-		args1.put("com_id", poop.cid);
-		args1.put("cpl_ssid", poop.propSSID);
-		HashMap<String, Object> vals1 = new HashMap<String, Object>(1);
-		vals1.put("prop_value", String.valueOf(poop.propValue));
-		forwardEngineRequest(dbe, 
-				new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals1, args1));
-		for(int k = 0; k < execs.size(); k++) {
-			ExecutionBlock exec = execs.get(k);
-			Component com = cr.getComponent(exec.getComID());
-			HashMap<String, Object> args2 = new HashMap<String, Object>(2);
-			args2.put("com_id", com.getSSID());
-			args2.put("cpl_ssid", exec.getPropSSID());
-			HashMap<String, Object> vals2 = new HashMap<String, Object>(1);
-			vals2.put("prop_value", String.valueOf(exec.getPropValue()));
-			mainLOG.debug("Updating component property in DB...");
-			dbe.processRequest(new UpdateDBEReq(idg.generateMixedCharID(10), propsTable, vals2, 
-					args2), Thread.currentThread());
-			try {
-				synchronized (Thread.currentThread()){Thread.currentThread().wait();}
-			} catch (InterruptedException e) {
-				mainLOG.error("Cannot stop thread!", e);
-				e.printStackTrace();
-			}
-		}
-		if(!updatedOthers) mainLOG.info("No other components updated!");
-	}
 
 	/**
-	 * Checks if request follows the ff:
-	 * <ul>
+	 * Checks if request follows the following requirements:
+	 * <ol>
 	 * 	<li>Component with CID has the specified property</li>
 	 * 	<li>Value specified is valid for the property</li>
-	 * </ul>
+	 * 	<ul>
+	 * 		<li><b>For CommonProperty: <i>true</i></b> if value is an integer and is within min/max
+	 * 			range of the specified property</li>
+	 * 	</ul>
+	 * </ol>
 	 */
 	@Override
 	protected boolean additionalRequestChecking(ReqRequest request) {
@@ -158,20 +134,55 @@ public class POOPModule extends AbstModule {
 		ReqPOOP poop = new ReqPOOP(request.getJSON(), propIDParam, propValParam);
 		
 		Component c = cr.getComponent(poop.cid);
-		if(c.getProperty(poop.propSSID) != null) {
-			Property p = c.getProperty(poop.propSSID);
-			if(p.getMin() <= poop.propValue && p.getMax() >= poop.propValue) {
-				b = true;
-			}
-			else {
-				ResError re = new ResError(poop, "Property value not within min/max of the "
-						+ "property!");
-				error(re);
-			}
+		if(c.getProperty(poop.propSSID) != null) { //checks if property exists in the component
+			AbstProperty prop = c.getProperty(poop.propSSID);
+			
+			if(prop.getClass().equals(CommonProperty.class)) { //for CommonProperty checking
+				CommonProperty p = (CommonProperty) prop;
+				try {//checks if request propValue is a percentage (denoted by a % symbol), used for handling POOP requests from OH Dimmer items
+					String poop_pval = (String) poop.propValue;
+					if(p.getClass().equals(CommonProperty.class) && poop_pval.substring(0, 1).equals("%")) {
+						int poop_real_pval = 0;
+						try {//checks if request propValue is an integer
+							poop_real_pval = Integer.parseInt(poop_pval.substring(1));
+						} catch(NumberFormatException e) {
+							ResError re = new ResError(poop, "POOPRequest contains invalid property "
+									+ "value! Ending request processing...");
+							error(re);
+							return false;
+						}
+						poop.propValue = poop_real_pval * (p.getMax() / 100);
+					}
+				} catch(ClassCastException e) {
+					ResError re = new ResError(poop, "POOPRequest contains nonstring and non-integer "
+							+ "property value. Errors may arise. Ending request processing...");
+					error(re);
+					return false;
+				}
+				try {//checks if request propValue is within min/max range
+					if(p.getMin() <= Integer.parseInt(poop.propValue.toString()) && 
+							p.getMax() >= Integer.parseInt(poop.propValue.toString())) {
+						b = true;
+					}
+					else {
+						ResError re = new ResError(poop, "Property value not within min/max of the "
+								+ "property!");
+						error(re);
+						return false;
+					}
+				} catch (NumberFormatException e) {
+					ResError re = new ResError(poop, "Specified property requires an integer property "
+							+ "value!");
+					error(re);
+					return false;
+				}
+			} 
 		}
 		else {
 			error(new ResError(poop, "Property does not exist!"));
+			return false;
 		}
+		
 		return b;
 	}
 

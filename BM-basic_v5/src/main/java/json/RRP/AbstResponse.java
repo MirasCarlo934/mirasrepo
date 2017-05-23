@@ -1,4 +1,4 @@
-package json.objects;
+package json.RRP;
 
 import org.json.JSONObject;
 
@@ -59,6 +59,7 @@ public abstract class AbstResponse {
 		json.put(name, value);
 	}
 	
+	@Override
 	public String toString() {
 		return json.toString();
 	}

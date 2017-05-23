@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:annotation-config/>
+	<bean id="register" class="main.modules.RegistrationModule" scope="prototype">
+		<constructor-arg name="logDomain" value="${log.domain.registration}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="RTY" value="${rty.registration}"/>
+		<constructor-arg name="poopRTY" value="${rty.poop}"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="components" ref="Components"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="productQuery" value="${product.queryString}"/>
+		<constructor-arg name="nameParam" value="${registration.param.name}"/>
+		<constructor-arg name="prodIDParam" value="${registration.param.productID}"/>
+		<constructor-arg name="roomIDParam" value="${registration.param.roomID}"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
+		<constructor-arg name="innatePropTypeID" value="${db.properties.innatePropType}"/>
+		<constructor-arg name="stringPropTypeID" value="${db.properties.stringPropType}"/>
+		<property name="comsTable" value="${table.comstable}"/>
+		<property name="propsTable" value="${table.propstable}"/>
+	</bean>
+	<bean id="poop" class="main.modules.POOPModule" scope="prototype">
+		<constructor-arg name="logDomain" value="${log.domain.poop}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="RTY" value="${rty.poop}"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="cire" ref="CIREngine"/>
+		<constructor-arg name="propIDParam" value="${poop.param.propertyID}"/>
+		<constructor-arg name="propValParam" value="${poop.param.propertyValue}"/>
+		<constructor-arg name="oh_topic" value="{oh.mqtt_topic}"/>
+		<constructor-arg name="ohe" ref="OHEngine"></constructor-arg>
+		<property name="propsTable" value="${table.propstable}"/>
+	</bean>
+	<bean id="plex" class="main.modules.PlexModule" scope="prototype">
+		<constructor-arg name="logDomain" value="${log.domain.plex}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="RTY" value="${rty.plex}"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
+		<constructor-arg name="pe" ref="PlexEngine"/>
+		<constructor-arg name="commandParam" value="${plex.param.command}"/>
+		<constructor-arg name="playerProdSSID" value="${plex.playerProdSSID}"/>
+	</bean>
+	<bean id="detach" class="main.modules.DetachmentModule" scope="prototype">
+		<constructor-arg name="logDomain" value="${log.domain.detachment}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="RTY" value="${rty.detachment}"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
+		<property name="propsTable" value="${table.propstable}"/>
+		<property name="comsTable" value="${table.comstable}"/>
+	</bean>
+	<bean id="bye" class="main.modules.DeactivationModule">
+		<constructor-arg name="logDomain" value="${log.domain.deactivation}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="RTY" value="${rty.deactivation}"/>
+		<constructor-arg name="dbe" ref="DBManager"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
+		<constructor-arg name="comstable" value="${table.comstable}"/>
+	</bean>
+	<!-- <bean id="ohcommand" class="main.modules.OHControlModule" scope="prototype">
+		<constructor-arg name="RTY" value="detach"/>
+		<constructor-arg name="mh" ref="MQTTHandler"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="ohe" ref="OHEngine"/>
+		<constructor-arg name="commandParam" value="${ohcommand.param.command}"/>
+		<constructor-arg name="start" value="${ohcommand.command.start}"/>
+		<constructor-arg name="stop" value="${ohcommand.command.stop}"/>
+	</bean> -->
+</beans>

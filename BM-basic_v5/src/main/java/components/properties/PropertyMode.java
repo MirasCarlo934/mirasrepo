@@ -1,7 +1,7 @@
 package components.properties;
 
 public enum PropertyMode {
-	I, O, IO;
+	I, O, IO, Null;
 	
 	public static PropertyMode parseModeFromString(String str) {
 		if(str.equals("I"))
@@ -11,6 +11,6 @@ public enum PropertyMode {
 		else if(str.equals("IO"))
 			return IO;
 		else
-			throw new IllegalArgumentException();
+			return Null;
 	}
 }

@@ -1,4 +1,4 @@
-package json.objects;
+package json.RRP;
 
 public class ResRegister extends AbstResponse {
 	public String id; //ssid of the newly registered component
@@ -6,6 +6,14 @@ public class ResRegister extends AbstResponse {
 
 	public ResRegister(AbstRequest request, String id, String topic) {
 		super(request, true);
+		this.id = id;
+		this.topic = topic;
+		addParameter("id", id);
+		addParameter("topic", topic);
+	}
+	
+	public ResRegister(String MAC, String CID, String RTY, String id, String topic) {
+		super(MAC, CID, RTY, true);
 		this.id = id;
 		this.topic = topic;
 		addParameter("id", id);

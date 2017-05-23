@@ -14,7 +14,7 @@ import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
 import org.eclipse.paho.client.mqttv3.MqttSecurityException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import json.objects.AbstResponse;
+import json.RRP.AbstResponse;
 import main.ComponentRepository;
 import main.controller.Controller;
 

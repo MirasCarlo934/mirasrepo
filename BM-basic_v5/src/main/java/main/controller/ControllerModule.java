@@ -5,7 +5,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import json.objects.ReqRequest;
+import json.RRP.ReqRequest;
 import main.BusinessMachine;
 import main.ComponentRepository;
 import main.modules.AbstModule;

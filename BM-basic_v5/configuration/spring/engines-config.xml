@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:annotation-config/>
+   
+	<bean id="DBManager" class="main.engines.DBEngine" scope="singleton">
+		<!-- <constructor-arg name="systimer" ref="SystemTimer"/> -->
+		<constructor-arg name="logDomain" value="${log.domain.db}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="dbURL" value="${db.host}"/>
+		<constructor-arg name="dbusr" value="${db.dbusr}"/>
+		<constructor-arg name="dbpwd" value="${db.dbpwd}"/>
+	</bean>
+	<bean id="PlexEngine" class="main.engines.PlexEngine" scope="singleton">
+		<constructor-arg name="logDomain" value="${log.domain.plex}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="plexURL" value="${plex.serverURL}"/>
+		<constructor-arg name="URLPropSSID" value="${plex.URLproperty.propSSID}"/>
+		<constructor-arg name="playerProdSSID" value="${plex.playerProdSSID}"/>
+		<constructor-arg name="playerURLPropID" value="${plex.playerProperties.URL}"/>
+		<constructor-arg name="playerStatePropID" value="${plex.playerProperties.playerStatus}"/>
+		<constructor-arg name="playPropID" value="${plex.playerProperties.play}"/>
+		<constructor-arg name="pausePropID" value="${plex.playerProperties.pause}"/>
+		<constructor-arg name="progressPropID" value="${plex.playerProperties.stop}"/>
+		<constructor-arg name="stopPropID" value="${plex.playerProperties.stop}"/>
+		<constructor-arg name="progressPropID" value="${plex.playerProperties.progress}"/>
+	</bean>
+	<bean id="CIREngine" class="main.engines.CIREngine" scope="singleton">
+		<constructor-arg name="logDomain" value="${log.domain.plex}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="cir_filepath" value="${cir.filepath}"/>
+		<constructor-arg name="componentRepository" ref="Components"/>
+	</bean>
+	<bean id="OHEngine" class="main.engines.OHEngine" scope="singleton">
+		<constructor-arg name="ohIP" value="${oh.ip}"/>
+		<constructor-arg name="logDomain" value="${log.domain.oh}"/>
+		<constructor-arg name="errorLogDomain" value="${log.domain.error}"/>
+		<constructor-arg name="cr" ref="Components"/>
+		<constructor-arg name="itemsList">
+			<map>
+				<entry key="digital" value="${oh.items.digital}"/>
+				<entry key="analog" value="${oh.items.analog}"/>
+				<entry key="analogHue" value="${oh.items.hue}"/>
+				<entry key="percent" value="${oh.items.percent}"/>
+				<entry key="string" value="${oh.items.string}"/>
+			</map>
+		</constructor-arg>
+		<constructor-arg name="OHMqttBroker" value="${oh.mqttbroker}"/>
+		<constructor-arg name="os" value="${bm.os}"/>
+		<constructor-arg name="oh_filepath" value="${oh.location}"/>
+		<constructor-arg name="items_filename" value="${oh.items_filename}"/>
+		<constructor-arg name="sitemap_filename" value="${oh.sitemap_filename}"/>
+		<constructor-arg name="sitemap_name" value="${oh.sitemap_name}"/>
+		<constructor-arg name="rules_filename" value="${oh.rules_filename}"/>
+	</bean>
+	
+</beans>

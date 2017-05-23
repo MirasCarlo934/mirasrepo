@@ -1,94 +1,221 @@
-2017-05-17 01:39:51,737 INFO  [main] (main.BusinessMachine) Starting BM...
-2017-05-17 01:39:53,544 INFO  [main] (DB.DBEngine) DBEngine started on url: jdbc:derby://192.168.1.5:1527/DB
-2017-05-17 01:39:53,911 INFO  [main] (DB.DBEngine) Connected to Derby DB!
-2017-05-17 01:39:53,919 INFO  [main] (BM_LOG.ComponentRepository) Populating Devices...
-2017-05-17 01:39:53,934 DEBUG [main] (DB.DBEngine) Adding RawDBEReq E634TNC5IE to DBEngine!
-2017-05-17 01:39:53,949 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
-2017-05-17 01:39:54,022 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
-2017-05-17 01:39:54,024 DEBUG [main] (DB.DBEngine) Adding RawDBEReq YYE0X51L8H to DBEngine!
-2017-05-17 01:39:54,050 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
-2017-05-17 01:39:54,099 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
-2017-05-17 01:39:54,112 DEBUG [main] (BM_LOG.ComponentRepository) Adding component LLU3 into ComponentRepository...
-2017-05-17 01:39:54,113 DEBUG [main] (BM_LOG.ComponentRepository) Component LLU3 added!
-2017-05-17 01:39:54,113 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: LLU3 with value: 1
-2017-05-17 01:39:54,113 FATAL [main] (BM_LOG.ComponentRepository) LLU3
-2017-05-17 01:39:54,156 DEBUG [main] (BM_LOG.ComponentRepository) Adding component CJ7A into ComponentRepository...
-2017-05-17 01:39:54,156 DEBUG [main] (BM_LOG.ComponentRepository) Component CJ7A added!
-2017-05-17 01:39:54,156 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0018 of device: CJ7A with value: 0
-2017-05-17 01:39:54,156 FATAL [main] (BM_LOG.ComponentRepository) CJ7A
-2017-05-17 01:39:54,156 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0032 of device: CJ7A with value: 0
-2017-05-17 01:39:54,157 FATAL [main] (BM_LOG.ComponentRepository) CJ7A
-2017-05-17 01:39:54,157 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0017 of device: CJ7A with value: 1
-2017-05-17 01:39:54,157 FATAL [main] (BM_LOG.ComponentRepository) CJ7A
-2017-05-17 01:39:54,157 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0031 of device: CJ7A with value: 38
-2017-05-17 01:39:54,157 FATAL [main] (BM_LOG.ComponentRepository) CJ7A
-2017-05-17 01:39:54,157 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0016 of device: CJ7A with value: 1
-2017-05-17 01:39:54,157 FATAL [main] (BM_LOG.ComponentRepository) CJ7A
-2017-05-17 01:39:54,158 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0030 of device: CJ7A with value: 0
-2017-05-17 01:39:54,158 FATAL [main] (BM_LOG.ComponentRepository) CJ7A
-2017-05-17 01:39:54,180 DEBUG [main] (BM_LOG.ComponentRepository) Adding component II81 into ComponentRepository...
-2017-05-17 01:39:54,180 DEBUG [main] (BM_LOG.ComponentRepository) Component II81 added!
-2017-05-17 01:39:54,180 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0026 of device: II81 with value: 1
-2017-05-17 01:39:54,180 FATAL [main] (BM_LOG.ComponentRepository) II81
-2017-05-17 01:39:54,180 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0025 of device: II81 with value: 1
-2017-05-17 01:39:54,180 FATAL [main] (BM_LOG.ComponentRepository) II81
-2017-05-17 01:39:54,207 DEBUG [main] (BM_LOG.ComponentRepository) Adding component H7K5 into ComponentRepository...
-2017-05-17 01:39:54,207 DEBUG [main] (BM_LOG.ComponentRepository) Component H7K5 added!
-2017-05-17 01:39:54,207 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0011 of device: H7K5 with value: 1
-2017-05-17 01:39:54,207 FATAL [main] (BM_LOG.ComponentRepository) H7K5
-2017-05-17 01:39:54,207 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0036 of device: H7K5 with value: 0
-2017-05-17 01:39:54,207 FATAL [main] (BM_LOG.ComponentRepository) H7K5
-2017-05-17 01:39:54,208 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0035 of device: H7K5 with value: 0
-2017-05-17 01:39:54,208 FATAL [main] (BM_LOG.ComponentRepository) H7K5
-2017-05-17 01:39:54,208 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0034 of device: H7K5 with value: 1
-2017-05-17 01:39:54,360 FATAL [main] (BM_LOG.ComponentRepository) H7K5
-2017-05-17 01:39:54,376 INFO  [main] (BM_LOG.ComponentRepository) Devices population done!
-2017-05-17 01:39:54,376 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
-2017-05-17 01:39:54,377 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq AS5Q147B27 to DBEngine!
-2017-05-17 01:39:54,451 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
-2017-05-17 01:39:54,462 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
-2017-05-17 01:39:54,467 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
-2017-05-17 01:39:54,467 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
-2017-05-17 01:39:54,467 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq GSWYQK3K87 to DBEngine!
-2017-05-17 01:39:54,551 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
-2017-05-17 01:39:54,560 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
-2017-05-17 01:39:54,568 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
-2017-05-17 01:39:54,709 INFO  [main] (MQTT.MQTTHandler) Connected to MQTT!
-2017-05-17 01:39:54,721 DEBUG [main] (MQTT.MQTTHandler) Subscribed to BM topic!
-2017-05-17 01:39:54,721 DEBUG [main] (MQTT.MQTTHandler) Callback set!
-2017-05-17 01:39:54,754 INFO  [main] (MAIN.Controller) Controller constructed!
-2017-05-17 01:39:55,011 INFO  [main] (CIR.CIREngine) CIREngine started!
-2017-05-17 01:39:55,019 INFO  [main] (OH.OHEngine) Connecting to OH files in OpenHAB directory...
-2017-05-17 01:39:55,070 DEBUG [main] (OH.OHEngine) Connected to OH files!
-2017-05-17 01:39:55,070 DEBUG [main] (OH.OHEngine) Updating .items file...
-2017-05-17 01:39:55,070 DEBUG [main] (OH.OHEngine) Adding rooms to groups declaration...
-2017-05-17 01:39:55,070 DEBUG [main] (OH.OHEngine) Adding Components with multiple properties to groups declaration...
-2017-05-17 01:39:55,070 DEBUG [main] (OH.OHEngine) Adding individual Properties to items declaration...
-2017-05-17 01:39:55,127 DEBUG [main] (OH.OHEngine) Updating .rules file...
-2017-05-17 01:39:55,127 WARN  [main] (OH.OHEngine) Rules for component type 0006 not found!
-2017-05-17 01:39:55,132 WARN  [main] (OH.OHEngine) Rules for component type 0008 not found!
-2017-05-17 01:39:55,134 WARN  [main] (OH.OHEngine) Rules for component type 0003 not found!
-2017-05-17 01:39:55,140 DEBUG [main] (OH.OHEngine) Updating .sitemap file...
-2017-05-17 01:39:55,141 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
-2017-05-17 01:39:55,141 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq NWC30XA521 to DBEngine!
-2017-05-17 01:39:55,154 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
-2017-05-17 01:39:55,163 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
-2017-05-17 01:39:55,169 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
-2017-05-17 01:39:55,171 INFO  [main] (OH.OHEngine) OHEngine started!
-2017-05-17 01:39:55,500 INFO  [main] (main.BusinessMachine) Config file core-config.xml loaded.
-2017-05-17 01:39:55,500 INFO  [main] (main.BusinessMachine) Updating OH items' states...
-2017-05-17 01:39:55,501 DEBUG [main] (main.BusinessMachine) Update complete!
-2017-05-17 01:39:55,502 INFO  [main] (main.BusinessMachine) BusinessMachine started!
-2017-05-17 01:39:55,551 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0011_1 to topic:openhab/H7K5_topic
-2017-05-17 01:39:55,577 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
-2017-05-17 01:39:55,627 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
-2017-05-17 01:39:55,677 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
-2017-05-17 01:39:55,728 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0026_1 to topic:openhab/II81_topic
-2017-05-17 01:39:55,779 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0025_1 to topic:openhab/II81_topic
-2017-05-17 01:39:55,829 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0006_1 to topic:openhab/LLU3_topic
-2017-05-17 01:39:55,879 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0018_0 to topic:openhab/CJ7A_topic
-2017-05-17 01:39:55,929 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0032_0 to topic:openhab/CJ7A_topic
-2017-05-17 01:39:55,980 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0017_1 to topic:openhab/CJ7A_topic
-2017-05-17 01:39:56,031 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0031_38 to topic:openhab/CJ7A_topic
-2017-05-17 01:39:56,081 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0016_1 to topic:openhab/CJ7A_topic
-2017-05-17 01:39:56,131 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0030_0 to topic:openhab/CJ7A_topic
+2017-05-21 20:33:45,461 INFO  [main] (MAIN.BusinessMachine) Starting BM...
+2017-05-21 20:33:47,012 INFO  [main] (DB.DBEngine) DBEngine started on url: jdbc:derby://192.168.1.5:1527/DB
+2017-05-21 20:33:47,315 INFO  [main] (DB.DBEngine) Connected to Derby DB!
+2017-05-21 20:33:47,325 INFO  [main] (BM_LOG.ComponentRepository) Populating Devices...
+2017-05-21 20:33:47,327 DEBUG [main] (DB.DBEngine) Adding RawDBEReq N1XL4617H7 to DBEngine!
+2017-05-21 20:33:47,414 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:47,485 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:47,487 DEBUG [main] (DB.DBEngine) Adding RawDBEReq SX5K8OT1GN to DBEngine!
+2017-05-21 20:33:47,515 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:47,623 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:47,651 DEBUG [main] (BM_LOG.ComponentRepository) Adding component LLU3 into ComponentRepository...
+2017-05-21 20:33:47,652 DEBUG [main] (BM_LOG.ComponentRepository) Component LLU3 added!
+2017-05-21 20:33:47,653 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0006 of device: LLU3 with value: 0
+2017-05-21 20:33:47,717 DEBUG [main] (BM_LOG.ComponentRepository) Adding component II81 into ComponentRepository...
+2017-05-21 20:33:47,718 DEBUG [main] (BM_LOG.ComponentRepository) Component II81 added!
+2017-05-21 20:33:47,718 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0026 of device: II81 with value: 0
+2017-05-21 20:33:47,718 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0025 of device: II81 with value: 0
+2017-05-21 20:33:47,800 DEBUG [main] (BM_LOG.ComponentRepository) Adding component H7K5 into ComponentRepository...
+2017-05-21 20:33:47,800 DEBUG [main] (BM_LOG.ComponentRepository) Component H7K5 added!
+2017-05-21 20:33:47,801 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0011 of device: H7K5 with value: 0
+2017-05-21 20:33:47,801 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0036 of device: H7K5 with value: 0
+2017-05-21 20:33:47,801 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0035 of device: H7K5 with value: 0
+2017-05-21 20:33:47,802 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0034 of device: H7K5 with value: 1
+2017-05-21 20:33:47,886 DEBUG [main] (BM_LOG.ComponentRepository) Adding component WJ48 into ComponentRepository...
+2017-05-21 20:33:47,886 DEBUG [main] (BM_LOG.ComponentRepository) Component WJ48 added!
+2017-05-21 20:33:47,886 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0020 of device: WJ48 with value: 0
+2017-05-21 20:33:47,886 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0002 of device: WJ48 with value: 0
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0029 of device: WJ48 with value: 1
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0019 of device: WJ48 with value: 1
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0024 of device: WJ48 with value: 47
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0023 of device: WJ48 with value: 1
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0022 of device: WJ48 with value: 0
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0003 of device: WJ48 with value: 0
+2017-05-21 20:33:47,887 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0021 of device: WJ48 with value: 0
+2017-05-21 20:33:48,003 DEBUG [main] (BM_LOG.ComponentRepository) Adding component T3W0 into ComponentRepository...
+2017-05-21 20:33:48,003 DEBUG [main] (BM_LOG.ComponentRepository) Component T3W0 added!
+2017-05-21 20:33:48,003 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0039 of device: T3W0 with value: 0
+2017-05-21 20:33:48,003 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0038 of device: T3W0 with value: 0
+2017-05-21 20:33:48,004 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0037 of device: T3W0 with value: 1
+2017-05-21 20:33:48,004 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0044 of device: T3W0 with value: 0
+2017-05-21 20:33:48,004 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0043 of device: T3W0 with value: 0
+2017-05-21 20:33:48,004 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0042 of device: T3W0 with value: 0
+2017-05-21 20:33:48,004 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0041 of device: T3W0 with value: 0
+2017-05-21 20:33:48,004 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0040 of device: T3W0 with value: 0
+2017-05-21 20:33:48,080 DEBUG [main] (BM_LOG.ComponentRepository) Adding component R682 into ComponentRepository...
+2017-05-21 20:33:48,081 DEBUG [main] (BM_LOG.ComponentRepository) Component R682 added!
+2017-05-21 20:33:48,081 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0018 of device: R682 with value: 0
+2017-05-21 20:33:48,081 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0032 of device: R682 with value: -1
+2017-05-21 20:33:48,082 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0045 of device: R682 with value: -1
+2017-05-21 20:33:48,082 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0017 of device: R682 with value: 0
+2017-05-21 20:33:48,082 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0031 of device: R682 with value: 0
+2017-05-21 20:33:48,082 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0016 of device: R682 with value: 0
+2017-05-21 20:33:48,083 DEBUG [main] (BM_LOG.ComponentRepository) Setting property: 0030 of device: R682 with value: no
+2017-05-21 20:33:48,118 INFO  [main] (BM_LOG.ComponentRepository) Devices population done!
+2017-05-21 20:33:48,118 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-21 20:33:48,119 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq D16X2PIA3G to DBEngine!
+2017-05-21 20:33:48,217 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:48,234 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:48,241 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-21 20:33:48,241 INFO  [main] (BM_LOG.ComponentRepository) Retrieving OH bindings from DB...
+2017-05-21 20:33:48,242 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq PTF471EFL6 to DBEngine!
+2017-05-21 20:33:48,318 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:48,358 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:48,369 DEBUG [main] (BM_LOG.ComponentRepository) Bindings retrieved!
+2017-05-21 20:33:48,625 INFO  [main] (MQTT.MQTTHandler) Connected to MQTT!
+2017-05-21 20:33:48,652 DEBUG [main] (MQTT.MQTTHandler) Subscribed to BM topic!
+2017-05-21 20:33:48,652 DEBUG [main] (MQTT.MQTTHandler) Callback set!
+2017-05-21 20:33:48,708 INFO  [main] (MAIN.Controller) Controller constructed!
+2017-05-21 20:33:48,752 INFO  [main] (PLEX.CIREngine) CIREngine started!
+2017-05-21 20:33:48,772 INFO  [main] (OH.OHEngine) Connecting to OH files in OpenHAB directory...
+2017-05-21 20:33:48,775 DEBUG [main] (OH.OHEngine) Connected to OH files!
+2017-05-21 20:33:48,775 DEBUG [main] (OH.OHEngine) Updating .items file...
+2017-05-21 20:33:48,775 DEBUG [main] (OH.OHEngine) Adding rooms to groups declaration...
+2017-05-21 20:33:48,776 DEBUG [main] (OH.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-21 20:33:48,776 DEBUG [main] (OH.OHEngine) Adding individual Properties to items declaration...
+2017-05-21 20:33:48,792 DEBUG [main] (OH.OHEngine) Updating .rules file...
+2017-05-21 20:33:48,793 WARN  [main] (OH.OHEngine) Rules for component type 0006 not found!
+2017-05-21 20:33:48,806 WARN  [main] (OH.OHEngine) Rules for component type 0008 not found!
+2017-05-21 20:33:48,809 WARN  [main] (OH.OHEngine) Rules for component type 0003 not found!
+2017-05-21 20:33:48,813 WARN  [main] (OH.OHEngine) Rules for component type 0009 not found!
+2017-05-21 20:33:48,824 WARN  [main] (OH.OHEngine) Rules for component type 0002 not found!
+2017-05-21 20:33:48,841 DEBUG [main] (OH.OHEngine) Updating .sitemap file...
+2017-05-21 20:33:48,841 INFO  [main] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-21 20:33:48,842 DEBUG [main] (DB.DBEngine) Adding SelectDBEReq O6D7WVY233 to DBEngine!
+2017-05-21 20:33:48,920 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:33:48,984 DEBUG [main] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:33:49,018 DEBUG [main] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-21 20:33:49,020 INFO  [main] (OH.OHEngine) OHEngine started!
+2017-05-21 20:33:49,212 INFO  [main] (MAIN.BusinessMachine) Config file core-config.xml loaded.
+2017-05-21 20:33:49,212 INFO  [main] (MAIN.BusinessMachine) Updating OH items' states...
+2017-05-21 20:33:49,215 DEBUG [main] (MAIN.BusinessMachine) Update complete!
+2017-05-21 20:33:49,215 INFO  [main] (MAIN.BusinessMachine) BusinessMachine started!
+2017-05-21 20:33:49,276 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0011_0 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,350 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,422 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,485 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-05-21 20:33:49,541 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0018_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,654 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0032_-1 to topic:openhab/R682_topic
+2017-05-21 20:33:49,720 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0017_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,792 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0045_-1 to topic:openhab/R682_topic
+2017-05-21 20:33:49,837 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0031_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,893 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0016_0 to topic:openhab/R682_topic
+2017-05-21 20:33:49,937 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0030_no to topic:openhab/R682_topic
+2017-05-21 20:33:50,042 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0026_0 to topic:openhab/II81_topic
+2017-05-21 20:33:50,089 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0025_0 to topic:openhab/II81_topic
+2017-05-21 20:33:50,144 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0006_0 to topic:openhab/LLU3_topic
+2017-05-21 20:33:50,187 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0039_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,237 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0038_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,287 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0037_1 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,337 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0044_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,392 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0043_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,443 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0042_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,494 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0041_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,544 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0040_0 to topic:openhab/T3W0_topic
+2017-05-21 20:33:50,594 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0002_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,644 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0020_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,694 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0029_1 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,744 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0019_1 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,794 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0024_47 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,844 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0023_1 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,894 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0022_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,944 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0021_0 to topic:openhab/WJ48_topic
+2017-05-21 20:33:50,994 DEBUG [main] (MQTT.MQTTHandler) Publishing message:0003_0 to topic:openhab/WJ48_topic
+2017-05-21 20:34:12,659 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message arrived at topic BM
+2017-05-21 20:34:12,660 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message is: {
+RID:"5ccf7fc8a1fc",
+CID:"0005",
+RTY:"register",
+name:"Carlo phone (Plex)",
+roomID:"PLEX"
+}
+2017-05-21 20:34:12,660 INFO  [MQTT Call: BM_win] (MAIN.Controller) Request received!
+2017-05-21 20:34:12,677 DEBUG [1:Process1] (REG.RegistrationModule) RegistrationModule request processing started!
+2017-05-21 20:34:12,678 INFO  [1:Process1] (REG.RegistrationModule) Component already exists in system as H7K5! Returning existing credentials and property states.
+2017-05-21 20:34:12,678 DEBUG [1:Process1] (REG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-21 20:34:12,681 INFO  [1:Process1] (REG.RegistrationModule) Activating component...
+2017-05-21 20:34:12,682 DEBUG [1:Process1] (DB.DBEngine) Adding UpdateDBEReq W40UH61TC2 to DBEngine!
+2017-05-21 20:34:12,687 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:12,693 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"H7K5_topic","id":"H7K5","RID":"5ccf7fc8a1fc"} to topic:H7K5_topic
+2017-05-21 20:34:13,524 DEBUG [1:Process1] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:13,525 DEBUG [1:Process1] (REG.RegistrationModule) Activating component in OH...
+2017-05-21 20:34:13,526 DEBUG [1:Process1] (OH.OHEngine) Adding UpdateOHEReq HI6E7W12S7 to OHEngine!
+2017-05-21 20:34:13,590 DEBUG [OHEngine] (OH.OHEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:13,590 DEBUG [1:Process1] (OH.OHEngine) Updating OpenHAB files...
+2017-05-21 20:34:13,590 DEBUG [1:Process1] (OH.OHEngine) Updating .items file...
+2017-05-21 20:34:13,591 DEBUG [1:Process1] (OH.OHEngine) Adding rooms to groups declaration...
+2017-05-21 20:34:13,591 DEBUG [1:Process1] (OH.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-21 20:34:13,591 DEBUG [1:Process1] (OH.OHEngine) Adding individual Properties to items declaration...
+2017-05-21 20:34:13,596 DEBUG [1:Process1] (OH.OHEngine) Updating .rules file...
+2017-05-21 20:34:13,597 WARN  [1:Process1] (OH.OHEngine) Rules for component type 0006 not found!
+2017-05-21 20:34:13,611 WARN  [1:Process1] (OH.OHEngine) Rules for component type 0008 not found!
+2017-05-21 20:34:13,614 WARN  [1:Process1] (OH.OHEngine) Rules for component type 0003 not found!
+2017-05-21 20:34:13,615 WARN  [1:Process1] (OH.OHEngine) Rules for component type 0009 not found!
+2017-05-21 20:34:13,624 WARN  [1:Process1] (OH.OHEngine) Rules for component type 0002 not found!
+2017-05-21 20:34:13,646 DEBUG [1:Process1] (OH.OHEngine) Updating .sitemap file...
+2017-05-21 20:34:13,647 INFO  [1:Process1] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-21 20:34:13,647 DEBUG [1:Process1] (DB.DBEngine) Adding SelectDBEReq URG75O1WXS to DBEngine!
+2017-05-21 20:34:13,689 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:13,754 DEBUG [1:Process1] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:13,880 DEBUG [1:Process1] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-21 20:34:13,881 DEBUG [1:Process1] (OH.OHEngine) OpenHAB update complete!
+2017-05-21 20:34:13,881 DEBUG [1:Process1] (OH.OHEngine) EngineRequest processing complete!
+2017-05-21 20:34:13,881 DEBUG [1:Process1] (REG.RegistrationModule) Returning component properties states...
+2017-05-21 20:34:13,882 INFO  [1:Process1] (REG.RegistrationModule) Registration complete!
+2017-05-21 20:34:13,917 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0011","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:13,967 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0011_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:14,017 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0036","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:14,067 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:14,117 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0035","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:14,169 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:14,218 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0034","RID":"5ccf7fc8a1fc","value":1} to topic:H7K5_topic
+2017-05-21 20:34:14,268 DEBUG [1:Process1] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,166 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message arrived at topic BM
+2017-05-21 20:34:54,166 DEBUG [MQTT Call: BM_win] (MQTT.MQTTHandler) Message is: {
+RID:"5ccf7fc8a1fc",
+CID:"0005",
+RTY:"register",
+name:"Carlo phone (Plex)",
+roomID:"PLEX"
+}
+2017-05-21 20:34:54,166 INFO  [MQTT Call: BM_win] (MAIN.Controller) Request received!
+2017-05-21 20:34:54,170 DEBUG [2:Process2] (REG.RegistrationModule) RegistrationModule request processing started!
+2017-05-21 20:34:54,170 INFO  [2:Process2] (REG.RegistrationModule) Component already exists in system as H7K5! Returning existing credentials and property states.
+2017-05-21 20:34:54,170 DEBUG [2:Process2] (REG.RegistrationModule) Returning existing credentials to default topic...
+2017-05-21 20:34:54,171 INFO  [2:Process2] (REG.RegistrationModule) Activating component...
+2017-05-21 20:34:54,171 DEBUG [2:Process2] (DB.DBEngine) Adding UpdateDBEReq A7I2676QQ3 to DBEngine!
+2017-05-21 20:34:54,194 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:54,212 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"topic":"H7K5_topic","id":"H7K5","RID":"5ccf7fc8a1fc"} to topic:H7K5_topic
+2017-05-21 20:34:54,284 DEBUG [2:Process2] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:54,284 DEBUG [2:Process2] (REG.RegistrationModule) Activating component in OH...
+2017-05-21 20:34:54,285 DEBUG [2:Process2] (OH.OHEngine) Adding UpdateOHEReq TM0V35RKNY to OHEngine!
+2017-05-21 20:34:54,289 DEBUG [OHEngine] (OH.OHEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:54,289 DEBUG [2:Process2] (OH.OHEngine) Updating OpenHAB files...
+2017-05-21 20:34:54,289 DEBUG [2:Process2] (OH.OHEngine) Updating .items file...
+2017-05-21 20:34:54,289 DEBUG [2:Process2] (OH.OHEngine) Adding rooms to groups declaration...
+2017-05-21 20:34:54,289 DEBUG [2:Process2] (OH.OHEngine) Adding Components with multiple properties to groups declaration...
+2017-05-21 20:34:54,290 DEBUG [2:Process2] (OH.OHEngine) Adding individual Properties to items declaration...
+2017-05-21 20:34:54,292 DEBUG [2:Process2] (OH.OHEngine) Updating .rules file...
+2017-05-21 20:34:54,292 WARN  [2:Process2] (OH.OHEngine) Rules for component type 0006 not found!
+2017-05-21 20:34:54,302 WARN  [2:Process2] (OH.OHEngine) Rules for component type 0008 not found!
+2017-05-21 20:34:54,305 WARN  [2:Process2] (OH.OHEngine) Rules for component type 0003 not found!
+2017-05-21 20:34:54,307 WARN  [2:Process2] (OH.OHEngine) Rules for component type 0009 not found!
+2017-05-21 20:34:54,313 WARN  [2:Process2] (OH.OHEngine) Rules for component type 0002 not found!
+2017-05-21 20:34:54,345 DEBUG [2:Process2] (OH.OHEngine) Updating .sitemap file...
+2017-05-21 20:34:54,345 INFO  [2:Process2] (BM_LOG.ComponentRepository) Retrieving rooms from DB...
+2017-05-21 20:34:54,345 DEBUG [2:Process2] (DB.DBEngine) Adding SelectDBEReq YUC32GB3F6 to DBEngine!
+2017-05-21 20:34:54,394 DEBUG [DBEngine] (DB.DBEngine) New EngineRequest detected! Processing...
+2017-05-21 20:34:54,423 DEBUG [2:Process2] (DB.DBEngine) EngineRequest processing complete!
+2017-05-21 20:34:54,451 DEBUG [2:Process2] (BM_LOG.ComponentRepository) Rooms retrieved!
+2017-05-21 20:34:54,452 DEBUG [2:Process2] (OH.OHEngine) OpenHAB update complete!
+2017-05-21 20:34:54,453 DEBUG [2:Process2] (OH.OHEngine) EngineRequest processing complete!
+2017-05-21 20:34:54,453 DEBUG [2:Process2] (REG.RegistrationModule) Returning component properties states...
+2017-05-21 20:34:54,453 INFO  [2:Process2] (REG.RegistrationModule) Registration complete!
+2017-05-21 20:34:54,462 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0011","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:54,512 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0011_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,562 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0036","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:54,613 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0036_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,663 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0035","RID":"5ccf7fc8a1fc","value":0} to topic:H7K5_topic
+2017-05-21 20:34:54,713 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0035_0 to topic:openhab/H7K5_topic
+2017-05-21 20:34:54,763 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:{"RTY":"register","success":true,"property":"0034","RID":"5ccf7fc8a1fc","value":1} to topic:H7K5_topic
+2017-05-21 20:34:54,814 DEBUG [2:Process2] (MQTT.MQTTHandler) Publishing message:0034_1 to topic:openhab/H7K5_topic

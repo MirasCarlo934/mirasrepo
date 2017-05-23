@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import org.apache.log4j.Logger;
 
-import json.objects.ResError;
+import json.RRP.ResError;
 import mqtt.MQTTHandler;
 
 public class ThreadRejectionHandler implements RejectedExecutionHandler {

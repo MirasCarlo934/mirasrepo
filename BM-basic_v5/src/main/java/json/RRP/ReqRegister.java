@@ -1,4 +1,4 @@
-package json.objects;
+package json.RRP;
 
 import org.json.JSONObject;
 

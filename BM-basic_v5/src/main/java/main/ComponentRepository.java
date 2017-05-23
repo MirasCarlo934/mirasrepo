@@ -14,11 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import components.Component;
 import components.Product;
 import components.bindings.Binding;
-import components.properties.Property;
+import components.properties.AbstProperty;
+import components.properties.CommonProperty;
+import components.properties.InnateProperty;
 import components.properties.PropertyMode;
 import components.properties.PropertyValueType;
-import json.objects.ReqRegister;
-import json.objects.ResError;
+import components.properties.StringProperty;
+import json.RRP.ReqRegister;
+import json.RRP.ResError;
 import main.engines.DBEngine;
 import main.engines.requests.DBEngine.RawDBEReq;
 import main.engines.requests.DBEngine.SelectDBEReq;
@@ -41,15 +44,21 @@ public class ComponentRepository {
 	private String productQuery;
 	private String roomsTable;
 	private String bindingsTable;
+	
+	//for instantiating different properties
+	private String stringPropTypeID;
+	private String innatePropTypeID;
 
 	public ComponentRepository(/*Catalog catalog, */DBEngine dbm, String deviceQuery, 
-			String productQuery, String roomsTable, String bindingsTable) {
+			String productQuery, String roomsTable, String bindingsTable, String stringPropTypeID, 
+			String innatePropTypeID) {
 		this.deviceQuery = deviceQuery;
 		this.productQuery = productQuery;
 		this.roomsTable = roomsTable;
 		this.bindingsTable = bindingsTable;
-		//this.catalog = catalog;
 		this.dbm = dbm;
+		this.stringPropTypeID = stringPropTypeID;
+		this.innatePropTypeID = innatePropTypeID;
 		populateDevices();
 		retrieveRooms();
 		retrieveBindings();
@@ -94,13 +103,13 @@ public class ComponentRepository {
 				boolean active = coms_rs.getBoolean("ACTIVE");
 				
 				String prop_id = coms_rs.getString("prop_id");
-				int prop_val = coms_rs.getInt("prop_value");
+				Object prop_val = coms_rs.getString("prop_value");
 				
 				if(!components.containsKey(SSID)) { //true if devices does NOT contain this device
 					String prod_name = "null";
 					String prod_desc = "null";
 					String prod_OH_icon = "null";
-					Vector<Property> prod_props = new Vector<Property>(1,1);
+					Vector<AbstProperty> prod_props = new Vector<AbstProperty>(1,1);
 					while(prod_rs.next()) {
 						String rs2_ssid = prod_rs.getString("prod_ssid");
 						if(rs2_ssid.equals(prod_id)) {
@@ -116,16 +125,26 @@ public class ComponentRepository {
 							int prop_min = prod_rs.getInt("prop_min");
 							int prop_max = prod_rs.getInt("prop_max");
 							String prop_index = prod_rs.getString("prop_index");
-							Property prop = new Property(prop_type, prop_index, prop_sysname, 
+							AbstProperty prop;
+							if(prop_type.equals(stringPropTypeID)) {
+								prop = new StringProperty(prop_type, prop_index, SSID, 
+										prop_sysname, prop_dispname, 
+										PropertyMode.parseModeFromString(prop_mode));
+							} else if(prop_type.equals(innatePropTypeID)) {
+								prop = new InnateProperty(prop_type, prop_index, SSID, prop_sysname, prop_dispname, 
+										PropertyValueType.parsePropValTypeFromString(pval_type));
+							} else {
+								prop = new CommonProperty(prop_type, prop_index, SSID, prop_sysname, 
 									prop_dispname, PropertyMode.parseModeFromString(prop_mode), 
 									PropertyValueType.parsePropValTypeFromString(pval_type), 
 									prop_min, prop_max);
+							}
 							prod_props.add(prop);
 						}
 					}
 					prod_rs.beforeFirst();
 					Product product = new Product(prod_id, prod_name, prod_desc, prod_OH_icon, 
-							prod_props.toArray(new Property[prod_props.size()]));
+							prod_props.toArray(new AbstProperty[prod_props.size()]));
 					LOG.debug("Adding component " + SSID + " into ComponentRepository...");
 					Component com = new Component(SSID, MAC, name, topic, room, active, product);
 					addComponent(com);
@@ -135,7 +154,6 @@ public class ComponentRepository {
 				//populates properties of device with persisted values
 				LOG.debug("Setting property: " + prop_id + " of device: " + SSID + " with value: " + prop_val);
 				Component com = components.get(SSID);
-				LOG.fatal(com.getSSID());
 				com.getProperty(prop_id).setValue(prop_val);
 			}
 			coms_rs.close();
@@ -280,7 +298,7 @@ public class ComponentRepository {
 	
 	public void changeDBProperty(String deviceID, String propID, int propValue) {
 		Component device = components.get(deviceID);
-		Property property = device.getProperty(propID);
+		AbstProperty property = device.getProperty(propID);
 		property.setValue(propValue);
 		
 		LOG.info("Updating property:" + propID + " of device:" + deviceID + " in DB...");

@@ -22,10 +22,10 @@ import org.apache.log4j.Logger;
 
 import components.Component;
 import components.bindings.Binding;
-import components.properties.Property;
+import components.properties.AbstProperty;
 import components.properties.PropertyMode;
 import components.properties.PropertyValueType;
-import json.objects.ResError;
+import json.RRP.ResError;
 import main.ComponentRepository;
 import main.engines.requests.EngineRequest;
 import main.engines.requests.DBEngine.SelectDBEReq;
@@ -206,9 +206,9 @@ public class OHEngine extends AbstEngine {
 	private void removeItem(String s) {
 		LOG.info("Removing OH item of component " + s + "...");
 		Component c = cr.getComponent(s);
-		Iterator<Property> props = c.getProperties().values().iterator();
+		Iterator<AbstProperty> props = c.getProperties().values().iterator();
 		while(props.hasNext()) {
-			Property p = props.next();
+			AbstProperty p = props.next();
 			try {
 				//URL url = new URL("http://localhost:8080/rest/items/test1");
 				URL url = new URL("http://" + ohIP + "/rest/items/" + c.getSSID() + "_" + 
@@ -280,9 +280,9 @@ public class OHEngine extends AbstEngine {
 			HashMap<String, String> values = new HashMap<String,String>(1); //for use with BINDINGS
 			Component c = coms[i];
 			if(!c.isActive()) continue; //if inactive, do next component
-			Property[] props = c.getProperties().values().toArray(new Property[0]);
+			AbstProperty[] props = c.getProperties().values().toArray(new AbstProperty[0]);
 			for(int j = 0; j < props.length; j++) {
-				Property p = props[j];
+				AbstProperty p = props[j];
 				LOG.trace("Adding property " + p.getSSID() + " of component " + c.getSSID());
 				String room = null;
 				String itemName = null;
@@ -351,7 +351,7 @@ public class OHEngine extends AbstEngine {
 		
 		for(int i = 0; i < coms.length; i++) {
 			Component c = coms[i];
-			Property[] props = c.getProperties().values().toArray(new Property[0]);
+			AbstProperty[] props = c.getProperties().values().toArray(new AbstProperty[0]);
 			
 			HashMap<String, String> values = new HashMap<String, String>(2); //values to be put inside rules files
 			values.put("com_ssid", c.getSSID());
@@ -374,7 +374,7 @@ public class OHEngine extends AbstEngine {
 			
 			//gets general property rules
 			for(int j = 0; j < props.length; j++) {
-				Property p = props[j];
+				AbstProperty p = props[j];
 				LOG.trace("Updating rules of property " + p.getSSID());
 				try { //retrieves rules from general rules files
 					values.put("prop_ssid", p.getSSID());

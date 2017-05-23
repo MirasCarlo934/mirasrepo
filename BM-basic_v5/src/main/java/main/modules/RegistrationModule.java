@@ -9,12 +9,14 @@ import java.util.Vector;
 
 import components.Component;
 import components.Product;
-import components.properties.Property;
-import json.objects.ReqRegister;
-import json.objects.ReqRequest;
-import json.objects.ResError;
-import json.objects.ResPOOP;
-import json.objects.ResRegister;
+import components.properties.InnateProperty;
+import components.properties.AbstProperty;
+import components.properties.StringProperty;
+import json.RRP.ReqRegister;
+import json.RRP.ReqRequest;
+import json.RRP.ResError;
+import json.RRP.ResPOOP;
+import json.RRP.ResRegister;
 import main.ComponentRepository;
 import main.engines.DBEngine;
 import main.engines.OHEngine;
@@ -37,10 +39,13 @@ public class RegistrationModule extends AbstModule {
 	private String prodIDParam;
 	private String roomIDParam;
 	private String poopRTY;
+	private String stringPropTypeID;
+	private String innatePropTypeID;
 	
 	public RegistrationModule(String logDomain, String errorLogDomain, String RTY, String poopRTY, 
 			String nameParam, String prodIDParam, String roomIDParam, MQTTHandler mh, 
-			ComponentRepository components, DBEngine dbe, OHEngine ohe,String productQuery) {
+			ComponentRepository components, DBEngine dbe, OHEngine ohe,String productQuery, 
+			String stringPropTypeID, String innatePropTypeID) {
 		super(logDomain, errorLogDomain, "RegistrationModule", RTY, new String[]{nameParam, prodIDParam, roomIDParam}, 
 				mh, components);
 		this.dbe = dbe;
@@ -50,6 +55,8 @@ public class RegistrationModule extends AbstModule {
 		this.prodIDParam = prodIDParam;
 		this.roomIDParam = roomIDParam;
 		this.poopRTY = poopRTY;
+		this.innatePropTypeID = innatePropTypeID;
+		this.stringPropTypeID = stringPropTypeID;
 	}
 
 	/**
@@ -59,54 +66,13 @@ public class RegistrationModule extends AbstModule {
 	protected void process(ReqRequest request) {
 		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
 		if(request.getJSON().has("exists")) {
-			Component c = cr.getComponent(reg.mac);
-			request.cid = c.getSSID();
-			mainLOG.info("Component already exists in system as " + c.getSSID() + "! "
-					+ "Returning existing credentials and property states.");
-			
-			mainLOG.debug("Activating component in BM...");
-			c.setActive(true);
-			
-			mainLOG.debug("Returning existing credentials to default topic...");
-			mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
-			
-			mainLOG.debug("Activating component " + c.getSSID() + " in DB...");
-			HashMap<String, Object> args = new HashMap<String, Object>(1,1);
-			args.put("mac", request.rid);
-			HashMap<String, Object> vals = new HashMap<String, Object>(1,1);
-			vals.put("active", true);
-			UpdateDBEReq updateActive = new UpdateDBEReq(idg.generateMixedCharID(10), comsTable, 
-					vals, args);
-			Object o1 = forwardEngineRequest(dbe, updateActive);
-			if(o1.getClass().equals(ResError.class)) {
-				ResError error = (ResError) o1;
-				error(error);
-				return;
-			}
-			
-			mainLOG.debug("Activating component in OH...");
-			Object o2 = forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
-			if(o2.getClass().equals(ResError.class)) {
-				ResError error = (ResError) o2;
-				error(error);
-				return;
-			}
-			
-			mainLOG.debug("Returning component properties states...");
-			Iterator<Property> props = c.getProperties().values().iterator();
-			while(props.hasNext()) {
-				Property p = props.next();
-				ResPOOP poop = new ResPOOP(request, p.getSSID(), p.getValue());
-				poop.rty = poopRTY;
-				mh.publish(poop);
-				mh.publish("openhab/" + c.getTopic(), poop.getPropSSID() + "_" + poop.getPropVal());
-			}
-			mainLOG.info("Registration complete!");
+			returnExistingComponent(request);
 			return;
 		}
 		
 		mainLOG.info("Registering component " + reg.mac + " to system...");
 		Vector<String> ids = new Vector<String>(1,1);
+		String ssid; //SSID of new component
 		Product product = null;
 		
 		//getting Component product and properties
@@ -124,6 +90,7 @@ public class RegistrationModule extends AbstModule {
 				rs1.close();
 				mainLOG.debug("Existing SSIDs retrieved!");
 			}
+			ssid = idg.generateMixedCharID(4, ids.toArray(new String[0])); 
 			//getting Component product properties
 			mainLOG.debug("Retrieving Component product properties...");
 			RawDBEReq dber2 = new RawDBEReq(idg.generateMixedCharID(10), 
@@ -131,7 +98,7 @@ public class RegistrationModule extends AbstModule {
 			o = forwardEngineRequest(dbe, dber2);
 			if(!o.getClass().equals(ResError.class)) {
 				ResultSet rs2 = (ResultSet) o;
-				product = new Product(rs2);
+				product = new Product(ssid, rs2, stringPropTypeID, innatePropTypeID);
 				mainLOG.debug("Component product properties retrieved!");
 			}
 		} catch (SQLException e) {
@@ -142,7 +109,6 @@ public class RegistrationModule extends AbstModule {
 		
 		//creation of Component object within BM system
 		mainLOG.debug("Creating Component object...");
-		String ssid = idg.generateMixedCharID(4, ids.toArray(new String[0]));
 		String topic = ssid + "_topic";
 		Component c = new Component(ssid, reg.mac, reg.name, topic, reg.room, true, product);
 		mainLOG.debug("Component object created!");
@@ -182,15 +148,22 @@ public class RegistrationModule extends AbstModule {
 		}
 		
 		//persisting component properties to DB
-		Property[] props = c.getProperties().values().toArray(new Property[0]);
+		AbstProperty[] props = c.getProperties().values().toArray(new AbstProperty[0]);
 		mainLOG.trace("Persisting component properties into DB...");
 		for(int i = 0; i < props.length; i++) {
-			Property p = props[i];
+			AbstProperty p = props[i];
 			HashMap<String, Object> vals2 = new HashMap<String, Object>(1);
 			vals2.put("com_id", c.getSSID());
 			vals2.put("prop_name", p.getSystemName());
 			vals2.put("prop_value", String.valueOf(p.getValue()));
 			vals2.put("cpl_ssid", p.getSSID());
+			if(p.getPropTypeID().equals(stringPropTypeID)) {
+				StringProperty sp = (StringProperty) p;
+				vals2.put("str_value", sp.getValue());
+			} else if(p.getPropTypeID().equals(innatePropTypeID)) {
+				InnateProperty ip = (InnateProperty) p;
+				vals2.put("str_value", ip.getValue());
+			}
 			String vals2ID = idg.generateMixedCharID(10);
 			
 			Object o2 = forwardEngineRequest(dbe, new InsertDBEReq(vals2ID, propsTable, vals2));
@@ -200,6 +173,61 @@ public class RegistrationModule extends AbstModule {
 		}
 		mainLOG.debug("Component persistence complete!");
 		return true;
+	}
+	
+	private void returnExistingComponent(ReqRequest request) {
+		ReqRegister reg = new ReqRegister(request.getJSON(), nameParam, prodIDParam, roomIDParam);
+		Component c = cr.getComponent(reg.mac);
+		request.cid = c.getSSID();
+		mainLOG.info("Component already exists in system as " + c.getSSID() + "! "
+				+ "Returning existing credentials and property states.");
+		
+		mainLOG.debug("Returning existing credentials to default topic...");
+		c.publishCredentials(mh, requestType);
+		
+		mainLOG.info("Activating component...");
+		try {
+			c.setActive(true, dbe, comsTable);
+		} catch (Exception e) {
+			error(e);
+			e.printStackTrace();
+		}
+		
+		//mh.publishToDefaultTopic(new ResRegister(request, c.getSSID(), c.getTopic()));
+		
+		/*mainLOG.debug("Activating component " + c.getSSID() + " in DB...");
+		HashMap<String, Object> args = new HashMap<String, Object>(1,1);
+		args.put("mac", request.rid);
+		HashMap<String, Object> vals = new HashMap<String, Object>(1,1);
+		vals.put("active", true);
+		UpdateDBEReq updateActive = new UpdateDBEReq(idg.generateMixedCharID(10), comsTable, 
+				vals, args);
+		Object o1 = forwardEngineRequest(dbe, updateActive);
+		if(o1.getClass().equals(ResError.class)) {
+			ResError error = (ResError) o1;
+			error(error);
+			return;
+		}*/
+		
+		/*mainLOG.debug("Activating component in OH...");
+		Object o2 = forwardEngineRequest(ohe, new UpdateOHEReq(idg.generateMixedCharID(10)));
+		if(o2.getClass().equals(ResError.class)) {
+			ResError error = (ResError) o2;
+			error(error);
+			return;
+		}*/
+		
+		mainLOG.debug("Returning component properties states...");
+		Iterator<AbstProperty> props = c.getProperties().values().iterator();
+		while(props.hasNext()) {
+			AbstProperty p = props.next();
+			ResPOOP poop = new ResPOOP(request, p.getSSID(), p.getValue());
+			poop.rty = poopRTY;
+			mh.publish(poop);
+			mh.publish("openhab/" + c.getTopic(), poop.getPropSSID() + "_" + poop.getPropVal());
+		}
+		mainLOG.info("Registration complete!");
+		return;
 	}
 
 	/**
@@ -252,7 +280,6 @@ public class RegistrationModule extends AbstModule {
 					if(reg.room.equals(rs3.getString("ssid")) || 
 							reg.room.equalsIgnoreCase(rs3.getString("name"))) {
 						b = true;
-						mainLOG.fatal(rs3.getString("ssid"));
 						request.getJSON().put(roomIDParam, rs3.getString("ssid"));
 						rs3.close();
 						break;

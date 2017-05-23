@@ -25,9 +25,11 @@ import org.apache.log4j.Logger;
 import cir.*;
 import cir.exceptions.*;
 import components.Component;
-import components.properties.Property;
-import json.objects.ReqPOOP;
-import json.objects.ResError;
+import components.properties.AbstProperty;
+import components.properties.CommonProperty;
+import components.properties.StringProperty;
+import json.RRP.ReqPOOP;
+import json.RRP.ResError;
 //import main.TransTechSystem;
 import main.ComponentRepository;
 import main.engines.requests.EngineRequest;
@@ -103,9 +105,6 @@ public class CIREngine extends AbstEngine {
 	protected void update() {
 		LOG.trace("Updating CIR records...");
 		try {
-			//interpret(TransTechSystem.config.getInstructionPropsConfig().getRulesFileLocation());
-			//bm_props.load(bm_props_file.getFileReader());
-			//cir_filepath = bm_props.getProperty("cir.filepath");
 			interpret(cir_filepath);
 			LOG.trace("CIR records updated!");
 		} catch (IOException e) {
@@ -396,7 +395,7 @@ public class CIREngine extends AbstEngine {
 	 * @param p The Property object
 	 * @return The Vector containing all the CIR statements found
 	 */
-	protected Vector<Statement> getCIRStatementsWithArgComponent(Component c, Property p) {
+	protected Vector<Statement> getCIRStatementsWithArgComponent(Component c, AbstProperty p) {
 		LOG.debug("Retrieving CIR for component " + c.getSSID() + " with property " + p.getSystemName());
 		Vector<Statement> collection = cirStatements;
 		Vector<Statement> statements = new Vector<Statement>(1,1);
@@ -480,9 +479,9 @@ public class CIREngine extends AbstEngine {
 	 * @return A Vector containing all the execution blocks of the rules that were followed, 
 	 * 		ResError object if the process encountered an error
 	 */
-	protected Object getSpecificExecBlocks(ReqPOOP poop) {
+	protected Vector<ExecutionBlock> getSpecificExecBlocks(ReqPOOP poop) {
 		Component com = cr.getComponent(poop.cid);
-		Property prop = com.getProperty(poop.propSSID);
+		AbstProperty prop = com.getProperty(poop.propSSID);
 		Vector<Statement> rules = getCIRStatementsWithArgComponent(com, prop);
 		Vector<ExecutionBlock> execsRetrieved = new Vector<ExecutionBlock>(1,1);
 		//LOG.fatal("Rules amount:" + rules.size());
@@ -498,8 +497,8 @@ public class CIREngine extends AbstEngine {
 				rule_result = false;
 				Argument arg = args[j];
 				Component arg_com = cr.getComponent(arg.getComID());
-				int pval = arg_com.getProperty(arg.getPropSSID()).getValue();
-				rule_result = compareValueWithArgument(arg, pval);
+				AbstProperty p = arg_com.getProperty(arg.getPropSSID());
+				rule_result = compareValueWithArgument(arg, p);
 				
 				if(!rule_result) { //rule will NOT be used
 					break;
@@ -515,45 +514,65 @@ public class CIREngine extends AbstEngine {
 	}
 	
 	/**
-	 * Checks if the specified Property value meets the specified Argument's condition
+	 * Checks if the specified Property meets the specified Argument's condition
 	 * 
-	 * @param arg The Argument where the Property value will be compared with
-	 * @param pval The Property value that will be compared with the Argument
+	 * @param arg The Argument where the Property will be compared with
+	 * @param prop The Property which will be compared to the Argument
 	 * @return <b>True</b> if the specified Property value meets the specified Argument's 
 	 * 		condition, <b>false</b> otherwise.
 	 */
-	private boolean compareValueWithArgument(Argument arg, int pval) {
+	private boolean compareValueWithArgument(Argument arg, AbstProperty prop) {
 		boolean b = false;
 		
-		if(arg.getOperator().equals(ArgOperator.EQUALS)) {
-			if(arg.getPropValue().equals(String.valueOf(pval))) {
-				b = true;
+		if(prop.getClass().equals(StringProperty.class)) {
+			StringProperty p = (StringProperty) prop;
+			String pval = p.getValue();
+			if(arg.getOperator().equals(ArgOperator.EQUALS)) {
+				if(arg.getPropValue().equals(String.valueOf(pval))) {
+					b = true;
+				}
+			} else if(arg.getOperator().equals(ArgOperator.INEQUAL)) {
+				if(!arg.getPropValue().equals(String.valueOf(pval))) {
+					b = true;
+				}
 			}
-		}
-		else if(arg.getOperator().equals(ArgOperator.GREATER)) {
-			if(Float.parseFloat(arg.getPropValue()) < pval) {
-				b = true;
+			
+		} else if (prop.getClass().equals(CommonProperty.class)){
+			CommonProperty p = (CommonProperty) prop;
+			int pval = p.getValue();
+			if(arg.getOperator().equals(ArgOperator.EQUALS)) {
+				if(arg.getPropValue().equals(String.valueOf(pval))) {
+					b = true;
+				}
 			}
-		}
-		else if(arg.getOperator().equals(ArgOperator.LESS)) {
-			if(Float.parseFloat(arg.getPropValue()) > pval) {
-				b = true;
+			else if(arg.getOperator().equals(ArgOperator.GREATER)) {
+				if(Float.parseFloat(arg.getPropValue()) < pval) {
+					b = true;
+				}
 			}
-		}
-		else if(arg.getOperator().equals(ArgOperator.GREATEREQUALS)) {
-			if(Float.parseFloat(arg.getPropValue()) <= pval) {
-				b = true;
+			else if(arg.getOperator().equals(ArgOperator.LESS)) {
+				if(Float.parseFloat(arg.getPropValue()) > pval) {
+					b = true;
+				}
 			}
-		}
-		else if(arg.getOperator().equals(ArgOperator.LESSEQUALS)) {
-			if(Float.parseFloat(arg.getPropValue()) >= pval) {
-				b = true;
+			else if(arg.getOperator().equals(ArgOperator.GREATEREQUALS)) {
+				if(Float.parseFloat(arg.getPropValue()) <= pval) {
+					b = true;
+				}
 			}
-		}
-		else if(arg.getOperator().equals(ArgOperator.INEQUAL)) {
-			if(Float.parseFloat(arg.getPropValue()) != pval) {
-				b = true;
+			else if(arg.getOperator().equals(ArgOperator.LESSEQUALS)) {
+				if(Float.parseFloat(arg.getPropValue()) >= pval) {
+					b = true;
+				}
 			}
+			else if(arg.getOperator().equals(ArgOperator.INEQUAL)) {
+				if(Float.parseFloat(arg.getPropValue()) != pval) {
+					b = true;
+				}
+			}
+			
+		} else {
+			LOG.error("Invalid property type! Cannot be compared with argument!");
 		}
 		
 		return b;
